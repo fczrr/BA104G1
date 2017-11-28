@@ -1,0 +1,65 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<script>
+$(document).ready(function () {
+
+	$('#canelBtn').on('click', function() {
+		$(".repComNo").html('');
+ 		$('.repComTime').html('');
+		$(".newReplay").val('');
+		$(".newReplay").attr('id','');
+		
+	});
+	
+	$("#submit").on('click', function() {
+		var newdetail =$(".newReplay").val();
+		var order = $(".repComNo").html();
+console.log($(".repComNo").html());
+		if(newdetail == ''){
+			swal({ 
+	    		  title:'內容請勿空白', 
+	    		  type: 'warning',
+	    		  confirmButtonColor: '#3085d6',
+	    		  cancelButtonColor: '#d33',
+	    		  confirmButtonText: '確認', 
+	    		})
+
+	    		$(".newReplay").attr('id','replayIntro');
+		
+		} else if(newdetail != ""){
+			
+			 $.ajax({
+	    		 type:"POST",  //指定http參數傳輸格式為POST 
+	    		 contentType:"application/x-www-form-urlencoded",
+	    		 url:"<%=request.getContextPath()%>/shopcomplain/shopcomplain.do?action=insert_front&orderno="+$(".repComNo").html() + "&complainDetail=" + $(".newReplay").val(),  	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+//	    		 data:text,  //要傳給目標的data
+	    		 dataType: "json",
+	    		
+		    	success : function(res){
+		    		 swal({ 
+	   	    		  title: res.order_no + '成功提交申訴', 
+	   	    		  text: '我們會盡快回覆', 
+	   	    		  type:	'success',
+		    		})
+		    		reload();
+		    	}
+			 });
+		    	}
+			});		 
+	
+	$(".clickDetail").on('click', function() {
+		$(".newReplay").attr('id','');
+		$item = $( this );
+		var orderNo = $item.parent().find("input.order_noBtn");
+		$(".repComNo").html(orderNo.val());
+ 		$('.repComTime').html($('.newsTime').html());
+	});
+	
+	function reload(){
+   		setTimeout(function(){
+		  window.location.reload();
+		  },500);
+	};
+   		  
+});
+</script>

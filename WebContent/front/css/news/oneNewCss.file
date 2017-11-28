@@ -1,0 +1,178 @@
+<style>
+
+
+/*  左邊選項 */
+
+.imglogoSm{
+	width: 35px;
+	margin-right: 10px;
+}
+.newTTTTT{
+	background-color: #FFA500;
+	color: white;
+	margin-bottom: 15px;
+	margin-top: 55px;
+	height: 52px;
+	padding-top: 12px;
+	font-size: 1.3em;
+}
+.alllist a{
+	font-size: 1.1em;
+	padding:20px;
+	border: 0.5px solid #FFA500;
+	color: #233D4D;
+}
+
+.alllist a:hover{
+	background-color: #FFA500;
+	font-size: 1.3em;
+	color: white;
+}
+
+
+
+/* 麵包屑*/
+
+#breadNew li{
+	color: #233D4D;
+	text-decoration: white;
+}
+#breadNew li a{
+	text-decoration: none;
+	color: #aaaaaa;
+} 
+
+#breadNew .active a {
+	text-decoration: none;
+	color: #D66611;
+} 
+.breadcrumb {
+	margin-top: 15px;
+	margin-bottom: 2px;
+	padding-bottom: 1px;
+	background-color: white;
+	color: #233D4D;
+}
+
+/* 右邊格狀 */
+
+.glyphicon { 
+	margin-right:5px;
+}
+
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+.newsbutton{
+	float: right;
+}
+.well{
+	margin-top: 10px;
+	padding-bottom:18px;
+	background-color: antiquewhite;
+}
+.titleNews{
+	font-size: 1.6em;
+}
+.newstime{
+	padding-top: 5px;
+	font-size: 0.5em;
+}
+
+.detailtime{
+	padding-left: 7px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	/*font-size: 0.8em;*/
+}
+
+.detailNews{
+	padding-top: 18px;
+	padding-left: 7px;
+	font-size: 2.5em;
+}
+
+.bigimg{
+	margin:5px 30px 10px 5px;
+	vertical-align: middle;
+	float:left;
+	width: 50%;
+}
+
+.detailInt{
+	text-indent: 2em;
+	font-size: 1.2em;
+	margin-right: 10px;
+	margin-left: 8px;
+	line-height: 150%;
+	letter-spacing:0.3px;
+	text-align: justify;
+}
+
+.onelistNew{
+	margin-top: 12px;
+}
+
+.backbutton{
+	margin-top: 10px;
+}
+
+/*.list-group-item .thumbnail .caption .row .col-xs-12 .btnC{
+	position: absolute; 
+	bottom: 0;
+}*/
+
+</style>

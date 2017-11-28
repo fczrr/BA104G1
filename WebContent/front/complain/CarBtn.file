@@ -1,0 +1,8 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+<p class="col-text" data-toggle="modal"  data-target="#ansower">
+<input type="button" class="btn btn-danger clickDetail" value="申訴">
+<input type="hidden" name="orderNo" class="order_noBtn" value="${carOrder.order_no}">
+<input type="hidden" name="action"	value="getOne_For_Update_front"> 
+<p>

@@ -1,0 +1,73 @@
+<style>
+.navbar{
+	border-radius: 0px;
+}
+.newnavbartoppp{
+	background-color: #FFA500;
+	border-color: #ffae19;
+
+}
+#navbarTopColor{
+	background-color: #FFA500;
+	border-color: 2px solid #FFA500;
+	color: white;
+	margin-right:40px;
+	margin-left:40px;
+}
+.logoImgNav{
+	margin-left:40px;
+	margin-top:-8px;
+}
+
+
+#navbarTopColor li a:hover{
+	background-color: #ca1515;
+}
+
+#navbarTopColor li a {
+	color: white;
+	font-size: 1.2em;
+}
+
+
+.dropdownNew{
+	background-color: #FFA500;
+	padding: 0px;
+	border: 1px solid #FABC3C;
+}
+
+.dropdownNew li{
+	border-bottom: 0.3px solid #ffc04c;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	background-color: #ca1515;
+}
+
+
+.dropdownNew :hover{
+	color: black;
+}
+
+.newdropdown .open a:hover , .newdropdown .open a:focus , .newdropdown .open a,{
+	color: #ca1515;
+	background-color: #ffae19;
+}
+
+.newdropdown open{
+	background-color: #cc8400;
+}
+
+
+/* footer */
+.newnavbart{
+	background-color: #FFA500;
+	border:2px solid #FFA500; 
+	margin-bottom: 0px;
+	text-align:center;
+	padding-top: 7px; 
+	color: white;
+}
+</style>

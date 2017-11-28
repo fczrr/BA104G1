@@ -1,0 +1,19 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+
+  <%if (pageNumber>1) {%>
+  <div class="container">               
+     <ul class="pagination text-center">
+          <%for (int i=1; i<=pageNumber; i++){%>
+             <li class="<%=whichPage==i?"active":"" %>">
+                  <a href="<%=request.getRequestURI()%>?whichPage=<%=i%>">
+                  <%= i %>
+                  </a>
+             </li>
+              <%System.out.print(whichPage); %>
+               <%System.out.print(i); %>
+               <%System.out.print(whichPage==i); %>
+               <%System.out.println(whichPage==i?"active":""); %>
+          <%}%> 
+     </ul>
+  </div>
+ <%}%> 

@@ -1,0 +1,248 @@
+
+
+/* Navbar &旋轉木馬=========================================================================== */
+.forNavbarM{
+    padding-right:20px;
+    padding-left:20px; 
+
+}
+.imgtitle{
+    width: 100%;
+    z-index: 1;
+    height: 
+}
+
+#imgLogoSm{
+    width: 52px;
+    padding-top:4px;
+}
+
+#couImg{
+    width: 100%;
+}
+
+.item{
+    height: 800px;
+}
+
+#couText{
+    /*text-shadow:0px 0px 1.6px #aaaaaa;*/
+    color: black;
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    border-radius: 1%;
+}
+.h1_index_1{
+    color: #000000;
+    text-shadow:0px 0.5px 1px #ffffff;
+}
+
+.h2_index_1{
+    font-size: 1.7em;
+    color: #000000;
+    text-shadow:0px 0.5px 0.2px #ffffff;
+}
+
+.h1_index_2{
+    color: #a30000;
+    text-shadow:0px 0.5px 1px #ffffff;
+}
+
+.h2_index_2{
+    color: #a30000;
+    text-shadow:0px 0.5px 0.2px #aaa;
+    font-size: 1.7em;
+}
+.h1_index_3{
+    color: #FFA500;
+    text-shadow:0px 1px 1px #000;
+}
+.h2_index_3{
+    color: #FFA500;
+    text-shadow:0px 0.5px 0.3px #000;
+    font-size: 1.7em;
+}
+
+.btn_index_1{
+    text-shadow:0px 0.5px 1px #000000;
+}
+
+.h2_index{
+    font-size: 1.5em;
+    color: #315b96;
+    text-shadow:0px 1px 0.5px #ffffff;
+}
+.h1_index{
+    color: #315b96;
+    text-shadow:0px 1px 0.5px #ffffff;
+}
+
+.carousel-caption{
+    text-shadow: 0px 1px 1.5px #ffffff;
+}
+
+#fourTit{
+    margin-right: 35px;
+    margin-top: 50px: 
+}
+
+.spaceForService{
+    /*border:0.1px solid #FFA500;*/
+    margin-right: -1px;
+    margin-top:20px;
+}
+.topService{
+    margin-top:50px;
+    margin-bottom: 50px;
+    margin:50px -10px 50px 40px;
+}
+
+.service_top{
+    margin: 80px 0px 5px;
+    font-size: 3.5em;
+    text-align: center;
+    color: #a30000;
+}
+
+.service_title{
+    margin-top:30px;
+    font-size: 1.3em;
+    text-align: center;
+    color: #233D4D;
+    /*width:20%;*/
+}
+#navdrop{
+    margin-top:2px;
+    border:none;
+    color: #a30000;
+    font-size: 0.9em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#navdrop li a{
+    color: #a30000;
+    text-shadow:0px 1px 0.5px #ffffff;
+}
+#navdrop li a:hover{
+    color: #ffffff;
+    background-color: #a30000;
+    text-shadow:0px 1px 0.8px #000;
+}
+
+#navdrop_new{
+     margin-top:-8px;
+     border:0.5px solid white;
+     font-size: 0.9em;
+     color: #ffffff;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#navdrop_new li a{
+    color: #ffffff;
+    background-color:#FFA500; 
+}
+#navdrop_new li a:hover{
+    color: #FFA500;
+    background-color:#ffffff; 
+}
+/* about us========================== */
+
+
+.aboutUs_Title{
+    z-index: 300;
+    color: #233D4D;
+    margin-top: 250px;
+}
+
+.Us_ti{
+    font-size: 5em;
+    padding-bottom: 40px;
+    color: #a30000;
+}
+
+.Us_index{
+    font-size: 1.3em;
+    padding-left: 2px; 
+    padding-bottom: 20px;
+    letter-spacing:3px;
+}
+/*  news ============================== */
+.aboutUs_img{
+　  background-repeat:no-repeat;
+    width: 125%;
+    height: 650px;
+}
+
+#news_int{
+    width: 30%;
+}
+
+#newsti{
+    width: 400px;
+    height: 350px;
+    margin-left: 70px;
+    margin-right: 20px;
+}
+
+#count_img{
+    width: 130%;
+    margin-bottom: -100px;
+}
+
+#content_form{
+    width: 45%;
+    padding-left: 100px;
+    margin-top: 70px;
+}
+
+
+.count_top{
+    color: #a30000;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 3em;
+    margin-bottom: -20px;
+
+}
+
+/*  footer content============================== */
+
+#footer_lab{
+    border-top: 1px solid #c6c6c6;
+    margin-top: 50px;
+}
+
+#footer_img{
+    text-align: center;
+    border:none;
+    padding-top: 95px;
+}
+
+#footer_tit{
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+#footer_P{
+	width:100%
+}
+
+#footer_footer{
+    position: relative;
+    background-color: #FFA500;
+    color: white;
+    /*height: 40px;*/
+    letter-spacing: 1.5px;
+    font-size: 1.1em;
+    padding-top: 5px;
+/*     text-align: center; */
+    /*border:3px solid #FFA500;*/
+}
+
+/*  footer content============================== */
+
+.pro_top{
+    text-align: center;
+    color: #a30000;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 3em;
+    margin-bottom: -60px;
+}

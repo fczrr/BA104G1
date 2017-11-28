@@ -1,0 +1,101 @@
+.contact-form {
+    margin-top: 15px;
+}
+
+.contact-form .textarea {
+    min-height: 220px;
+    resize: none;
+}
+
+.form-control {
+    box-shadow: none;
+    border-color: #adadad;
+    background-color: #f7f7f7;
+    height: 40px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #117b9b;
+}
+
+.form-control-feedback {
+    line-height: 50px;
+}
+
+.main-btn {
+    background: #00b09c;
+    border-color: #00b09c;
+    color: #fff;
+}
+
+.main-btn:hover {
+    background: #00a491;
+    color: #fff;
+}
+
+.bigText{
+	color: #033949;
+	text-align: center;
+	padding-top: 3px;
+	/*background-color: #eee;*/
+	/*margin:0px 15px 0px px;*/
+}
+
+.form-control-feedback {
+    line-height: 50px;
+    top: 0px;
+}
+
+.newform{
+	margin-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.newsBig{
+	font-size: 1.3em;
+	padding-top: 10px;
+	padding-bottom: 6px;
+}
+
+#uploadImage{
+	padding-top: 5px;
+	padding-bottom: 10px;
+
+}
+
+.checkin{
+	padding-top: 15px;
+	font-size: 1.3em;
+	padding-left: 2px;
+}
+
+#offStat{
+	padding-left: 20px;
+}
+
+.formtopp{
+	border-top: 0.5px dashed #aaa;
+	margin-top: 10px;
+}
+
+#newstitle, #newsintro{
+	font-size: 1em;
+}
+
+.pictop{
+	border-top: 0.5px dashed #aaa;
+}
+
+.btnCu{
+	height: 45px;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+
+}
+
+#forstat{
+	padding-top: 20px;
+}

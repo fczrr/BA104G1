@@ -11,6 +11,14 @@ public class CarDetailService {
 		dao = new CarDetailDAO();
 	}
 
+	
+	public List<CarDetailVO> getByOrderNo(String orderNo){
+		return dao.getByOrderNo(orderNo);
+	}
+	
+	
+	
+	
 	public CarDetailVO addCarDetail(String order_no,Integer vehicle_no,Date detail_date,String detail_time,String passenger_name,String passenger_phone,String getinto_address,String arrival_address,String sendcar_status) {
 
 		CarDetailVO cardetailVO = new CarDetailVO();
@@ -60,9 +68,5 @@ public class CarDetailService {
 
 	public List<CarDetailVO> getAll() {
 		return dao.getAll();
-	}
-	
-	public List<CarDetailVO> findByOrderNo(String order_no) {
-		return dao.findByOrderNo(order_no);
 	}
 }

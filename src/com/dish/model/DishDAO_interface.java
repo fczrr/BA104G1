@@ -14,7 +14,5 @@ public interface DishDAO_interface {
 	public List<DishVO> getAll();
 
 	public List<DishVO> getByType(String dishType);
- 
-	public String getIntroByName(String dishName);
-	
+
 }

@@ -5,7 +5,6 @@
 <%@ page import="com.expertlist.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
-
 <%
 	Object obj = request.getAttribute("list");
 	List<ExpertlistVO> list = new ArrayList<ExpertlistVO>();
@@ -20,7 +19,11 @@
 	int num = 0;
 %>
 
-
+<script>
+	$("#mytitle").css({
+		"-webkit-animation" : "twinkling 1s infinite ease-in-out"
+	});
+</script>
 <style>
 #middle {align ="center";
 	
@@ -226,10 +229,17 @@ th {
 				<div class="x_panel">
 					<div class="x_title">
 						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								員工專長&nbsp;<b>管理頁面</b>
-							</h1>
+							style="padding: 10px; color: #FFFFFF; text-align: center;">
+
+
+							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+								data-target="#mymodal">
+								<h1>
+									<i class="fa fa-child fa-spin" id="icone_grande"></i>  員工專長&nbsp;<b>管理頁面</b>
+								</h1>
+								
+							</a>  
+
 						</div>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -304,7 +314,7 @@ th {
 
 											<tr align='left' valign='middle'>
 
-												<td >${expertlistVO.expNo}</td>
+												<td>${expertlistVO.expNo}</td>
 												<td class="hover"><input type="text" name="expName"
 													style="width: 100%; height: 50px"
 													value="${expertlistVO.expName}"></td>
@@ -316,7 +326,7 @@ th {
 												<td>
 													<div class="btn-group">
 														<button type="submit" class="btn btn-info"
-															style="height: 50px; width: 146px;">確定</button>
+															style="height: 50px; width: 146px; background-color: steelblue">確定</button>
 													</div>
 
 												</td>
@@ -328,7 +338,7 @@ th {
 							<div class="col-xs-1 col-sm-1">
 								<a
 									href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
-									id="modifyBtn" class="btn btn-success btn-default" 
+									id="modifyBtn" class="btn btn-success btn-default"
 									role="button">新增專長</a>
 							</div>
 							<%@ include file="pages/page2.file"%>
@@ -339,7 +349,6 @@ th {
 		</div>
 	</div>
 </div>
-
 
 
 

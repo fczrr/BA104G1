@@ -152,6 +152,7 @@ $(document).ready(function(){
 	font-size: 25px;
 	font-family: sans-serif;
 	}
+
 </style>
 						<%
 							Vector<CartVO> buylist = (Vector<CartVO>) session.getAttribute("shoppingcart");
@@ -234,7 +235,8 @@ $(document).ready(function(){
 								<div class="media">
 										<div class="media-body">
 							<form  name="deleteForm" action="<%=request.getContextPath()%>/cart.do" method="POST" ">
-								<button  type="submit" class="btn btn-danger" role="button" style="margin-top:30px">
+								<button  type="submit" class="btn btn-danger" role="button" 
+								style="margin-top:30px;margin-top: 30px; padding: 6px 12px;font-size: 14px;border-radius: 4px;">
 										 <span class="glyphicon glyphicon-remove"></span>Remove
 									</button>
 										<input type="hidden" name="price" value=<%=PRICE%>> 
@@ -266,18 +268,18 @@ $(document).ready(function(){
 								<td>
 								<form name="claerForm" id="2" action="<%=request.getContextPath()%>/cart.do" method="POST" onsubmit="return clearCart()">
 								<input type="hidden" name="action" value="CLEARCART">
-								<button type="submit" class="btn btn-warning">
+								<button type="submit" class="btn btn-warning" style="margin-top:30px;margin-top: 30px; padding: 6px 12px;font-size: 14px;border-radius: 4px;">
 								<span class="glyphicon glyphicon-remove"></span>
 									清空購物車</button>
 									</form>
 									</td>
 								</td>
-								<td><a href="<%=request.getContextPath()%>/front/shopindex.jsp" class="btn btn-default"
+								<td><a href="<%=request.getContextPath()%>/front/shopindex.jsp" style="margin-top:30px;margin-top: 30px; padding: 6px 12px;font-size: 14px;border-radius: 4px;" class="btn btn-default"
 									role="button"><span
 										class="glyphicon glyphicon-shopping-cart"></span> Continue
 										Shopping</a></td>
 								<td>
-								<a href="<%=request.getContextPath()%>/cart.do?action=CHECKOUT" class="btn btn-success" role="button">
+								<a href="<%=request.getContextPath()%>/cart.do?action=CHECKOUT" style="margin-top:30px;margin-top: 30px; padding: 6px 12px;font-size: 14px;border-radius: 4px;" class="btn btn-success" role="button">
 								Checkout <span class="glyphicon glyphicon-play"></span></a>
 		
 								</td>

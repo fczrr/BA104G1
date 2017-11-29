@@ -131,9 +131,9 @@
 							<td> 送貨地址:</td>
 
 							
-							<td><input style="width:500px;height: 40px;border-radius: 4px; border: 1px solid #ccc;" type="text" value="桃園縣中壢市中央大學"></td>
+							<td><input style="width:500px;height: 40px;border-radius: 4px; border: 1px solid #ccc;" type="text" value="${memberVO.address}"></td>
 
-							<td><a href="<%=request.getContextPath()%>/front/shopindex.jsp" class="btn btn-success" role="button"> 繼續購買 <span
+							<td><a href="<%=request.getContextPath()%>/front/shopindex.jsp" class="btn btn-success" style="padding: 6px 12px;font-size: 14px;border-radius: 4px;" role="button"> 繼續購買 <span
 									class="glyphicon glyphicon-play"></span></a></td>
 
 						</tr>

@@ -98,6 +98,16 @@ public class ShopOrderServlet extends HttpServlet{
 			
 			Integer amount=(int) (Float.parseFloat(req.getParameter("amount")));
 			String MEMNO=req.getParameter("MEMNO");
+			System.out.println("MEMNO目前大小"+MEMNO+"|");
+			if(MEMNO.length()==0) {
+				System.out.println("進入null領域");
+				String plzlogin="/front/Login.jsp";
+				
+				RequestDispatcher successView = req.getRequestDispatcher(plzlogin);
+				successView.forward(req, res);
+				return;
+				
+			}
 			Point=shopOrSvc.returnPoint(MEMNO);
 			ShopOrderVO shopOrderVO = null;
 			//這邊要先查詢一次這位會員的POINT有沒有低於總金額在執行下面動做

@@ -109,7 +109,7 @@ td, h3 {
 							</div>
 						</button>
 						
-						商城完全版本，sql語句修正，神奇小按鈕
+				
 	<script type="text/JavaScript">
 		function myFunction1() {
 		    document.getElementById("NAME").value = "蒸氣眼罩AX-KX500BE ";

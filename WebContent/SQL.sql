@@ -28,8 +28,6 @@ BEGIN
 END load_blob;
 /
 
-
-
 --------DROP 檢舉SEQ-------
 DROP SEQUENCE SHOPCOM_NO_SEQ;
 DROP SEQUENCE HCCOM_NO_SEQ;

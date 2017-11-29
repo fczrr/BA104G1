@@ -454,7 +454,7 @@
                         		  title: '',
                         		  text: "已成功加入購物車。",
                         		  type: 'success',
-//                         		  timer: 5000,
+                        		  timer: 5000,
                         		  showCancelButton: true,
                                   confirmButtonColor: "#8fdd54",
                                   cancelButtonColor: "#DD6B55",
@@ -474,7 +474,7 @@
                         		  }
                         		})
                             $('.swal2-cancel').css('height', '34px').css('margin-left', '10px').css('width','100px').css('padding','6px 12px').css('border-radius','4px');
-                     		$('.swal2-confirm').css('height', '34px').css('margin-left', '10px').css('width','100px').css('padding','6px 12px').css('border-radius','4px').css('background-color','#5cb85c').css('margin-top','9px').css('font-size','14px');
+                     		$('.swal2-confirm').css('height', '34px').css('margin-left', '10px').css('width','100px').css('padding','6px 12px').css('border-radius','4px').css('background-color','#5cb85c').css('font-size','14px');
     
 //                        	sweetAlert("", "已成功加入購物車。","success");
 //                         	$('#myModal').modal();

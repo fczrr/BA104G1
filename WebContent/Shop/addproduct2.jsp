@@ -50,7 +50,7 @@ td, h3 {
 		enctype="multipart/form-data"> 
 		<table>
 			<th>
-				<div class="div1" id="yy1" align="center">
+				<div class="div1" id="yy1" align="center" style="margin-left:700px;">
 					<img id="ss1" src="<%=request.getContextPath()%>/DBPicReader?ITEMNO=${shopVO.ITEMNO}" />
 					
 				</div>
@@ -103,10 +103,6 @@ td, h3 {
 			</tr>
 		</table>
 	</form>
-	
-	<div align="center" class="foot">
-		<a href="ShowAll.jsp">查詢所有商品</a><br>
-		<a href='listAll.jsp'>查詢所有商品by EL</a>
-	</div>
+
 </body>
 </html>

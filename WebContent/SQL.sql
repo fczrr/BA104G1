@@ -772,24 +772,28 @@ CONSTRAINT FK_MEMBERNO  FOREIGN KEY (MEM_NO) REFERENCES MEMBER(MEM_NO)
 
 ----------------商品訂單假資料------------------
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('2017/5/5', 'yyyy-mm-dd'),'台北天龍國','0926','霸氣連勝文','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('2017/5/5', 'yyyy-mm-dd'),'台北天龍國','0926','連勝文','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0002',TO_DATE('2010/4/5', 'yyyy-mm-dd'),'人情台南市','0918','裝瘋陳水扁','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0002',TO_DATE('2010/4/5', 'yyyy-mm-dd'),'人情台南市','0918','陳水扁','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0003',TO_DATE('2013/2/9', 'yyyy-mm-dd'),'人情台南市','0800','法院認證中華民國第一嫖客-陳志中','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0003',TO_DATE('2013/2/9', 'yyyy-mm-dd'),'人情台南市','0800','陳志中','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1950/4/5', 'yyyy-mm-dd'),'台北天龍國','0987','台獨蔡英文','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1950/4/5', 'yyyy-mm-dd'),'台北天龍國','0987','蔡英文','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1966/12/5', 'yyyy-mm-dd'),'台北天龍國','0926','中共小弟馬英九','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1966/12/5', 'yyyy-mm-dd'),'台北天龍國','0926','馬英九','1');
 
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926','黑金李登輝','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926','李登輝','1');
+
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000002','MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');
+VALUES('20171026-000001','MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');
+
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000003','MEM0002',TO_DATE('1960/5/6', 'yyyy-mm-dd'),'熱情屏東市','0920000123','劉備','1');
+VALUES('20171026-000002','MEM0002',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','劉備','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000004','MEM0003',TO_DATE('1960/5/7', 'yyyy-mm-dd'),'熱情屏東市','0926342145','孫權','1');
+VALUES('20171026-000003','MEM0003',TO_DATE('1960/5/6', 'yyyy-mm-dd'),'熱情屏東市','0920000123','孫權','1');
+INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
+VALUES('20171026-000004','MEM0004',TO_DATE('1960/5/7', 'yyyy-mm-dd'),'熱情屏東市','0926342145','曹操','1');
 
 
 ----------------促銷專案----------------------
@@ -819,7 +823,6 @@ constraint PR_SUPPLIER_EX_OR primary key(ORDERNO, ITEMNO),
 CONSTRAINT FK_ORDERNO  FOREIGN KEY (ORDERNO) REFERENCES SHOPORDER(ORDERNO),
 CONSTRAINT FK_NAME  FOREIGN KEY (ITEMNO) REFERENCES ShoppingMall(ITEMNO)
 );
-
 --------------------------商城商品假資料-----------------------------
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,10,499,1,1,'【Daiwa】日本製通用輔助筷','長輩年紀漸長，手指力量退化，或者因為中風無法用慣用手執起筷子進食，樂齡網推薦此款筷子，可以讓其更容易自行進食而無需人餵食。連用不慣筷子的外國人亦可輕易使用本筷子而享用美食佳餚。');
@@ -828,7 +831,7 @@ INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)
 VALUES (FORSHOPITEM.Nextval,20,350,1,1,'【Forsound】第三代防痔型凝膠坐墊','很多年長者皆有排便不順的困擾，「有痔難伸」更是很多年長者的共同問題，有沒有一個好的座墊可以減輕坐下時的不便呢?樂齡網為您介紹一款外銷德、日的新專利減壓坐墊，特殊的造型及SGEL凝膠與人體工學的結合，讓您從此不再如坐針氈。');
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
-VALUES (FORSHOPITEM.Nextval,50,299,1,1,'Hi-Bone雙模式(骨傳導+空氣傳導)高感度耳機','您有多久沒有聽到優美的音樂? 家中是否有長者還不到要配戴助聽器，但是與人溝通不僅旁人要用較大的音量，而自己本身也聽的很辛苦，在溝通不良的狀況下，往往因此讓老人家逐漸封閉。對於有聽損的樂齡族而言，一定渴望再聆聽到美妙動人的音樂，享受沈浸在音樂中那美好的氛圍。樂齡網幫您實現願望，我們推薦您一款最新科技的雙模式(骨傳導+空氣傳導)高感度耳機，讓您再度感受到豐富的樂音，讓生命再度活躍起來。');
+VALUES (FORSHOPITEM.Nextval,50,299,1,1,'Hi-Bone雙模式(骨傳導+空氣傳導)高感度耳機','您有多久沒有聽到優美的音樂? 家中是否有長者還不到要配戴助聽器，但是與人溝通不僅旁人要用較大的音量，而自己本身也聽的很辛苦，在溝通不良的狀況下，往往因此讓老人家逐漸封閉。');
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,50,199,1,1,'日本製室內帽','樂齡族長時間待在冷氣房內或者外出寒流來襲，一定要注意頭部的保暖，稍一不慎就會受涼。樂齡網推薦一款日本製的室內帽，可有效保持頭部溫暖，對於髮量稀少或有掉髮困擾的銀髮族有也遮掩的效果。');
@@ -838,9 +841,7 @@ VALUES (FORSHOPITEM.Nextval,50,899,1,1,'眼鏡式放大鏡 2.3倍','隨著年齡
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,50,100,1,1,'【LifePlus】開門式無障礙浴缸','家中長輩是不是很久沒有享受泡澡的幸福滋味? 一想到要腳跨過那高起的浴缸壁，便讓長輩打消泡澡的念頭。
-※樂齡網台北民生店 (台北市民生東路五段91號)有實體展示，歡迎前往體驗
-※本產品價格不含安裝施工費用
-※台中市以北免運(偏遠山區除外)，以南、及花東偏遠地區運費需另計，請來電詢問喔');
+※本產品價格不含安裝施工費用');
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,50,100,1,1,'【NISHIKI】女用防漏安心褲 - 吸水量150cc (輕失禁適用)','您有因為大笑、咳嗽或提重物，有不自主的漏尿情形嗎? 是否需要墊個護墊或衛生紙才敢外出? 其實熟年女性的漏尿情形是一個很普遍的現象，根據國民健康局96年調查，國人54歲以上女性每4位婦女中，就有1位有尿失禁困擾，65歲以上女性更是高達1/3，由於國人較為保守，大部分皆隱忍日常生活中因尿失禁的困擾。 樂齡網推薦您一款由日本手工精製，針對輕失禁婦女所設計的防漏內褲，吸水、消臭又輕薄，讓您隨時保持清爽，生活品質得以改善。');
@@ -870,14 +871,10 @@ INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)
 VALUES (FORSHOPITEM.Nextval,50,100,1,1,'【Ryka】RKF1272M1600女用健走鞋','你也是個喜愛休閒健走，到處趴趴造的銀髮族嗎？
 運動是維持活力的最佳妙方，但如何挑選一雙避免運動傷害的鞋子可是非常重要的。
 尤其對於長者來說，寬楦不束縛、避震緩衝等等，都是挑選的重點。
-樂齡網推薦此款【Ryka】健走休閒鞋，
-品牌創辦者因為飽受運動之苦，親自投入運動鞋研發，
-特別針對女性的肌肉與骨骼結構，設計能夠避免運動傷害的專屬鞋款，
-無論是要公園快走或運動健行都適合喔！');
+樂齡網推薦此款【Ryka】健走休閒鞋！');
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
-VALUES (FORSHOPITEM.Nextval,50,100,1,1,'【來可】側邊馬桶起身扶手','對於有些長輩來說，由於膝蓋、腰部的退化無力，要從馬桶站起來是相當辛苦的，而且在這顛沛起身的過程當中，還潛藏著跌倒的危險。
-樂齡網推薦一款【來可側邊馬桶起身扶手】，不須安裝，直接擺放在廁所馬桶側邊，讓長輩要站起來時有所依靠，您貼心、他(她)窩心、全家都放心！');
+VALUES (FORSHOPITEM.Nextval,50,100,1,1,'【來可】側邊馬桶起身扶手','對於有些長輩來說，由於膝蓋、腰部的退化無力，要從馬桶站起來是相當辛苦的，而且在這顛沛起身的過程當中，不須安裝，直接擺放在廁所馬桶側邊，讓長輩要站起來時有所依靠，您貼心、他(她)窩心、全家都放心！');
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,50,100,1,1,'日本GREEN BELL腳指甲專用指甲剪','幫老人家剪腳指甲是不是很困難?
@@ -899,8 +896,7 @@ VALUES (FORSHOPITEM.Nextval,50,100,1,1,'相片輔記助聽電話','電話聽不�
 
 INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES)  
 VALUES (FORSHOPITEM.Nextval,50,100,1,1,'SHIMA銀髮族購物散步車，10/5-10/31買就送五段調高傘，送完為止!','由日本老人車製造大廠 - 島製作所，專為銀髮族而設計的購物散步車，方便銀髮族外出購物，到超市只要將菜藍放在車上即可開始購物，買完了放在本車的置物藍中，即可將購買物品推回家，不用提重物，走累了還可坐下休息。
-無論您是要公園散步、逛街購物，還是要休閒運動都方便、省力及及安全，是一項非常貼心的銀髮族商品。');
-
+');
 --
 --INSERT INTO ShoppingMall(ITEMNO, STOCK, PRICE, STATE, CLASSNO, NAME, DES,PICTURE1,PICTURE2,PICTURE3)  
 --VALUES (FORSHOPITEM.Nextval,50,100,1,1,'鐵牛運功散2','強身健體2',?,?,?);
@@ -932,32 +928,83 @@ INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyy
 INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD('000005',6,'0'),7,5);
 INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD('000005',6,'0'),2,10);
 
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD('000006',6,'0'),4,5);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD('000006',6,'0'),7,7);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD('000006',6,'0'),2,2);
+
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000001',1,6);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000001',2,4);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000001',3,3);
+
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000002',1,5);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000002',2,1);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000002',3,2);
+
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000003',1,1);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000003',2,2);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000003',3,1);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000003',7,1);
+
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000004',7,2);
+INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000004',10,6);
+
+INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
+VALUES('20171026-000002','MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');
+INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
+VALUES('20171026-000003','MEM0002',TO_DATE('1960/5/6', 'yyyy-mm-dd'),'熱情屏東市','0920000123','劉備','1');
+INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
+VALUES('20171026-000004','MEM0003',TO_DATE('1960/5/7', 'yyyy-mm-dd'),'熱情屏東市','0926342145','孫權','1');
 
 
 --------------------------促銷專案假資料------------------------------
 INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
-VALUES(1,'中秋節活動',TO_DATE('2017/9/1', 'yyyy-mm-dd'),TO_DATE('2017/9/30', 'yyyy-mm-dd'));
+VALUES(1,'1月活動',TO_DATE('2017/1/1', 'yyyy-mm-dd'),TO_DATE('2017/1/30', 'yyyy-mm-dd'));
 
 INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
-VALUES(2,'端午節活動',TO_DATE('2017/10/1', 'yyyy-mm-dd'),TO_DATE('2017/10/30', 'yyyy-mm-dd'));
+VALUES(2,'2月活動',TO_DATE('2017/2/1', 'yyyy-mm-dd'),TO_DATE('2017/2/28', 'yyyy-mm-dd'));
 
 INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
-VALUES(3,'萬聖節活動',TO_DATE('2017/11/1', 'yyyy-mm-dd'),TO_DATE('2017/11/30', 'yyyy-mm-dd'));
+VALUES(3,'3月活動',TO_DATE('2017/3/1', 'yyyy-mm-dd'),TO_DATE('2017/3/30', 'yyyy-mm-dd'));
 
 INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
-VALUES(4,'聖誕節活動',TO_DATE('2017/12/1', 'yyyy-mm-dd'),TO_DATE('2017/12/30', 'yyyy-mm-dd'));
+VALUES(4,'4月活動',TO_DATE('2017/4/1', 'yyyy-mm-dd'),TO_DATE('2017/4/30', 'yyyy-mm-dd'));
 
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(5,'5月活動',TO_DATE('2017/5/1', 'yyyy-mm-dd'),TO_DATE('2017/5/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(6,'6月活動',TO_DATE('2017/6/1', 'yyyy-mm-dd'),TO_DATE('2017/6/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(7,'7月活動',TO_DATE('2017/7/1', 'yyyy-mm-dd'),TO_DATE('2017/7/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(8,'8月活動',TO_DATE('2017/8/1', 'yyyy-mm-dd'),TO_DATE('2017/8/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(9,'9月活動',TO_DATE('2017/9/1', 'yyyy-mm-dd'),TO_DATE('2017/9/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(10,'10月活動',TO_DATE('2017/10/1', 'yyyy-mm-dd'),TO_DATE('2017/10/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(11,'11月活動',TO_DATE('2017/11/1', 'yyyy-mm-dd'),TO_DATE('2017/11/30', 'yyyy-mm-dd'));
+
+INSERT INTO PROMOTION (PROMOTIONNO,NAME,BEGINDATE,ENDDATE) 
+VALUES(12,'12月活動',TO_DATE('2017/12/1', 'yyyy-mm-dd'),TO_DATE('2017/12/30', 'yyyy-mm-dd'));
 
 -------------------------------促銷專案明細資料-----------------------------------------------
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(1,1,100);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(2,2,200);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(3,3,250);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(4,4,280);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(3,5,320);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(3,6,340);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(3,7,360);
-INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(3,8,380);
-
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(11,1,100);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(11,2,200);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(11,3,250);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(11,4,280);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(11,5,280);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,5,299);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,6,299);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,7,150);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,8,180);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,9,190);
+INSERT INTO PROMOTIONDETAIL (PROMOTIONNO,ITEMNO,PRICE) VALUES(12,10,149);
 
 
 COMMIT;

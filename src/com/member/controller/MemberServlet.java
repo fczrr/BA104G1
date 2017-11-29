@@ -585,6 +585,18 @@ public class MemberServlet extends HttpServlet {
 
 			BalanceService balanceSvc = new BalanceService();
 			balanceVO = balanceSvc.addTopup(balanceVO);
+			HttpSession session = req.getSession();
+			String mylocation = (String)session.getAttribute("mylocation");
+			System.out.println("mylocation :"+mylocation);
+			if("/MasterOrder/Checkout.jsp".equals(mylocation)){
+				System.out.println("mylocation,FORWARD出去了。");
+				String url = "/MasterOrder/Checkout.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
+																				// ListAllProOrder.jsp
+				successView.forward(req, res);
+				return;
+				
+			}
 			
 			if(myurl!=null && !myurl.isEmpty()){
 				RequestDispatcher successView = req.getRequestDispatcher(myurl);

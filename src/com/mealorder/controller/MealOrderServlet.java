@@ -176,27 +176,21 @@ public class MealOrderServlet extends HttpServlet {
 		    String[] dates2=dates.split(",");		    
 	
 			Integer orderQty = new Integer(req.getParameter("orderQty").trim());
-			System.out.println(orderQty);
 			String memNo = memberVO.getMemNo();
-			System.out.println(memNo);
 			String rcptName = req.getParameter("rcptName").trim();
 			String rcptAdd = req.getParameter("rcptAdd").trim();
 			String rcptPhone = req.getParameter("rcptPhone").trim();
 
 			Integer totalPrice = new Integer(req.getParameter("totalPrice"));
-			System.out.println(totalPrice);
 			Integer memberPoint = memberVO.getPoint();
-			System.out.println(memberPoint);
 
 			if (memberPoint > totalPrice) {
+			    System.out.println("進來點數判斷");
 				MealOrderVO mealOrderVO = new MealOrderVO();
 				mealOrderVO.setMemNo(memNo);
 				mealOrderVO.setRcptName(rcptName);
-				//System.out.println(rcptName);
 				mealOrderVO.setRcptAdd(rcptAdd);
-				//System.out.println(rcptAdd);
 				mealOrderVO.setRcptPhone(rcptPhone);
-                //System.out.println(rcptPhone);
 				List<MealOrderDetailVO> list = new ArrayList<>();
 				for (int i = 0; i < dates2.length; i++) {
 					MealOrderDetailVO mealOrderDetailVO = new MealOrderDetailVO();
@@ -206,7 +200,7 @@ public class MealOrderServlet extends HttpServlet {
 					mealOrderDetailVO.setOrderQty(orderQty);
 					list.add(mealOrderDetailVO);
 				}
-
+                System.out.println("開使新增第訂單");
 				MealOrderService mealOrderSvc = new MealOrderService();
 				mealOrderSvc.addMealOrder(mealOrderVO, list);
 
@@ -219,9 +213,9 @@ public class MealOrderServlet extends HttpServlet {
 
 			}
 
-			String url = "/front/mealService/OrderSuccess.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url);
-			successView.forward(req, res);
+//			String url = "/front/mealService/OrderSuccess.jsp";
+//			RequestDispatcher successView = req.getRequestDispatcher(url);
+//			successView.forward(req, res);
 
 		}
 

@@ -17,7 +17,7 @@
 
 <jsp:useBean id="setMealSvc" scope="page"
 	class="com.setmeal.model.SetMealService" />
-<%-- <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%> --%>
+<%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
 
 <!-- page content -->
 <div class="right_col" role="main">
@@ -155,7 +155,7 @@
 																		<c:forEach var="mealOrderDetailVO"
 																			items="${mealOrderDetailSvc.getByOrderNo(mealOrderVO.moNo)}">
 																			<tr>
-																				<td>${mealOrderDetailVO.deliveryDate}</td>
+																				<td>${mealOrderDetailVO.deliverDate}</td>
 																				<td>${mealOrderDetailVO.mealTime}</td>
 																				<td><c:forEach var="setMealVO"
 																						items="${setMealSvc.getAll()}">
@@ -176,7 +176,10 @@
 															</div>
 														</div>
 													</div>
-												</div></th>
+												</div>
+												
+												
+												</th>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -220,7 +220,7 @@
 				</div>
 				<!-- --------右邊顯示 -->
 				<div class="col-xs-12 col-sm-10">
-					<h2>活力養身餐</h2>
+					<h2>術後調理餐</h2>
 					<div class="row">
 						<div class="col-xs-12 col-sm-6">
 							<p>${setMealVO.smIntro}</p>

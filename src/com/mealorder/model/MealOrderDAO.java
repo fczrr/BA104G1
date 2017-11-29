@@ -51,11 +51,10 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 
 			pstmt.setString(1, mealOrderVO.getMemNo());
 			pstmt.setString(2, mealOrderVO.getRcptName());
-			System.out.println(mealOrderVO.getRcptName());
 			pstmt.setString(3, mealOrderVO.getRcptAdd());
 			pstmt.setString(4, mealOrderVO.getRcptPhone());
-			pstmt.executeUpdate();
-
+			int k = pstmt.executeUpdate();
+			System.out.println("成功"+k+"筆");
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				next_orderid = rs.getString(1);
@@ -72,8 +71,9 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				pstmt2.setString(3, mealOrderDetailVOList.get(i).getMealTime());
 				pstmt2.setInt(4, mealOrderDetailVOList.get(i).getSmNo());
 				pstmt2.setInt(5, mealOrderDetailVOList.get(i).getOrderQty());
-				pstmt2.executeUpdate();
-				pstmt2.clearParameters();
+				int e =  pstmt2.executeUpdate();
+				System.out.println("成功"+e+"明細");
+//				pstmt2.clearParameters();
 			}
 			pstmt2.close();
 			con.commit();

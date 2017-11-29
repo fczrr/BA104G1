@@ -289,7 +289,6 @@
     <filter-name>loginFilter</filter-name>
     <url-pattern>/front/member/MemberHcOrder.jsp</url-pattern>
     <url-pattern>/front/member/MemberInfo.jsp</url-pattern>
-    <url-pattern>/MasterOrder/Checkout.jsp</url-pattern>
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>INCLUDE</dispatcher>

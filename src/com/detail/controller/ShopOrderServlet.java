@@ -105,6 +105,7 @@ public class ShopOrderServlet extends HttpServlet{
 			if(MEMNO.length()==0) {
 				System.out.println("進入null領域");
 				String plzlogin="/front/Login.jsp";
+				
 				RequestDispatcher successView = req.getRequestDispatcher(plzlogin);
 				successView.forward(req, res);
 				return;
@@ -112,10 +113,6 @@ public class ShopOrderServlet extends HttpServlet{
 			}
 			Point=shopOrSvc.returnPoint(MEMNO);
 			ShopOrderVO shopOrderVO = null;
-			System.out.println("setAttribute");
-			
-			session.setAttribute("mylocation", "/MasterOrder/Checkout.jsp");
-			System.out.println("setAttribute2");
 			//這邊要先查詢一次這位會員的POINT有沒有低於總金額在執行下面動做
 			if(Point>=amount) {
 				System.out.println("餘額足夠");

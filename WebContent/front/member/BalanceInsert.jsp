@@ -6,9 +6,7 @@
 
 <%@ include file="/front/navbar.jsp"%>
 
-
-
-
+<%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 <jsp:useBean id="balanceSvc" class="com.balance.model.BalanceService" />
 <jsp:useBean id="memberSvc" class="com.member.model.MemberService" />
 
@@ -28,8 +26,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>加值</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.css">
-
 	<style type="text/css">
 		tr:{
 			margin-bottom: 20px;	
@@ -45,24 +41,10 @@
 	</style>
 </head>
 <body>
-	<br>
-		<nav aria-label="breadcrumb" role="navigation">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">
-		    <a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-		
-		  </ol>
-		</nav>
+ 
 
 		
 	<div class="container">
-
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3" >		
 			<img alt="" src="<%=request.getContextPath()%>/img/balance/visalogo.jpg" width="100px">
 			<form method="post" action="<%=request.getContextPath()%>/member/member.do" >
@@ -147,6 +129,7 @@
 				</p>
 			</td></tr>
 			<tr><td colspan="2">
+			.............${myurl}
 				<div>1. 一元等於一點。</div>			  	
 				<div>2. 完成付款程序後，將會直接進行加值，無法取消該筆交易，請詳細確認購買資料。
 				確認付款完成後，詳情請至會員專區/我的錢包 網頁中查詢儲值狀態。</div>
@@ -203,8 +186,9 @@
         }
 	}
 	</script>
-<%@ include file="/front/footerbar.jsp"%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
 </body>
-
+<%@ include file="/front/footerbar.jsp"%>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </html>

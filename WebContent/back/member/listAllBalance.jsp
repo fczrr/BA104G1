@@ -171,7 +171,10 @@ h4 {
 									</c:forEach>
 								</tbody>
 							</table>
-
+								<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front/member/BalanceInsert.jsp" >
+							     <input type="submit" value="加值" class=" btn-success"> 
+							     <input type="hidden" name="memNo"      value="${memberVO.memNo}">
+							     </FORM>
 							<%@ include file="pages/page2.file"%>
 						</div>
 					</div>

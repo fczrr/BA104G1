@@ -5,6 +5,9 @@
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
 
+<jsp:useBean id="empPhotosService" class="com.employee_photo.model.EmpPhotosService">
+
+
 <%
 	EmployeeVO empVO = null;
 	if(request.getAttribute("empVO")!=null){
@@ -137,7 +140,7 @@ h4 {
 										<div class="col-xs-12 col-sm-12">
 											<div class="col-xs-12 col-sm-4 col-sm-offset-4">
 												<img
-													src="<%=request.getContextPath() %>//DBGifReader4?action=getPhotoByEmpNO&empNo=${empVO.empNo}"
+													src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhotosService.getAllByEMPNO(empVO.empNo)}"
 													class="img-responsive">
 											</div>
 										</div>

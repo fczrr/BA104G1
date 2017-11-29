@@ -6,7 +6,7 @@
    <%
    	ProService proSvc = new ProService();
 	List<ProVO> list2 = proSvc.getAllProNow();
-    List listforpro=list2;
+    List listforpro=list2; 
     %>
 <!DOCTYPE HTML>  
 <html class="no-js" lang="de"> 

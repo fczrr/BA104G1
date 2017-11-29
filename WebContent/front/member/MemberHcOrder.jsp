@@ -21,8 +21,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Title Page</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.css">
 
 <%@ include file="/front/css/complain/com.file"%>
 </head>
@@ -139,14 +138,11 @@
 
 
 	<%@ include file="/front/footerbar.jsp"%>
-
-	<!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
-	<%-- <script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script> --%>
-	<%-- <script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> --%>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
-
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </body>
 
 <!--  新增申訴用的 ========-->

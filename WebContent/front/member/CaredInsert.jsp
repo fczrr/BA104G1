@@ -28,6 +28,21 @@
 	</style>
 </head>
 <body>
+
+	<br>
+		<nav aria-label="breadcrumb" role="navigation">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item">
+		    <a href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+		    <li class="breadcrumb-item">
+		    <a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+		    <li class="breadcrumb-item">
+		    <a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">
+		    <a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+		
+		  </ol>
+		</nav>
 <h1 class="text-center">新增 被照顧者名單</h1>
 		<div class="container">
 			<div class="row">
@@ -127,7 +142,4 @@
 	</script>
 </body>
 <%@ include file="/front/footerbar.jsp"%>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </html>

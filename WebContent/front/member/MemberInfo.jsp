@@ -5,13 +5,10 @@
 
 
 <%@ include file="/front/navbar.jsp"%>
-<%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
+<%-- <%@ include file="/front/member/Breadcrumbs_Main.jsp"%> --%>
 
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css" media="screen">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css">
+
 
 <style>
 
@@ -291,10 +288,9 @@
 	</div>
 </div>
 	
-
-<%@ include file="/front/footerbar.jsp"%>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+<%@ include file="/front/footerbar.jsp"%>
+
 </body>
 </html>

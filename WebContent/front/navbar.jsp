@@ -24,6 +24,8 @@ body {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+
+
 </style>
 <%@ include file="/front/css/navbar/navCss.file" %>
 </head>

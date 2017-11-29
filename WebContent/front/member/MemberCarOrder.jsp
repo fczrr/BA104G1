@@ -108,7 +108,12 @@
 															<div class="col-xs-12 col-sm-3">${carOrder.order_status}</div>
 															<div class="col-xs-12 col-sm-3 actionBtn">
 																<!-- 歐歐加的申訴新增button========================================-->
-																<%@ include file="/front/complain/CarBtn.file"%>
+																
+																<p class="col-text" data-toggle="modal"  data-target="#ansower">
+																<input type="button" class="btn btn-danger clickDetail" value="申訴">
+																<input type="hidden" name="orderNo" class="order_noBtn" value="${carOrder.order_no}">
+																<input type="hidden" name="action"	value="getOne_For_Update_front"> 
+																<p>
 																<!-- 歐歐加的申訴新增button========================================-->
 															</div>
 
@@ -172,18 +177,21 @@
 			</div>
 		</div>
 	</div>
+	
+	
+
 
 	<%@ include file="/front/footerbar.jsp"%>
-
+<!--  新增申訴用的 ========-->
+<%@ include file="/front/complain/AllCom.jsp"%>
+<%@ include file="/front/complain/CarCom.file"%>
+<!--  新增申訴用的 ========-->
 
 	<!-- 因為nav會失效 把下面效果拔掉 換吃 footerbar裡的js========================================-->
 
-	<!-- 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
-	<!-- 			<script -->
-	<script
-		src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 		
+	<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 
 	<!-- 因為nav會失效 把下面效果拔掉 換吃 footerbar裡的js========================================-->
 
@@ -192,11 +200,5 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
 </body>
-
-
-<!--  新增申訴用的 ========-->
-<%@ include file="/front/complain/AllCom.jsp"%>
-<%@ include file="/front/complain/CarCom.file"%>
-<!--  新增申訴用的 ========-->
 
 </html>

@@ -179,17 +179,21 @@
 			</div>
 			</div>
 			</div>
+			
+			
+			<!--  新增申訴用的 ========-->
+<%@ include file="/front/complain/AllCom.jsp"%>
+<%@ include file="/front/complain/MealCom.file"%>
+<!--  新增申訴用的 ========-->
 			<div class="navbar navbar-default navbar-fixed-bottom">
 				<div class="container">
 					<p class="navbar-text text-center">BA104G1&nbsp ©&nbsp 2017
 						&nbsp&nbsp 有我罩你全家股份有限公司</p>
 				</div>
 			</div>
-	 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-			<script
-				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-			<script
-				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> 
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 		
+	<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
 
@@ -197,9 +201,6 @@
 </body>
 
 
-<!--  新增申訴用的 ========-->
-<%@ include file="/front/complain/AllCom.jsp"%>
-<%@ include file="/front/complain/MealCom.file"%>
-<!--  新增申訴用的 ========-->
+
 
 </html>

@@ -161,18 +161,31 @@
 </div>
 </div>
 
-	<%@ include file="/front/footerbar.jsp"%>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
-</body>
-
 <!--  新增申訴用的 ========-->
 <%@ include file="/front/complain/AllCom.jsp"%>
 <%@ include file="/front/complain/HcCom.file"%>
 <!--  新增申訴用的 ========-->
+
+
+
+	<%@ include file="/front/footerbar.jsp"%>
+	
+	
+	
+	
+	
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
+<!-- 因為nav會失效 把下面效果拔掉 換吃 footerbar裡的js========================================-->
+
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 		
+	<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+
+	<!-- 因為nav會失效 把下面效果拔掉 換吃 footerbar裡的js========================================-->
+
+</body>
+
+
 
 </html>

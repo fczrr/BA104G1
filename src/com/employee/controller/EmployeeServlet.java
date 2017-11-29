@@ -445,7 +445,7 @@ System.out.println("come in");
 					expertlistVO.setExpSpec(expSpec);
 					
 					ExpertlistService expertlistSvc = new ExpertlistService();
-					expertlistVO = expertlistSvc.updateEXPLIST(expertlistVO);
+					expertlistVO=expertlistSvc.updateEXPLIST(expertlistVO);
 					System.out.println("後台成功修改會員狀態");
 					RequestDispatcher successView = req.getRequestDispatcher("/back/employee/listAllExpertlist.jsp");
 					successView.forward(req, res);

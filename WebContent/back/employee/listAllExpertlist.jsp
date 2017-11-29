@@ -5,12 +5,12 @@
 <%@ page import="com.expertlist.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
-
+ 
 <%
 	Object obj = request.getAttribute("list");
 	List<ExpertlistVO> list = new ArrayList<ExpertlistVO>();
 	if (obj == null) {
-		ExpertlistService expertlistSvc = new ExpertlistService();
+		ExpertlistService expertlistSvc2 = new ExpertlistService();
 		list = expertlistSvc.getAll();
 	} else {
 		list = (List<ExpertlistVO>) obj;
@@ -53,21 +53,18 @@ h4 {
 #modifyBtn {
 	margin-Top: 10px;
 }
-
-.modal {
+.modal{
 	text-align: center;
-	padding: 0 !important;
+	padding: 0!important;
 }
-
-.modal:before {
+.modal:before{
 	content: '';
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
 	margin-right: -4px;
 }
-
-.modal .modal-dialog {
+.modal .modal-dialog{
 	display: inline-block;
 	text-align: left;
 	vertical-align: middle;
@@ -95,7 +92,6 @@ h4 {
 								員工專長&nbsp;<b>管理頁面</b>
 							</h1>
 						</div>
-
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -115,7 +111,7 @@ h4 {
 					</div>
 					<div class="x_content">
 						<div class="col-xs-12 col-sm-3 ">
-							<!--  					<form
+	<!--  					<form
 								action="<%=request.getContextPath()%>/employee/employee.do?action=branches_query"
 								method="post">
 								<div class="form-group form-inline input-group">
@@ -125,7 +121,7 @@ h4 {
 									</span>
 								</div>
 							</form>
-	-->
+	-->						
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<c:if test="${not empty errorMsgs}">
@@ -139,7 +135,8 @@ h4 {
 							</c:if>
 						</div>
 						<div class="col-xs-12 col-sm-12">
-							<div class="col-xs-11 col-sm-11"></div>
+							<div class="col-xs-11 col-sm-11">
+							</div>
 
 						</div>
 						<div class="col-sm-12">
@@ -154,43 +151,45 @@ h4 {
 									</tr>
 								</thead>
 								<tbody>
-
+								
 									<%@ include file="pages/page1.file"%>
 									<c:forEach var="expertlistVO" items="${list}" varStatus="s"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 										<form
 											action="<%=request.getContextPath()%>/employee/employee.do"
 											method="post">
-											<input type="hidden" name="action" value="expertlist_update">
-											<input type="hidden" name="expNo"
-												value="${expertlistVO.expNo}">
+										<input type="hidden" name="action" value="expertlist_update">
+										<input type="hidden" name="expNo" value="${expertlistVO.expNo}">
+										
+										
+										<tr align='center' valign='middle'
+											${(memberVO.memNo==param.memNo) ? 'bgcolor=#CCCCFF':''}>
 
+											<td>${expertlistVO.expNo}</td>
+											<td>
+											<input type="text" name="expName" value="${expertlistVO.expName}">
+											</td>
+											<td>
+											<input type="text" name="expSpec" value="${expertlistVO.expSpec}">
+											</td>
+											<td>
+											<input type="text" name="expPrice" value="${expertlistVO.expPrice}">
+											</td>
+											<td>
+												<div class="btn-group">
+												<button type="submit" class="btn btn-info btn-default" >
+													確定
+												</button>
+												</div>
 
-											<tr align='center' valign='middle'
-												${(memberVO.memNo==param.memNo) ? 'bgcolor=#CCCCFF':''}>
-
-												<td>${expertlistVO.expNo}</td>
-												<td><input type="text" name="expName"
-													value="${expertlistVO.expName}"></td>
-												<td><input type="text" name="expSpec"
-													value="${expertlistVO.expSpec}"></td>
-												<td><input type="text" name="expPrice"
-													value="${expertlistVO.expPrice}"></td>
-												<td>
-													<div class="btn-group">
-														<button type="submit" class="btn btn-info btn-default">
-															確定</button>
-													</div>
-
-												</td>
-											</tr>
+											</td>
+										</tr>
 										</form>
 									</c:forEach>
 								</tbody>
 							</table>
-							<div class="col-xs-1 col-sm-1">
-								<a
-									href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
+								<div class="col-xs-1 col-sm-1">
+								<a href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
 									id="modifyBtn" class="btn btn-danger btn-default" role="button">新增專長</a>
 							</div>
 							<%@ include file="pages/page2.file"%>

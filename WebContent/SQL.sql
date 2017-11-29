@@ -12,7 +12,6 @@
 --ORDER BY table_name, constraint_name;
 
 
-
 --讀圖片用的
 CREATE OR REPLACE  DIRECTORY MEDIA_DIR AS 'C:/DB_photos1/'; 
 

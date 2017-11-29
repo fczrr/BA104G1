@@ -79,7 +79,12 @@ h4 {
 			<div class="title_right">
 				<div
 					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-
+					<!--                   <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> -->
 				</div>
 			</div>
 		</div>
@@ -88,12 +93,13 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								員工&nbsp;<b>管理頁面</b>
-							</h1>
-						</div>
+						<table id="table-1">
+							<tr>
+								<td>
+									<h3>員工管理頁面</h3>
+								</td>
+							</tr>
+						</table>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>

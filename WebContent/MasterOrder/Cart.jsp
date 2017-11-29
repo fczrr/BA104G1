@@ -142,8 +142,6 @@ $(document).ready(function(){
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 	    <div class="col-lg-12">
-	    
-	    <br><br><br><br>
       <h1 style="font-size: 72px;text-align: center;">Welcome 購物車</h1>
       
     </div>

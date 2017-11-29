@@ -15,14 +15,21 @@ public class jdbcUtil_CompositeQuery_order {
 		columnName = columnName.replaceFirst("N", "_N").replaceAll("S", "_S").replaceAll("D", "_D");
 
 
-		if ("order_No".equals(columnName) || "mem_No".equals(columnName) || "cared_No".equals(columnName)) // 用於其他
+		if ("order_No".equals(columnName) || "mem_No".equals(columnName) || "cared_No".equals(columnName)){ // 用於其他
 			aCondition = columnName + "=" +"'"+ value+"'";
+		}
 			
-		else if ("order_Status".equals(columnName)) // 用於varchar
+		else if ("order_Status".equals(columnName)){ // 用於varchar
 			aCondition = columnName + " like '%" + value + "%'";
-		else if ("order_Date".equals(columnName))                          // 用於Oracle的date
+		}
+		else if ("order_Date".equals(columnName)){                          // 用於Oracle的date
 			aCondition = "to_char(" + columnName + ",'yyyy-mm-dd')='" + value + "'";
-
+		}
+			System.out.println("++"+aCondition);
+		if(aCondition== null)	{
+			return "";
+		}
+		
 		return aCondition + " ";
 	}
 
@@ -35,13 +42,15 @@ public class jdbcUtil_CompositeQuery_order {
 			if (value != null && value.trim().length() != 0	&& !"action".equals(key)) {
 				count++;
 				String aCondition = get_aCondition_For_Oracle(key, value.trim());
-
-				if (count == 1)
-					whereCondition.append(" where " + aCondition);
-				else
+				
+				if(aCondition == null || aCondition.equals("")){
+					continue;
+				}else{
 					whereCondition.append(" and " + aCondition);
+					
+					System.out.println("有送出查詢資料的欄位數count = " + count);
+				}
 
-				System.out.println("有送出查詢資料的欄位數count = " + count);
 			}
 		}
 		
@@ -52,15 +61,17 @@ public class jdbcUtil_CompositeQuery_order {
 
 		// 配合 req.getParameterMap()方法 回傳 java.util.Map<java.lang.String,java.lang.String[]> 之測試
 		Map<String, String[]> map = new TreeMap<String, String[]>();
-		map.put("orderNo", new String[] { "20171102-500001" });
-		map.put("memNo", new String[] { "MEM0002" });
-		map.put("orderDate", new String[] { "2017-11-15" });
-		map.put("caredNo", new String[] { "CRD0001" });
-		map.put("orderStatus", new String[] { "未確認" });
+		map.put("orderNo", new String[] { "" });
+		map.put("memNo", new String[] { "" });
+		map.put("orderDate", new String[] { "2017-11-25" });
+		map.put("caredNo", new String[] { "" });
+		map.put("orderStatus", new String[] { "" });
+		map.put("xxxxx", new String[] { "dfs" });
+		map.put("dfsdfs", new String[] { "sdfsdfds" });
 
 		map.put("action", new String[] { "listOrds_ByCompositeQuery" }); // 注意Map裡面會含有action的key
 
-		String finalSQL = "select * from HC_ORDER_MASTER "
+		String finalSQL = "select * from HC_ORDER_MASTER where 1 = 1"
 				          + jdbcUtil_CompositeQuery_order.get_WhereCondition(map)
 				          + "order by order_No";
 		System.out.println("●●finalSQL = " + finalSQL);

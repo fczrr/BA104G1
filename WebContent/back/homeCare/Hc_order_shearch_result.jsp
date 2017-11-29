@@ -15,7 +15,7 @@
 
             <div class="page-title">
               <div class="title_left">
-                <h3>首頁</h3>
+<!--                 <h3>首頁</h3> -->
               </div>
 
               <div class="title_right">
@@ -26,40 +26,7 @@
 <!--                       <button class="btn btn-default" type="button">搜尋</button> -->
 <!--                     </span> -->
 <!--                   </div>  -->
-<form id=order-sherch action = '' method='post'>
-  <div class="form-row align-items-center">
-    <div class="col-3 pull-right" >
-      <button type="submit" class="btn btn-primary">查詢</button>
-    </div>
 
-    <div class="col-sm-3 pull-right">
-      <label class="sr-only" for="inlineFormInputGroupUsername"></label>
-      <div class="input-group mb-2 mb-sm-0">
-     	 <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInputName" placeholder="查詢訂單編號..." style="border-radius:5px;">
-   	 </div>
-	</div>
-	
-    <div class="col-sm-3 pull-right">
-      <label class="sr-only" for="inlineFormInputGroupUsername"></label>
-      <div class="input-group mb-2 mb-sm-0">
-     	 <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInputName" placeholder="查詢會員編號..." style="border-radius:5px;">
-   	 </div>   	 
-	</div>
-	
-    <div class="col-sm-3 pull-right">
-      <label class="sr-only" for="inlineFormInputGroupUsername"></label>
-      <div class="input-group mb-2 mb-sm-0">
-     	 <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInputName" placeholder="查詢其他條件..." style="border-radius:5px;">
-   	 </div>   	 
-	</div>
-	
-     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="action" value="listOrds_ByCompositeQuery">
-     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="successView" value="">
-     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="failureV" value="/back/homeCare/BA104G1_index-1.jsp">
-	
-	
-  </div>
-</form>
                   
 
                   
@@ -95,7 +62,79 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      
+                      <div>
+<form id=order-sherch action = '<%=request.getContextPath()%>/HcOrder/HcOrderController.do' method='post'>
+  <div class="form-row align-items-center">
+    <div class="col-auto pull-right" >
+      <button type="submit" class="btn btn-primary" id="btn-toSearch">查詢</button>
+    </div>
+    <div class="col-auto pull-left" >
+      <button type="button" class="btn btn-success" id="addCondition">增加查詢條件</button>
+    </div>
+
+    <div class="col-auto pull-right">
+      <label class="sr-only" for="orderNo">訂單編號</label>
+      <div class="input-group mb-2 mb-sm-0">
+     	 <input type="text" class="form-control mb-2 mb-sm-0" name="orderNo" id="orderNo" placeholder="查詢訂單編號..." style="border-radius:5px;">
+   	 </div>
+	</div>
+	
+    <div class="col-auto pull-right">
+      <label class="sr-only" for="memNo">會員編號</label>
+      <div class="input-group mb-2 mb-sm-0">
+     	 <input type="text" class="form-control mb-2 mb-sm-0" name="memNo" id="memNo" placeholder="查詢會員編號..." style="border-radius:5px;display:none;">
+   	 </div>   	 
+	</div>
+	
+    <div class="col-auto pull-right">
+      <label class="sr-only" for="orderDate">訂購日期</label>
+      <div class="input-group mb-2 mb-sm-0">
+     	 <input type="text" class="form-control mb-2 mb-sm-0" name="orderDate" id="orderDate" placeholder="查詢訂購日期..." style="border-radius:5px;display:none;">
+   	 </div>   	 
+	</div>
+    <div class="col-auto pull-right">
+      <label class="sr-only" for="caredNo">被照顧者編號</label>
+      <div class="input-group mb-2 mb-sm-0">
+     	 <input type="text" class="form-control mb-2 mb-sm-0" name="caredNo" id="caredNo" placeholder="查詢被照顧者編號..." style="border-radius:5px;display:none;">
+   	 </div>   	 
+	</div>
+    <div class="col-auto pull-right">
+      <label class="sr-only" for="orderStatus">訂單狀態</label>
+      <div class="input-group mb-2 mb-sm-0">
+     	 <select class="form-control mb-2 mb-sm-0" name="orderStatus" id="orderStatus" style="border-radius:5px;display:none;">
+     	 	<option value="">請選擇訂單狀態</option>
+     	 	<option value="未確認">未確認</option>
+     	 	<option value="已確認">已確認</option>
+     	 	<option value="服務中">服務中</option>
+     	 	<option value="已完成">已完成</option>
+     	 	<option value="已取消">已取消</option>
+     	 
+     	 </select>
+   	 </div>   	
+   	 
+ 	<div class="col-auto pull-right"><!-- 顯示錯誤訊息 -->
+		<c:if test="${not empty errorMsgs}">
+				<ul>
+				<c:forEach var="message" items="${errorMsgs}">
+					<li style="color:red">${message}</li>
+				</c:forEach>
+				</ul>
+		</c:if>
+		<% request.removeAttribute("errorMsgs"); %>
+ 	</div>
+   	  
+	</div>
+
+	
+     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="action" value="listOrds_ByCompositeQuery">
+     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="successView" value="/back/homeCare/Hc_order_shearch_result.jsp">
+     	 <input type="hidden" class="form-control mb-2 mb-sm-0" name="failureV" value="/back/homeCare/Hc_order_shearch.jsp">
+	
+	
+  </div>
+</form>
+<hr>
+                      </div>
 
 					<table class="table">
 						<thead>
@@ -121,7 +160,7 @@
 										aria-multiselectable="true">
 
 										<c:forEach var="hcOrder"
-											items="${hcOrderSvc.getAll()}"
+											items="${listOrds_ByCompositeQuery}"
 											varStatus="s">
 
 											<div class="panel panel-default">
@@ -134,10 +173,10 @@
 																	aria-expanded="true" aria-controls="aaa">
 																	${hcOrder.orderNo} </a>
 															</div>
-															<div class="col-xs-12 col-sm-2">${hcOrder.memNo}</div>
-															<div class="col-xs-12 col-sm-2">${hcOrder.orderDate}</div>
-															<div class="col-xs-12 col-sm-2">${theCaredSvc.getOneTHECARED(hcOrder.caredNo).caredName}</div>
-															<div class="col-xs-12 col-sm-2">${hcOrder.orderStatus}</div>
+															<div class="col-xs-12 col-sm-2"><span class=list-memNo>${hcOrder.memNo}</span></div>
+															<div class="col-xs-12 col-sm-2"><span class=list-orderDate>${hcOrder.orderDate}</span></div>
+															<div class="col-xs-12 col-sm-2"><span class=list-caredName>${theCaredSvc.getOneTHECARED(hcOrder.caredNo).caredName}</span></div>
+															<div class="col-xs-12 col-sm-2"><span class=list-orderStatus>${hcOrder.orderStatus}</span></div>
 															<div class="col-xs12  col-sm-2"><span class="btn btn-info"><a>修改訂單</a></span></div>
 														</div>
 													</h4>
@@ -157,7 +196,7 @@
 																	<th class="text-center">明細狀態</th>
 																</tr>
 															</thead>
-															<tbody>
+															<tbody class="table-striped">
 																<c:forEach var="detail"
 																	items="${hcDetailSvc.getAllByOrderNo(hcOrder.orderNo)}">
 
@@ -176,6 +215,8 @@
 
 											</div>
 										</c:forEach>
+										
+										
 									</div>
 
 
@@ -197,3 +238,35 @@
 
 
 <%@ include file="/back/production/BA104G1_footer.jsp" %>
+
+
+<script>
+$(document).ready(function (){
+// 	alert('love you chrome');
+
+// 	$('.list-memNo').click(function(){
+<%-- 		window.location = '<%=request.getContextPath()%>'/;//會員資料 --%>
+
+// 	});
+	$('.list-memNo').click(function(){
+		window.location = 'http://blog.webgolds.com/';//會員資料
+	});
+	$('.list-orderDate').click(function(){
+		window.location = 'http://blog.webgolds.com/';//訂購時間
+	});
+	$('.list-orderStatus').click(function(){
+		window.location = 'http://blog.webgolds.com/';//訂購時間
+	});
+	
+	$('#addCondition').click(function(){
+		$('#orderDate').toggle();
+		$('#orderStatus').toggle();
+		$('#caredNo').toggle();
+		$('#memNo').toggle();
+	});
+	
+// 	$('#btn-toSearch').trigger( "click" );
+	
+});
+
+</script>

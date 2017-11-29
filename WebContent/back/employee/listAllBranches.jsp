@@ -53,21 +53,18 @@ h4 {
 #modifyBtn {
 	margin-Top: 10px;
 }
-
-.modal {
+.modal{
 	text-align: center;
-	padding: 0 !important;
+	padding: 0!important;
 }
-
-.modal:before {
+.modal:before{
 	content: '';
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
 	margin-right: -4px;
 }
-
-.modal .modal-dialog {
+.modal .modal-dialog{
 	display: inline-block;
 	text-align: left;
 	vertical-align: middle;
@@ -94,12 +91,13 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								員工據點&nbsp;<b>管理頁面</b>
-							</h1>
-						</div>
+						<table id="table-1">
+							<tr>
+								<td>
+									<h3>員工據點管理頁面</h3>
+								</td>
+							</tr>
+						</table>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -119,7 +117,7 @@ h4 {
 					</div>
 					<div class="x_content">
 						<div class="col-xs-12 col-sm-3 ">
-							<!--  					<form
+	<!--  					<form
 								action="<%=request.getContextPath()%>/employee/employee.do?action=branches_query"
 								method="post">
 								<div class="form-group form-inline input-group">
@@ -129,7 +127,7 @@ h4 {
 									</span>
 								</div>
 							</form>
-	-->
+	-->						
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<c:if test="${not empty errorMsgs}">
@@ -155,41 +153,43 @@ h4 {
 									</tr>
 								</thead>
 								<tbody>
-
+								
 									<%@ include file="pages/page1.file"%>
 									<c:forEach var="branchesVO" items="${list}" varStatus="s"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 										<form
 											action="<%=request.getContextPath()%>/employee/employee.do"
 											method="post">
-											<input type="hidden" name="action" value="branches_update">
-											<input type="hidden" name="empBranches"
-												value="${branchesVO.empBranches}">
+										<input type="hidden" name="action" value="branches_update">
+										<input type="hidden" name="empBranches" value="${branchesVO.empBranches}">
+										
+										<tr align='center' valign='middle' >
 
-											<tr align='center' valign='middle'>
-
-												<td>${branchesVO.empBranches}</td>
-												<td><input type="text" name="brcName"
-													value="${branchesVO.brcName}"></td>
-												<td><input type="text" name="brcLon"
-													value="${branchesVO.brcLon}"></td>
-												<td><input type="text" name="brcLat"
-													value="${branchesVO.brcLat}"></td>
-												<td>
-													<div class="btn-group">
-														<button type="submit" class="btn btn-info btn-default">
-															確定</button>
-													</div>
-												</td>
-											</tr>
+											<td>${branchesVO.empBranches}</td>
+											<td>
+											<input type="text" name="brcName" value="${branchesVO.brcName}">
+											</td>
+											<td>
+											<input type="text" name="brcLon" value="${branchesVO.brcLon}">
+											</td>
+											<td>
+											<input type="text" name="brcLat" value="${branchesVO.brcLat}">
+											</td>
+											<td>
+												<div class="btn-group"> 
+												<button type="submit" class="btn btn-info btn-default" >
+													確定
+												</button>
+												</div>
+											</td>
+										</tr>
 										</form>
 									</c:forEach>
 								</tbody>
 							</table>
-							<FORM METHOD="post"
-								ACTION="<%=request.getContextPath()%>/back/employee/addBranches.jsp">
-								<input type="submit" value="新增據點" class=" btn btn-success">
-							</FORM>
+								<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back/employee/addBranches.jsp" >
+							     <input type="submit" value="新增據點" class=" btn btn-success"> 
+							     </FORM>
 							<%@ include file="pages/page2.file"%>
 						</div>
 					</div>

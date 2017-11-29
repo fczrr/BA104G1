@@ -6,34 +6,36 @@
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
 
-<jsp:useBean id="balanceSvc2" scope="page"
-	class="com.balance.model.BalanceService" />
+<jsp:useBean id="balanceSvc2" scope="page" class="com.balance.model.BalanceService" />
 <%
 	Object obj = request.getAttribute("list");
-	Object obj2 = request.getAttribute("memNo");
+	Object obj2=request.getAttribute("memNo");
 
-	Object obj3 = request.getAttribute("topupNo");
+	Object obj3=request.getAttribute("topupNo");
 
 	request.getAttribute("status");
 	request.getAttribute("topupWay");
 	request.getAttribute("topupValue");
 	request.getAttribute("topupTime");
+	
+String memNo=obj2.toString();
+	System.out.println("get_memNo="+memNo);
 
-	String memNo = obj2.toString();
-	System.out.println("get_memNo=" + memNo);
-
+	
 	List<BalanceVO> list = new ArrayList<BalanceVO>();
-
+	
 	int num = 0;
 
+
+	
 	BalanceVO balanceVO = null;
-	if (request.getAttribute("balanceVO") != null) {
-		balanceVO = (BalanceVO) request.getAttribute("balanceVO");
-	} else {
-		balanceVO = (BalanceVO) session.getAttribute("balanceVO");
+	if(request.getAttribute("balanceVO")!=null){
+		balanceVO=(BalanceVO)request.getAttribute("balanceVO");
+	}else{
+		balanceVO=(BalanceVO)session.getAttribute("balanceVO");
 
 	}
-	System.out.println("get_balanceVO=" + balanceVO);
+	System.out.println("get_balanceVO="+balanceVO);
 %>
 <style>
 table#table-1 {
@@ -88,13 +90,13 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-
-						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								會員加值狀態&nbsp;<b>管理頁面</b>
-							</h1>
-						</div>
+						<table id="table-1">
+							<tr>
+								<td>
+									<h3>會員加值狀態管理頁面</h3>
+								</td>
+							</tr>
+						</table>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -118,14 +120,13 @@ h4 {
 								action="<%=request.getContextPath()%>/member/member.do?action=queryBalanceByMemNo"
 								method="post">
 								<div class="form-group form-inline input-group">
-									<input type="hidden" class="form-control" name="action"
-										value="queryBalanceByMemNo" /> <input type="text"
-										class="form-control" name="memNo" value=""
-										placeholder="依會員編號查詢" /> <span class="input-group-btn">
+									<input type="hidden" class="form-control" name="action" value="queryBalanceByMemNo"  />
+									<input type="text" class="form-control" name="memNo" value="" placeholder="依會員編號查詢" />
+									 <span class="input-group-btn">
 										<button type="submit" class="btn btn-primary">查詢</button>
 									</span>
 								</div>
-
+								
 							</form>
 						</div>
 						<div class="col-xs-12 col-sm-3">
@@ -139,7 +140,7 @@ h4 {
 								</font>
 							</c:if>
 						</div>
-
+		
 						<div class="col-sm-12">
 							<table class="table table-hover table-striped">
 								<thead>
@@ -157,31 +158,30 @@ h4 {
 									<%@ include file="pages/page1.file"%>
 									<c:forEach var="balanceVO" items="${list}"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-										<form action="<%=request.getContextPath()%>/member/member.do"
+										<form
+											action="<%=request.getContextPath()%>/member/member.do"
 											method="post">
-											<input type="hidden" name="action"
-												value="changeBalanceStatus"> <input type="hidden"
-												name="topupNo" value="${balanceVO.topupNo}">
-
-											<tr align='center' valign='middle'>
-												<td>${balanceVO.topupNo}</td>
-												<td>${balanceVO.memNo}</td>
-												<td>${balanceVO.topupValue}</td>
-												<td>${balanceVO.topupWay}</td>
-												<td><select name="status"
-													class="form-control selectpicker">
-														<option value="ok"
-															${balanceVO.status.equals("ok") ?"selected" :""}>ok</option>
-														<option value="fail"
-															${balanceVO.status.equals("fail") ?"selected" :""}>fail</option>
-												</select></td>
-
-												<td>${balanceVO.topupTime}</td>
-												<td>
-													<button type="submit" class="btn btn-info btn-default">
-														修改</button>
-												</td>
-											</tr>
+										<input type="hidden" name="action" value="changeBalanceStatus">
+										<input type="hidden" name="topupNo" value="${balanceVO.topupNo}">
+										
+										<tr align='center' valign='middle' >
+											<td>${balanceVO.topupNo}</td>
+											<td>${balanceVO.memNo}</td>
+											<td>${balanceVO.topupValue}</td>
+											<td>${balanceVO.topupWay}</td>
+											<td><select name="status"
+												class="form-control selectpicker">
+												<option value="ok" ${balanceVO.status.equals("ok") ?"selected" :""}>ok</option>
+												<option value="fail" ${balanceVO.status.equals("fail") ?"selected" :""}>fail</option>
+											</select></td>
+											
+											<td>${balanceVO.topupTime}</td>
+											<td>
+												<button type="submit" class="btn btn-info btn-default" >
+													修改
+												</button>
+											</td>
+										</tr>
 										</form>
 									</c:forEach>
 								</tbody>

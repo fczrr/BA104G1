@@ -123,7 +123,12 @@ h4 {
 			<div class="title_right">
 				<div
 					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-
+					<!--                   <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> -->
 				</div>
 			</div>
 		</div>
@@ -132,12 +137,9 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								新增&nbsp;<b>據點</b>
-							</h1>
-						</div>
+						<img
+							src="<%=request.getContextPath()%>/back/image/empolyee/horizonBar.jpg"
+							class="img-responsive">
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -167,16 +169,18 @@ h4 {
 								<fieldset>
 									<!-- Form Name -->
 									<legend>
-										<div class="row">
-
-
-											<c:if test="${not empty errorMsgs}">
-												<font color='red'>請修正以下錯誤: <c:forEach var="message"
-														items="${errorMsgs}">
+										<center>
+											<h2>
+												<b>新增據點</b>
+											</h2>
+										</center>
+										<c:if test="${not empty errorMsgs}">
+											<font color='red'>請修正以下錯誤: <c:forEach var="message"
+													items="${errorMsgs}">
 											${message}
 										</c:forEach>
-												</font>
-											</c:if>
+											</font>
+										</c:if>
 									</legend>
 									<br>
 									<!-- Text input-->
@@ -185,9 +189,8 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-eye-open"></i></span> <input
-													name="empBranches" value="" class="form-control"
-													type="text">
+													class="glyphicon glyphicon-eye-open"></i></span>
+													 <input name="empBranches"  value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -197,8 +200,8 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-home"></i></span> <input name="brcName"
-													value="" class="form-control" type="text">
+													class="glyphicon glyphicon-home"></i></span> 
+													<input name="brcName" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -208,9 +211,9 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-map-marker"></i></span> <input
-													name="brcLon" placeholder="如:25.04644" value=""
-													class="form-control" type="text">
+													class="glyphicon glyphicon-map-marker"></i></span> 
+													<input name="brcLon"
+													placeholder="如:25.04644" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -220,9 +223,9 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-map-marker"></i></span> <input
-													name="brcLat" placeholder="如:121.51768" value=""
-													class="form-control" type="text">
+													class="glyphicon glyphicon-map-marker"></i></span> 
+													<input name="brcLat"
+													placeholder="如:121.51768" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>

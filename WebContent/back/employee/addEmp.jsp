@@ -119,15 +119,18 @@ h4 {
 <div class="right_col" role="main">
 	<div class="">
 		<div class="page-title">
-			<div id="mytitle"
-				style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-				<h1>
-					員工註冊&nbsp;<b>頁面</b>
-				</h1>
+			<div class="title_left">
+				<h3>首頁</h3>
 			</div>
 			<div class="title_right">
 				<div
 					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+					<!--                   <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> -->
 				</div>
 			</div>
 		</div>
@@ -136,7 +139,9 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-
+						<img
+							src="<%=request.getContextPath()%>/back/image/empolyee/horizonBar.jpg"
+							class="img-responsive">
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -165,7 +170,11 @@ h4 {
 								<fieldset>
 									<!-- Form Name -->
 									<legend>
-		
+										<center>
+											<h2>
+												<b>有我罩你員工註冊</b>
+											</h2>
+										</center>
 										<c:if test="${not empty errorMsgs}">
 											<font color='red'>請修正以下錯誤: <c:forEach var="message"
 													items="${errorMsgs}">
@@ -181,10 +190,11 @@ h4 {
 										<label class="col-md-4 control-label">員工姓名</label>
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-user"></i>
-												</span> <input name="empName" placeholder="Name" id="empName"
-													value="" class="form-control" type="text">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-user"></i>
+												</span> 
+												<input name="empName" placeholder="Name" id="empName" value="" 
+												class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -194,14 +204,18 @@ h4 {
 										<div class="col-md-4 selectContainer">
 											<div class="buying-selling-group" id="buying-selling-group"
 												data-toggle="buttons">
-												<label class="btn btn-default buying-selling"> <input
+												<label class="btn btn-default buying-selling"> 
+												<input
 													type="radio" name="empGender" id="option1"
-													autocomplete="off" value="M"> <span
-													class="radio-dot"></span> <span class="buying-selling-word">男</span>
-												</label> <label class="btn btn-default buying-selling"> <input
+													autocomplete="off" value="M"> 
+													<span class="radio-dot"></span> 
+													<span class="buying-selling-word">男</span>
+												</label> <label class="btn btn-default buying-selling"> 
+												<input
 													type="radio" name="empGender" id="option2"
-													autocomplete="off" value="F"> <span
-													class="radio-dot"></span> <span class="buying-selling-word">女</span>
+													autocomplete="off" value="F"> 
+													<span class="radio-dot"></span>
+													<span class="buying-selling-word">女</span>
 												</label>
 											</div>
 										</div>
@@ -210,9 +224,10 @@ h4 {
 										<label class="col-md-4 control-label">員工部門</label>
 										<div class="col-md-4 selectContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-list"></i>
-												</span> <select name="empDep" class="form-control selectpicker">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-list"></i>
+												</span> 
+												<select name="empDep" class="form-control selectpicker">
 													<option value="">選擇部門</option>
 													<option value="長照">長照部門</option>
 													<option value="派車">派車部門</option>
@@ -228,10 +243,11 @@ h4 {
 										<label class="col-md-4 control-label">部門據點</label>
 										<div class="col-md-4 selectContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-list"></i>
-												</span> <select name="empBranches"
-													class="form-control selectpicker">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-list"></i>
+												</span> 
+												<select
+													name="empBranches" class="form-control selectpicker">
 													<option value="">選擇據點</option>
 													<option value="10">台北分部</option>
 													<option value="20">桃園分部</option>
@@ -246,9 +262,11 @@ h4 {
 										<label class="col-md-4 control-label">員工職位</label>
 										<div class="col-md-4 selectContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-list"></i>
-												</span> <select name="empTitle" class="form-control selectpicker">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-list"></i>
+												</span> 
+												<select
+													name="empTitle" class="form-control selectpicker">
 													<option value="">選擇職位</option>
 													<option value="總經理">總經理</option>
 													<option value="經理">經理</option>
@@ -261,10 +279,11 @@ h4 {
 										<label class="col-md-4 control-label">員工權限</label>
 										<div class="col-md-4 selectContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-list"></i>
-												</span> <select name="authorityNo"
-													class="form-control selectpicker">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-list"></i>
+												</span> 
+												<select
+													name="authorityNo" class="form-control selectpicker">
 													<option value="管理員">管理員</option>
 													<option value="長照人員">長照人員</option>
 													<option value="派車人員">派車人員</option>
@@ -279,10 +298,11 @@ h4 {
 										<label class="col-md-4 control-label">員工帳號</label>
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-user"></i>
-												</span> <input name="empId" placeholder="Account" id="empId"
-													value="" class="form-control" type="text">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-user"></i>
+												</span> 
+												<input name="empId" placeholder="Account" id="empId" value=""  
+												class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -290,10 +310,12 @@ h4 {
 										<label class="col-md-4 control-label">員工EMail</label>
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-envelope"></i>
-												</span> <input name="empEmail" placeholder="E-Mail Address"
-													id="empMail" value="" class="form-control" type="email">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-envelope"></i>
+												</span>
+												<input 
+													name="empEmail" placeholder="E-Mail Address"  id="empMail" value="" 
+													class="form-control" type="email">
 											</div>
 										</div>
 									</div>
@@ -302,10 +324,12 @@ h4 {
 										<label class="col-md-4 control-label">員工電話</label>
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
-												<span class="input-group-addon"> <i
-													class="glyphicon glyphicon-earphone"></i>
-												</span> <input name="empPhone" placeholder="0911000123"
-													class="form-control" id="empPhone" value="" type="text">
+												<span class="input-group-addon">
+												<i class="glyphicon glyphicon-earphone"></i>
+												</span> 
+												<input
+													name="empPhone" placeholder="0911000123" class="form-control"  id="empPhone" value="" 
+													type="text">
 											</div>
 										</div>
 									</div>
@@ -322,7 +346,6 @@ h4 {
 												&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
 													class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-											
 										</div>
 									</div>
 								</fieldset>
@@ -332,14 +355,13 @@ h4 {
 
 						</div>
 					</div>
-					</button>
-					<button onclick="addEmp()">
-						<div class="col-xs-12 col-sm-6">
-							<div class="btn">
-								<span>magic</span>
-							</div>
-						</div>
-					</button>
+											</button>
+												<button onclick="addEmp()">
+												<div class="col-xs-12 col-sm-6">
+													<div class="btn"><span >magic</span>
+													</div>
+												</div>
+											</button>
 
 
 
@@ -351,14 +373,14 @@ h4 {
 </div>
 </div>
 
-<script type="text/JavaScript">
-	function addEmp() {
-		document.getElementById("empName").value = "王小明";
-		document.getElementById("empId").value = "ming.w";
-		document.getElementById("empMail").value = "seekastyle@gmail.com";
-		document.getElementById("empPhone").value = "0912000123";
-	}
-</script>
+	<script type="text/JavaScript">
+		function addEmp() {
+		    document.getElementById("empName").value = "王小明";
+		    document.getElementById("empId").value = "ming.w";
+		    document.getElementById("empMail").value = "seekastyle@gmail.com";
+		    document.getElementById("empPhone").value = "0912000123";
+		}
+	</script>
 
 <%@ include file="/back/production/BA104G1_footer.jsp"%>
 

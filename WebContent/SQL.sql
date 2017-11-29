@@ -2038,7 +2038,7 @@ VALUES ((to_char('HD'||LPAD(to_char(HEALTHNO_SEQ.NEXTVAL),4,'0'))),'藥包寫日
 忘記吃藥還好，最怕是一不小心服用過量（例如吃掉了明日份的藥物），過比不及要來得令人憂心。當然，不只是失智症的藥物，高血壓或糖尿病等的藥物也是如此，誤服過量十分危險。
 近來，急診室常出現昏迷的高齡患者，他們既不是腦中風，也不是心臟病發作，而是因為過量服用高血壓、糖尿病或安眠藥等藥物。現在服用過量的例子愈來愈多；事實上，這些患者也多半潛在著失智症的記憶障礙問題。 
 ','EMP0001',load_blob('HD015.jpg'),'上架'
-);
+); 
 
 
 INSERT INTO HEALTHNEWSDETAIL(HEALTHNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, STATUS)

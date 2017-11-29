@@ -20,7 +20,7 @@
 		Boolean tag = false;
 		for(ProVO vo2:list2){
 			if(vo.equals(vo2)){
-				tag = true;
+				tag = true; 
 			}
 		}
 		if(!tag){

@@ -25,8 +25,8 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 			e.printStackTrace();
 		}
 	}
-	private static final String INSERT_STMT = "INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,RCPT_NAME,RCPT_ADD,RCPT_PHONE)"
-			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),?,?,?,?)";
+	private static final String INSERT_STMT = "INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,RCPT_NAME,RCPT_ADD,RCPT_PHONE,MO_STATUS)"
+			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),?,?,?,?,'未處理')";
 	private static final String INSERT_STMT2 = "INSERT INTO MEAL_ORDER_DETAIL(MO_DETAIL_NO,MO_NO,DELIVER_DATE,MEALTIME,SM_NO,ORDER_QTY)"
 			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),?,?,?,?,?)";
 	private static final String UPDATE = "UPDATE MEAL_ORDER SET MO_STATUS=? WHERE MO_NO=?";

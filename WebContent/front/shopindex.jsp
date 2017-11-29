@@ -207,6 +207,12 @@
 <%-- <script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> --%>
 
 <!-- 這裡是JS專區 =========================================================== -->
+
+
+<style>
+#bigimgShop{
+	width:100%
+}
 </style>
 
 
@@ -292,6 +298,26 @@
         <!-- 手機隱藏選單區結束 -->
     </div>
 </nav>
+
+
+ <div class="container-fliud">
+  <div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-lg-12">
+
+       <img id="bigimgShop" src="<%=request.getContextPath()%>/img/index/BigImg/p3.jpg">
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
    <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
@@ -467,15 +493,17 @@
 
 
 
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12">
+<!--     <div class="container"> -->
+<!--       <div class="row"> -->
+<!--         <div class="col-xs-12 col-sm-12"> -->
        
-          <img src="<%=request.getContextPath()%>/front/image/share/014.png" height="70%" width="100%">
-        </div>
-      </div>
-    </div>
+<%--           <img src="<%=request.getContextPath()%>/front/image/share/014.png" height="70%" width="100%"> --%>
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
     
+   
+
 
 	<div class="container">
 		<div class="row">
@@ -531,7 +559,7 @@ color: #ffe200;
     position: fixed;  /*固定在網頁上不隨卷軸移動，若要隨卷軸移動用absolute*/
     top: 50%;  /*設置垂直位置*/
     right: -20px;  /*設置水平位置，依所放的內容多寡需要自行手動調整*/
-    background: #ffffff;  /*背景顏色*/
+/*     background: #ffffff;  /*背景顏色*/
     padding: 10px 20px;
     border-radius: 10px;  /*圓角*/
     -moz-border-radius: 10px;
@@ -573,10 +601,10 @@ color: #ffe200;
             <strong>現正促銷</strong>
                     <span class="pull-right">
                     <a class="title-carousel-control" href="#carousel-recently-generic" data-slide="prev">
-                        <i class="fa fa-angle-left">◀</i>
+                        <i class="fa fa-angle-left"></i>
                     </a>
                     <a class="title-carousel-control" href="#carousel-recently-generic" data-slide="next">
-                        <i class="fa fa-angle-right">▶</i>
+                        <i class="fa fa-angle-right"></i>
                     </a>
                 </span>
                   </div>
@@ -818,15 +846,15 @@ color: #ffe200;
 
 
 <!-- 是footer bar 不要亂刪 感謝～～ ==================================================================== -->
-<div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <p class="navbar-text text-center">BA104G1&nbsp ©&nbsp 2017 &nbsp&nbsp 有我罩你全家股份有限公司 </p>
-        </div>
-    </div>
+<!-- <div class="navbar navbar-default navbar-fixed-bottom"> -->
+<!--         <div class="container"> -->
+<!--             <p class="navbar-text text-center">BA104G1&nbsp ©&nbsp 2017 &nbsp&nbsp 有我罩你全家股份有限公司 </p> -->
+<!--         </div> -->
+<!--     </div> -->
 <!-- 是footer bar 不要亂刪 感謝～～ ==================================================================== -->
 
 
-
+<%@ include file="/front/footerbar.jsp" %>
 
 <!-- 這裡是JS專區 =========================================================== -->
 

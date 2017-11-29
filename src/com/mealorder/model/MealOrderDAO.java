@@ -25,8 +25,8 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 			e.printStackTrace();
 		}
 	}
-	private static final String INSERT_STMT = "INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,RCPT_NAME,RCPT_ADD,RCPT_PHONE)"
-			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),?,?,?,?)";
+	private static final String INSERT_STMT = "INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,RCPT_NAME,RCPT_ADD,RCPT_PHONE,MO_STATUS)"
+			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),?,?,?,?,'未處理')";
 	private static final String INSERT_STMT2 = "INSERT INTO MEAL_ORDER_DETAIL(MO_DETAIL_NO,MO_NO,DELIVER_DATE,MEALTIME,SM_NO,ORDER_QTY)"
 			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),?,?,?,?,?)";
 	private static final String UPDATE = "UPDATE MEAL_ORDER SET MO_STATUS=? WHERE MO_NO=?";
@@ -63,7 +63,6 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 			} else {
 				System.out.println("未取得自增主鍵值");
 			}
-			rs.close();
 
 			pstmt2 = con.prepareStatement(INSERT_STMT2);
 			for (int i = 0; i < mealOrderDetailVOList.size(); i++) {
@@ -73,12 +72,12 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				pstmt2.setInt(4, mealOrderDetailVOList.get(i).getSmNo());
 				pstmt2.setInt(5, mealOrderDetailVOList.get(i).getOrderQty());
 				pstmt2.executeUpdate();
-				pstmt2.clearParameters();
 			}
-			pstmt2.close();
+			
 			con.commit();
 			con.setAutoCommit(true);
 		} catch (SQLException se) {
+			se.printStackTrace();
 			try {
 				con.rollback();
 			} catch (SQLException e) {
@@ -86,13 +85,7 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				// Clean up JDBC resources
 			}
 		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
+		
 			if (con != null) {
 				try {
 					con.close();

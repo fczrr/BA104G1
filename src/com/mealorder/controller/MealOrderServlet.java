@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.mealorder.model.MealOrderService;
 import com.mealorder.model.MealOrderVO;
 import com.mealorderdetail.model.MealOrderDetailVO;
@@ -189,6 +190,7 @@ public class MealOrderServlet extends HttpServlet {
 			System.out.println(memberPoint);
 
 			if (memberPoint > totalPrice) {
+				System.out.println("come in");
 				MealOrderVO mealOrderVO = new MealOrderVO();
 				mealOrderVO.setMemNo(memNo);
 				mealOrderVO.setRcptName(rcptName);
@@ -197,6 +199,7 @@ public class MealOrderServlet extends HttpServlet {
 				//System.out.println(rcptAdd);
 				mealOrderVO.setRcptPhone(rcptPhone);
                 //System.out.println(rcptPhone);
+				
 				List<MealOrderDetailVO> list = new ArrayList<>();
 				for (int i = 0; i < dates2.length; i++) {
 					MealOrderDetailVO mealOrderDetailVO = new MealOrderDetailVO();
@@ -206,7 +209,8 @@ public class MealOrderServlet extends HttpServlet {
 					mealOrderDetailVO.setOrderQty(orderQty);
 					list.add(mealOrderDetailVO);
 				}
-
+				System.out.println("======="+new Gson().toJson(mealOrderVO));
+				System.out.println(new Gson().toJson(list));
 				MealOrderService mealOrderSvc = new MealOrderService();
 				mealOrderSvc.addMealOrder(mealOrderVO, list);
 

@@ -121,7 +121,7 @@
 							</ul></li>
 						<li><a href="<%= request.getContextPath()%>/back/setMeal/listAllSetMeal.jsp">套餐管裡</a>
 					  </li>
-					</ul></li>
+					</ul></li>   
 
                   <li><a><i class="fa fa-users"></i> 長照管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

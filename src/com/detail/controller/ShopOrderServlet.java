@@ -142,7 +142,7 @@ public class ShopOrderServlet extends HttpServlet{
 			}else{
 				System.out.println("餘額不足訂單未成立,FORWARD出去了。");
 				//String url = "/MasterOrder/listallOrder.jsp";
-				String url = "/MasterOrder/listallOrderbeautiful.jsp";
+				String url = "/front/member/BalanceInsert.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 																				// ListAllProOrder.jsp
 				successView.forward(req, res);

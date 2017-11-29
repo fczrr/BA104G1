@@ -125,7 +125,7 @@
 								<input type="hidden" name="amount" id="amountt"
 									value="${amount}">
 								<!-- 						假裝會員已經登入了 -->
-								<input type="hidden" name="MEMNO" value="${memberVO.memId}">
+								<input type="hidden" name="MEMNO" value="${memberVO.memNo}">
 								<input type="hidden" name="NAME" value="${memberVO.memName}">
 								<input type="hidden" name="action" value="CONFIRM">
 							</tr>

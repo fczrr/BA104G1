@@ -176,7 +176,7 @@
 															<div class="col-xs-12 col-sm-2"><span class=list-orderDate>${hcOrder.orderDate}</span></div>
 															<div class="col-xs-12 col-sm-2"><span class=list-caredName>${theCaredSvc.getOneTHECARED(hcOrder.caredNo).caredName}</span></div>
 															<div class="col-xs-12 col-sm-2 elem-tochange" id="elem-tochange${s.index}"><span class=list-orderStatus>${hcOrder.orderStatus}</span></div>
-															<div class="col-xs12  col-sm-2"><span class="btn btn-info"><a href="javascript:changeStatus()">修改訂單</a></span></div>
+															<div class="col-xs12  col-sm-2"><span class="btn btn-info btn-tochange" id="${hcOrder.orderNo}"><a >修改訂單</a></span></div>
 														</div>
 													</h4>
 												</div>
@@ -262,16 +262,52 @@ $(document).ready(function (){
 		$('#memNo').toggle();
 	});
 	
-// 	$('#btn-toSearch').trigger( "click" );
 
-
+	$('.btn-tochange').click(function(){
+// 		$(event.target).closest('.row').find('.elem-tochange').css('background','red');
+		$(event.target).closest('.row').find('.elem-tochange').empty();
+		$(event.target).closest('.row')
+		.find('.elem-tochange').html('<div class="input-group mb-2 mb-sm-0"><select class="form-control mb-2 mb-sm-0 goto"  id="'+this.id+'" name="orderStatus" style="border-radius:5px;"><option value="">請選擇訂單狀態</option><option value="未確認">未確認</option><option value="已確認">已確認</option><option value="服務中">服務中</option><option value="已完成">已完成</option><option value="已取消">已取消</option></select></div>');
+	});
+	
+ 	 	
+ 	 	
+ 	 	
+ 	 	
 	
 });
+		$( document ).on( "change", ".goto", function(event) {
+			console.log('step1'+this.id);
+			var orderNo = this.id;
+			var orderStatus = $(this).val();
+		    var url ="<%=request.getContextPath()%>/HcOrder/HcOrderController.do";// the script where you handle the form input.
 
-		function changeStatus(event){
-			console.log('lala mamo112');
-			$(this).css('background', 'red');
-// 			$('body').find(elem).css('background','red');
-		}
+		    if($(this).val()==""){
+		    	return;
+		    }
+		    
+		    $.ajax({
+		           type:"POST",
+		           url: url,
+		           data: { 
+		        	   orderStatus : $(this).val(),
+		        	   orderNo:orderNo,
+		        	   action:'updateOrderStatus',
+                   },
+		           success:function(data){
+		               alert(data);// show response from the php script.
+		               if(date=='改動失敗'){
+		            	   return false;
+		               }
+		           }
+		         });
+		    
+		    $(event.target).closest('.row')
+			.find('.elem-tochange').html('<span class=list-orderStatus>'+orderStatus+'</span>');
+		    
+
+		    return false;// avoid to execute the actual submit of the form.  
+			});
+
 
 </script>

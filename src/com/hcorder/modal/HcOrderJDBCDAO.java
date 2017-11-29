@@ -50,6 +50,21 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 	
 	private static final String UPDATE = 
 		"UPDATE HC_ORDER_MASTER SET CARED_NO=?, ORDER_STATUS=? where ORDER_NO = ?";
+	
+	
+	private static final String UPDATE_STSTUS = 
+			"UPDATE HC_ORDER_MASTER SET  ORDER_STATUS=? where ORDER_NO = ?";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static final String GET_BY_MEM_NO = "SELECT * FROM HC_ORDER_MASTER WHERE MEM_NO = ?";
 	
 	

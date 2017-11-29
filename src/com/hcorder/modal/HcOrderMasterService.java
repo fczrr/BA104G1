@@ -19,6 +19,13 @@ public class HcOrderMasterService {
 	}
 	
 	
+	public void updateOrderStatus(String orderNo, String orderStatus){
+		HcOrderMasterVO hcOrderMasterVO = dao.findByPrimaryKey(orderNo);
+		hcOrderMasterVO.setOrderStatus(orderStatus);
+		 dao.update(hcOrderMasterVO);
+	}
+	
+	
 	
 	public HcOrderMasterVO addHcOrderMaster(String memNo, String caredNo, String orderStatus,
 			Date serviceDate,String serviceTime,String empNo ){

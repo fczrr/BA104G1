@@ -75,7 +75,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>主要功能</h3>
                 <ul class="nav side-menu">
 
 
@@ -126,7 +126,7 @@
                   <li><a><i class="fa fa-users"></i> 長照管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">人員管理</a></li>
-                      <li><a href="#">訂單管理</a></li>
+                      <li><a href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
                       <li><a href="#">班表管理</a></li>
                     </ul>
                   </li> 
@@ -146,7 +146,7 @@
 
 
               <div class="menu_section">
-                <h3>Live On</h3>
+                <h3>其他功能</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bug"></i> 申訴管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

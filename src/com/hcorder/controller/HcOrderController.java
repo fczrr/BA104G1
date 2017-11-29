@@ -397,6 +397,34 @@ public class HcOrderController extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
+		
+		
+		
+		if ("updateOrderStatus".equals(action)) { // 來自select_page.jsp的複合查詢請求
+			System.out.println("YA I am  IN");
+
+			String orderStatus = req.getParameter("orderStatus");
+			String orderNo = req.getParameter("orderNo");
+			try {
+				
+				/***************************1.**********************************/ 
+				if(orderStatus.equals("orderStatus")){
+					return;
+				}
+				
+				/***************************2.開始***************************************/
+				HcOrderMasterService hcOrderMasterService = new HcOrderMasterService();
+				hcOrderMasterService.updateOrderStatus(orderNo,orderStatus);
+				
+				/***************************3.查詢完成,準備轉交()************/
+				res.getWriter().println("改動成功");
+				
+				/***************************其他可能的錯誤處理**********************************/
+			} catch (Exception e) {
+				res.getWriter().println("改動失敗");
+
+			}
+		}
 				
 		
 

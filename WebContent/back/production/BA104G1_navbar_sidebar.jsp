@@ -87,18 +87,23 @@
                     </ul>
                   </li>
 
-                  <li><a><i class="fa fa-cog "></i> 員工管理 <span class="fa fa-chevron-down"></span></a>
-                	<ul class="nav child_menu">
-						<li><a href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">權限管理</a></li>
-						<li><a href="<%=request.getContextPath()%>/back/employee/listAllEmployee.jsp">員工資料管理</a></li>
-					</ul></li>
+                                    <li><a><i class="fa fa-home"></i>個人資料管理 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料維護</a></li>
+                    </ul>
                   </li>
-                  
-				 <li><a><i class="fa fa-user"></i>會員管理 <span class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
-						<li><a href="#">點數管理</a></li>
-					</ul></li>
+                  <li><a><i class="fa fa-home"></i>員工管理 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<%=request.getContextPath()%>/back/employee/listAllEmployee.jsp">員工資料管理</a></li>
+                      <li><a href="<%=request.getContextPath()%>/back/employee/listAllBranches.jsp">員工據點管理</a></li>
+                      <li><a href="<%=request.getContextPath()%>/back/employee/listAllExpertlist.jsp">員工專長管理</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-home"></i>會員管理 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
+                    </ul>
+                  </li>>
 
                   <li><a><i class="fa fa-automobile"></i> 派車管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -159,11 +164,7 @@
 
                   <li><a><i class="fa fa-cc-visa"></i> 點數管理 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
+                      <li><a href="<%=request.getContextPath()%>/back/member/listAllBalance.jsp">加值列表</a></li>
                     </ul>
                   </li>
 

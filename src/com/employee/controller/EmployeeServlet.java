@@ -102,7 +102,7 @@ public class EmployeeServlet extends HttpServlet {
 			session.setAttribute("isLogin", "true");
 			// ****************************還要放權限管理**************************
 
-			res.sendRedirect(req.getContextPath() + "/back/employee/listAllEmployee.jsp");
+			res.sendRedirect(req.getContextPath() + "/back/production/BA104G1_index.jsp");
 
 		}
 		

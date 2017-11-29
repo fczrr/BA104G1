@@ -40,24 +40,24 @@
 </head>
 <body>
    <title>有我罩你</title>
-  <!-- 頁面標題 ================================================== -->
+<!--   頁面標題 ================================================== -->
     
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
-  <!-- NavBar的CSS 專區 不能刪喔 ================================================== -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css">
-  <!-- NavBar的CSS 專區 不能刪喔 ================================================== -->
+<!--   NavBar的CSS 專區 不能刪喔 ================================================== -->
+<%--     <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css" media="screen"> --%>
+<%--     <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css"> --%>
+<%--     <link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css"> --%>
+<!--   NavBar的CSS 專區 不能刪喔 ================================================== -->
     
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="bootstrap/html5shiv.js"></script>
-      <script src="bootstrap/respond.min.js"></script>
-    <![endif]-->
+<!--     HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--     [if lt IE 9]>
+<!--       <script src="bootstrap/html5shiv.js"></script> -->
+<!--       <script src="bootstrap/respond.min.js"></script> -->
+<!--     <![endif] --> 
 
-  </head>
-  <body>
+<!--   </head> -->
+<!--   <body> -->
   
 
 <!-- image資料夾 - share裡有 一些小圖示可使用 (都是.png檔//是透明底圖//) -->
@@ -71,130 +71,130 @@
 
 <!-- 是Navbar 不要亂刪 感謝～～ ==================================================================== -->
 
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
+<!-- <div class="navbar navbar-default navbar-fixed-top"> -->
+<!--   <div class="container"> -->
+<!--     <div class="navbar-header"> -->
             
 <!-- logo 區 稍後會補上 ================================================== -->
-    <a href="#" class="navbar-brand">
-      <img src="">有我罩你
-    </a>
+<!--     <a href="#" class="navbar-brand"> -->
+<!--       <img src="">有我罩你 -->
+<!--     </a> -->
 <!-- logo 區 稍後會補上 ================================================== -->
 
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+<!--       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main"> -->
+<!--         <span class="icon-bar"></span> -->
+<!--         <span class="icon-bar"></span> -->
+<!--         <span class="icon-bar"></span> -->
+<!--       </button> -->
+<!--     </div> -->
 
 
-    <div class="navbar-collapse collapse" id="navbar-main">
+<!--     <div class="navbar-collapse collapse" id="navbar-main"> -->
               
 
     		 
-  <!-- 各項button 連結請自行找 <a href= "填入自己的頁面連結 (溫腥提醒:記得用動態) "> ================== -->
+<!--   各項button 連結請自行找 <a href= "填入自己的頁面連結 (溫腥提醒:記得用動態) "> ================== -->
 
-      <ul class="nav navbar-nav">
+<!--       <ul class="nav navbar-nav"> -->
                 
-        <!-- 關於我們 ================================================== -->
-        <li>
-          <a href="#">關於我們</a>
-        </li>
-  <!-- 關於我們 ================================================== -->
+<!--         關於我們 ================================================== -->
+<!--         <li> -->
+<!--           <a href="#">關於我們</a> -->
+<!--         </li> -->
+<!--   關於我們 ================================================== -->
 
 
-  <!-- 最新消息 ================================================== -->
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">最新消息 <span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-            <li><a href="#" style="padding: 12px 15px;">最新消息</a></li>
-            <li><a href="#" style="padding: 12px 15px;">保健資訊</a></li>
-          </ul>
-        </li>
-  <!-- 最新消息 ================================================== -->
+<!--   最新消息 ================================================== -->
+<!--         <li class="dropdown"> -->
+<!--           <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">最新消息 <span class="caret"></span></a> -->
+<!--           <ul class="dropdown-menu" aria-labelledby="themes"> -->
+<!--             <li><a href="#" style="padding: 12px 15px;">最新消息</a></li> -->
+<!--             <li><a href="#" style="padding: 12px 15px;">保健資訊</a></li> -->
+<!--           </ul> -->
+<!--         </li> -->
+<!--   最新消息 ================================================== -->
 
 
 
-  <!-- 長照服務 ================================================== -->
-        <li>
-          <a href="#">長照服務</a>
-        </li>
-  <!-- 長照服務 ================================================== -->
+<!--   長照服務 ================================================== -->
+<!--         <li> -->
+<!--           <a href="#">長照服務</a> -->
+<!--         </li> -->
+<!--   長照服務 ================================================== -->
 
-  <!-- 派車服務 ================================================== -->
-        <li>
-          <a href="#">派車服務</a>
-        </li>
-  <!-- 派車服務 ================================================== -->
-
-
-  <!-- 送餐服務 ================================================== -->
-        <li>
-          <a href="#">送餐服務</a>
-        </li>
-  <!-- 送餐服務 ================================================== -->
+<!--   派車服務 ================================================== -->
+<!--         <li> -->
+<!--           <a href="#">派車服務</a> -->
+<!--         </li> -->
+<!--   派車服務 ================================================== -->
 
 
-  <!-- 商城服務 ================================================== -->
-        <li>
-          <a href="<%=request.getContextPath()%>/front/shopindex.jsp">商&nbsp&nbsp&nbsp&nbsp城</a>
-        </li>
-  <!-- 商城服務 ================================================== -->
+<!--   送餐服務 ================================================== -->
+<!--         <li> -->
+<!--           <a href="#">送餐服務</a> -->
+<!--         </li> -->
+<!--   送餐服務 ================================================== -->
 
 
-  <!-- 聯絡我們 ================================================== -->
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">聯絡我們 <span class="caret"></span></a>
-          <ul class="dropdown-menu" aria-labelledby="themes">
-            <li><a href="#" style="padding: 12px 15px;">線上客服</a></li>
-            <li><a href="#" style="padding: 12px 15px;">意見回饋</a></li>
-          </ul>
-        </li>
-  <!-- 聯絡我們 ================================================== -->
+<!--   商城服務 ================================================== -->
+<!--         <li> -->
+<%--           <a href="<%=request.getContextPath()%>/front/shopindex.jsp">商&nbsp&nbsp&nbsp&nbsp城</a> --%>
+<!--         </li> -->
+<!--   商城服務 ================================================== -->
+
+
+<!--   聯絡我們 ================================================== -->
+<!--         <li class="dropdown"> -->
+<!--           <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">聯絡我們 <span class="caret"></span></a> -->
+<!--           <ul class="dropdown-menu" aria-labelledby="themes"> -->
+<!--             <li><a href="#" style="padding: 12px 15px;">線上客服</a></li> -->
+<!--             <li><a href="#" style="padding: 12px 15px;">意見回饋</a></li> -->
+<!--           </ul> -->
+<!--         </li> -->
+<!--   聯絡我們 ================================================== -->
 <!--         <li> -->
 <%--           <a href="<%=request.getContextPath()%>/front/shopindex.jsp"> --%>
 <%--           <img src="<%=request.getContextPath()%>/images/cart.png" style="width: 20px;height: 20px;"> --%>
 <!--           		<span class="badge">N</span>購&nbsp&nbsp物&nbsp&nbsp車</a> -->
 <!--         </li> -->
 
-      </ul>
+<!--       </ul> -->
       		  
-      <ul class="nav navbar-nav navbar-right">
+<!--       <ul class="nav navbar-nav navbar-right"> -->
 
 
-  <!-- 會員專區 ================================================== -->
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">會員專區 <span class="caret"></span></a>
-        <ul class="dropdown-menu" aria-labelledby="themes">
-          <li><a href="#" style="padding: 12px 15px;">會員資料管理</a></li>
-          <li><a href="#" style="padding: 12px 15px;">我的錢包</a></li>
-          <li><a href="#" style="padding: 12px 15px;">訂單管理</a></li>
-          <li><a href="#" style="padding: 12px 15px;">我的最愛</a></li>
-        </ul>
-      </li>
-					<!-- 會員專區 ================================================== -->
-					<c:if test="${memberVO!=null}">
-						<li>${memberVO.memName}你好</li>
-					</c:if>
-					<!-- 登入 / 註冊 ================================================== -->
+<!--   會員專區 ================================================== -->
+<!--       <li class="dropdown"> -->
+<!--         <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">會員專區 <span class="caret"></span></a> -->
+<!--         <ul class="dropdown-menu" aria-labelledby="themes"> -->
+<!--           <li><a href="#" style="padding: 12px 15px;">會員資料管理</a></li> -->
+<!--           <li><a href="#" style="padding: 12px 15px;">我的錢包</a></li> -->
+<!--           <li><a href="#" style="padding: 12px 15px;">訂單管理</a></li> -->
+<!--           <li><a href="#" style="padding: 12px 15px;">我的最愛</a></li> -->
+<!--         </ul> -->
+<!--       </li> -->
+<!-- 					會員專區 ================================================== -->
+<%-- 					<c:if test="${memberVO!=null}"> --%>
+<%-- 						<li>${memberVO.memName}你好</li> --%>
+<%-- 					</c:if> --%>
+<!-- 					登入 / 註冊 ================================================== -->
 
 				
-					<c:choose>
-						<c:when test="${memberVO==null}">
-							<li><a href="<%=request.getContextPath()%>/front/Login.jsp">登入
-									/ 註冊</a></li>
-						</c:when>
-						<c:when test="${memberVO!=null}">
-							<li><a
-								href="<%=request.getContextPath()%>/member/member.do?action=logout">登出</a></li>
-						</c:when>
-					</c:choose>
-      </ul>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${memberVO==null}"> --%>
+<%-- 							<li><a href="<%=request.getContextPath()%>/front/Login.jsp">登入 --%>
+<!-- 									/ 註冊</a></li> -->
+<%-- 						</c:when> --%>
+<%-- 						<c:when test="${memberVO!=null}"> --%>
+<!-- 							<li><a -->
+<%-- 								href="<%=request.getContextPath()%>/member/member.do?action=logout">登出</a></li> --%>
+<%-- 						</c:when> --%>
+<%-- 					</c:choose> --%>
+<!--       </ul> -->
     		  
-    </div>
-  </div>
-</div>
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
 
 
 <!-- 各項button 連結請自行找 <a href= "填入自己的頁面連結 (溫腥提醒:記得用動態) "> ================== -->
@@ -202,12 +202,98 @@
 
 <!-- 這裡是JS專區 =========================================================== -->
 
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+<%-- <script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script> --%>
+<%-- <script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> --%>
 
 <!-- 這裡是JS專區 =========================================================== -->
+</style>
 
+
+<%@ include file="/front/css/navbar/navCss.file" %>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
+    <div class="container-fliud">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            </button>
+            <a class="navbar-brand" href="#"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
+        </div>
+        
+        <!-- 手機隱藏選單區 -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbarTopColor">
+        
+        
+        
+  <!--  開始放鏈結區 ======================================================================== -->
+            <ul class="nav navbar-nav navnavnav">
+                <li><a href="#">關於我們</a></li>
+                <li class="dropdown newdropdown">
+                    <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">最新消息 <b class="caret"></b></a>
+                    <ul class="dropdown-menu dropdownNew">
+                        <li><a href="<%=request.getContextPath()%>/front/newsdetail/allNew.jsp">最新消息</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/healthnews/allNew.jsp">保健資訊</a></li>
+                    </ul>
+                </li>
+                </li>
+                <li class="dropdown newdropdown">
+                    <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">照護服務 <b class="caret"></b></a>
+                    <ul class="dropdown-menu dropdownNew">
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">短期照護服務</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp">長期照護服務</a></li>
+                        <li><a href="#">Q&A</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">派車服務</a></li>
+                <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
+                <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
+                <li><a href="#">聯絡我們</a></li>
+            </ul>
+        
+        
+        
+            <!-- 右選單 -->
+            <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+            <c:if test="${memberVO!=null}">
+                <li><a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">${memberVO.memName} 您好</a></li>
+            </c:if>   
+            
+            <c:choose>
+				<c:when test="${memberVO==null}">
+					<li>
+					<a href="<%=request.getContextPath()%>/front/Login.jsp">登入  / 註冊</a>
+					</li>
+				</c:when>
+				<c:when test="${memberVO!=null}">
+					<li>
+					<a href="<%=request.getContextPath()%>/member/member.do?action=logout">登出</a>
+					</li>
+				</c:when>
+			</c:choose> 
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員中心 <b class="caret"></b></a>
+                     <ul class="dropdown-menu dropdownNew">
+                        <li><a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+            
+<!--  開始放鏈結區 ======================================================================== -->
+
+
+        </div>
+        <!-- 手機隱藏選單區結束 -->
+    </div>
+</nav>
+   <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
@@ -319,9 +405,8 @@
 	*/
 </style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script>
         <script type="text/javascript">  
         $(document).ready(function(){  
@@ -376,25 +461,7 @@
 
 
 <!--   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalforShopCart">Open Modal</button> -->
-<style type="text/css">
-#MyBlog{
-    position: fixed;  /*固定在網頁上不隨卷軸移動，若要隨卷軸移動用absolute*/
-    top: 50%;  /*設置垂直位置*/
-    right: -20px;  /*設置水平位置，依所放的內容多寡需要自行手動調整*/
-    background: #ffffff;  /*背景顏色*/
-    padding: 10px 20px;
-    border-radius: 10px;  /*圓角*/
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-}
-#MyBlog:hover{  /*當滑鼠移至此區塊時，伸縮區塊*/
-    right: -10px;
-}
-#MyBlog #title{
-    padding-right: 5px;  /*讓標題與連結中間有空隙*/
-}
 
-</style>
 
 
 
@@ -457,7 +524,26 @@ border-color: #398439;
 color: #ffe200;
 }
 </style>
-		
+		<style type="text/css">
+#MyBlog{
+    position: fixed;  /*固定在網頁上不隨卷軸移動，若要隨卷軸移動用absolute*/
+    top: 50%;  /*設置垂直位置*/
+    right: -20px;  /*設置水平位置，依所放的內容多寡需要自行手動調整*/
+    background: #ffffff;  /*背景顏色*/
+    padding: 10px 20px;
+    border-radius: 10px;  /*圓角*/
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+#MyBlog:hover{  /*當滑鼠移至此區塊時，伸縮區塊*/
+    right: -10px;
+}
+#MyBlog #title{
+    padding-right: 5px;  /*讓標題與連結中間有空隙*/
+}
+
+</style>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -533,7 +619,18 @@ color: #ffe200;
 											</c:forEach> </select>
 											<input type="hidden" name="action" value="ADD2" id="ADD2">
 										<input type="hidden" name="ITEMNO" value="<%=((ProVO)(listforpro.get(i))).getITEMNO()%>" id="ITEMNO" > 
-										<input type="submit" class="btn btn-sm btn-success" style="background-color: green;font-size: 16px;" value="放入購物車" >
+										<input type="submit" class="btn btn-sm btn-success" style="background-color: green;font-size: 16px;    color: #fff;
+    background-color: green;
+    border-color: #4cae4c;
+    font-size: 16px;
+    padding: 4px 10px;
+    line-height: 1.5;
+	height:32px;
+	width:102px;
+    border-radius: 3px;
+    font-family: Microsoft JhengHei;
+    border: 1px solid ;
+    margin-bottom: 10px;" value="放入購物車" >
 										</FORM>
 										</div>
 									</div>
@@ -574,7 +671,18 @@ color: #ffe200;
 											</c:forEach> </select>
 											<input type="hidden" name="action" value="ADD2" id="ADD2">
 										<input type="hidden" name="ITEMNO" value="<%=((ProVO)(listforpro.get(i))).getITEMNO()%>" id="ITEMNO" > 
-										<input type="submit" class="btn btn-sm btn-success" style="background-color: green;font-size: 16px;" value="放入購物車" >
+										<input type="submit" class="btn btn-sm btn-success" style="background-color: green;font-size: 16px;    color: #fff;
+    background-color: green;
+    border-color: #4cae4c;
+    font-size: 16px;
+    padding: 4px 10px;
+	height:32px;
+	width:102px;
+    line-height: 1.5;
+    border-radius: 3px;
+    font-family: Microsoft JhengHei;
+    border: 1px solid ;
+    margin-bottom: 10px;" value="放入購物車" >
 										</FORM>
 										</div>
 									</div>
@@ -601,7 +709,7 @@ color: #ffe200;
 
 <div class="col-xs-12 col-sm-12">
 
-<div id="MyBlog">
+<div id="MyBlog" style="border-radius: 10px;">
 	 <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModalforShopCart">
 	 <img src="<%=request.getContextPath()%>/img/cart.png" style="width: 50px;height: 50px;">
 	 </button>
@@ -650,7 +758,18 @@ color: #ffe200;
 											</c:forEach> </select>
 									<input type="hidden" name="action" value="ADD" ">
 									<input type="hidden" name="ITEMNO" value="${shopVO.ITEMNO}" >
-									<input type="submit" style="background-color: green;font-size: 16px;" class="btn btn-sm btn-success" value="放入購物車">
+									<input type="submit" style="background-color: green;font-size: 16px;    color: #fff;
+    background-color: green;
+    border-color: #4cae4c;
+    font-size: 16px;
+	height:32px;
+	width:102px;
+    padding: 4px 10px;
+    line-height: 1.5;
+    border-radius: 3px;
+    font-family: Microsoft JhengHei;
+    border: 1px solid ;
+    margin-bottom: 10px;" class="btn btn-sm btn-success" value="放入購物車">
 										</FORM>
 									</div>
 								</div>

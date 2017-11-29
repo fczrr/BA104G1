@@ -268,6 +268,7 @@ a {
   <div class="row">
     <div class="col-lg-6">
       <h1>Welcome</h1>
+        <p class="lead">歡迎光臨有你真好購物商城。</p>
     </div>
   </div>
 </div>

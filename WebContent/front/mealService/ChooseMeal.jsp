@@ -412,10 +412,7 @@
 												validRange : function(nowDate) {
 													return {
 														start : nowDate,
-														end : nowDate
-																.clone()
-																.add(3,
-																		'months')
+														end : nowDate.clone().add(3,'months')
 													};
 												},
 												

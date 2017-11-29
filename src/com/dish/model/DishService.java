@@ -51,4 +51,12 @@ public class DishService {
 	public void deleteDish(Integer dishNo) {
 		dao.delete(dishNo);
 	}
+	
+	
+	public String getDishIntro(String dishName){
+		String dishIntro=null;
+		dishIntro=dao.getIntroByName(dishName);
+		
+		return dishIntro;
+	}
 }

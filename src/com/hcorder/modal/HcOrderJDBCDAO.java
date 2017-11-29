@@ -368,7 +368,7 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 		try {
 
 			con  =ds.getConnection();
-			String finalSQL = "select * from HC_ORDER_MASTER "
+			String finalSQL = "select * from HC_ORDER_MASTER where 1 = 1"
 			          + jdbcUtil_CompositeQuery_order.get_WhereCondition(map)
 			          + "order by order_No";
 			pstmt = con.prepareStatement(finalSQL);

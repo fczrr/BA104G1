@@ -24,31 +24,28 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Title Page</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css" media="screen">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css">
 <style type="text/css">
 </style>
 </head>
 
 <body>
-<!-- ----------------------下方會員區麵包屑 ------------------------->	
-	<br>
-		<nav aria-label="breadcrumb" role="navigation">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
-		    <li class="breadcrumb-item">
-		    <a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">
-		    <a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-		
-		  </ol>
-		</nav>
-<!-- ----------------------上方會員區麵包屑 ------------------------->
-
 			<div class="container-fluid">
-
+<!-- ----------------------下方會員區麵包屑 ------------------------->	
+					<nav aria-label="breadcrumb" role="navigation">
+					  <ol class="breadcrumb">
+					    <li class="breadcrumb-item">
+					    <a href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+					    <li class="breadcrumb-item">
+					    <a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員管理</a></li>
+					    <li class="breadcrumb-item active" aria-current="page">
+					    <a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</li>
+					  </ol>
+					</nav>
+<!-- ----------------------上方會員區麵包屑 ------------------------->
 <!-- ----------------------下方訂單管理區選項------------------------->					
 					<ul class="nav nav-tabs" id="navList">
 						<li data-name="loginLogTab" >
@@ -121,4 +118,9 @@
 	</body>		
 <%@ include file="/front/footerbar.jsp"%>
 
+			<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </html>

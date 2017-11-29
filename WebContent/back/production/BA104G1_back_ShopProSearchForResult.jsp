@@ -53,11 +53,10 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-<div>
-                      <%@ include file="/Shop/backSearchProShopResult.jsp" %>
-    </div>                  
 
-                      <div id='calendar'></div>
+                      <%@ include file="/Shop/backSearchProShopResult.jsp" %>
+                
+
                   </div>
                 </div>
               </div>

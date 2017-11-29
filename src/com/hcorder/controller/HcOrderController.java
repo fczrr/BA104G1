@@ -359,6 +359,7 @@ public class HcOrderController extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
+			String failureV = req.getParameter("failureV");
 
 			try {
 				
@@ -375,7 +376,7 @@ public class HcOrderController extends HttpServlet {
 					session.setAttribute("map",map2);
 					map = (HashMap<String, String[]>)req.getParameterMap();
 				} 
-				
+				//加入錯誤處理
 				
 
 				
@@ -385,14 +386,14 @@ public class HcOrderController extends HttpServlet {
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("listOrds_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
-				RequestDispatcher successView = req.getRequestDispatcher("/back/homeCare/Hc_order_manage.jsp"); // 成功轉交listEmps_ByCompositeQuery.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(req.getParameter("successView")); // 成功轉交listEmps_ByCompositeQuery.jsp
 				successView.forward(req, res);
 				
 				/***************************其他可能的錯誤處理**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back/homeCare/Hc_order_manage.jsp");
+						.getRequestDispatcher(failureV);
 				failureView.forward(req, res);
 			}
 		}

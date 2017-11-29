@@ -5,7 +5,6 @@
 <%@ page import="com.balance.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
-
 <%
 	Object obj = request.getAttribute("list");
 	List<BalanceVO> list = new ArrayList<BalanceVO>();
@@ -18,10 +17,18 @@
 	pageContext.setAttribute("list", list);
 
 	int num = 0;
-	
+
 	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
 %>
 <style>
+.mytitle {
+	color: #fff;
+	background: #40b2cd;
+	padding: 16px 25px;
+	margin: -20px -25px 10px;
+	border-radius: 3px 3px 0 0;
+}
+
 table#table-1 {
 	width: 930px;
 	background-color: #DADFDF;
@@ -55,61 +62,58 @@ h4 {
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>首頁</h3>
-			</div>
-			<div class="title_right">
-				<div
-					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-					<!--                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div> -->
+
+				<div class="title_right">
+					<div
+						class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="clearfix"></div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="x_panel">
-					<div class="x_title">
-						<table id="table-1">
-							<tr>
-								<td>
-									<h3>會員加值狀態管理頁面</h3>
-								</td>
-							</tr>
-						</table>
-						<ul class="nav navbar-right panel_toolbox">
-							<li><a class="collapse-link"> <i
-									class="fa fa-chevron-up"> </i>
-							</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">
-									<i class="fa fa-wrench"></i>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Settings 1</a></li>
-									<li><a href="#">Settings 2</a></li>
-								</ul></li>
-							<!-- XX -->
-							<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-						</ul>
-						<div class="clearfix"></div>
-					</div>
-					<div class="x_content">
+			<div class="clearfix"></div>
+			<div class="row">
+				<div id="mytitle" style="background-color:#40b2cd;padding:10px;color:#FFFFFF;text-align:center;">
+					<h1>
+						會員加值狀態&nbsp;<b>管理頁面</b>
+					</h1>
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+
+
+
+
+
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"> <i
+										class="fa fa-chevron-up"> </i>
+								</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-expanded="false">
+										<i class="fa fa-wrench"></i>
+								</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Settings 1</a></li>
+										<li><a href="#">Settings 2</a></li>
+									</ul></li>
+								<!-- XX -->
+								<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<div class="x_content"></div>
 						<div class="col-xs-12 col-sm-3 ">
 							<form
 								action="<%=request.getContextPath()%>/member/member.do?action=queryBalanceByMemNo"
 								method="post">
 								<div class="form-group form-inline input-group">
-									<input type="text" class="form-control" name="memNo" value="" placeholder="依會員帳號查詢" />
-									 <span class="input-group-btn">
+									<input type="text" class="form-control" name="memNo" value=""
+										placeholder="依會員帳號查詢" /> <span class="input-group-btn">
 										<button type="submit" class="btn btn-primary">查詢</button>
 									</span>
 								</div>
-								
+
 							</form>
 						</div>
 						<div class="col-xs-12 col-sm-3">
@@ -123,7 +127,7 @@ h4 {
 								</font>
 							</c:if>
 						</div>
-		
+
 						<div class="col-sm-12">
 							<table class="table table-hover table-striped">
 								<thead>
@@ -141,32 +145,31 @@ h4 {
 									<%@ include file="pages/page1.file"%>
 									<c:forEach var="balanceVO" items="${list}"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-										<form
-											action="<%=request.getContextPath()%>/member/member.do"
+										<form action="<%=request.getContextPath()%>/member/member.do"
 											method="post">
-										<input type="hidden" name="action" value="changeBalanceStatus">
-										<input type="hidden" name="topupNo" value="${balanceVO.topupNo}">
-										
-										<tr align='center' valign='middle' >
-											<td>${balanceVO.topupNo}</td>
-											<td>${balanceVO.memNo}</td>
-											<td>${balanceVO.topupValue}</td>
-											<td>${balanceVO.topupWay}</td>
-											<td>
-												<select name="status"
+											<input type="hidden" name="action"
+												value="changeBalanceStatus"> <input type="hidden"
+												name="topupNo" value="${balanceVO.topupNo}">
+
+											<tr align='center' valign='middle'>
+												<td>${balanceVO.topupNo}</td>
+												<td>${balanceVO.memNo}</td>
+												<td>${balanceVO.topupValue}</td>
+												<td>${balanceVO.topupWay}</td>
+												<td><select name="status"
 													class="form-control selectpicker">
-													<option value="ok" ${balanceVO.status.equals("ok") ?"selected" :""}>ok</option>
-													<option value="fail" ${balanceVO.status.equals("fail") ?"selected" :""}>fail</option>
-												</select>
-											</td>
-											
-											<td>${balanceVO.topupTime}</td>
-											<td>
-												<button type="submit" class="btn btn-info btn-default" >
-													修改
-												</button>
-											</td>
-										</tr>
+														<option value="ok"
+															${balanceVO.status.equals("ok") ?"selected" :""}>ok</option>
+														<option value="fail"
+															${balanceVO.status.equals("fail") ?"selected" :""}>fail</option>
+												</select></td>
+
+												<td>${balanceVO.topupTime}</td>
+												<td>
+													<button type="submit" class="btn btn-info btn-default">
+														修改</button>
+												</td>
+											</tr>
 										</form>
 									</c:forEach>
 								</tbody>

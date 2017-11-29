@@ -6,9 +6,13 @@
 <%@ page import="com.employee.model.*"%>
 
 
-<%  NewsdetailService newsdetailSvc = new NewsdetailService();
-	List<NewsdetailVO> list = newsdetailSvc.getAll();
-	pageContext.setAttribute("list",list);
+<%  
+	List<NewsdetailVO> list =(List<NewsdetailVO>)request.getAttribute("list");
+	if(list == null){	
+		NewsdetailService newsdetailSvc = new NewsdetailService();
+		list = newsdetailSvc.getAll();
+		pageContext.setAttribute("list",list);
+	}
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
 	pageContext.setAttribute("sdf",sdf);
@@ -43,11 +47,11 @@
 					<div class="x_title">
 						<ul class="nav navbar-right panel_toolbox">
 							<div class="btn-group">
-								<a href="<%=request.getContextPath()%>/back/mealOrder/listAllMealOrder.jsp" class="btn btn-info" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp 全部</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=未處理" class="btn btn-info" role="button"><i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp 上架</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=已確認" class="btn btn-info" role="button"><i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp 下架</a>
+								<a href="<%=request.getContextPath()%>/back/newsdetail/AllNews.jsp" class="btn btn-info" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp 全部</a>
+								<a href="<%=request.getContextPath()%>/newsdetail/newsdetail.do?action=On_Status" class="btn btn-info" role="button"><i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp 上架</a>
+								<a href="<%=request.getContextPath()%>/newsdetail/newsdetail.do?action=Off_Status"" class="btn btn-info" role="button"><i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp 下架</a>
 							</div>
-							<a class="btn btn-success addbtn"   href="<%=request.getContextPath()%>/back/healthnewsdetail/add_news.jsp" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp新增保健資訊</a>
+							<a class="btn btn-success addbtn"   href="<%=request.getContextPath()%>/back/newsdetail/add_news.jsp" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp新增最新資訊</a>
 						</ul>
    					<div class="clearfix"></div>
 					</div>
@@ -202,7 +206,7 @@
 
 
 		
-		
+	<%@ include file="/back/production/BA104G1_footer.jsp"%>	
 		
     <script src="https://code.jquery.com/jquery.js"></script>
 
@@ -237,44 +241,6 @@ $(document).ready(function () {
         }
     });
   
-// 文章新增成功    
-    $("#btnadd").on('click', function() {
-    	$item = $( this );
-
-		  $.ajax({
-	    		 type:"POST",  //指定http參數傳輸格式為POST 
-	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/NewsdetailServlet?action=getOne_For_Display&newsno=ND0001",   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
-//	    		 data:text,  //要傳給目標的data
-	    		 dataType: "json",
-	    		 
-	    		//Ajax成功後執行的function，response為回傳的值
-	    		 success : function(res){
-	     console.log(res.newsno);			 
-	    			 swal({
-	  		    		    title: '已成功新增',
-	  		    		    type:	'success',
-	  		    		    timer: 9000
-	  		    		}).then(
-	  		    		    function (dismiss) {
-	  		    		        if (dismiss === 'timer') {
-	  		    		            console.log('I was closed by the timer')
-	  		    		        }
-	  		    		    }
-	  		    		)
-	    		 },
-	    		 error : function(xhr, ajaxOptions, thrownError){
-	    			 if($("#newstitle").val() === ''){
-	    					$("#newstitle").val().focus();
-	    				};
-	    				if($("#newsintro").val() === ''){
-	    					$("#newsintro").val().focus();
-	    				};
-	    				
-	             }
-	    	 }); 
-	      });
-
     
 // 提示修改成功
     $("#btnSub").on('click', function() {
@@ -291,13 +257,13 @@ console.log(seach.val());
 	    		 
 	    		//Ajax成功後執行的function，response為回傳的值
 	    		 success : function(res){
-	     console.log(res.newsno);			 
 	    			 swal({
 	  		    		    title: '已成功修改',
 	  		    		    type:	'success',
-	  		    		    timer: 9000
-	  		    		})
-	  		    		reload();
+	  		    		});
+	  		    		setTimeout(function(){ 
+		    				    location.reload();
+		    				} ,800);
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	    			 
@@ -308,7 +274,7 @@ console.log(seach.val());
     
 // 查詢詳細資料 AJAX方法
     $(".clickDetail").on('click', function() {
-    	$(".detailBack").html("訂單申訴內容");
+    	$(".detailBack").html("最新資訊詳細內容");
 	     $(".newsNoDe").html('');
 	     $(".newsFti").html('');
 	     $(".newsIntro").html('');
@@ -363,22 +329,18 @@ console.log(seach.val());
 	    			 swal({
 	  		    		    title: res+': 已成功刪除',
 	  		    		    type:	'success',
-	  		    		    timer: 4500
-	  		    		})
-	  		    		reload();
+	  		    		});
+	  		    				setTimeout(function(){ 
+	  		    				    location.reload();
+	  		    				} ,800);
+	  		    		
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	    			 
 	             }
 	    	 }); 
 	      });
-// 刪除
-    
-    function reload(){
-   		setTimeout(function(){
-		  window.location.reload();
-		  },500);
-	};
+
 
 
 // 換圖預覽

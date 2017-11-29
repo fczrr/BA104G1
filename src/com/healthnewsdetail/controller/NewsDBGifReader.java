@@ -1,8 +1,13 @@
 package com.healthnewsdetail.controller;
 import java.io.*;
 import java.sql.*;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.sql.DataSource;
 
 public class NewsDBGifReader extends HttpServlet{
 
@@ -46,25 +51,24 @@ public class NewsDBGifReader extends HttpServlet{
 	    }
 	  }
 	  
-	  
 	  public void init() throws ServletException {
-	    try {
-	      Class.forName("oracle.jdbc.driver.OracleDriver");
-	      con = DriverManager.getConnection("jdbc:oracle:thin:@13.229.86.22:1521:XE", "ba104g1", "ba104g1");
-	    }
-	    catch (ClassNotFoundException e) {
-	      throw new UnavailableException("Couldn't load JdbcOdbcDriver");
-	    }
-	    catch (SQLException e) {
-	      throw new UnavailableException("Couldn't get db connection");
-	    }
-	  }
-	  
-	  public void destroy() {
 			try {
-				if (con != null) con.close();
+				Context ctx = new InitialContext();
+				DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/BA104G1DB");
+				con = ds.getConnection();
+			} catch (NamingException e) {
+				e.printStackTrace();
 			} catch (SQLException e) {
-				  System.out.println(e);
+				e.printStackTrace();
+			}
+		}
+
+		public void destroy() {
+			try {
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println(e);
 			}
 		}
 	}

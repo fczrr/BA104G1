@@ -31,6 +31,9 @@ public class HealthNewsDetailJDBCDAO implements HealthNewsDetailDAO_interface{
 		private static final String GET_NEWSON_STMT =
 				"SELECT HEALTHNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM HEALTHNEWSDETAIL WHERE STATUS ='上架' ORDER BY HEALTHNO DESC";
 		
+		private static final String GET_NEWSOff_STMT =
+				"SELECT HEALTHNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM HEALTHNEWSDETAIL WHERE STATUS ='下架' ORDER BY HEALTHNO DESC";
+		
 	// 員工關鍵字查詢
 	private static final String GET_ONE_STMT =
 			"SELECT HEALTHNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM HEALTHNEWSDETAIL WHERE HEALTHNO = ?";
@@ -309,7 +312,64 @@ public class HealthNewsDetailJDBCDAO implements HealthNewsDetailDAO_interface{
 		return list;
 	}
 	
+
+	@Override
+	public List<HealthNewsDetailVO> getNewOffAll() {
+		List<HealthNewsDetailVO> list = new ArrayList<HealthNewsDetailVO>();
+		HealthNewsDetailVO healthNewsDetailVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
 	
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_NEWSOff_STMT);
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){
+				healthNewsDetailVO = new HealthNewsDetailVO();
+				healthNewsDetailVO.setHealthNo(rs.getString("healthNo"));
+				healthNewsDetailVO.setNewsTitle(rs.getString("newsTitle"));
+				healthNewsDetailVO.setNewsIntro(rs.getString("newsIntro"));
+				healthNewsDetailVO.setEmp_no(rs.getString("emp_no"));
+				healthNewsDetailVO.setCoverPic(rs.getBytes("coverPic"));
+				healthNewsDetailVO.setNewsDate(rs.getTimestamp("newsDate"));
+				healthNewsDetailVO.setStatus(rs.getString("status"));
+				list.add(healthNewsDetailVO);			
+			}
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
 	
 	@Override
 	public List<HealthNewsDetailVO> getAll() {

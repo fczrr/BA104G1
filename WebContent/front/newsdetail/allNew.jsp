@@ -78,13 +78,13 @@
             <div>
                 <ol class="breadcrumb" id="breadNew">
                     <li><a href="<%=request.getContextPath()%>/index.jsp"><i class="fa fa-home" aria-hidden="true"></i>首頁</a></li>
-                    <li class="active"><a href="<%=request.getContextPath()%>/front/healthnews/allNew.jsp">保健資訊</a></li>
+                    <li class="active"><a href="<%=request.getContextPath()%>/front/healthnews/allNew.jsp">最新資訊</a></li>
                 </ol>
             </div>
             <!--  麵包屑 =================================================================  -->
            
-   
- <%@ include file="page1.file" %>  
+  
+<%@ include file="page1.file" %>  
 <c:forEach var="newsdetailVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">    
            
         <div class="col-xs-10 col-sm-12" style="border: 1px solid #aaa; margin-top: 10px; margin-left:10px; margin-bottom: 20px;    width: -webkit-fill-available">
@@ -110,12 +110,12 @@
 					 	<input type="hidden" name="whichPage"  value="<%=request.getParameter("whichPage")%>">  <!--只用於:lisAllOrder.jsp-->
 				        <input type="hidden" name="action" value="getOne_For_Display_Front">
 						<input type="submit" value="更多" class="btn btn-warning btn-sm"></FORM>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
       </c:forEach>
-	<%@ include file="/front/newsdetail/page2.file" %>
+ 	<%@ include file="page2.file" %> 
         
         
         

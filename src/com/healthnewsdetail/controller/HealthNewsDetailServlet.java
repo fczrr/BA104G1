@@ -15,6 +15,8 @@ import javax.servlet.http.*;
 
 import com.google.gson.Gson;
 import com.healthnewsdetail.model.*;
+import com.newsdetail.model.NewsdetailService;
+import com.newsdetail.model.NewsdetailVO;
 
 @WebServlet("/HealthNewsDetailServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 10 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
@@ -23,8 +25,8 @@ public class HealthNewsDetailServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(req, res);
+		req.setCharacterEncoding("UTF-8");
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -34,6 +36,38 @@ public class HealthNewsDetailServlet extends HttpServlet {
 		String action = req.getParameter("action");
 
 System.out.println("進去哪一塊:"+action);
+
+
+
+/************************************** 處理狀態 **********************************************************************************/		
+
+		
+		if("On_Status".equals(action)){
+			
+			HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
+			List<HealthNewsDetailVO> list = healthNewsDetailSvc.getNewOnAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/healthnewsdetail/AllNews.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		if("Off_Status".equals(action)){
+			HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
+			List<HealthNewsDetailVO> list = healthNewsDetailSvc.getNewOffAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/newsdetail/AllNews.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+
+
+
+
+
+
 		
 /************************************** insert **********************************************************************************/		
 		
@@ -132,23 +166,23 @@ System.out.println("===================" + newsIntro);
 				
 				String emp_no = req.getParameter("emp_no");
 System.out.println("========================" + emp_no);
-				
-			//就是你啦 圖片
-			byte[] coverPic = null;
-			Part part = req.getPart("coverPic");
-			try {
-				if (part.getSize() != 0 ){   // 如果有新圖
-			      coverPic = getPictureByteArray(part);
-				}else {
-					HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
-					HealthNewsDetailVO healthNewsDetailVO = healthNewsDetailSvc.getOneNews(healthNo);
-				    coverPic = healthNewsDetailVO.getCoverPic();
-				}
 			
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			    
+
+				byte[] coverPic = null;
+				Part part = req.getPart("coverPic");
+				try {
+					if (part.getSize() != 0 ){   // 如果有新圖
+				      coverPic = getPictureByteArray(part);
+					}else {
+						HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
+						HealthNewsDetailVO healthNewsDetailVO = healthNewsDetailSvc.getOneNews(healthNo);
+					    coverPic = healthNewsDetailVO.getCoverPic();
+					}
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 System.out.println("========================" + coverPic);
 			
 				Timestamp newsDate = new Timestamp(System.currentTimeMillis());
@@ -183,7 +217,7 @@ System.out.println("========================" + coverPic);
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
 				req.setAttribute("healthNewsDetailVO", healthNewsDetailVO); // 資料庫update成功後,正確的的healthNewsDetailVO物件,存入req
 	System.out.println("========================改成功" + healthNo);
-				String url = requestURL+"?whichPage="+whichPage+"&healthNo="+healthNo; // 送出修改的來源網頁的第幾頁(只用於:listAllCarCom.jsp)和修改的是哪一筆
+				String url = "/back/healthnewsdetail/AllNews.jsp"; // 送出修改的來源網頁的第幾頁(只用於:listAllCarCom.jsp)和修改的是哪一筆
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllNews.jsp
 				successView.forward(req,res);	
 				
@@ -356,7 +390,7 @@ System.out.println("刪除 :"+healthNo);
 
 	
 	
-	public static byte[] getPictureByteArray(Part part) throws IOException{
+public static byte[] getPictureByteArray(Part part) throws IOException{
 		
 		InputStream fin = part.getInputStream();
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -384,7 +418,6 @@ System.out.println("刪除 :"+healthNo);
 			return filename;
 		}
 	}
-
 	
 
 

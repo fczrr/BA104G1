@@ -9,5 +9,6 @@ public interface NewsdetailDAO_interface {
 	public NewsdetailVO findByPrimaryKey(String newsno);
 	public List<NewsdetailVO> getAll();
 	public List<NewsdetailVO> getNewOnAll();
+	public List<NewsdetailVO> getNewOffAll();
 
 }

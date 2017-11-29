@@ -52,6 +52,10 @@ public class NewsdetailService {
 	public List<NewsdetailVO> getNewOnAll(){
 		return dao.getNewOnAll();
 	}
+
+	public List<NewsdetailVO> getNewOffAll() {
+		return dao.getNewOffAll();
+	}
 	
 
 }

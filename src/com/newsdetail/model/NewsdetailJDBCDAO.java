@@ -29,6 +29,11 @@ public class NewsdetailJDBCDAO implements NewsdetailDAO_interface{
 	private static final String GET_NEWSON_STMT =
 			"SELECT NEWSNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM NEWSDETAIL WHERE STATUS ='上架' ORDER BY NEWSNO DESC";
 	
+	private static final String GET_NEWSOFF_STMT =
+			"SELECT NEWSNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM NEWSDETAIL WHERE STATUS ='下架' ORDER BY NEWSNO DESC";
+	
+	
+	
 	// 員工關鍵字查詢
 	private static final String GET_ONE_STMT =
 			"SELECT NEWSNO, NEWSTITLE, NEWSINTRO, EMP_NO, COVERPIC, NEWSDATE, STATUS FROM NEWSDETAIL WHERE NEWSNO = ?";
@@ -308,6 +313,65 @@ public class NewsdetailJDBCDAO implements NewsdetailDAO_interface{
 	}
 	
 	
+	
+	@Override
+	public List<NewsdetailVO> getNewOffAll() {
+		List<NewsdetailVO> list = new ArrayList<NewsdetailVO>();
+		NewsdetailVO newsdetailVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+	
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_NEWSOFF_STMT);
+			rs = pstmt.executeQuery();
+				
+			while(rs.next()){
+				newsdetailVO = new NewsdetailVO();
+				newsdetailVO.setNewsno(rs.getString("newsno"));
+				newsdetailVO.setNewstitle(rs.getString("newstitle"));
+				newsdetailVO.setNewsintro(rs.getString("newsintro"));
+				newsdetailVO.setEmpno(rs.getString("emp_no"));
+				newsdetailVO.setCoverpic(rs.getBytes("coverpic"));
+				newsdetailVO.setNewsdate(rs.getTimestamp("newsdate"));
+				newsdetailVO.setStatus(rs.getString("status"));
+				list.add(newsdetailVO);			
+			}
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
 
 	
 	@Override
@@ -431,6 +495,7 @@ public class NewsdetailJDBCDAO implements NewsdetailDAO_interface{
 //			System.out.println();
 //		}
 		
+		
 		List<NewsdetailVO> list = dao.getNewOnAll();
 		for(NewsdetailVO newsDetailVO : list){
 			System.out.println("Newsno : " + newsDetailVO.getNewsno()+ ",");
@@ -440,9 +505,21 @@ public class NewsdetailJDBCDAO implements NewsdetailDAO_interface{
 			System.out.println("Coverpic : " + newsDetailVO.getCoverpic()+ ",");
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			System.out.println("Newsdate : " + format.format(newsDetailVO.getNewsdate()));
-			System.out.println("Status :" + newsDetailVO.getStatus());
 			System.out.println();
 		}
+//		
+//		List<NewsdetailVO> list = dao.getNewOnAll();
+//		for(NewsdetailVO newsDetailVO : list){
+//			System.out.println("Newsno : " + newsDetailVO.getNewsno()+ ",");
+//			System.out.println("Newstitle : " + newsDetailVO.getNewstitle()+ ",");
+//			System.out.println("NewsIntro : " + newsDetailVO.getNewsintro()+ ",");
+//			System.out.println("Empno : " + newsDetailVO.getEmpno()+ ",");
+//			System.out.println("Coverpic : " + newsDetailVO.getCoverpic()+ ",");
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			System.out.println("Newsdate : " + format.format(newsDetailVO.getNewsdate()));
+//			System.out.println("Status :" + newsDetailVO.getStatus());
+//			System.out.println();
+//		}
 	}
 		
 }

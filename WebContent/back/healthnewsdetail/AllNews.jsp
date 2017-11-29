@@ -5,10 +5,14 @@
 <%@ page import="com.healthnewsdetail.model.*"%>
 <%@ page import="com.employee.model.*"%>
 
-<%  HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
-	List<HealthNewsDetailVO> list = healthNewsDetailSvc.getAll();
-	pageContext.setAttribute("list",list);
-
+<%  
+	List<HealthNewsDetailVO> list = (List<HealthNewsDetailVO>)request.getAttribute("list");
+	if(list == null){
+		HealthNewsDetailService healthNewsDetailSvc = new HealthNewsDetailService();
+		list = healthNewsDetailSvc.getAll();
+		pageContext.setAttribute("list",list);
+	}
+	
 	SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
 	pageContext.setAttribute("sdf",sdf);
 %>
@@ -43,9 +47,9 @@
 					<div class="x_title">
 						<ul class="nav navbar-right panel_toolbox">
 							<div class="btn-group">
-								<a href="<%=request.getContextPath()%>/back/mealOrder/listAllMealOrder.jsp" class="btn btn-info" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp 全部</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=未處理" class="btn btn-info" role="button"><i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp 上架</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=已確認" class="btn btn-info" role="button"><i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp 下架</a>
+								<a href="<%=request.getContextPath()%>/back/healthnewsdetail/AllNews.jsp" class="btn btn-info" role="button"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp 全部</a>
+								<a href="<%=request.getContextPath()%>/healthnewsdetail/healthnewsdetail.do?action=On_Status" class="btn btn-info" role="button"><i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp 上架</a>
+								<a href="<%=request.getContextPath()%>/healthnewsdetail/healthnewsdetail.do?action=Off_Status" class="btn btn-info" role="button"><i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp 下架</a>
 							</div>
 							<a class="btn btn-success addbtn"   href="<%=request.getContextPath()%>/back/healthnewsdetail/add_news.jsp" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp新增保健資訊</a>
 						</ul>
@@ -205,14 +209,13 @@
 		
 		
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="<%=request.getContextPath()%>/back/js/newsdetail/healthnews.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 </body>
 <%@ include file="news.file" %>
 
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 
 <script type="text/javascript">
 
@@ -261,10 +264,10 @@ console.log(seach.val());
 	    			 swal({
 	  		    		    title: '已成功新增',
 	  		    		    type:	'success',
-	  		    		    timer: 9000
-	  		    		}).then(
-	  		    				
-	  		    		)
+	  		    		}),
+	  		  			setTimeout(function(){ 
+	    				    location.reload();
+	    				} ,800);	
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	    			
@@ -288,16 +291,16 @@ console.log(seach.val());
 	    		 
 	    		//Ajax成功後執行的function，response為回傳的值
 	    		 success : function(res){
-	     console.log(res.newsno);			 
 	    			 swal({
 	  		    		    title: '已成功修改',
 	  		    		    type:	'success',
-	  		    		    timer: 9000
-	  		    		}).then(
-	  		    				reload()
-	  		    		)
+	  		    		});
+	  		    		setTimeout(function(){ 
+		    				    location.reload();
+		    				} ,800);
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
+	    			 
 	             }
 	    	 }); 
 	      });
@@ -305,7 +308,7 @@ console.log(seach.val());
     
 // 查詢詳細資料 AJAX方法
     $(".clickDetail").on('click', function() {
-    	$(".detailBack").html("保健資訊內容");
+    	$(".detailBack").html("保健資訊詳細內容");
 	     $(".newsFti").html('');
 	     $(".newsIntro").html('');
 	     $(".newstime").html('');
@@ -315,30 +318,27 @@ console.log(seach.val());
 	     
 	     $item = $( this );
 		  var seach = $item.parent().find("input.complainNoDetail");
-console.log("查詢:" +seach.val() )		  
 		  $.ajax({
 	    		 type:"POST",  //指定http參數傳輸格式為POST 
 	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/HealthNewsDetailServlet?action=getOne_For_Display&healthNo="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+	    		 url:"<%=request.getContextPath()%>/healthnewsdetail/healthnewsdetail.do?action=getOne_For_Display&healthNo="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
 //	    		 data:text,  //要傳給目標的data
 	    		 dataType: "json",
 	    		 
 	    		//Ajax成功後執行的function，response為回傳的值
 	    		 success : function(res){
-console.log(res)	    			 
 		    	     $(".detailBack").html("保健消息 - "+ res.healthNo +" : 【 "+ res.status+ " 】");
 		    	     $(".newsFti").html(res.newsTitle);
 		    	     $(".newsIntro").html(res.newsIntro);
 		    	     $(".newstime").html(res.newsDate);
 		    	     $(".empNoFor").html(res.emp_no);
 		    	     
-console.log("查詢"+res.healthNo);	
 
-		    	     var cover ="/BA104G1/healthnewsdetail/healthimgread.do?healthNo="+ res.healthNo;
+		    	     var cover ="<%=request.getContextPath()%>/healthnewsdetail/healthimgread.do?healthNo="+ res.healthNo;
 		    	     $(".newsPiccc").attr({'src' : cover,});	
-console.log($(".newsPiccc").attr({'src' : cover,}));	    		
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
+	    			 
 	             }
 	    	 }); 
 	      });
@@ -356,30 +356,23 @@ console.log($(".newsPiccc").attr({'src' : cover,}));
 //	    		 data:text,  //要傳給目標的data
 	    		 dataType: "json",
 	    		 
-	    		//Ajax成功後執行的function，response為回傳的值
-	    		 success : function(res){
-	    			 swal({
-	  		    		    title: res+': 已成功刪除',
-	  		    		    type:	'success',
-	  		    		    timer: 4500
-	  		    		}).then(
-	  		    				reload()
-	  						)
-	  		    			
-	  		    		)
-	    		 },
-	    		 error : function(xhr, ajaxOptions, thrownError){
-	                 alert(xhr.status+"\n"+thrownError);
-	             }
-	    	 }); 
-	      });
-// 刪除
-    function reload(){
-	    setTimeout(function(){
-			window.location.reload();
-			},500)
-		  )
-	};
+		    		//Ajax成功後執行的function，response為回傳的值
+		    		 success : function(res){
+		    			 swal({
+		  		    		    title: res+': 已成功刪除',
+		  		    		    type:	'success',
+		  		    		});
+		  		    				setTimeout(function(){ 
+		  		    				    location.reload();
+		  		    				} ,800);
+		  		    		
+		    		 },
+		    		 error : function(xhr, ajaxOptions, thrownError){
+		    			 
+		             }
+		    	 }); 
+		      });
+
 
 // 換圖預覽
     $("#uploadImage").change(function(){
@@ -413,43 +406,41 @@ console.log($(".newsPiccc").attr({'src' : cover,}));
 //        });
 
 
-
-
-      $(".search").keyup(function () {
-        var searchTerm = $(".search").val();
-        var listItem = $('.results tbody').children('tr');
-        var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-        
-      $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-            return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-        }
-      });
-        
-      $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','false');
-      });
-
-      $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-        $(this).attr('visible','true');
-      });
-
-      var jobCount = $('.results tbody tr[visible="true"]').length;
-        $('.counter').text(jobCount + ' item');
-
-      if(jobCount == '0') {$('.no-result').show();}
-        else {$('.no-result').hide();}
-    
-      });  
+    $(".search").keyup(function () {
+      var searchTerm = $(".search").val();
+      var listItem = $('.results tbody').children('tr');
+      var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
       
-    var len = 50; // 超過50個字以"..."取代
-    $(".intro").each(function(i){
-        if($(this).text().length>len){
-            $(this).attr("title",$(this).text());
-            var text=$(this).text().substring(0,len-1)+"...";
-            $(this).text(text);
-        }
+    $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+          return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+      }
+    });
+      
+    $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+      $(this).attr('visible','false');
     });
 
+    $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+      $(this).attr('visible','true');
+    });
+
+    var jobCount = $('.results tbody tr[visible="true"]').length;
+      $('.counter').text(jobCount + ' item');
+
+    if(jobCount == '0') {$('.no-result').show();}
+      else {$('.no-result').hide();}
+  
+    });  
+
+  	
+  var len = 50; // 超過50個字以"..."取代
+  $(".intro").each(function(i){
+      if($(this).text().length>len){
+          $(this).attr("title",$(this).text());
+          var text=$(this).text().substring(0,len-1)+"...";
+          $(this).text(text);
+      }
+  });
 });
 
 </script>

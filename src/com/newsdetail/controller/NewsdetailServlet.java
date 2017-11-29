@@ -20,13 +20,43 @@ public class NewsdetailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doPost(req, res);
-
+		req.setCharacterEncoding("UTF-8");
+		
 	}
+
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+
+		
+		
+		
+/************************************** 查詢狀態 **********************************************************************************/		
+	
+		
+		
+		if("On_Status".equals(action)){
+			NewsdetailService newsdetailSvc = new NewsdetailService();
+			List<NewsdetailVO> list = newsdetailSvc.getNewOnAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/newsdetail/AllNews.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		if("Off_Status".equals(action)){
+		
+			NewsdetailService newsdetailSvc = new NewsdetailService();
+			List<NewsdetailVO> list = newsdetailSvc.getNewOffAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/newsdetail/AllNews.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
 /************************************** insert **********************************************************************************/		
 	
 		if("insert".equals(action)){  // 來自addNewsdetail.jsp的請求 
@@ -149,7 +179,7 @@ System.out.println("修改 newsintro----" +newsintro);
 				Timestamp newsdate = new Timestamp(System.currentTimeMillis());
 				String status = new String(req.getParameter("status"));
 				
-				
+		System.out.println("修改===="+status);
 				NewsdetailVO newsdetailVO = new NewsdetailVO();
 				newsdetailVO.setNewsno(newsno);
 				newsdetailVO.setNewstitle(newstitle);
@@ -162,11 +192,13 @@ System.out.println("修改 newsintro----" +newsintro);
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
+		System.out.println("失敗1");				
 					req.setAttribute("newsdetailVO", newsdetailVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back/newsdetail/update_news.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
+						
 				}
 				
 				/***************************2.開始修改資料*****************************************/
@@ -179,7 +211,7 @@ System.out.println("修改 newsintro----" +newsintro);
 				String url = requestURL+"?whichPage="+whichPage+"&newsno="+newsno;
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 				successView.forward(req, res);
-
+		System.out.println("成功");	
 				/***************************其他可能的錯誤處理*************************************/
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
@@ -187,6 +219,7 @@ System.out.println("修改 newsintro----" +newsintro);
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/back/newsdetail/update_news.jsp");
 				failureView.forward(req, res);
+				System.out.println("失敗2");	
 			}
 		}
 		

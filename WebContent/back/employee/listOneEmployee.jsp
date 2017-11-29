@@ -7,9 +7,9 @@
 
 <%
 	EmployeeVO empVO = null;
-	if(request.getAttribute("empVO")!=null){
-		empVO =(EmployeeVO) request.getAttribute("empVO");
-	}else{
+	if (request.getAttribute("empVO") != null) {
+		empVO = (EmployeeVO) request.getAttribute("empVO");
+	} else {
 		empVO = (EmployeeVO) session.getAttribute("empVO");
 	}
 	String branch = empVO.getEmpBranches();
@@ -59,11 +59,10 @@ h4 {
 #modifyBtn {
 	margin-Top: 10px;
 }
-#forgetPwd{
-	margin-left:10px;
+
+#forgetPwd {
+	margin-left: 10px;
 }
-
-
 </style>
 
 
@@ -71,9 +70,7 @@ h4 {
 <div class="right_col" role="main">
 	<div class="">
 		<div class="page-title">
-			<div class="title_left">
-				<h3>首頁</h3>
-			</div>
+
 			<div class="title_right">
 				<div
 					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -91,9 +88,12 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<img
-							src="<%=request.getContextPath()%>/back/image/empolyee/horizonBar.jpg"
-							class="img-responsive">
+						<div id="mytitle"
+							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
+							<h1>
+								個人資料維護&nbsp;<b>頁面</b>
+							</h1>
+						</div>
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -121,14 +121,7 @@ h4 {
 								method="post" id="contact_form">
 								<fieldset>
 									<!-- Form Name -->
-									<legend>
-										<center>
-											<h2>
-												<b>個人資料維護</b>
-											</h2>
-										</center>
-
-									</legend>
+									<legend> </legend>
 									<br>
 									<!-- Text input-->
 
@@ -273,11 +266,10 @@ h4 {
 									<div class="form-group">
 										<div class="btn-group">
 											<a href='#modal-id' data-toggle="modal"
-												class="btn btn-warning" role="button">修改</a>
-											<a href='<%=request.getContextPath()%>/employee/employee.do?action=forgetPwd&empNo=${empVO.empNo}' 
-												id="forgetPwd" data-toggle="modal"
-												class="btn btn-danger" role="button" onclick="showMessage()"
-												>忘記密碼?</a>
+												class="btn btn-warning" role="button">修改</a> <a
+												href='<%=request.getContextPath()%>/employee/employee.do?action=forgetPwd&empNo=${empVO.empNo}'
+												id="forgetPwd" data-toggle="modal" class="btn btn-danger"
+												role="button" onclick="showMessage()">忘記密碼?</a>
 										</div>
 									</div>
 								</fieldset>
@@ -306,7 +298,7 @@ h4 {
 			<div class="modal-body">
 				<form class="well form-horizontal"
 					action="<%=request.getContextPath()%>/employee/employee.do?action=modifySelf"
-					method="post" id="contact_form" enctype="multipart/form-data" >
+					method="post" id="contact_form" enctype="multipart/form-data">
 					<input type="hidden" name="empNo" value="${empVO.empNo}">
 					<fieldset>
 						<!-- Form Name -->
@@ -321,9 +313,7 @@ h4 {
 						<!-- Text input-->
 						<div class="form-group">
 							<div class="col-md-4 inputGroupContainer col-md-offset-3">
-								<div class="input-group img-responsive" id="showImg">
-									<img id="img1" src="">
-								</div>
+
 							</div>
 							<div class="col-md-4 inputGroupContainer col-md-offset-3">
 								<input type="file" id="input1" name="empPhoto" value="選擇檔案"
@@ -447,9 +437,9 @@ h4 {
 			$id(imgId).src = reader.result;
 		}, false);
 	}
-	function showMessage(){
-		document.getElementById("forgetPwd").innerHTML='傳送中...';
-		document.getElementById("sentPassword").innerHTML='密碼已發送至註冊信箱，請前往信箱查收密碼';
+	function showMessage() {
+		document.getElementById("forgetPwd").innerHTML = '傳送中...';
+		document.getElementById("sentPassword").innerHTML = '密碼已發送至註冊信箱，請前往信箱查收密碼';
 	}
 </script>
 <%@ include file="/back/production/BA104G1_footer.jsp"%>

@@ -1,5 +1,19 @@
 
------讀圖(跑一次)-------------------------------------------------------------
+--檢查table有無被FK
+--SELECT table_name, constraint_name, r_constraint_name, status
+--FROM user_constraints
+--WHERE constraint_type = 'R'
+--AND r_constraint_name in
+--(
+--SELECT constraint_name from user_constraints
+--WHERE constraint_type in ('P', 'U')
+--AND UPPER(table_name) = UPPER('table_name')
+--)
+--ORDER BY table_name, constraint_name;
+
+
+
+--讀圖片用的
 CREATE OR REPLACE  DIRECTORY MEDIA_DIR AS 'C:/DB_photos1/'; 
 
 CREATE OR REPLACE FUNCTION load_blob( myFileName VARCHAR) RETURN BLOB as result BLOB;  
@@ -13,7 +27,9 @@ BEGIN
     dbms_lob.fileclose(myBFILE);
     RETURN myBLOB;
 END load_blob;
------讀圖(跑一次)-------------------------------------------------------------
+/
+
+
 
 --------DROP 檢舉SEQ-------
 DROP SEQUENCE SHOPCOM_NO_SEQ;
@@ -131,6 +147,8 @@ DROP TABLE EXPERT_LIST;
 DROP TABLE EMPLOYEE;
 DROP TABLE MEMBER;
 ---DROP 會員 員工TABLE-----------
+
+
 ------------------------------------------------------------------
 
 --------------------------新增Table-----------------------------------
@@ -498,27 +516,27 @@ INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVA
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
 
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR001.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR002.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR003.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR004.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR005.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR006.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR007.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR008.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR009.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR010.jpg'),'T');
 
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
-INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob(to_char('HC'||LPAD(to_char(SEQ_EMPPNO.NEXTVAL),3,'0')||'.jpg')),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR011.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR012.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR013.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR014.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR015.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR016.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR017.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR018.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR019.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR020.jpg'),'T');
 
 --------------------------------------------------------------------------------------
 
@@ -949,11 +967,11 @@ INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000004',7,2
 INSERT INTO ORDERDETAIL (ORDERNO,ITEMNO,ORDERCOUNT) VALUES('20171026-000004',10,6);
 
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000002','MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');
+VALUES('20171130-000002','MEM0001',TO_DATE('2016/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000003','MEM0002',TO_DATE('1960/5/6', 'yyyy-mm-dd'),'熱情屏東市','0920000123','劉備','1');
+VALUES('20171130-000003','MEM0002',TO_DATE('2016/5/6', 'yyyy-mm-dd'),'熱情屏東市','0920000123','劉備','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES('20171026-000004','MEM0003',TO_DATE('1960/5/7', 'yyyy-mm-dd'),'熱情屏東市','0926342145','孫權','1');
+VALUES('20171130-000004','MEM0003',TO_DATE('2016/5/7', 'yyyy-mm-dd'),'熱情屏東市','0926342145','孫權','1');
 
 
 --------------------------促銷專案假資料------------------------------
@@ -1895,6 +1913,8 @@ COMPLAINNO,MO_NO,COMPLAINDETAIL,COMPLAINREPLY,REPLYDATE, EMP_NO ,COMPLAINSTATUS)
 VALUES (to_char('MO'||LPAD(to_char(MEALCOM_NO_SEQ.NEXTVAL),6,'0')),'20171103-000004','今天午餐的小黃瓜有點爛爛的','您好,已轉交客服,客服人員會再與您聯繫',CURRENT_TIMESTAMP ,'EMP0001' ,'處理中');
 
 COMMIT;
+
+
 
 
 

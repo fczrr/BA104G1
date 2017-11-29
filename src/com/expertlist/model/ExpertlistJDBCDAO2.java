@@ -2,15 +2,12 @@ package com.expertlist.model;
 
 import java.util.*;
 
-import javax.naming.Context;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.*;
 
-public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
-//	String driver = "oracle.jdbc.driver.OracleDriver";
-//	String userid = "BA104G1DB";
-//	String passwd = "BA104G1DB";
+public class ExpertlistJDBCDAO2 implements ExpertlistDAO_interface {
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String userid = "BA104G1DB";
+	String passwd = "BA104G1DB";
 	
 //  ************** AWS Ollie**************
 //	String url = "jdbc:oracle:thin:@13.229.86.22:1521:XE";
@@ -19,7 +16,7 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 //  ************** BA104 **************
 //	String url = "jdbc:oracle:thin:@10.120.25.6:1521:XE";
 //	************* Localhost **********
-//	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
 
 	
 	
@@ -54,16 +51,7 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 			+ " EXP_NAME,"
 			+ " EXP_SPEC, EXP_PRICE"
 			+ " FROM EXPERT_LIST";
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new javax.naming.InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/BA104G1DB");
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	@Override
 	public void insert(ExpertlistVO expertlistVO) {
 
@@ -71,9 +59,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = ds.getConnection();		
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+					
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 		
 			pstmt.setString(1, expertlistVO.getExpNo());
@@ -84,9 +72,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -117,9 +105,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = ds.getConnection();
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+				
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
 			pstmt.setString(1, expName);
@@ -131,9 +119,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -164,9 +152,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = ds.getConnection();
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+				
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
 			pstmt.setString(1, expertlistVO.getExpName());
@@ -178,9 +166,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -212,18 +200,18 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = ds.getConnection();
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(DELETE);
 			pstmt.setString(1, expNo);
 
 			pstmt.executeUpdate();
 
 			// Handle any driver errors
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -257,9 +245,8 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		ResultSet rs = null;
 
 		try {
-			con = ds.getConnection();
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 			pstmt.setString(1, expNo);
 			rs = pstmt.executeQuery();
@@ -272,9 +259,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 				expertlistVO.setExpPrice(rs.getInt("exp_Price"));
 			}		
 				
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -316,9 +303,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 		ResultSet rs = null;
 
 		try {
-			con = ds.getConnection();
-//			Class.forName(driver);
-//			con = DriverManager.getConnection(url, userid, passwd);
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
 			
@@ -334,9 +321,9 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 			}
 
 			// Handle any driver errors
-//		} catch (ClassNotFoundException e) {
-//			throw new RuntimeException("Couldn't load database driver. "
-//					+ e.getMessage());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
@@ -370,7 +357,7 @@ public class ExpertlistJDBCDAO implements ExpertlistDAO_interface {
 
 	public static void main(String[] args) {
 
-		ExpertlistJDBCDAO dao = new ExpertlistJDBCDAO();
+		ExpertlistJDBCDAO2 dao = new ExpertlistJDBCDAO2();
 
 		// 新增
 //		ExpertlistVO expertlistVO1 = new ExpertlistVO();

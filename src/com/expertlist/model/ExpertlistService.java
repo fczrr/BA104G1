@@ -9,7 +9,9 @@ public class ExpertlistService {
 	private ExpertlistDAO_interface dao;
 
 	public ExpertlistService() {
-		dao = new ExpertlistJNDIDAO();
+	//	dao = new ExpertlistJDBCDAO2();
+		dao = new ExpertlistJNDIDAO2();
+
 	}
 	public ExpertlistVO addEXPERTLIST(ExpertlistVO expertlistVO) {
 
@@ -34,15 +36,9 @@ public class ExpertlistService {
 	}
 
 	
-	public ExpertlistVO updateEXPLIST(
-			String expName,
-			String expSpec,
-			String expNo) {
+	public ExpertlistVO updateEXPLIST(ExpertlistVO expertlistVO ) {
 
-		ExpertlistVO expertlistVO = new ExpertlistVO();
-		expertlistVO.setExpName(expName);
-		expertlistVO.setExpSpec(expSpec);
-		expertlistVO.setExpNo(expNo);
+
 		dao.update(expertlistVO);
 
 		return expertlistVO;
@@ -59,8 +55,8 @@ public class ExpertlistService {
 	public List<ExpertlistVO> getAll() {
 		return dao.getAll();
 	}
-	public ExpertlistVO updateEXPLIST(ExpertlistVO expertlistVO) {
-		dao.update(expertlistVO);
-		return null;
-	}
+//	public ExpertlistVO updateEXPLIST(ExpertlistVO expertlistVO) {
+//		dao.update(expertlistVO);
+//		return null;
+//	}
 }

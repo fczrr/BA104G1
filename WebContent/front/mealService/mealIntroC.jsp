@@ -13,6 +13,7 @@
 	List<MenuVO> menuList = menuSvc.getAll(30);
 	pageContext.setAttribute("menuList", menuList);
 %>
+<jsp:useBean id="dishSvc" scope="page" class="com.dish.model.DishService"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +86,16 @@
 #calendar {
 	float: right;
 	width: 900px;
+}
+#mealTable th{
+  color:#FFD700;
+  font-size:18px;
+
+}
+
+#mealTable td{
+  color:#FFFFFF;
+  font-size:16px;
 }
 
 </style>
@@ -362,30 +373,30 @@
 
 					<br>
 					<h3>菜色內容</h3>
-					<table class="table table-hover">
+					<table class="table table-bordered" style="background-color:#F08080" id="mealTable">
 						<tr>
-							<th>元氣主食</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<th>元氣米食</th>
+							<td>蓮子飯、茶油飯、香菇什錦拌飯、紫地瓜飯、糙米飯、虱目魚飯、桂圓飯、牛蒡香菇飯、紅糟飯、堅果枸杞飯..等等</td>
 						</tr>
 						<tr>
 							<th>季節食蔬</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>蠔油芥蘭、金針菇油菜	、鮮菇菜豆、枸杞水蓮、麻油龍鬚菜、丁香青江菜、蒜香菠菜、紅鳳菜、蟲草花A菜..等等</td>
 						</tr>
 						<tr>
 							<th>健康主食</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>蜜桃雞、粉蒸軟骨、香煎黃魚、南瓜雞丁、紅麴燒雞、清蒸三角魚、彩椒干貝、紅燒豬腳、銀芽雞柳..等等</td>
 						</tr>
 						<tr>
 							<th>滋養湯品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>竹笙排骨湯、牛蒡排骨、花生豬腳湯、薑絲魚湯、燒酒雞湯、八珍排骨、十全雞湯、麻油雞湯、九尾排骨湯..等等</td>
 						</tr>
 						<tr>
 							<th>養身飲品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>元氣茶、美人泉、止渴飲、滋生飲、紅棗茶、枸杞茶、麥冬茶、決明子茶、西洋參茶、龍眼茶、人參茶、胖大海..等等</td>
 						</tr>
 						<tr>
 							<th>美味甜品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>紫米花豆、銀耳甜湯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 					</table>
 					<h3>一週膳食範例</h3>
@@ -394,15 +405,13 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	
+
+
 	<div id="eventContent" title="Event Details" style="display:none;">
-    <img id="dishImg">
+    <img id="dishImg" style="margin:auto">
+    <br><br>
+    <p id="dishIntro" style="font-weight:bold"></p>
     </div>
-	
-	
-	
 	
 	    <footer>
               <div class="newnavbart" style="position: relative;margin-top:10px">
@@ -485,14 +494,16 @@
 				id:'<%=i%>',
 				resourceId:'<%=menuList.get(i).getMealTime()%>',
 				start:'<%=menuList.get(i).getMenuDate()%>',
-				title:'<%=menuList.get(i).getDishName()%>'
+				title:'<%=menuList.get(i).getDishName()%>',
+				description:'<%= dishSvc.getDishIntro(menuList.get(i).getDishName())%>'
                  },
 				<%}%>
 			],
 			eventClick:function(event){
 				$("#dishImg").attr('src','<%= request.getContextPath()%>/DBGifReaderForDishByName?dishName='+event.title);
-				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"auto", buttons: {
-			          Cancel: function() {
+				 $("#dishIntro").text(event.description);
+				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"25%", buttons: {
+			          Close: function() {
 			            $( this ).dialog( "close" );
 			          }
 			        }});

@@ -157,9 +157,10 @@
 
 	<!-- 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
 	<!-- 			<script -->
-	<%-- 				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script> --%>
-	<!-- 			<script -->
-	<%-- 				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> --%>
+		<script
+				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 
 	<!-- 因為nav會失效 把下面效果拔掉 換吃 footerbar裡的js========================================-->
 	

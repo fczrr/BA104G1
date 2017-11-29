@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
    
 
 <!DOCTYPE HTML>  
@@ -437,9 +436,10 @@
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> 會員中心 </h3>
                     <ul>
-                        <li> <a href="#"> 我的錢包 </a> </li>
-                        <li> <a href="#"> 訂單管理 </a> </li>
-                        <li> <a href="#"> 我的最愛 </a> </li>
+                        <li><a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+                        
                     </ul>
                 </div>
                  <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">

@@ -3,7 +3,6 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.setmeal.model.*"%>
 <%@ page import="com.menu.model.*"%>
-<%@ page import="com.dish.model.*" %>
 <%
 	SetMealService setMealSvc = new SetMealService();
 	SetMealVO setMealVO = setMealSvc.getOneSetMeal(10);
@@ -14,8 +13,6 @@
 	List<MenuVO> menuList = menuSvc.getAll(10);
 	pageContext.setAttribute("menuList", menuList);
 %>
-
-<jsp:useBean id="dishSvc" scope="page" class="com.dish.model.DishService"/>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -88,17 +85,6 @@
 	float: right;
 	width: 900px;
 }
-#mealTable th{
-  color:#FFD700;
-  font-size:18px;
-
-}
-
-#mealTable td{
-  color:#FFFFFF;
-  font-size:16px;
-}
-
 
 }
 </style>
@@ -192,8 +178,6 @@
 </nav>
 </div>
 
-
-
 		<div class="container">
 			<div class="row">
 				<!--  --------側邊導覽---------- -->
@@ -238,12 +222,10 @@
 				</div>
 				<!-- --------右邊顯示 -->
 				<div class="col-xs-12 col-sm-10">
-					<h2 style="color:#233D4D">活力養身餐</h2>
+					<h2>活力養身餐</h2>
 					<div class="row">
 						<div class="col-xs-12 col-sm-6">
-						   <div style="height:300px;background-color:#FAF0E6" >
-							<p style="font-size:16px">${setMealVO.smIntro}</p>
-						   </div>
+							<p>${setMealVO.smIntro}</p>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<div class="col-sm-12">
@@ -254,7 +236,7 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=1"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A01.jpg"
 													class="img-responsive">
 											</div>
 										</div>
@@ -262,14 +244,14 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=2"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A02.jpg"
 													class="img-responsive">
 											</div>
 										</div>
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=3"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A03.jpg"
 													class="img-responsive">
 											</div>
 										</div>
@@ -322,7 +304,7 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=1"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A01.jpg"
 													class="img-responsive">
 											</div>
 										</div>
@@ -330,14 +312,14 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=2"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A02.jpg"
 													class="img-responsive">
 											</div>
 										</div>
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?smNo=10&picNo=3"
+													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A03.jpg"
 													class="img-responsive">
 											</div>
 										</div>
@@ -375,52 +357,50 @@
 							</div>
 
 						</div>
-            </div>
 
+
+					</div>
 
 
 					<br>
-					<h3 style="font-weight:bold">菜色內容</h3>
-					<table class="table table-bordered" style="background-color:#FF7F50" id="mealTable">
+					<h3>菜色內容</h3>
+					<table class="table table-hover">
 						<tr>
-							<th>元氣米食</th>
-							<td>雜糧糙米飯、南瓜糙米飯、栗子飯、堅果枸杞飯、黑糖黑芝麻飯、糙米飯、麻油飯、香椿飯、牛蒡香桂圓飯..等等</td>
+							<th>元氣主食</th>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 						<tr>
 							<th>季節食蔬</th>
-							<td>九層塔杏鲍菇、薑絲燒南瓜、薑絲炒黑木耳絲、雙色花椰菜、紫山藥玉米筍、枸杞高麗菜、炒百菇、麻油紅菜..等等</td>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 						<tr>
 							<th>健康主食</th>
-							<td>白切豬菲力、味噌魚片、栗子燜雞、清蒸鱈魚、椒鹽鮭魚、薑燒豬肉、梅汁排骨、彩椒雞柳、金針雲耳燒雞..等等</td>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 						<tr>
 							<th>滋養湯品</th>
-							<td>山藥玉竹排骨湯、天麻虱目魚湯、百菇燉排骨、粉光香菇雞湯、鱸魚薑絲湯、黃耆枸杞雞湯、粉光香菇雞湯..等等</td>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 						<tr>
 							<th>養身飲品</th>
-							<td>元氣茶、美人泉、止渴飲、滋生飲、紅棗茶、枸杞茶、麥冬茶、決明子茶、西洋參茶、龍眼茶、人參茶、胖大海..等等</td>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 						<tr>
 							<th>美味甜品</th>
-							<td>百合銀耳棗甜湯、杏仁五榖汁、花生湯、首烏芝麻糊、桂圓小米甜湯、桂圓百合棗甜湯、麥片堅果甜湯、..等等</td>
+							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
 						</tr>
 					</table>
-					<h3>本周菜單</h3>
+					<h3>一週膳食範例</h3>
 					<div id='calendar'></div>
 					<div style='clear: both'></div>
 				</div>
 			</div>
 		</div>
-
+	</div>
 	
 	
 	<div id="eventContent" title="Event Details" style="display:none;">
-    <img id="dishImg" style="margin:auto">
-    <br><br>
-    <p id="dishIntro" style="font-weight:bold"></p>
-    
+    <img id="dishImg">
     </div>
 	
 	
@@ -461,8 +441,9 @@
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 
-    
+
 	<script>
+
 	$(function() { // document ready
 
 		$('#calendar').fullCalendar({
@@ -510,18 +491,16 @@
 				resourceId:'<%=menuList.get(i).getMealTime()%>',
 				start:'<%=menuList.get(i).getMenuDate()%>',
 				title:'<%=menuList.get(i).getDishName()%>',
-				description:'<%= dishSvc.getDishIntro(menuList.get(i).getDishName())%>'
+				
                  },
 				<%}%>
 			],
-			eventBackgroundColor:'#FFA500',
+			eventBackgroundColor:'#00BFFF',
 			eventTextColor:'#000000',
 			eventClick:function(event){
-				console.log(event.description);
 				$("#dishImg").attr('src','<%= request.getContextPath()%>/DBGifReaderForDishByName?dishName='+event.title);
-			    $("#dishIntro").text(event.description);
-				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"25%", buttons: {
-			          Close: function() {
+				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"auto", buttons: {
+			          Cancel: function() {
 			            $( this ).dialog( "close" );
 			          }
 			        }});

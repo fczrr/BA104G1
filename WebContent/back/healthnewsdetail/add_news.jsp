@@ -115,7 +115,7 @@
 
 </FORM>
 
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 </body>
 
  <script src="https://code.jquery.com/jquery.js"></script>
@@ -126,3 +126,38 @@
 
 
 </html>
+
+<script type="text/javascript">
+$(document).ready(function () {
+//文章新增成功    
+ $("#btnadd").on('click', function() {
+ 	$item = $( this );
+		var seach = $item.parent().find("input.healthNo");	
+console.log(seach.val());
+
+		  $.ajax({
+	    		 type:"POST",  //指定http參數傳輸格式為POST 
+	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
+	    		 url:"<%=request.getContextPath()%>/HealthNewsDetailServlet?action=getOne_For_Display&healthNo=HD0001",   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+//	    		 data:text,  //要傳給目標的data
+	    		 dataType: "json",
+	    		 
+	    		//Ajax成功後執行的function，response為回傳的值
+	    		 success : function(res){
+	     console.log(res.newsno);			 
+	    			 swal({
+	  		    		    title: '已成功新增',
+	  		    		    type:	'success',
+	  		    		}),
+	  		  			setTimeout(function(){ 
+	    				    location.reload();
+	    				} ,800);	
+	    		 },
+	    		 error : function(xhr, ajaxOptions, thrownError){
+	    			
+	             }
+	    	 }); 
+	      });
+}
+</script>
+

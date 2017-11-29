@@ -9,5 +9,6 @@ public interface CarDetail_interface {
 	public void delete(String detail_no);
 	public CarDetailVO findByPrimaryKey(String detail_no);
 	public List<CarDetailVO> getAll();
-	public List<CarDetailVO> getByOrderNo(String orderNo);
+	List<CarDetailVO> findByOrderNo(String order_no);
+	
 }

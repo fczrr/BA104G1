@@ -55,6 +55,11 @@ public class HealthNewsDetailService {
 	public List<HealthNewsDetailVO> getNewOnAll(){
 		return dao.getNewOnAll();
 	}
+
+
+	public List<HealthNewsDetailVO> getNewOffAll() {
+		return dao.getNewOnAll();
+	}
 	
 
 }

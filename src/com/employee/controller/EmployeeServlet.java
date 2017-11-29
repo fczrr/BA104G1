@@ -102,7 +102,7 @@ public class EmployeeServlet extends HttpServlet {
 			session.setAttribute("isLogin", "true");
 			// ****************************還要放權限管理**************************
 
-			res.sendRedirect(req.getContextPath() + "/back/employee/listAllEmployee.jsp");
+			res.sendRedirect(req.getContextPath() + "/back/production/BA104G1_index.jsp");
 
 		}
 		
@@ -445,7 +445,7 @@ System.out.println("come in");
 					expertlistVO.setExpSpec(expSpec);
 					
 					ExpertlistService expertlistSvc = new ExpertlistService();
-					expertlistVO = expertlistSvc.updateEXPLIST(expertlistVO);
+					expertlistVO=expertlistSvc.updateEXPLIST(expertlistVO);
 					System.out.println("後台成功修改會員狀態");
 					RequestDispatcher successView = req.getRequestDispatcher("/back/employee/listAllExpertlist.jsp");
 					successView.forward(req, res);

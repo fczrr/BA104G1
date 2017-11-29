@@ -10,7 +10,7 @@
 	Object obj = request.getAttribute("list");
 	List<ExpertlistVO> list = new ArrayList<ExpertlistVO>();
 	if (obj == null) {
-		ExpertlistService expertlistSvc = new ExpertlistService();
+		ExpertlistService expertlistSvc2 = new ExpertlistService();
 		list = expertlistSvc.getAll();
 	} else {
 		list = (List<ExpertlistVO>) obj;
@@ -22,77 +22,215 @@
 
 
 <style>
-table#table-1 {
-	width: 930px;
-	background-color: #DADFDF;
-	margin-top: 5px;
-	margin-bottom: 10px;
-	height: 80px;
-	text-align: center;
+#middle {align ="center";
+	
 }
 
-table#table-1 h4 {
-	color: red;
-	display: block;
-	margin-bottom: 1px;
+.hover:hover {
+	background-color: #CCC;
 }
 
-h4 {
-	color: blue;
-	display: inline;
+breakall {
+	word-break: break-all;
+}
+
+.bigtoopp {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.tapone {
+	width: 150px;
+}
+
+.newttap {
+	margin-top: 100px;
+	margin-bottom: 80px;
+}
+
+.btn-group .btn {
+	transition: background-color .3s ease;
+}
+
+.panel-table .panel-body {
+	padding: 0;
 }
 
 .table>thead>tr>th {
+	border-bottom: none;
+}
+
+.panel-footer, .panel-table .panel-body .table-bordered {
+	border-style: none;
+	margin: 0;
+}
+
+.panel-table .panel-body .table-bordered>thead>tr>th:first-of-type {
+	text-align: center;
+	width: 50px;
+}
+
+.panel-table .panel-body .table-bordered>thead>tr>th.col-tools {
+	text-align: center;
+	width: 120px;
+}
+
+.panel-table .panel-body .table-bordered>thead>tr>th:last-of-type,
+	.panel-table .panel-body .table-bordered>tbody>tr>td:last-of-type {
+	border-right: 0;
+}
+
+.panel-table .panel-body .table-bordered>thead>tr>th:first-of-type,
+	.panel-table .panel-body .table-bordered>tbody>tr>td:first-of-type {
+	border-left: 0;
+}
+
+.panel-table .panel-body .table-bordered>tbody>tr:first-of-type>td {
+	border-bottom: 0;
+}
+
+.panel-table .panel-body .table-bordered>thead>tr:first-of-type>th {
+	border-top: 0;
+}
+
+.pagination>li>a, .pagination>li>span {
+	border-radius: 50% !important;
+	margin: 0 5px;
+}
+
+.panel-footer {
+	border-style: 1px;
+}
+
+.pagination {
+	margin: 0;
+}
+
+#mytablebody tr:hover {
+	background-color: #caced1;
+}
+
+.center {
+	margin-top: 50px;
+}
+
+.modal-header {
+	padding-bottom: 5px;
+}
+
+.modal-footer {
+	padding: 0;
+}
+
+.modal-footer .btn-group button {
+	height: 40px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border: none;
+	border-right: 1px solid #ddd;
+}
+
+.modal-footer .btn-group:last-child>button {
+	border-right: 0;
+}
+
+#img {
+	width: 50%;
+}
+
+.notyetText {
+	color: #bc2a01;
+}
+
+#clickdetail {
+	/*color: #1675f9;*/
+	border-radius: 50%;
+	/*    width: 30px;
+    height: 30px;*/
+}
+
+#allcenter {
 	text-align: center;
 }
 
-.table>tbody>tr>td {
+/* 回覆申訴詳細內容 modal */
+#complainTi {
+	font-size: 1.3em;
+	border-bottom: 0.5px solid #c1c1c1;
+}
+
+#complainIn {
+	padding-left: 30px;
+	padding-top: 3px;
+	color: #68696b;
+}
+
+#lineModalLabel {
 	text-align: center;
 }
 
-#modifyBtn {
-	margin-Top: 10px;
+#rowWidth {
+	/*white-space:nowrap; */
+	width: 20em; //
+	你可以指定希望的寬度 overflow: hidden;
+	text-overflow: ellipsis;
+	/*line-height:0.5em;*/
+	/*display: -webkit-box;*/
+	-webkit-line-clamp: 2;
+	/*-webkit-box-orient: vertical;*/
 }
-.modal{
-	text-align: center;
-	padding: 0!important;
+
+.forTitle {
+	font-size: 1.7em;
 }
-.modal:before{
-	content: '';
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
-	margin-right: -4px;
+
+.serchwidth {
+	width: 300px;
+	margin-top: 2px;
 }
-.modal .modal-dialog{
-	display: inline-block;
-	text-align: left;
-	vertical-align: middle;
+
+.pull-right {
+	float: right;
+}
+
+.results tr[visible='false'], .no-result {
+	display: none;
+}
+
+.results tr[visible='true'] {
+	display: table-row;
+}
+
+.notfind {
+	background-color: #d6effc;
+	font-size: 1.5em;
+	color: black;
+}
+
+#newCI {
+	heigh: 32px;
+	width: 32px;
+}
+
+th {
+	
 }
 </style>
 
 <div class="right_col" role="main">
-	<div class="">
-		<div class="page-title">
-			<div class="title_right">
-				<div
-					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+	<div class="container">
 
-				</div>
-			</div>
-		</div>
 		<div class="clearfix"></div>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<table id="table-1">
-							<tr>
-								<td>
-									<h3>員工專長管理頁面</h3>
-								</td>
-							</tr>
-						</table>
+						<div id="mytitle"
+							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
+							<h1>
+								員工專長&nbsp;<b>管理頁面</b>
+							</h1>
+						</div>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -112,7 +250,7 @@ h4 {
 					</div>
 					<div class="x_content">
 						<div class="col-xs-12 col-sm-3 ">
-	<!--  					<form
+							<!--  					<form
 								action="<%=request.getContextPath()%>/employee/employee.do?action=branches_query"
 								method="post">
 								<div class="form-group form-inline input-group">
@@ -122,7 +260,7 @@ h4 {
 									</span>
 								</div>
 							</form>
-	-->						
+	-->
 						</div>
 						<div class="col-xs-12 col-sm-3">
 							<c:if test="${not empty errorMsgs}">
@@ -136,62 +274,62 @@ h4 {
 							</c:if>
 						</div>
 						<div class="col-xs-12 col-sm-12">
-							<div class="col-xs-11 col-sm-11">
-							</div>
+							<div class="col-xs-11 col-sm-11"></div>
 
 						</div>
 						<div class="col-sm-12">
-							<table class="table table-hover">
+							<!-- 							<table id="mytable" class="table table-striped table-bordered table-list results"> -->
+							<table class="table table-hover" style="font-size: 1.5em">
 								<thead>
 									<tr>
-										<th>專長編號</th>
-										<th>專長名稱</th>
-										<th>專長描述</th>
-										<th>專長定價</th>
-										<th>修改</th>
+										<th width="7%">專長編號</th>
+										<th width="15%">專長名稱</th>
+										<th width="40%">專長描述</th>
+										<th width="10%">專長定價</th>
+										<th width="10%">修改</th>
 									</tr>
 								</thead>
 								<tbody>
-								
+
 									<%@ include file="pages/page1.file"%>
 									<c:forEach var="expertlistVO" items="${list}" varStatus="s"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 										<form
 											action="<%=request.getContextPath()%>/employee/employee.do"
 											method="post">
-										<input type="hidden" name="action" value="expertlist_update">
-										<input type="hidden" name="expNo" value="${expertlistVO.expNo}">
-										
-										
-										<tr align='center' valign='middle'
-											${(memberVO.memNo==param.memNo) ? 'bgcolor=#CCCCFF':''}>
+											<input type="hidden" name="action" value="expertlist_update">
+											<input type="hidden" name="expNo"
+												value="${expertlistVO.expNo}">
 
-											<td>${expertlistVO.expNo}</td>
-											<td>
-											<input type="text" name="expName" value="${expertlistVO.expName}">
-											</td>
-											<td>
-											<input type="text" name="expSpec" value="${expertlistVO.expSpec}">
-											</td>
-											<td>
-											<input type="text" name="expPrice" value="${expertlistVO.expPrice}">
-											</td>
-											<td>
-												<div class="btn-group">
-												<button type="submit" class="btn btn-info btn-default" >
-													確定
-												</button>
-												</div>
 
-											</td>
-										</tr>
+											<tr align='left' valign='middle'>
+
+												<td >${expertlistVO.expNo}</td>
+												<td class="hover"><input type="text" name="expName"
+													style="width: 100%; height: 50px"
+													value="${expertlistVO.expName}"></td>
+												<td class="hover"><textarea
+														style="width: 100%; height: 50px" name="expSpec">${expertlistVO.expSpec}</textarea></td>
+												<td class="hover"><input type="text" name="expPrice"
+													style="width: 100%; height: 50px"
+													value="${expertlistVO.expPrice}"></td>
+												<td>
+													<div class="btn-group">
+														<button type="submit" class="btn btn-info"
+															style="height: 50px; width: 146px;">確定</button>
+													</div>
+
+												</td>
+											</tr>
 										</form>
 									</c:forEach>
 								</tbody>
 							</table>
-								<div class="col-xs-1 col-sm-1">
-								<a href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
-									id="modifyBtn" class="btn btn-danger btn-default" role="button">新增專長</a>
+							<div class="col-xs-1 col-sm-1">
+								<a
+									href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
+									id="modifyBtn" class="btn btn-success btn-default" 
+									role="button">新增專長</a>
 							</div>
 							<%@ include file="pages/page2.file"%>
 						</div>

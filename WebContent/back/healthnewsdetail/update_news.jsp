@@ -133,7 +133,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 
 <script type="text/javascript">
 
@@ -164,16 +164,16 @@ $(document).ready(function () {
     });
  
     
-// 提示修改成功
+ // 提示修改成功
     $("#btnSub").on('click', function() {
     	$item = $( this );
-   	 var seach = $item.parent().find("input.newsno");	  
-   	console.log(seach.html());
+		var seach = $item.parent().find("input.healthNo");	
+console.log(seach.val());
     	
 		  $.ajax({
 	    		 type:"POST",  //指定http參數傳輸格式為POST 
 	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/HealthNewsDetailServlet?action=getOne_For_Display&healthNo="+seach.html(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+	    		 url:"<%=request.getContextPath()%>/HealthNewsDetailServlet?action=getOne_For_Display&healthNo="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
 //	    		 data:text,  //要傳給目標的data
 	    		 dataType: "json",
 	    		 
@@ -183,25 +183,16 @@ $(document).ready(function () {
 	    			 swal({
 	  		    		    title: '已成功修改',
 	  		    		    type:	'success',
-	  		    		    timer: 9000
-	  		    		}).then(
-	  		    				onload()
-	  		    		)
-	  		    			
+	  		    		}),
+	  		  			setTimeout(function(){ 
+	    				    location.reload();
+	    				} ,800);
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
-	             
-	    		 }
+	             }
 	    	 }); 
-		  
 	      });
 
-		  function onload(){
-			setTimeout(function(){
-  				window.location.reload();
-  				},500);
-		  };
-	
 
 // 換圖預覽
     $("#uploadImage").change(function(){
@@ -211,22 +202,22 @@ $(document).ready(function () {
     
     
     function readImage(input) {
-      if ( input.files && input.files[0] ) {
-        var size = Math.round(input.files[0].size / 1024 / 1024);
-        if (size > 3) {
-            alert('图片大小不得超过3M,請重新上傳');
-            input.files.remove();
-        } else{
-	        var FR= new FileReader();
-	        FR.onload = function(e) {
-		          //e.target.result = base64 format picture
-		          $('#img').attr( "src", e.target.result );
-		          convertImgDataToBlob(e.target.result);
-	        };       
-	      };
-        FR.readAsDataURL( input.files[0] );
+        if ( input.files && input.files[0] ) {
+          	var size = Math.round(input.files[0].size / 1024 / 1024);
+          if (size > 3) {
+              alert('图片大小不得超过3M,請重新上傳');
+              input.files.remove();
+          } else{
+  	        var FR= new FileReader();
+  	        FR.onload = function(e) {
+  		          //e.target.result = base64 format picture
+  		          $('#img').attr( "src", e.target.result );
+  		          convertImgDataToBlob(e.target.result);
+  	        };       
+  	      };
+          FR.readAsDataURL( input.files[0] );
+        };
       };
-    };
     
     
     

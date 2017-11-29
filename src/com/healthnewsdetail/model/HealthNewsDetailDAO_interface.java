@@ -9,5 +9,6 @@ public interface HealthNewsDetailDAO_interface {
 	public HealthNewsDetailVO findByPrimaryKey(String healthNo);
 	public List<HealthNewsDetailVO> getAll();
 	public List<HealthNewsDetailVO> getNewOnAll();
+	public List<HealthNewsDetailVO> getNewOffAll();
 
 }

@@ -123,7 +123,7 @@ NewsdetailVO newsdetailVO = (NewsdetailVO) request.getAttribute("newsdetailVO");
 
 
 </FORM>
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 
 </body>
 
@@ -211,7 +211,6 @@ console.log(seach.val());
 	  		    		    title: '已成功修改',
 	  		    		    type:	'success',
 	  		    		})
-	  		    		reload();
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	    			 
@@ -238,7 +237,7 @@ console.log(seach.val());
 		  $.ajax({
 	    		 type:"POST",  //指定http參數傳輸格式為POST 
 	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/NewsdetailServlet?action=getOne_For_Display&newsno="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+	    		 url:"<%=request.getContextPath()%>/newsdetail/newsimgread.do?action=getOne_For_Display&newsno="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
 //	    		 data:text,  //要傳給目標的data
 	    		 dataType: "json",
 	    		 
@@ -285,13 +284,7 @@ console.log(seach.val());
 	             }
 	    	 }); 
 	      });
-// 刪除
-    
-    function reload(){
-   		setTimeout(function(){
-		  window.location.reload();
-		  },500);
-	};
+
 
 
 // 換圖預覽

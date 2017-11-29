@@ -29,6 +29,7 @@ public class DishDAO implements DishDAO_interface {
 	private static final String GET_ALL_STMT = "SELECT DISH_NO,DISH_NAME,DISH_PIC,DISH_INTRO,DISH_TYPE FROM DISH ORDER BY DISH_NO";
 	private static final String GET_ALLBYTYPE_STMT = "SELECT DISH_NO,DISH_NAME,DISH_PIC,DISH_INTRO,DISH_TYPE FROM DISH WHERE DISH_TYPE=? ORDER BY DISH_NO";
 	private static final String DELETE = "DELETE FROM DISH WHERE DISH_NO=?";
+	private static final String GET_DISH_INTRO_BY_NAME="SELECT DISH_INTRO FROM DISH WHERE DISH_NAME=?";
 
 	@Override
 	public void insert(DishVO dishVO) {
@@ -287,6 +288,7 @@ public class DishDAO implements DishDAO_interface {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs=null;
 
 		try {
 
@@ -318,6 +320,49 @@ public class DishDAO implements DishDAO_interface {
 			}
 		}
 
+	}
+
+	@Override
+	public String getIntroByName(String dishName) {
+		String dishIntro=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		try {
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_DISH_INTRO_BY_NAME);
+
+			pstmt.setString(1, dishName);
+
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+			     
+				dishIntro=rs.getString("DISH_INTRO");	
+			}
+
+			
+	      
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		return dishIntro;
 	}
 
 }

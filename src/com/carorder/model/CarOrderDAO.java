@@ -14,6 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.carschedul.model.CarSchedulVO;
+import com.member.model.MemberVO;
 import com.cardetail.model.CarDetailVO;
 import com.carorder.model.CarOrderVO;
 
@@ -39,55 +41,16 @@ public class CarOrderDAO implements CarOrder_interface {
 	private static final String GET_ALL_STMT = "SELECT * FROM CAR_ORDER order by ORDER_NO";
 	private static final String GET_ONE_STMT = "SELECT ORDER_NO,MEM_NO,ORDER_DATE,ORDER_STATUS FROM CAR_ORDER WHERE ORDER_NO = ?";
 	private static final String DELETE = "DELETE FROM CAR_ORDER WHERE ORDER_NO = ?";
-	private static final String UPDATE = "UPDATE CAR_ORDER SET MEM_NO = ?, ORDER_STATUS = ? WHERE ORDER_NO = ?";
+	private static final String UPDATE = "UPDATE CAR_ORDER SET ORDER_STATUS = ? WHERE ORDER_NO = ?";
 	private static final String SELECT_ATTENDANCE ="select ATTENDANCE, WORK_HOURS from CAR_SCHEDUL where YEAR_MONTH = ? and EMP_NO = ?";
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
-	private static final String SELECT_BY_MEM = "SELECT * FROM CAR_ORDER WHERE MEM_NO=?";
-	@Override
-	public List<CarOrderVO> getByMemNo(String memNo) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<CarOrderVO> list = new ArrayList<>();
-		
-		try {
-			 con = ds.getConnection();
-			 
-			pstmt = con.prepareStatement(SELECT_BY_MEM);
-			
-			pstmt.setString(1,memNo);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				CarOrderVO carorderVO = new CarOrderVO();
-				carorderVO.setOrder_no(rs.getString("order_no"));
-				carorderVO.setMem_no(rs.getString("mem_no"));
-				carorderVO.setOrder_date(rs.getDate("order_date"));
-				carorderVO.setOrder_status(rs.getString("order_status"));
-				list.add(carorderVO);
-			}
-
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. " + se.getMessage());
-			// Clean up JDBC resources
-		} finally {
+	private static final String UPDATE_CAR_SCHEDUL = "UPDATE CAR_SCHEDUL SET ATTENDANCE = ?,WORK_HOURS =? WHERE SERIAL_NO=?";
+	private static final String UPDATE_MEMBER_POINT = "UPDATE MEMBER SET POINT = ? WHERE MEM_NO=?";
 	
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 	@Override
-	public String insert(CarOrderVO carorderVO,List<CarDetailVO> list) {
+	public void insert(CarOrderVO carorderVO,List<CarSchedulVO> carSchedulVOList,List<CarDetailVO> list,MemberVO memberVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 =null;
 		String nextNo = null;
 		ResultSet rs = null;
 		
@@ -97,7 +60,9 @@ public class CarOrderDAO implements CarOrder_interface {
 			 
 //			Class.forName(driver);
 //			con = DriverManager.getConnection(url, userid, passwd);
-			 con.setAutoCommit(false);
+			
+			//關閉自動Commit
+			con.setAutoCommit(false);
 			 
 			String cols[] = {"ORDER_NO"}; 
 			pstmt = con.prepareStatement(INSERT_STMT,cols);
@@ -105,17 +70,23 @@ public class CarOrderDAO implements CarOrder_interface {
 			pstmt.setString(1, carorderVO.getMem_no());
 			pstmt.setString(2, carorderVO.getOrder_status());
 			pstmt.executeUpdate();
+			
+			
+			//訂單主鍵綁定
 			rs = pstmt.getGeneratedKeys();
-			rs.next();
-			nextNo = rs.getString(1);
-			pstmt.close();
-			
-			pstmt = con.prepareStatement(INSERT_DETAIL_STMT);
-			
+			if(rs.next()){
+				nextNo = rs.getString(1);
+				System.out.println("自增主鍵綁定:"+nextNo);
+			}
+			//新增明細
 			for(CarDetailVO carDetailVO :list){
-				pstmt.setString(1, nextNo);
+				
+				carDetailVO.setOrder_no(nextNo);
+				pstmt = con.prepareStatement(INSERT_DETAIL_STMT);
+				pstmt.setString(1, carDetailVO.getOrder_no());
 				pstmt.setInt(2, carDetailVO.getVehicle_no());
 				pstmt.setDate(3, carDetailVO.getDetail_date());
+				System.out.println("新增"+carDetailVO.getDetail_date()+"進明細");
 				pstmt.setString(4, carDetailVO.getDetail_time());
 				pstmt.setString(5, carDetailVO.getPassenger_name());
 				pstmt.setString(6, carDetailVO.getPassenger_phone());
@@ -124,17 +95,41 @@ public class CarOrderDAO implements CarOrder_interface {
 				pstmt.setString(9, carDetailVO.getSendcar_status());
 				pstmt.executeUpdate();
 				pstmt.clearParameters();
-				
-			
+				System.out.println("新增了一筆派車明細");
+				 
 			}
+			
+			//更新班表
+			pstmt = con.prepareStatement(UPDATE_CAR_SCHEDUL);
+			for(CarSchedulVO carSchedulVO :carSchedulVOList){
+			pstmt.setString(1, carSchedulVO.getAttendance());
+			pstmt.setInt(2, carSchedulVO.getWork_hours());
+			pstmt.setInt(3,carSchedulVO.getSerial_no());
+			
+			pstmt.executeUpdate();
+			System.out.println("成功更新一筆派車班表");
+			}
+			
+			//扣除會員點數
+			pstmt = con.prepareStatement(UPDATE_MEMBER_POINT);
+			pstmt.setInt(1,memberVO.getPoint());
+			pstmt.setString(2,memberVO.getMemNo());
+			pstmt.executeUpdate();
+			System.out.println("會員點數更新為"+memberVO.getPoint()+"點");
+			
+			//確認交易完成
 			con.commit();
 
 //		} catch (ClassNotFoundException e) {
 //			throw new RuntimeException("Couldn't load database driver. " + e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. " + se.getMessage());
-			// Clean up JDBC resources
+			try {
+				se.printStackTrace();
+				con.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		} finally {
 			if (pstmt != null) {
 				try {
@@ -151,7 +146,7 @@ public class CarOrderDAO implements CarOrder_interface {
 				}
 			}
 		}
-		return nextNo;
+		//return nextNo;
 
 	}
 
@@ -168,9 +163,9 @@ public class CarOrderDAO implements CarOrder_interface {
 //			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setString(1, carorderVO.getMem_no());
-			pstmt.setString(2, carorderVO.getOrder_status());
-			pstmt.setString(3, carorderVO.getOrder_no());
+			
+			pstmt.setString(1, carorderVO.getOrder_status());
+			pstmt.setString(2, carorderVO.getOrder_no());
 
 			pstmt.executeUpdate();
 

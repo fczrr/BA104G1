@@ -4,8 +4,9 @@
 <%@ page import="com.member.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
-<% List<MemberVO> list = (List<MemberVO>) request.getAttribute("list");
-   String param = (String) request.getAttribute("param");
+<%
+	List<MemberVO> list = (List<MemberVO>) request.getAttribute("list");
+	String param = (String) request.getAttribute("param");
 %>
 <style>
 table#table-1 {
@@ -60,13 +61,13 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<table id="table-1">
-							<tr>
-								<td>
-									<h3>會員管理頁面</h3>
-								</td>
-							</tr>
-						</table>
+
+						<div id="mytitle"
+							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
+							<h1>
+								會員管理&nbsp;<b>頁面</b>
+							</h1>
+						</div>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -85,37 +86,41 @@ h4 {
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-						<div class="col-xs-12 col-sm-3 ">                      <!--     查詢'sFORM      -->
-							<form action="<%=request.getContextPath()%>/member/member.do" method="post" id="myform">
+						<div class="col-xs-12 col-sm-3 ">
+							<!--     查詢'sFORM      -->
+							<form action="<%=request.getContextPath()%>/member/member.do"
+								method="post" id="myform">
 								<div class="form-group form-inline input-group">
-									<input type="text" class="form-control" name="memNo" placeholder="依會員帳號查詢" />
-									<span class="input-group-addon btn btn-default" id="tosubmit" > 
-									<i class="fa fa-search"></i>										
-									</span>
-									<input type="hidden" name="action" value="findOneByMemNo" />
-									<input type="hidden" name="failureV" value="/back/member/listAllMember2.jsp" />
-									<input type="hidden" name="successView" value="/back/member/listAllMember2.jsp" />
+									<input type="text" class="form-control" name="memNo"
+										placeholder="依會員帳號查詢" /> <span
+										class="input-group-addon btn btn-default" id="tosubmit">
+										<i class="fa fa-search"></i>
+									</span> <input type="hidden" name="action" value="findOneByMemNo" />
+									<input type="hidden" name="failureV"
+										value="/back/member/listAllMember2.jsp" /> <input
+										type="hidden" name="successView"
+										value="/back/member/listAllMember2.jsp" />
 								</div>
 							</form>
 
 						</div>
 						<div class="col-xs-12 col-sm-12">
 							<ul class="nav nav-tabs" id="navList">
-								<li data-name="loginLogTab"   class="active">
-									<a href="<%=request.getContextPath() %>/member/member.do?action=queryStatus&status=getAll"><i class="fa fa-user"></i>列出全部</a>
-								</li>
-								<li data-name="receiveLogTab" class="">
-									<a  href="<%=request.getContextPath() %>/member/member.do?action=queryStatus&status=verification">
-									<i class="fa fa-briefcase"></i>正常狀態</a>
-								</li>
-								<li data-name="socketInputTab" class="">
-									<a href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=unverified">
-									<i class="fa fa-briefcase"></i>未驗證</a>
-									</li>
-								<li data-name="socketOutputTab" class="">
-									<a href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=suspension">
-									<i class="fa fa-briefcase"></i>停權狀態</a>
-								</li>
+								<li data-name="loginLogTab" class="active"><a
+									href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=getAll"><i
+										class="fa fa-user"></i>列出全部</a></li>
+								<li data-name="receiveLogTab" class=""><a
+									href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=verification">
+										<i class="fa fa-briefcase"></i>正常狀態
+								</a></li>
+								<li data-name="socketInputTab" class=""><a
+									href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=unverified">
+										<i class="fa fa-briefcase"></i>未驗證
+								</a></li>
+								<li data-name="socketOutputTab" class=""><a
+									href="<%=request.getContextPath()%>/member/member.do?action=queryStatus&status=suspension">
+										<i class="fa fa-briefcase"></i>停權狀態
+								</a></li>
 							</ul>
 						</div>
 						<div class="col-sm-12">
@@ -135,7 +140,7 @@ h4 {
 								</thead>
 								<tbody>
 									<%@ include file="pages/page1.file"%>
-									
+
 									<c:forEach var="memberVO" items="${list}"
 										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 										<tr align='center' valign='middle'
@@ -175,16 +180,12 @@ h4 {
 <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 
 <script>
-
-
-	$( document ).ready(function(){
+	$(document).ready(function() {
+		alert('YYYYYY');
+		$("#tosubmit").click(function() {
 			alert('YYYYYY');
-		$( "#tosubmit" ).click(function() {
-			alert('YYYYYY');
-			  $( "#myform" ).submit();
-			});
-		
+			$("#myform").submit();
+		});
+
 	});
-
-
 </script>

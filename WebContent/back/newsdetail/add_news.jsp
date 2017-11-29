@@ -116,7 +116,7 @@ NewsdetailVO newsdetailVO = (NewsdetailVO) request.getAttribute("newsdetailVO");
 
 </FORM>
 
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 </body>
 
  <script src="https://code.jquery.com/jquery.js"></script>
@@ -167,9 +167,11 @@ $(document).ready(function () {
 	    			 swal({
 	  		    		    title: '已成功新增',
 	  		    		    type:	'success',
-	  		    		   
-	  		    		})
-	  		    		reload();
+	  		    		});
+	    			 setTimeout(function(){ 
+	    				 location.replace("<%=request.getContextPath()%>/back/newsdetail/AllNews.jsp");
+	    				} ,300);
+	  		    		
 	    		 },
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	    			 if($("#newstitle").val() === ''){
@@ -183,108 +185,6 @@ $(document).ready(function () {
 	    	 }); 
 	      });
 
-    
-// 提示修改成功
-    $("#btnSub").on('click', function() {
-    	$item = $( this );
-		var seach = $item.parent().find("input.newsno");	
-console.log(seach.val());
-    	
-		  $.ajax({
-	    		 type:"POST",  //指定http參數傳輸格式為POST 
-	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/NewsdetailServlet?action=getOne_For_Display&newsno="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
-//	    		 data:text,  //要傳給目標的data
-	    		 dataType: "json",
-	    		 
-	    		//Ajax成功後執行的function，response為回傳的值
-	    		 success : function(res){
-	     console.log(res.newsno);			 
-	    			 swal({
-	  		    		    title: '已成功修改',
-	  		    		    type:	'success',
-	  		    		})
-	  		    		reload();
-	    		 },
-	    		 error : function(xhr, ajaxOptions, thrownError){
-	    			 
-	             }
-	    	 }); 
-	      });
-
-    
-// 查詢詳細資料 AJAX方法
-    $(".clickDetail").on('click', function() {
-    	$(".detailBack").html("訂單申訴內容");
-	     $(".newsNoDe").html('');
-	     $(".newsFti").html('');
-	     $(".newsIntro").html('');
-	     $(".newstime").html('');
-	     $(".reptime").html('');
-	     $(".empNoFor").html('');
-	     $(".newsStatt").html('');
-	     $(".newsPiccc").attr({'src' : "",});
-	     
-	     $item = $( this );
-		  var seach = $item.parent().find("input.complainNoDetail");
-		  
-		  $.ajax({
-	    		 type:"POST",  //指定http參數傳輸格式為POST 
-	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/NewsdetailServlet?action=getOne_For_Display&newsno="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
-//	    		 data:text,  //要傳給目標的data
-	    		 dataType: "json",
-	    		 
-	    		//Ajax成功後執行的function，response為回傳的值
-	    		 success : function(res){
-		    	     $(".detailBack").html("最新消息 - "+ res.newsno +" : 【 "+ res.status+ " 】");
-		    	     $(".newsFti").html(res.newstitle);
-		    	     $(".newsIntro").html(res.newsintro);
-		    	     $(".newstime").html(res.newsdate);
-		    	     $(".empNoFor").html(res.empno);
-		    	 
-		    	     var cover ="<%=request.getContextPath()%>/newsdetail/newsimgread.do?newsno="+ res.newsno;
-		    	     $(".newsPiccc").attr({'src' : cover,});	
-	    		 },
-	    		 error : function(xhr, ajaxOptions, thrownError){
-	    			 
-	             }
-	    	 }); 
-	      });
-// 查詢詳細資料 AJAX方法
-
-// 刪除
-    $(".deleee").on('click', function() {
-	     $item = $( this );
-		 var seach = $item.parent().find("input.newsNo");	  
-
-		  $.ajax({
-	    		 type:"POST",  //指定http參數傳輸格式為POST 
-	    		 contentType:"application/x-www-form-urlencoded;charset=utf-8",
-	    		 url:"<%=request.getContextPath()%>/NewsdetailServlet?action=delete&newsno="+seach.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
-//	    		 data:text,  //要傳給目標的data
-	    		 dataType: "json",
-	    		 
-	    		//Ajax成功後執行的function，response為回傳的值
-	    		 success : function(res){
-	    			 swal({
-	  		    		    title: res+': 已成功刪除',
-	  		    		    type:	'success',
-	  		    		})
-	  		    		reload();
-	    		 },
-	    		 error : function(xhr, ajaxOptions, thrownError){
-	    			 
-	             }
-	    	 }); 
-	      });
-// 刪除
-    
-    function reload(){
-   		setTimeout(function(){
-		  window.location.reload();
-		  },500);
-	};
 
 
 // 換圖預覽

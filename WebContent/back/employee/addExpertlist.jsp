@@ -131,10 +131,13 @@ h4 {
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<img
-							src="<%=request.getContextPath()%>/back/image/empolyee/horizonBar.jpg"
-							class="img-responsive">
 
+						<div id="mytitle"
+							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
+							<h1>
+								新增員工專長&nbsp;<b>頁面</b>
+							</h1>
+						</div>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -159,16 +162,12 @@ h4 {
 							<form class="well form-horizontal"
 								action="<%=request.getContextPath()%>/employee/employee.do"
 								method="post" id="contact_form">
-								
+
 								<input type="hidden" name="action" value="expertlist_insert">
 								<fieldset>
 									<!-- Form Name -->
 									<legend>
-										<center>
-											<h2>
-												<b>新增員工專長</b>
-											</h2>
-										</center>
+
 										<c:if test="${not empty errorMsgs}">
 											<font color='red'>請修正以下錯誤: <c:forEach var="message"
 													items="${errorMsgs}">
@@ -185,8 +184,8 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-eye-open"></i></span>
-													 <input name="expNo"  value="" class="form-control" type="text">
+													class="glyphicon glyphicon-eye-open"></i></span> <input
+													name="expNo" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -196,8 +195,8 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-bookmark"></i></span>
-													 <input name="expName"  value="" class="form-control" type="text">
+													class="glyphicon glyphicon-bookmark"></i></span> <input
+													name="expName" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -206,8 +205,8 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-list-alt"></i></span>
-													 <input name="expSpec"  value="" class="form-control" type="text">
+													class="glyphicon glyphicon-list-alt"></i></span> <input
+													name="expSpec" value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
@@ -216,12 +215,12 @@ h4 {
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-usd"></i></span>
-													 <input name="expPrice"  value="" class="form-control" type="text">
+													class="glyphicon glyphicon-usd"></i></span> <input name="expPrice"
+													value="" class="form-control" type="text">
 											</div>
 										</div>
 									</div>
-		
+
 
 
 									<!-------------------------------------------------------------------------------- 神奇小按鈕 ------------------------------------------------------------------------------------------------------->

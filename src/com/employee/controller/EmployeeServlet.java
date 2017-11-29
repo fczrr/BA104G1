@@ -269,11 +269,14 @@ public class EmployeeServlet extends HttpServlet {
 			EmployeeService empSvc = new EmployeeService();
 			empSvc.insert(empVO); // 新增員工
 			sendRegisterMail(empVO.getEmpEmail(), empVO.getEmpName(), empPwd); // 註冊信
-			// =======================================================================================================================
-			HttpSession session = req.getSession();
-			session.setAttribute("empVO", empVO);
-			session.setAttribute("isLogin", "true");
-
+//有改動過 =======================================================================================================================
+//			HttpSession session = req.getSession();
+//			req.setAttribute("empVO", empVO);
+//			req.setAttribute("isLogin", "true");
+			
+			
+//			RequestDispatcher successView = req.getRequestDispatcher(url);
+//			successView.forward(req, res);
 			res.sendRedirect(req.getContextPath() + "/back/employee/listAllEmployee.jsp");
 			return;
 		}

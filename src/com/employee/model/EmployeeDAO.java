@@ -12,7 +12,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 	private static DataSource ds = null;
 
 	private static final String INSERT_STMT = "INSERT INTO EMPLOYEE (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES) "
-			+ "VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')),?,?,?,?,?,?,?, TO_DATE(?,'yyyy/mm/dd'),?,?,?)";
+			+ "VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')),?,?,?,?,?,?,?, ?,?,?,?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM EMPLOYEE";
 	private static final String GET_ONE_STMT = "SELECT * FROM EMPLOYEE WHERE EMP_NO=?";
 	private static final String GET_ONE_BYMEMID = "SELECT * FROM EMPLOYEE WHERE EMP_ID=?";

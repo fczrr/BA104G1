@@ -54,10 +54,13 @@
 					<div>帳戶點數餘額：${memberSvc.findByPrimaryKey(memberVO.memNo).point}<br><br></div>
 					
 					<div>
-						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front/member/BalanceInsert.jsp" >
+						<form method="post" action="<%=request.getContextPath()%>/member/member.do" >
 					     <input type="submit" value="信用卡加值" class=" btn-success"> 
 					     <input type="hidden" name="memNo"      value="${memberVO.memNo}">
-					     </FORM>					
+					     <input type="hidden" name="myurl"      value="<%=request.getServletPath() %>" >
+					     <input type="hidden" name="action"      value="tranfer" >
+					     
+					     </form>					
 					</div>
 					<hr>
 					

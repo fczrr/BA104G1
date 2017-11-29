@@ -2,16 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.balance.model.*"%>
+<%@ page import="com.member.model.*"%>
 
 <%@ include file="/front/navbar.jsp"%>
 
 <%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 <jsp:useBean id="balanceSvc" class="com.balance.model.BalanceService" />
+<jsp:useBean id="memberSvc" class="com.member.model.MemberService" />
 
 <%
 	String memNo = request.getParameter("memNo");
 	List<BalanceVO> balanceVO = balanceSvc.getBalanceByMemNo(memNo);
 	pageContext.setAttribute("balanceVO", balanceVO);
+	
+
+	MemberVO memberVO = memberSvc.getOneMemByNo(memNo);
+	pageContext.setAttribute("memberVO", memberVO);
+
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,12 +44,10 @@
  
 
 		
-		<div class="container">
-				<div class="col-xs-12 col-sm-6 col-sm-offset-3" >		
-
-					<img alt="" src="<%=request.getContextPath()%>/img/balance/visalogo.jpg" width="100px">
-			
-					<form METHOD="post" ACTION="<%=request.getContextPath()%>/member/member.do">
+	<div class="container">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3" >		
+			<img alt="" src="<%=request.getContextPath()%>/img/balance/visalogo.jpg" width="100px">
+			<form method="post" action="<%=request.getContextPath()%>/member/member.do" >
 			<table>
 			<tr><td colspan="2"><h1 class="text-center">信用卡加值</h1></td></tr>
 			<tr><td>會員編號:</td><td> ${memberVO.memNo}</td>
@@ -56,7 +62,7 @@
 		  		<input type="text" class="form-control crd"  id="topupValue" name="topupValue" value=""  style="width:100px;">
 	  		</td></tr>
 			<tr><td>信用卡卡號
-</td>
+			</td>
 		  		<td>
 
 		  		<div class="crd">	  		
@@ -117,12 +123,13 @@
 			<tr><td>
 				<p>
 			  		<input type="hidden" name="action" value="balance_insert">
+			  	 	<input type="hidden" name="myurl" value="${myurl}">
 					<input type="hidden" name="memNo" value="${memberVO.memNo}" >
 					<input type="submit" class="btn-danger" value="確定送出">	
 				</p>
 			</td></tr>
 			<tr><td colspan="2">
-			
+			.............${myurl}
 				<div>1. 一元等於一點。</div>			  	
 				<div>2. 完成付款程序後，將會直接進行加值，無法取消該筆交易，請詳細確認購買資料。
 				確認付款完成後，詳情請至會員專區/我的錢包 網頁中查詢儲值狀態。</div>

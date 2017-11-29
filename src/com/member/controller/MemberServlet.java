@@ -34,7 +34,7 @@ public class MemberServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-
+		System.out.println("action"+action);
 		// =================================================登入================================================================================================
 		if ("login".equals(action)) {
 
@@ -201,86 +201,86 @@ public class MemberServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			MemberService memSvc = new MemberService();
 			String url = "/front/member/MemberInfo.jsp";
-//			try {
+			// try {
 
-				String memNo = req.getParameter("memNo");
-				String memName = req.getParameter("memName");
-				String memPwd = req.getParameter("memPwd");
-				String memPhone = req.getParameter("memPhone");
-				String memGender = req.getParameter("memGender");
-				String memEmail = req.getParameter("memEmail");
-				String address = req.getParameter("address");
+			String memNo = req.getParameter("memNo");
+			String memName = req.getParameter("memName");
+			String memPwd = req.getParameter("memPwd");
+			String memPhone = req.getParameter("memPhone");
+			String memGender = req.getParameter("memGender");
+			String memEmail = req.getParameter("memEmail");
+			String address = req.getParameter("address");
 
-				MemberVO memberVO = memSvc.getOneMemByNo(memNo);
+			MemberVO memberVO = memSvc.getOneMemByNo(memNo);
 
-				if (memName == null || memName.trim().length() == 0) {
-					errorMsgs.add("請勿空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("memberVO", memberVO);
-					RequestDispatcher failureView = req.getRequestDispatcher(url);
-					failureView.forward(req, res);
-					return;
-				}
-				memberVO.setMemName(memName);
-				
-				if (memPwd != null && memPwd.trim().length() != 0) {
-					memberVO.setMemPwd(memPwd);
-				}
-
-				if (memPhone == null || memPhone.trim().length() == 0) {
-					errorMsgs.add("請勿空白");
-				}
-				
-				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("memberVO", memberVO);
-					RequestDispatcher failureView = req.getRequestDispatcher(url);
-					failureView.forward(req, res);
-					return;
-				}
-				memberVO.setMemPhone(memPhone);
-
-				if (memGender != null) {
-					memberVO.setMemGender(memGender);
-				}
-
-				if (memEmail == null || memEmail.trim().length() == 0) {
-					errorMsgs.add("請勿空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("memberVO", memberVO);
-					RequestDispatcher failureView = req.getRequestDispatcher(url);
-					failureView.forward(req, res);
-					return;
-				}
-				memberVO.setMemEmail(memEmail);
-
-				if (address == null || address.trim().length() == 0) {
-					errorMsgs.add("請勿空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("memberVO", memberVO);
-					RequestDispatcher failureView = req.getRequestDispatcher(url);
-					failureView.forward(req, res);
-					return;
-				}
-				memberVO.setAddress(address);
-
-				/*************************** 2.�}�l�ק��� *****************************************/
-
-				memberVO = memSvc.updateMember(memberVO);
-				/****************************************************************************/
-				System.out.println("Update Member Success");
+			if (memName == null || memName.trim().length() == 0) {
+				errorMsgs.add("請勿空白");
+			}
+			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("memberVO", memberVO);
-				RequestDispatcher successView = req.getRequestDispatcher(url);
-				successView.forward(req, res);
+				RequestDispatcher failureView = req.getRequestDispatcher(url);
+				failureView.forward(req, res);
+				return;
+			}
+			memberVO.setMemName(memName);
 
-				/*************************** ��L�i�઺���~�B�z *************************************/
-//			} catch (Exception e) {
-//				errorMsgs.add("錯誤訊息:" + e.getMessage());
-//				RequestDispatcher failureView = req.getRequestDispatcher(url);
-//				failureView.forward(req, res);
-//			}
+			if (memPwd != null && memPwd.trim().length() != 0) {
+				memberVO.setMemPwd(memPwd);
+			}
+
+			if (memPhone == null || memPhone.trim().length() == 0) {
+				errorMsgs.add("請勿空白");
+			}
+
+			if (!errorMsgs.isEmpty()) {
+				req.setAttribute("memberVO", memberVO);
+				RequestDispatcher failureView = req.getRequestDispatcher(url);
+				failureView.forward(req, res);
+				return;
+			}
+			memberVO.setMemPhone(memPhone);
+
+			if (memGender != null) {
+				memberVO.setMemGender(memGender);
+			}
+
+			if (memEmail == null || memEmail.trim().length() == 0) {
+				errorMsgs.add("請勿空白");
+			}
+			if (!errorMsgs.isEmpty()) {
+				req.setAttribute("memberVO", memberVO);
+				RequestDispatcher failureView = req.getRequestDispatcher(url);
+				failureView.forward(req, res);
+				return;
+			}
+			memberVO.setMemEmail(memEmail);
+
+			if (address == null || address.trim().length() == 0) {
+				errorMsgs.add("請勿空白");
+			}
+			if (!errorMsgs.isEmpty()) {
+				req.setAttribute("memberVO", memberVO);
+				RequestDispatcher failureView = req.getRequestDispatcher(url);
+				failureView.forward(req, res);
+				return;
+			}
+			memberVO.setAddress(address);
+
+			/*************************** 2.�}�l�ק��� *****************************************/
+
+			memberVO = memSvc.updateMember(memberVO);
+			/****************************************************************************/
+			System.out.println("Update Member Success");
+			req.setAttribute("memberVO", memberVO);
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+
+			/*************************** ��L�i�઺���~�B�z *************************************/
+			// } catch (Exception e) {
+			// errorMsgs.add("錯誤訊息:" + e.getMessage());
+			// RequestDispatcher failureView = req.getRequestDispatcher(url);
+			// failureView.forward(req, res);
+			// }
 		}
 
 		// ======================================================================================================================
@@ -488,24 +488,24 @@ public class MemberServlet extends HttpServlet {
 			String memNo = req.getParameter("memNo");
 			MemberService memSvc = new MemberService();
 			MemberVO memVO = memSvc.getOneMemByNo(memNo);
-			sendRegisterMail(memVO.getMemEmail(),memVO.getMemName(),memVO.getMemPwd());
+			sendRegisterMail(memVO.getMemEmail(), memVO.getMemName(), memVO.getMemPwd());
 			RequestDispatcher successView = req.getRequestDispatcher("/back/employee/listOneEmployee.jsp");
 			successView.forward(req, res);
 		}
 		// ======================================================================================================================
-		if("cared_update".equals(action)){
+		if ("cared_update".equals(action)) {
 			String memNo = req.getParameter("memNo");
 			String caredName = req.getParameter("caredName");
 			String caredNo = req.getParameter("caredNo");
 			String caredGender = req.getParameter("caredGender");
-			String kinship=req.getParameter("kinship");
-			String caredWeight=req.getParameter("caredWeight");
+			String kinship = req.getParameter("kinship");
+			String caredWeight = req.getParameter("caredWeight");
 			String caredAddress = req.getParameter("caredAddress");
 			String caredPhone = req.getParameter("caredPhone");
 			String conStatus = req.getParameter("conStatus");
 			String bioStatus = req.getParameter("bioStatus");
-			
-			ThecaredVO thecaredVO= new ThecaredVO();
+
+			ThecaredVO thecaredVO = new ThecaredVO();
 			thecaredVO.setCaredNo(caredNo);
 			thecaredVO.setCaredName(caredName);
 			thecaredVO.setCaredWeight(Integer.valueOf(caredWeight));
@@ -513,18 +513,18 @@ public class MemberServlet extends HttpServlet {
 			thecaredVO.setCaredPhone(caredPhone);
 			thecaredVO.setConStatus(conStatus);
 			thecaredVO.setBioStatus(bioStatus);
-			
+
 			ThecaredService caredSvc = new ThecaredService();
-			thecaredVO =caredSvc.updateTHECARED(thecaredVO);
-			req.setAttribute("thecaredVO", thecaredVO); 
+			thecaredVO = caredSvc.updateTHECARED(thecaredVO);
+			req.setAttribute("thecaredVO", thecaredVO);
 			req.setAttribute(caredNo, caredNo);
-			
+
 			RequestDispatcher successView = req.getRequestDispatcher("/front/member/CaredList.jsp");
 			successView.forward(req, res);
-			}
-	
-	//======================================================================================================================
-		if("cared_insert".equals(action)){	
+		}
+
+		// ======================================================================================================================
+		if ("cared_insert".equals(action)) {
 			String memNo = req.getParameter("memNo");
 			String caredName = req.getParameter("caredName");
 			String caredGender = req.getParameter("caredGender");
@@ -536,9 +536,8 @@ public class MemberServlet extends HttpServlet {
 			String conStatus = req.getParameter("conStatus");
 			String bioStatus = req.getParameter("bioStatus");
 			Timestamp modifyTime = new Timestamp(System.currentTimeMillis());
-			
-			
-			ThecaredVO thecaredVO= new ThecaredVO();
+
+			ThecaredVO thecaredVO = new ThecaredVO();
 			thecaredVO.setMemNo(memNo);
 			thecaredVO.setCaredName(caredName);
 			thecaredVO.setCaredGender(caredGender);
@@ -549,39 +548,59 @@ public class MemberServlet extends HttpServlet {
 			thecaredVO.setCaredPhone(caredPhone);
 			thecaredVO.setConStatus(conStatus);
 			thecaredVO.setBioStatus(bioStatus);
-			
+
 			ThecaredService caredSvc = new ThecaredService();
-			thecaredVO =caredSvc.addTHECARED(thecaredVO);
+			thecaredVO = caredSvc.addTHECARED(thecaredVO);
 			RequestDispatcher successView = req.getRequestDispatcher("/front/member/CaredList.jsp");
 			successView.forward(req, res);
 		}
-//======================================================================================================================
-	
-		if("balance_insert".equals(action)){	
+
+		// ======================================================================================================================
+		if ("tranfer".equals(action)) {
+			String url = req.getParameter("myurl");
+			if (url != null && !url.isEmpty()) {
+				req.setAttribute("myurl", url);
+			}
+		//	System.out.println("tranfer:"+url);
+			RequestDispatcher successView = req.getRequestDispatcher("/front/member/BalanceInsert.jsp");
+			successView.forward(req, res);
+		}
+		// ======================================================================================================================
+
+		if ("balance_insert".equals(action)) {
+			System.out.println("here is balance_insertXXXX:");
 			String topupNo = req.getParameter("topupNo");
 			String memNo = req.getParameter("memNo");
 			String topupValue = req.getParameter("topupValue");
 			String topupWay = req.getParameter("topupWay");
 			String status = req.getParameter("status");
+
+			String myurl = req.getParameter("myurl");
 			
-			BalanceVO balanceVO= new BalanceVO();
+			System.out.println("myurl:"+myurl);
+			BalanceVO balanceVO = new BalanceVO();
 			balanceVO.setMemNo(memNo);
 			balanceVO.setTopupValue(Integer.valueOf(topupValue));
 			balanceVO.setTopupWay(topupWay);
 
 			BalanceService balanceSvc = new BalanceService();
-			balanceVO =balanceSvc.addTopup(balanceVO);
-			RequestDispatcher successView = req.getRequestDispatcher("/front/member/MyWallet.jsp");
-			successView.forward(req, res);
+			balanceVO = balanceSvc.addTopup(balanceVO);
 			
-
+			if(myurl!=null && !myurl.isEmpty()){
+				RequestDispatcher successView = req.getRequestDispatcher(myurl);
+				System.out.println("success_myurl:"+myurl);
+				successView.forward(req, res);
+			}else{
+				RequestDispatcher successView = req.getRequestDispatcher("/front/member/MyWallet.jsp");
+				successView.forward(req, res);
+			}
 		}
-		
-		//-------------------------------------------------------------------------------
+
+		// -------------------------------------------------------------------------------
 		if ("queryBalanceList".equals(action)) {
 			String empDep = req.getParameter("empDep");
 			System.out.println(empDep);
-			
+
 			String param = null;
 			String url = "/back/member/listAllBalance.jsp";
 			BalanceService balanceSvc = new BalanceService();
@@ -594,107 +613,107 @@ public class MemberServlet extends HttpServlet {
 				dis.forward(req, res);
 			}
 		}
-		//-------------------------------------------------------------------
-		
+		// -------------------------------------------------------------------
+
 		if ("queryBalanceByMemNo".equals(action)) {
 
-			String url = "/back/member/listOneBalance.jsp";			
+			String url = "/back/member/listOneBalance.jsp";
 			String memNo = req.getParameter("memNo");
-		
+
 			BalanceService balanceSvc = new BalanceService();
 			List<BalanceVO> list = balanceSvc.getAllByMemNo2(memNo.toUpperCase());
- 
-			req.setAttribute("memNo", memNo); 
+
+			req.setAttribute("memNo", memNo);
 			req.setAttribute("list", list);
-			System.out.println("set_balanceVO="+list);
+			System.out.println("set_balanceVO=" + list);
 
 			RequestDispatcher successView = req.getRequestDispatcher(url);
 			successView.forward(req, res);
-				
+
 		}
-		//-------------------------------------------------------------------
+		// -------------------------------------------------------------------
 
 		if ("changeBalanceStatus".equals(action)) {
-			
+
 			System.out.println("123");
 			String status = req.getParameter("status");
 			String topupNo = req.getParameter("topupNo");
 
 			BalanceService balanceSvc = new BalanceService();
-			balanceSvc.updateStatus(status,topupNo);
+			balanceSvc.updateStatus(status, topupNo);
 			System.out.println("後台成功修改會員狀態");
 			RequestDispatcher successView = req.getRequestDispatcher("/back/member/listAllBalance.jsp");
 			successView.forward(req, res);
 
 		}
-		
-		if("memVerity".equals(action)){
-			System.out.println("action"+action);
+
+		if ("memVerity".equals(action)) {
+			System.out.println("action" + action);
 
 			String memNo = req.getParameter("memNo");
-			MemberService memSvc = new MemberService();;
+			MemberService memSvc = new MemberService();
+			;
 			MemberVO memVO = memSvc.findByPrimaryKey(memNo);
-			String memCodeOutput = sendRegisterMail(memVO.getMemEmail(),memVO.getMemName());//程式送出認證碼了
+			String memCodeOutput = sendRegisterMail(memVO.getMemEmail(), memVO.getMemName());// 程式送出認證碼了
 			req.getSession().setAttribute("memCodeOutput", memCodeOutput);
 
-			
 			RequestDispatcher successView = req.getRequestDispatcher("/front/member/MemberVerify.jsp");
 			successView.forward(req, res);
-			
+
 		}
-		if("confirmCode".equals(action)){
+		if ("confirmCode".equals(action)) {
 			String memNo = req.getParameter("memNo");
 
-			String memCodeOutput= (String)req.getSession().getAttribute("memCodeOutput");
-			String memCodeInput= req.getParameter("memCodeInput");
-		System.out.println(memCodeOutput);
-		System.out.println(memCodeInput);
-			
-			String ok="已驗證";
-			String fail="請重新驗證";
-			
-			MemberService memSvc = new MemberService();;
+			String memCodeOutput = (String) req.getSession().getAttribute("memCodeOutput");
+			String memCodeInput = req.getParameter("memCodeInput");
+			System.out.println(memCodeOutput);
+			System.out.println(memCodeInput);
+
+			String ok = "已驗證";
+			String fail = "請重新驗證";
+
+			MemberService memSvc = new MemberService();
+			;
 			MemberVO memberVO = memSvc.findByPrimaryKey(memNo);
-			if(memCodeInput.equals(memCodeOutput)){
+			if (memCodeInput.equals(memCodeOutput)) {
 				memberVO.setMemSratus(ok);
-			}else{
+			} else {
 				memberVO.setMemSratus(fail);
 			}
 
 			memSvc.updateMember(memberVO);
-			System.out.println("Input驗證碼"+memCodeInput);
+			System.out.println("Input驗證碼" + memCodeInput);
 			req.setAttribute("memberVO", memberVO);
 			RequestDispatcher successView = req.getRequestDispatcher("/front/member/MemberInfo.jsp");
 			successView.forward(req, res);
 		}
-		
-		if("findOneByMemNo".equals(action)){
+
+		if ("findOneByMemNo".equals(action)) {
 			String memNo = req.getParameter("memNo");
 			List<String> errorMsgs = new LinkedList<String>();
 			String failureV = req.getParameter("failureV");
-			
+
 			req.setAttribute("errorMsgs", errorMsgs);
-			if(memNo== null || memNo.trim().equals("")){
+			if (memNo == null || memNo.trim().equals("")) {
 				errorMsgs.add("請輸入員工編號");
 			}
-			
-			if(errorMsgs.size() != 0){
+
+			if (errorMsgs.size() != 0) {
 				RequestDispatcher failureView = req.getRequestDispatcher(failureV);
 				failureView.forward(req, res);
 			}
-				
-				MemberService memberService = new  MemberService();
-				MemberVO memberVO = memberService.findByPrimaryKey(memNo);
-				
-				req.setAttribute("memberVO", memberVO);
-				
-				RequestDispatcher successView = req.getRequestDispatcher(req.getParameter("successView"));
-				successView.forward(req, res);
-				
+
+			MemberService memberService = new MemberService();
+			MemberVO memberVO = memberService.findByPrimaryKey(memNo);
+
+			req.setAttribute("memberVO", memberVO);
+
+			RequestDispatcher successView = req.getRequestDispatcher(req.getParameter("successView"));
+			successView.forward(req, res);
+
 		}
 	}
-	
-	
+
 	private void sendRegisterMail(String Email, String Name, String Pwd) {
 		String to = Email;
 		String subject = "密碼通知";
@@ -702,25 +721,23 @@ public class MemberServlet extends HttpServlet {
 		MailService mailService = new MailService();
 		mailService.sendMail(to, subject, messageText);
 	}
+
 	private String sendRegisterMail(String memEmail, String memName) {
 		String to = memEmail;
-		String memCode= getMemCode();
+		String memCode = getMemCode();
 		String subject = "有我罩你-會員認證信";
-		System.out.println("驗證碼"+memCode);
-		System.out.println("mail:"+memEmail);
-		
+		System.out.println("驗證碼" + memCode);
+		System.out.println("mail:" + memEmail);
 
-		
-		String messageText = 
-				"尊敬的會員" + memName +  "您好：\n\n" + "感謝申請會員驗證！" 
-				+ "\n 請至驗證網頁輸入下方驗證碼 http://localhost:8081/BA104G1/front/member/MemberVerify.jsp"
-				+ "\n【" + memCode  +"】(共4碼)，此驗證碼只在10分鐘內有效，失效時請重新申請。"; 
-		
+		String messageText = "尊敬的會員" + memName + "您好：\n\n" + "感謝申請會員驗證！"
+				+ "\n 請至驗證網頁輸入下方驗證碼 http://localhost:8081/BA104G1/front/member/MemberVerify.jsp" + "\n【" + memCode
+				+ "】(共4碼)，此驗證碼只在10分鐘內有效，失效時請重新申請。";
+
 		MailService mailService = new MailService();
 		mailService.sendMail(to, subject, messageText);
 		return memCode;
 	}
-	
+
 	private String getMemCode() {
 		StringBuffer sb = new StringBuffer();
 		int[] A = new int[4];
@@ -737,4 +754,3 @@ public class MemberServlet extends HttpServlet {
 		return sb.toString();
 	}
 }
-

@@ -1243,74 +1243,74 @@ INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
 VALUES(dish_seq.NEXTVAL,'淮山藥膳活力粥','淮山，俗稱的山藥，藥性平和，不會寒膩也不會溫燥，且含有豐富的澱粉質及消化酵素，能幫助消化，加上以清藥膳為基底去熬煮成清粥，溫和且富有營養，適合早上當作主食來食用。','米食',load_blob('dish07.png'));
 --主食--
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'清蒸鱈魚','藍田精選鱈魚，以少鹽少油的烹煮方式，讓鱈魚的鮮度自然浮現出來，且鱈魚含有豐富的維生素A及D，富含多元不飽和脂肪酸，讓媽咪可以吸收到足夠的營養。','主食',load_blob('dish08.png'));
+VALUES(dish_seq.NEXTVAL,'清蒸鱈魚','藍田精選鱈魚，以少鹽少油的烹煮方式，讓鱈魚的鮮度自然浮現出來，且鱈魚含有豐富的維生素A及D，富含多元不飽和脂肪酸，讓媽咪可以吸收到足夠的營養。','主食',load_blob('dish08.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
 VALUES(dish_seq.NEXTVAL,'水晶雞','提供所需的維生素B12，有助於紅血球的形成。增進神經系統的健康。可以幫助食慾、提升睡眠品質；雞肉能提供礦物質硒Se人體必需的微量元素，是有效的抗氧化劑和自由基清除劑。可以減緩老化，幫助維持組織的柔軟性。','主食',load_blob('dish09.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'油雞','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish09.jpg'));
+VALUES(dish_seq.NEXTVAL,'油雞','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish10.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'彩椒蝦仁','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish10.jpg'));
+VALUES(dish_seq.NEXTVAL,'彩椒蝦仁','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish11.jpg'));
 --湯品--
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'紅棗補氣魚湯','《本草綱目》記載：紅棗具有益氣養腎、補血養顏、補肝降壓。紅棗含有豐富的維生素A、B、C等維生素，以及18種氨基酸、礦物質等，加上藍田演選的新鮮的魚，紅棗補氣魚湯不只可幫助媽咪補氣血，也可幫助媽咪分泌乳汁，讓媽咪乳汁源源不絕。','湯品',load_blob('dish11.jpg'));
+VALUES(dish_seq.NEXTVAL,'紅棗補氣魚湯','《本草綱目》記載：紅棗具有益氣養腎、補血養顏、補肝降壓。紅棗含有豐富的維生素A、B、C等維生素，以及18種氨基酸、礦物質等，加上藍田演選的新鮮的魚，紅棗補氣魚湯不只可幫助媽咪補氣血，也可幫助媽咪分泌乳汁，讓媽咪乳汁源源不絕。','湯品',load_blob('dish12.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'蓮藕山藥排骨湯','蓮藕含有大量水分及及少量碳水化合物（大部分為澱粉）；煮熟以後，性由涼變溫，對脾胃有益，有養胃滋陰，益血的功效，加上山藥含有豐富的澱粉質及消化酵素，與精選的豬排骨一起精心熬煮，成為營養成分充足的湯燉品。','湯品',load_blob('dish12.jpg'));
+VALUES(dish_seq.NEXTVAL,'蓮藕山藥排骨湯','蓮藕含有大量水分及及少量碳水化合物（大部分為澱粉）；煮熟以後，性由涼變溫，對脾胃有益，有養胃滋陰，益血的功效，加上山藥含有豐富的澱粉質及消化酵素，與精選的豬排骨一起精心熬煮，成為營養成分充足的湯燉品。','湯品',load_blob('dish13.png'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'四神豬肚湯','健脾利水，增強腸胃吸收能力。通常體質較差、易感風寒、食慾不振。','湯品',load_blob('dish13.jpg'));
+VALUES(dish_seq.NEXTVAL,'四神豬肚湯','健脾利水，增強腸胃吸收能力。通常體質較差、易感風寒、食慾不振。','湯品',load_blob('dish14.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'刺五加燉雞湯','益氣健脾，補腎安神。對於脾臟虛弱，體虛乏力，食慾不振，腰膝酸痛，失眠多夢尤為有效。','湯品',load_blob('dish14.jpg'));
+VALUES(dish_seq.NEXTVAL,'刺五加燉雞湯','益氣健脾，補腎安神。對於脾臟虛弱，體虛乏力，食慾不振，腰膝酸痛，失眠多夢尤為有效。','湯品',load_blob('dish15.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'首烏燉烏雞湯','促進食慾、幫助消化、調整體質、滋補強身、增強體力、精神旺盛、營養補給、健康維持、青春源頭、延年益壽、減少疲勞感、調節生理機能、促進新陳代謝、幫助維持消化道機能。','湯品',load_blob('dish15.jpg'));
+VALUES(dish_seq.NEXTVAL,'首烏燉烏雞湯','促進食慾、幫助消化、調整體質、滋補強身、增強體力、精神旺盛、營養補給、健康維持、青春源頭、延年益壽、減少疲勞感、調節生理機能、促進新陳代謝、幫助維持消化道機能。','湯品',load_blob('dish16.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'首烏燉豬肝湯','有解毒，潤腸通便，養血益肝，固精益腎，健筋骨，烏髭髪、補虛益精，益肝腎、潤五臟、填精髓、堅韌筋骨、明耳目、療瘡止痛、收縮子宮與排除惡露等。','湯品',load_blob('dish16.jpg'));
+VALUES(dish_seq.NEXTVAL,'首烏燉豬肝湯','有解毒，潤腸通便，養血益肝，固精益腎，健筋骨，烏髭髪、補虛益精，益肝腎、潤五臟、填精髓、堅韌筋骨、明耳目、療瘡止痛、收縮子宮與排除惡露等。','湯品',load_blob('dish17.jpg'));
 --蔬食--
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'薑拌龍鬚菜','含豐富的維生素A、B1、B2及鉀、鈣、鎂、磷、鐵、鋅等多種營養素，幫助維持皮膚、心臟及神經系統的正常功能。有助於維持正常的食慾。而且熱量極低，多食用可助消化，加上藍田精心挑選4個月以上的老薑烹飪後，去除寒性，使得龍鬚菜美味又可口。','蔬食',load_blob('dish17.jpg'));
+VALUES(dish_seq.NEXTVAL,'薑拌龍鬚菜','含豐富的維生素A、B1、B2及鉀、鈣、鎂、磷、鐵、鋅等多種營養素，幫助維持皮膚、心臟及神經系統的正常功能。有助於維持正常的食慾。而且熱量極低，多食用可助消化，加上藍田精心挑選4個月以上的老薑烹飪後，去除寒性，使得龍鬚菜美味又可口。','蔬食',load_blob('dish18.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'雙鮮綠蘆筍','蘆筍屬鹼性蔬菜，有豐富的纖維質，維生素A、C、E及蛋白質都很豐富，可促進腸道蠕動。增加飽足感。使糞便比較柔軟而易於排出。','蔬食',load_blob('dish18.jpg'));
+VALUES(dish_seq.NEXTVAL,'雙鮮綠蘆筍','蘆筍屬鹼性蔬菜，有豐富的纖維質，維生素A、C、E及蛋白質都很豐富，可促進腸道蠕動。增加飽足感。使糞便比較柔軟而易於排出。','蔬食',load_blob('dish19.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'五彩繽紛','營養均衡、低卡路里、豐富的鈣有助於維持骨骼與牙齒的正常發育及健康。幫助血液正常的凝固功能。','蔬食',load_blob('dish19.jpg'));
+VALUES(dish_seq.NEXTVAL,'五彩繽紛','營養均衡、低卡路里、豐富的鈣有助於維持骨骼與牙齒的正常發育及健康。幫助血液正常的凝固功能。','蔬食',load_blob('dish20.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'枸杞吻魚紅鳳菜','富含磷、鐵、蛋白質，對發育中的女孩是絕佳的料理。而紅鳳菜中高量鐵質，有助於正常紅血球的形成。構成血紅素與肌紅素的重要成分。有助於氧氣的輸送與利用。','蔬食',load_blob('dish20.jpg'));
+VALUES(dish_seq.NEXTVAL,'枸杞吻魚紅鳳菜','富含磷、鐵、蛋白質，對發育中的女孩是絕佳的料理。而紅鳳菜中高量鐵質，有助於正常紅血球的形成。構成血紅素與肌紅素的重要成分。有助於氧氣的輸送與利用。','蔬食',load_blob('dish21.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'豬肝菠菜','菠菜含有豐富葉酸，有助於核酸與核蛋白及紅血球的形成。有助胎兒的正常發育與生長。','蔬食',load_blob('dish21.jpg'));
+VALUES(dish_seq.NEXTVAL,'豬肝菠菜','菠菜含有豐富葉酸，有助於核酸與核蛋白及紅血球的形成。有助胎兒的正常發育與生長。','蔬食',load_blob('dish22.jpg'));
 --甜品--
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'紅棗銀耳湯','銀耳譽為“菌中之冠，內有有效成分酸性多糖類物質，能增強人體的免疫力，且富含維生素D，能防止鈣的流失，本身有天然植物性膠質，有滋陰作用，搭配紅棗益氣養腎、補血養顏。','甜品',,load_blob('dish22.jpg'));
+VALUES(dish_seq.NEXTVAL,'紅棗銀耳湯','銀耳譽為“菌中之冠，內有有效成分酸性多糖類物質，能增強人體的免疫力，且富含維生素D，能防止鈣的流失，本身有天然植物性膠質，有滋陰作用，搭配紅棗益氣養腎、補血養顏。','甜品',load_blob('dish23.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'紅豆紫米小薏仁粥','維生素B1及B2、葉酸、蛋白質、脂肪等多種營養物質，以及鐵、鋅、鈣、磷等人體所需礦物元素。','甜品',load_blob('dish23.jpg'));
+VALUES(dish_seq.NEXTVAL,'紅豆紫米小薏仁粥','維生素B1及B2、葉酸、蛋白質、脂肪等多種營養物質，以及鐵、鋅、鈣、磷等人體所需礦物元素。','甜品',load_blob('dish24.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'珍珠薏仁饌','富含有相當多的蛋白質與油脂、維生素 B1、B2，以及鈣、鐵、磷等礦物質。','甜品',load_blob('dish24.jpg'));
+VALUES(dish_seq.NEXTVAL,'珍珠薏仁饌','富含有相當多的蛋白質與油脂、維生素 B1、B2，以及鈣、鐵、磷等礦物質。','甜品',load_blob('dish25.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'百果雪蓮子粥','含有維生素C、核黃素、胡蘿蔔素、鈣、磷、鐵、鉀、鎂等微量元素。促進膠原蛋白的形成，有助於傷口癒合。有助於維持細胞排列的緊密性。增進體內結締組織、骨骼及牙齒的生長。促進鐵的吸收。具抗氧化作用。','甜品',load_blob('dish25.jpg'));
+VALUES(dish_seq.NEXTVAL,'百果雪蓮子粥','含有維生素C、核黃素、胡蘿蔔素、鈣、磷、鐵、鉀、鎂等微量元素。促進膠原蛋白的形成，有助於傷口癒合。有助於維持細胞排列的緊密性。增進體內結締組織、骨骼及牙齒的生長。促進鐵的吸收。具抗氧化作用。','甜品',load_blob('dish26.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'芝麻糊','富含維生素E、具減少不飽和脂肪酸的氧化。有助於維持細胞膜的完整性。具抗氧化作用。增進皮膚與血球的健康。有助於減少自由基的產生。','甜品',load_blob('dish26.jpg'));
+VALUES(dish_seq.NEXTVAL,'芝麻糊','富含維生素E、具減少不飽和脂肪酸的氧化。有助於維持細胞膜的完整性。具抗氧化作用。增進皮膚與血球的健康。有助於減少自由基的產生。','甜品',load_blob('dish27.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'桂花酒釀蛋花','酒釀於每日早餐提供，是麴菌和糯米發酵而成，無酒精成份，可暖胃、增加泌乳，且不影響傷口癒合，所以剖腹生產的媽咪也可以享用。','甜品',load_blob('dish27.jpg'));
+VALUES(dish_seq.NEXTVAL,'桂花酒釀蛋花','酒釀於每日早餐提供，是麴菌和糯米發酵而成，無酒精成份，可暖胃、增加泌乳，且不影響傷口癒合，所以剖腹生產的媽咪也可以享用。','甜品',load_blob('dish28.jpg'));
 --飲品--
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'健康飲','於每日早餐提供，功效具有清熱、解毒、利肺、補中益氣、消水腫利尿之功效，能增強免疫力抗病毒，抑制細菌生長，並預防出血、產褥熱之發生。','飲品',load_blob('dish28.jpg'));
+VALUES(dish_seq.NEXTVAL,'健康飲','於每日早餐提供，功效具有清熱、解毒、利肺、補中益氣、消水腫利尿之功效，能增強免疫力抗病毒，抑制細菌生長，並預防出血、產褥熱之發生。','飲品',load_blob('dish29.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'養肝茶','熬煮約10小時，有微酸味，能生津止渴、消水腫、祛風清血、壯筋骨，具有保肝、補氣、養血、安神可緩和藥膳的藥性。','飲品',load_blob('dish29.jpg'));
+VALUES(dish_seq.NEXTVAL,'養肝茶','熬煮約10小時，有微酸味，能生津止渴、消水腫、祛風清血、壯筋骨，具有保肝、補氣、養血、安神可緩和藥膳的藥性。','飲品',load_blob('dish30.jpg'));
 INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
-VALUES(dish_seq.NEXTVAL,'補血飲','以當歸黃耆為首的滋補飲，功能補血、活血、調經止痛、潤腸通便。(飲用生化湯期間停服) 產婦食用杜仲的主要目的是防止腰酸背痛，兼固腎強。','飲品',load_blob('dish30.jpg'));
+VALUES(dish_seq.NEXTVAL,'補血飲','以當歸黃耆為首的滋補飲，功能補血、活血、調經止痛、潤腸通便。(飲用生化湯期間停服) 產婦食用杜仲的主要目的是防止腰酸背痛，兼固腎強。','飲品',load_blob('dish31.jpg'));
 
 
 --新增套餐--
-INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO)
+INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO,SM_PIC1,SM_PIC2,SM_PIC3)
 VALUES(setMeal_seq.NEXTVAL,'活力養身餐',150,300,'新一代的銀髮族追求身體上的健康，少鹽、少油儼然成為新的飲食觀念，主廚使用多穀類米飯搭配鮮採食蔬以及每日補獲新鮮漁貨及合格溫體肉品。
 味覺不敏感的銀髮族吃東西時常覺得索然無味，食物一端上桌就猛加鹽巴、醬油，很容易吃進過量的鈉，造成身體上的負擔並埋下慢性疾病的風險。
-其實食物味道並不只有「鹹」味一種，主廚運用當季食材並善用食材特有的香氣，就可以讓料理少鹽少油也美味。');
+其實食物味道並不只有「鹹」味一種，主廚運用當季食材並善用食材特有的香氣，就可以讓料理少鹽少油也美味。',load_blob('smA01.jpg'),load_blob('smA02.jpg'),load_blob('smA03.jpg'));
 
 
-INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO)
-VALUES(setMeal_seq.NEXTVAL,'疾病健康餐',150,300,'慢性疾病的發生，通常伴隨著年齡的老化，長期累積的飲食不均衡或生活型態不正常，導致生理調節機能或代謝障礙，導致疾病發生，因此，需要調理的不只是短暫的罹病過程，更是長期的調養。而在日常生活中，最容易，抑或最不容易被改善的，即是飲食內容的調整！許多疾病都能透過飲食控制而獲得改善，減少服用藥物所造成的肝腎負擔，進而延緩疾病進展。例如：糖尿病患者需要定時定量以及低GI的餐點，以有效控制血糖穩定度；高血壓患者需要限鹽、限鈉、低脂肪的餐點，以減少水分滯留情形和改善血液黏稠度，進而控制血壓，避免腦血管意外(中風)之合併症；腎臟病患者則需限水、限鉀、限蛋白餐點，以減緩腎臟衰竭速度。');
+INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO,SM_PIC1,SM_PIC2,SM_PIC3)
+VALUES(setMeal_seq.NEXTVAL,'疾病健康餐',150,300,'慢性疾病的發生，通常伴隨著年齡的老化，長期累積的飲食不均衡或生活型態不正常，導致生理調節機能或代謝障礙，導致疾病發生，因此，需要調理的不只是短暫的罹病過程，更是長期的調養。而在日常生活中，最容易，抑或最不容易被改善的，即是飲食內容的調整！許多疾病都能透過飲食控制而獲得改善，減少服用藥物所造成的肝腎負擔，進而延緩疾病進展。例如：糖尿病患者需要定時定量以及低GI的餐點，以有效控制血糖穩定度；高血壓患者需要限鹽、限鈉、低脂肪的餐點，以減少水分滯留情形和改善血液黏稠度，進而控制血壓，避免腦血管意外(中風)之合併症；腎臟病患者則需限水、限鉀、限蛋白餐點，以減緩腎臟衰竭速度。',load_blob('smB01.jpg'),load_blob('smB02.jpg'),load_blob('smB03.jpg'));
 
 
-INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO)
+INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO,SM_PIC1,SM_PIC2,SM_PIC3)
 VALUES(setMeal_seq.NEXTVAL,'術後調理餐',150,300,'手術耗氣傷血，損及人體的正氣，多有氣血雙虧，或氣陰兩傷，或營衛失和的現象。術後體質也較虛弱，應多給予補氣養血的食物。
 手術後的食療，以儘早恢復手術後氣血損傷、恢復體力為主要目的；術後飲食則要適當補充營養和熱量，給予高蛋白和富含維生素的飲食。
-由於各方不斷的詢問，金品專業團隊特別規劃 [手術後餐] 來幫助住在美國的大家來解決手術後"吃"的問題。金品要給您最完整的飲食計畫，讓您輕鬆攝取均衡的營養，在最快的時間內幫您補益氣血、恢復體力。');
+由於各方不斷的詢問，金品專業團隊特別規劃 [手術後餐] 來幫助住在美國的大家來解決手術後"吃"的問題。金品要給您最完整的飲食計畫，讓您輕鬆攝取均衡的營養，在最快的時間內幫您補益氣血、恢復體力。',load_blob('smC01.jpg'),load_blob('smC02.jpg'),load_blob('smC03.jpg'));
 
 
 

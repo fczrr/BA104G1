@@ -24,7 +24,6 @@ DROP SEQUENCE MEALCOM_NO_SEQ;
 
 -------DROP 送餐SEQ--------
 DROP SEQUENCE menu_seq;
-DROP SEQUENCE mealStaffSchedule_seq;
 DROP SEQUENCE mealOrderDetail_seq;
 DROP SEQUENCE mealOrder_seq;
 DROP SEQUENCE setMeal_seq;
@@ -106,7 +105,6 @@ DROP TABLE HC_ORDER_MASTER;
 --------DROP 長照TABLE----------------------
 
 --------DROP 送餐TABLE----------------------
-DROP TABLE MEAL_STAFF_SCHEDULE;
 DROP TABLE MEAL_ORDER_DETAIL;
 DROP TABLE MEAL_ORDER;
 DROP TABLE MENU;
@@ -1171,7 +1169,7 @@ CREATE TABLE MEAL_ORDER_DETAIL(
 MO_DETAIL_NO VARCHAR2(15) PRIMARY KEY NOT NULL,
 MO_NO VARCHAR2(15) NOT NULL,
 DELIVER_DATE DATE NOT NULL,
-DELIVER_TIME VARCHAR2(15) NOT NULL,
+MEALTIME VARCHAR2(15) NOT NULL,
 SM_NO NUMBER(10) NULL,
 ORDER_QTY NUMBER(5) NOT NULL,
 CONSTRAINT MO_DET_MO_NO_FK FOREIGN KEY (MO_NO) REFERENCES MEAL_ORDER(MO_NO),
@@ -1207,24 +1205,12 @@ NOCYCLE;
 --套餐菜單表--
 
 CREATE TABLE MENU(
-MEMU_NO NUMBER(10) PRIMARY KEY NOT NULL,
-MENU_OF_YEAR NUMBER(4),
-WEEK_OF_YEAR NUMBER(2),
-DAY_OF_WEEK NUMBER(1),
+MENU_NO NUMBER(10) PRIMARY KEY NOT NULL,
 SM_NO NUMBER(10),
-MEALTIME VARCHAR2(10),
-RICE_NO NUMBER(10),
-MAIN_MEAL_NO NUMBER(10),
-VEGETABLE_NO NUMBER(10),
-DESSERT_NO NUMBER(10),
-SOUP_NO NUMBER(10),
-DRINK_NO NUMBER(10),
-CONSTRAINT MENU_RICE_NO_FK FOREIGN KEY(RICE_NO) REFERENCES DISH(DISH_NO),
-CONSTRAINT MENU_MAIN_MEAL_NO_FK FOREIGN KEY(MAIN_MEAL_NO) REFERENCES DISH(DISH_NO),
-CONSTRAINT MENU_VEGETABLE_NO_FK FOREIGN KEY(VEGETABLE_NO) REFERENCES DISH(DISH_NO),
-CONSTRAINT MENU_DESSERT_NO_FK FOREIGN KEY(DESSERT_NO) REFERENCES DISH(DISH_NO),
-CONSTRAINT MENU_SOUP_NO_FK FOREIGN KEY(SOUP_NO) REFERENCES DISH(DISH_NO),
-CONSTRAINT MENU_DRINK_NO_FK FOREIGN KEY(DRINK_NO) REFERENCES DISH(DISH_NO)
+MENUDATE DATE,
+MEALTIME VARCHAR2(15),
+DISH_NAME  VARCHAR2(30),
+CONSTRAINT MENU_SM_NO FOREIGN KEY(SM_NO) REFERENCES SET_MEAL(SM_NO)
 );
 
 
@@ -1232,7 +1218,7 @@ CONSTRAINT MENU_DRINK_NO_FK FOREIGN KEY(DRINK_NO) REFERENCES DISH(DISH_NO)
 --套餐菜單表自增主鍵--
 CREATE SEQUENCE menu_seq
 INCREMENT BY 1
-START WITH 10001
+START WITH 1
 NOMAXVALUE
 NOCYCLE;
 
@@ -1240,30 +1226,75 @@ NOCYCLE;
 COMMIT;
 
 --新增菜色--
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'南瓜飯','南瓜中含有豐富的維生素E和β-胡蘿蔔素。維生素E具有很強的抗氧化作用，能有效地保護肌體免受一些氧自由基和過氧化物的損害，有助於增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。','米食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'糙米飯','糙米中的米糠和胚芽部分含有豐富的維生素Ｂ與E，能增強人體免疫功能，促進血液循環，還能幫助人們消除沮喪煩躁的情緒，使人充滿活力。','米食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'清蒸鱈魚','藍田精選鱈魚，以少鹽少油的烹煮方式，讓鱈魚的鮮度自然浮現出來，且鱈魚含有豐富的維生素A及D，富含多元不飽和脂肪酸，讓媽咪可以吸收到足夠的營養','主食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'水晶雞','提供所需的維生素B12，有助於紅血球的形成。增進神經系統的健康。可以幫助食慾、提升睡眠品質；雞肉能提供礦物質硒Se人體必需的微量元素，是有效的抗氧化劑和自由基清除劑。可以減緩老化，幫助維持組織的柔軟性。','主食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'八珍雞湯','四物補血，四君子補氣，故八珍湯是氣血雙補，補氣養血，抗衰老，增強免疫力，調理虛弱體質。','湯品');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'麻油土雞腿湯','富含鈣、鐵、不飽和脂肪酸，具豐富維他命E及B1。','湯品');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'薑拌龍鬚菜','含豐富的維生素A、B1、B2及鉀、鈣、鎂、磷、鐵、鋅等多種營養素，幫助維持皮膚、心臟及神經系統的正常功能。有助於維持正常的食慾。而且熱量極低，多食用可助消化，加上藍田精心挑選4個月以上的老薑烹飪後，去除寒性，使得龍鬚菜美味又可口。','蔬食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'雙鮮綠蘆筍','蘆筍屬鹼性蔬菜，有豐富的纖維質，維生素A、C、E及蛋白質都很豐富，可促進腸道蠕動。增加飽足感。使糞便比較柔軟而易於排出。','蔬食');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'紅棗銀耳湯','銀耳譽為“菌中之冠，內有有效成分酸性多糖類物質，能增強人體的免疫力，且富含維生素D，能防止鈣的流失，本身有天然植物性膠質，有滋陰作用，搭配紅棗益氣養腎、補血養顏。','甜品');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'紅豆紫米小薏仁粥','維生素B1及B2、葉酸、蛋白質、脂肪等多種營養物質，以及鐵、鋅、鈣、磷等人體所需礦物元素。','甜品');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'健康飲','於每日早餐提供，功效具有清熱、解毒、利肺、補中益氣、消水腫利尿之功效，能增強免疫力抗病毒，抑制細菌生長，並預防出血、產褥熱之發生。','飲品');
-INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE)
-VALUES(dish_seq.NEXTVAL,'養肝茶','熬煮約10小時，有微酸味，能生津止渴、消水腫、祛風清血、壯筋骨，具有保肝、補氣、養血、安神可緩和藥膳的藥性。','飲品');
+--米食--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'南瓜飯','南瓜中含有豐富的維生素E和β-胡蘿蔔素。維生素E具有很強的抗氧化作用，能有效地保護肌體免受一些氧自由基和過氧化物的損害，有助於增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。','米食',load_blob('dish01.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'糙米飯','糙米中的米糠和胚芽部分含有豐富的維生素Ｂ與E，能增強人體免疫功能，促進血液循環，還能幫助人們消除沮喪煩躁的情緒，使人充滿活力。','米食',load_blob('dish02.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'什蔬拌飯','豐富的膳食纖維可促進腸道蠕動，使糞便比較柔軟而易於排出。膳食中有適量的膳食纖維時，可增加糞便量。','米食',load_blob('dish03.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'黑豆飯','黑豆含鈣、磷、鐵、銅、鎂、維生素Ｅ及Ｂ群、纖維素、蛋白質、卵磷脂等。構成血紅素與肌紅素的重要成分。有助於氧氣的輸送與利用。','米食',load_blob('dish04.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'紅豆飯','紅豆熱量低且富含維生素Ｅ及鉀、鎂、磷、鋅、硒等活性成分，減少不飽和脂肪酸的氧化。有助於維持細胞膜的完整性及減少自由基的產生。具抗氧化作用。增進皮膚與血球的健康。','米食',load_blob('dish05.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'養生豬肝元氣粥','富含鐵質及葉酸與蛋白質、維生素ABCDE、卵磷脂、鐵、磷等營養素。有助於紅血球的形成。有助於核酸與核蛋白的形成。有助胎兒的正常發育與生長。','米食',load_blob('dish06.png'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'淮山藥膳活力粥','淮山，俗稱的山藥，藥性平和，不會寒膩也不會溫燥，且含有豐富的澱粉質及消化酵素，能幫助消化，加上以清藥膳為基底去熬煮成清粥，溫和且富有營養，適合早上當作主食來食用。','米食',load_blob('dish07.png'));
+--主食--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'清蒸鱈魚','藍田精選鱈魚，以少鹽少油的烹煮方式，讓鱈魚的鮮度自然浮現出來，且鱈魚含有豐富的維生素A及D，富含多元不飽和脂肪酸，讓媽咪可以吸收到足夠的營養。','主食',load_blob('dish08.png'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'水晶雞','提供所需的維生素B12，有助於紅血球的形成。增進神經系統的健康。可以幫助食慾、提升睡眠品質；雞肉能提供礦物質硒Se人體必需的微量元素，是有效的抗氧化劑和自由基清除劑。可以減緩老化，幫助維持組織的柔軟性。','主食',load_blob('dish09.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'油雞','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish09.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'彩椒蝦仁','含有豐富的維生素A，所含的脂肪多為不飽和脂肪酸，增進皮膚與黏膜的健康。幫助牙齒和骨骼的發育與生長。為小兒、中老年人、虛弱者理想的蛋白質食品。','主食',load_blob('dish10.jpg'));
+--湯品--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'紅棗補氣魚湯','《本草綱目》記載：紅棗具有益氣養腎、補血養顏、補肝降壓。紅棗含有豐富的維生素A、B、C等維生素，以及18種氨基酸、礦物質等，加上藍田演選的新鮮的魚，紅棗補氣魚湯不只可幫助媽咪補氣血，也可幫助媽咪分泌乳汁，讓媽咪乳汁源源不絕。','湯品',load_blob('dish11.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'蓮藕山藥排骨湯','蓮藕含有大量水分及及少量碳水化合物（大部分為澱粉）；煮熟以後，性由涼變溫，對脾胃有益，有養胃滋陰，益血的功效，加上山藥含有豐富的澱粉質及消化酵素，與精選的豬排骨一起精心熬煮，成為營養成分充足的湯燉品。','湯品',load_blob('dish12.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'四神豬肚湯','健脾利水，增強腸胃吸收能力。通常體質較差、易感風寒、食慾不振。','湯品',load_blob('dish13.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'刺五加燉雞湯','益氣健脾，補腎安神。對於脾臟虛弱，體虛乏力，食慾不振，腰膝酸痛，失眠多夢尤為有效。','湯品',load_blob('dish14.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'首烏燉烏雞湯','促進食慾、幫助消化、調整體質、滋補強身、增強體力、精神旺盛、營養補給、健康維持、青春源頭、延年益壽、減少疲勞感、調節生理機能、促進新陳代謝、幫助維持消化道機能。','湯品',load_blob('dish15.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'首烏燉豬肝湯','有解毒，潤腸通便，養血益肝，固精益腎，健筋骨，烏髭髪、補虛益精，益肝腎、潤五臟、填精髓、堅韌筋骨、明耳目、療瘡止痛、收縮子宮與排除惡露等。','湯品',load_blob('dish16.jpg'));
+--蔬食--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'薑拌龍鬚菜','含豐富的維生素A、B1、B2及鉀、鈣、鎂、磷、鐵、鋅等多種營養素，幫助維持皮膚、心臟及神經系統的正常功能。有助於維持正常的食慾。而且熱量極低，多食用可助消化，加上藍田精心挑選4個月以上的老薑烹飪後，去除寒性，使得龍鬚菜美味又可口。','蔬食',load_blob('dish17.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'雙鮮綠蘆筍','蘆筍屬鹼性蔬菜，有豐富的纖維質，維生素A、C、E及蛋白質都很豐富，可促進腸道蠕動。增加飽足感。使糞便比較柔軟而易於排出。','蔬食',load_blob('dish18.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'五彩繽紛','營養均衡、低卡路里、豐富的鈣有助於維持骨骼與牙齒的正常發育及健康。幫助血液正常的凝固功能。','蔬食',load_blob('dish19.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'枸杞吻魚紅鳳菜','富含磷、鐵、蛋白質，對發育中的女孩是絕佳的料理。而紅鳳菜中高量鐵質，有助於正常紅血球的形成。構成血紅素與肌紅素的重要成分。有助於氧氣的輸送與利用。','蔬食',load_blob('dish20.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'豬肝菠菜','菠菜含有豐富葉酸，有助於核酸與核蛋白及紅血球的形成。有助胎兒的正常發育與生長。','蔬食',load_blob('dish21.jpg'));
+--甜品--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'紅棗銀耳湯','銀耳譽為“菌中之冠，內有有效成分酸性多糖類物質，能增強人體的免疫力，且富含維生素D，能防止鈣的流失，本身有天然植物性膠質，有滋陰作用，搭配紅棗益氣養腎、補血養顏。','甜品',,load_blob('dish22.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'紅豆紫米小薏仁粥','維生素B1及B2、葉酸、蛋白質、脂肪等多種營養物質，以及鐵、鋅、鈣、磷等人體所需礦物元素。','甜品',load_blob('dish23.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'珍珠薏仁饌','富含有相當多的蛋白質與油脂、維生素 B1、B2，以及鈣、鐵、磷等礦物質。','甜品',load_blob('dish24.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'百果雪蓮子粥','含有維生素C、核黃素、胡蘿蔔素、鈣、磷、鐵、鉀、鎂等微量元素。促進膠原蛋白的形成，有助於傷口癒合。有助於維持細胞排列的緊密性。增進體內結締組織、骨骼及牙齒的生長。促進鐵的吸收。具抗氧化作用。','甜品',load_blob('dish25.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'芝麻糊','富含維生素E、具減少不飽和脂肪酸的氧化。有助於維持細胞膜的完整性。具抗氧化作用。增進皮膚與血球的健康。有助於減少自由基的產生。','甜品',load_blob('dish26.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'桂花酒釀蛋花','酒釀於每日早餐提供，是麴菌和糯米發酵而成，無酒精成份，可暖胃、增加泌乳，且不影響傷口癒合，所以剖腹生產的媽咪也可以享用。','甜品',load_blob('dish27.jpg'));
+--飲品--
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'健康飲','於每日早餐提供，功效具有清熱、解毒、利肺、補中益氣、消水腫利尿之功效，能增強免疫力抗病毒，抑制細菌生長，並預防出血、產褥熱之發生。','飲品',load_blob('dish28.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'養肝茶','熬煮約10小時，有微酸味，能生津止渴、消水腫、祛風清血、壯筋骨，具有保肝、補氣、養血、安神可緩和藥膳的藥性。','飲品',load_blob('dish29.jpg'));
+INSERT INTO DISH (DISH_NO,DISH_NAME,DISH_INTRO,DISH_TYPE,DISH_PIC)
+VALUES(dish_seq.NEXTVAL,'補血飲','以當歸黃耆為首的滋補飲，功能補血、活血、調經止痛、潤腸通便。(飲用生化湯期間停服) 產婦食用杜仲的主要目的是防止腰酸背痛，兼固腎強。','飲品',load_blob('dish30.jpg'));
+
 
 --新增套餐--
 INSERT INTO SET_MEAL(SM_NO,SM_NAME,SM_PRICE,SUPPLY,SM_INTRO)
@@ -1306,38 +1337,21 @@ VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVA
 INSERT INTO MEAL_ORDER_DETAIL
 VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-18', 'yyyy-mm-dd'),'早餐',10,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-20', 'yyyy-mm-dd'),'午晚餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-20', 'yyyy-mm-dd'),'午餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-21', 'yyyy-mm-dd'),'午晚餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-21', 'yyyy-mm-dd'),'午餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-23', 'yyyy-mm-dd'),'午晚餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-23', 'yyyy-mm-dd'),'午餐',20,1);
 
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES ('20171103-000002',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-23', 'yyyy-mm-dd'),'午晚餐',20,1);
+VALUES ('20171103-000002',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-23', 'yyyy-mm-dd'),'晚餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES ('20171103-000003',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-21', 'yyyy-mm-dd'),'午晚餐',20,1);
+VALUES ('20171103-000003',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-21', 'yyyy-mm-dd'),'晚餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES ('20171103-000004',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-22', 'yyyy-mm-dd'),'午晚餐',20,1);
-
-
-
-
-
---新增送餐人員班表--\
-INSERT INTO MEAL_STAFF_SCHEDULE
-VALUES(mealStaffSchedule_seq.NEXTVAL,'EMP0012','201710','正修正修正修正修正修正修正修正修正修正修正修正修正修正修正修正');
-
-
-
+VALUES ('20171103-000004',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-22', 'yyyy-mm-dd'),'晚餐',20,1);
 
 
 --新增菜單表--
-INSERT INTO MENU
-VALUES(menu_seq.NEXTVAL,2017,30,2,10,'早餐',101,103,105,107,109,111);
-INSERT INTO MENU
-VALUES(menu_seq.NEXTVAL,2017,30,2,10,'午餐',102,104,106,108,110,112);
-INSERT INTO MENU
-VALUES(menu_seq.NEXTVAL,2017,30,2,10,'晚餐',101,104,106,108,109,110);
 
 
 COMMIT;

@@ -296,7 +296,7 @@ window.onload = function (){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 </body>
-
+<%@ include file="/back/production/BA104G1_footer.jsp"%>
 <script>
 
 $(document).ready(function () {

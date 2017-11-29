@@ -98,6 +98,9 @@ public class ShopOrderServlet extends HttpServlet{
 			
 			Integer amount=(int) (Float.parseFloat(req.getParameter("amount")));
 			String MEMNO=req.getParameter("MEMNO");
+			String ADDRESS=req.getParameter("address");
+			String PHONE=req.getParameter("phone");
+			String NAME=req.getParameter("NAME");
 			System.out.println("MEMNO目前大小"+MEMNO+"|");
 			if(MEMNO.length()==0) {
 				System.out.println("進入null領域");
@@ -133,7 +136,7 @@ public class ShopOrderServlet extends HttpServlet{
 				// shopOrSvc.addShopOrder(shopOrderVO);
 				}
 			//金額足夠訂單成立
-			shopOrSvc.addShopCartOrder(list);
+			shopOrSvc.addShopCartOrder(list,MEMNO,PHONE,ADDRESS,NAME);
 			
 			
 			}else{

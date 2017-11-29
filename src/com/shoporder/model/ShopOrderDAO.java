@@ -347,7 +347,7 @@ public class ShopOrderDAO implements ShopOrderDAO_interface {
 	}
 
 	@Override
-	public void addShopCartOrder(List<ShopOrderVO> shoporderVO) {
+	public void addShopCartOrder(List<ShopOrderVO> shoporderVO,String memno,String phone,String address,String NAME) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		Savepoint savePoint = null;
@@ -362,10 +362,10 @@ public class ShopOrderDAO implements ShopOrderDAO_interface {
 			savePoint = con.setSavepoint();
 			pstmt = con.prepareStatement(ADD_SHOPORDER, cols);
 			// 下面這一段只要新增一次就可以，從會員資料取得非前面表單
-			pstmt.setString(1, "MEM0001");
-			pstmt.setString(2, "地址");
-			pstmt.setString(3, "電話");
-			pstmt.setString(4, "姓名");
+			pstmt.setString(1, memno);
+			pstmt.setString(2, address);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, NAME);
 			pstmt.executeUpdate();
 			System.out.println("DB01");
 

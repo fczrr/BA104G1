@@ -31,8 +31,8 @@ public class ShopOrderService {
 	public List<ShopOrderVO> updateShopOrder(List<ShopOrderVO> shoporderVO,Integer finalTotal){
 		return dao.updateShopOrder(shoporderVO,finalTotal);
 	}
-	public List<ShopOrderVO> addShopCartOrder(List<ShopOrderVO> shoporderVO){
-			dao.addShopCartOrder(shoporderVO);
+	public List<ShopOrderVO> addShopCartOrder(List<ShopOrderVO> shoporderVO,String memno,String phone,String address,String NAME){
+			dao.addShopCartOrder(shoporderVO,memno,phone,address,NAME);
 		return shoporderVO;
 	}
 	public void delete(String orderno,String memno){

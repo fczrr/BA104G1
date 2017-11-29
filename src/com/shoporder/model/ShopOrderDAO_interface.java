@@ -19,7 +19,7 @@ public interface ShopOrderDAO_interface {
 	//新增商品及明細
 	public void addShopOrder(ShopOrderVO shoporderVO);
 	//購物車商品批次新增
-	public void addShopCartOrder(List<ShopOrderVO> shoporderVO);
+	public void addShopCartOrder(List<ShopOrderVO> shoporderVO,String memno,String phone,String address,String NAME);
 	//更新訂單
 	public List<ShopOrderVO> updateShopOrder(List<ShopOrderVO> shoporderVO,Integer finalTotal);
 	//用ITEMNO&ORDERID刪除

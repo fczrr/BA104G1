@@ -126,14 +126,21 @@
 									value="${amount}">
 								<!-- 						假裝會員已經登入了 -->
 								<input type="hidden" name="MEMNO" value="${memberVO.memId}">
+								<input type="hidden" name="NAME" value="${memberVO.memName}">
 								<input type="hidden" name="action" value="CONFIRM">
 							</tr>
 							<tr>
 								
-								<td>送貨地址: <input type="text" style="border-radius: 4px;border: 1px solid #ccc;width: 445px;height: 35px;" name="address" placeholder="如果有需要更改請輸入地址">
-							
-								</td>
+								<td>送貨地址: <input type="text" style="border-radius: 4px;border: 1px solid #ccc;width: 445px;height: 35px;" name="address" value="${memberVO.address}">
+							</td>
+								<td></td>
 								<td> </td>
+								<td> </td>
+							</tr>
+							<tr>
+								<td>連絡電話: <input type="text" style="border-radius: 4px;border: 1px solid #ccc;width: 445px;height: 35px;" name="phone" value="${memberVO.memPhone}">
+							</td>
+								<td></td>
 								<td> </td>
 								<td> </td>
 							</tr>

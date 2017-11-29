@@ -14,8 +14,8 @@ public class NewsdetailJDBCDAO implements NewsdetailDAO_interface{
 	
 
 	// ************* Localhost **********
-//	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String url = "jdbc:oracle:thin:@13.229.86.22:1521:XE";
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+//	String url = "jdbc:oracle:thin:@13.229.86.22:1521:XE";
 	
 	
 	

@@ -20,7 +20,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href="<%=request.getContextPath()%>/front/css/index/bootsnav.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/front/css/index/style.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/front/css/index/newstyle.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/front+/css/index/newstyle.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/front/css/index/service.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/front/css/index/normalize.css"  rel="stylesheet" type="text/css" />
     <link href='http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet prefetch' >

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-   
+   <%@ page import="com.shop.model.*, com.detail.cart.CartVO ,com.detail.promotion.*"%>
+   <%@ page import="java.util.*"%>
 
 <!DOCTYPE HTML>  
 <html class="no-js" lang="de"> 
@@ -38,7 +39,37 @@
 </head>
 <body>     
 
+<%
+//此段複寫equals 去比較itemno
+    ShopService shopSvc = new ShopService();
+    List<ShopVO> list = shopSvc.getAll();
 
+    
+	ProService proSvc = new ProService();
+	List<ProVO> list2 = proSvc.getAllProNow();
+    List listforpro=list2;
+    pageContext.setAttribute("listforpro", list2);
+    
+// 	list.remove(list2);
+	List<ShopVO> list3 = new ArrayList<ShopVO>();
+	for(ShopVO vo:list){
+		Boolean tag = false;
+		for(ProVO vo2:list2){
+			if(vo.equals(vo2)){
+				tag = true; 
+			}
+		}
+		if(!tag){
+			list3.add(vo);
+		}
+	}
+    pageContext.setAttribute("list", list3); // forEach EL用
+	list = list3;// include page1.file JSP用
+	
+	
+
+
+%>
 
 
 
@@ -298,71 +329,72 @@
     </div>
         </div>
     <div class="row" id="prodet_img">
+ <%  //listforpro.size()
+	for (int i=0;i< 4 ;i++) {%>   
         <div class="col-xs-12 col-sm-2">
 
         <article class="card">
             <header class="card__thumb">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/05.png"/></a>
+                <a href="<%=request.getContextPath()%>/shop.do?action=checkone&ITEMNO=<%=((ProVO)(listforpro.get(i))).getITEMNO()%>&PRO=1" title="<%=((ProVO)(listforpro.get(i))).getSHOPNAME()%>" title="<%=((ProVO)(listforpro.get(i))).getSHOPNAME()%>">
+                <img src="<%=request.getContextPath()%>/DBPicReader?ITEMNO=<%=((ProVO)(listforpro.get(i))).getITEMNO()%>" height="180px" width="180px"/></a>
             </header>
 
             <div class="card__body">
                 <div class="card__category"><a href="#">特價商品</a></div>
-                <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2>
-                <div class="card__subtitle">本德医生正在煎熬！</div>
-                <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p>
-                <p class="delet_pri">原價 ＄1000</p>   
-            </div>
-
-        </article>
-    </div>
-    <div class="col-xs-12 col-sm-2">
-        <article class="card">
-            <header class="card__thumb">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/03.png"/></a>
-            </header>
-
-            <div class="card__body">
-                <div class="card__category"><a href="#">特價商品</a></div>
-                <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2>
-                <div class="card__subtitle">本德医生正在煎熬！</div>
-                <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p>
-                <p class="delet_pri">原價 ＄1000</p>   
+                <h2 class="card__title"><a href="<%=request.getContextPath()%>/shop.do?action=checkone&ITEMNO=<%=((ProVO)(listforpro.get(i))).getITEMNO()%>&PRO=1" title="<%=((ProVO)(listforpro.get(i))).getSHOPNAME()%>"> <%=((ProVO)(listforpro.get(i))).getSHOPNAME()%></a></h2>
+                <div class="card__subtitle">趕快來搶購...</div>
+                <p class="card__description"><a id="des_pri" href="<%=request.getContextPath()%>/shop.do?action=checkone&ITEMNO=<%=((ProVO)(listforpro.get(i))).getITEMNO()%>&PRO=1">特價$<%=((ProVO)(listforpro.get(i))).getPRICE()%></a><br><%=((ProVO)(listforpro.get(i))).getDES().substring(0,15)%>...</p>
+                <p class="delet_pri">原價 <%=((ProVO)(listforpro.get(i))).getOLDPRICE()%></p>   
             </div>
 
         </article>
         </div>
-        <div class="col-xs-12 col-sm-2">
-        <article class="card">
-            <header class="card__thumb">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/08.png"/></a>
-            </header>
-
-           <div class="card__body">
-                <div class="card__category"><a href="#">特價商品</a></div>
-                <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2>
-                <div class="card__subtitle">本德医生正在煎熬！</div>
-                <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p>
-                <p class="delet_pri">原價 ＄1000</p>   
-            </div>
-
-        </article>
-        </div>
-        <div class="col-xs-12 col-sm-2">
-        <article class="card">
-            <header class="card__thumb">
-                <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/08.png"/></a>
-            </header>
-
-           <div class="card__body">
-                <div class="card__category"><a href="#">特價商品</a></div>
-                <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2>
-                <div class="card__subtitle">本德医生正在煎熬！</div>
-                <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p>
-                <p class="delet_pri">原價 ＄1000</p>   
-            </div>
-
-        </article>
-        </div>
+    <% } %>
+<!--     <div class="col-xs-12 col-sm-2"> -->
+<!--         <article class="card"> -->
+<!--             <header class="card__thumb"> -->
+<%--                 <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/03.png"/></a> --%>
+<!--             </header> -->
+<!--             <div class="card__body"> -->
+<!--                 <div class="card__category"><a href="#">特價商品</a></div> -->
+<!--                 <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2> -->
+<!--                 <div class="card__subtitle">本德医生正在煎熬！</div> -->
+<!--                 <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p> -->
+<!--                 <p class="delet_pri">原價 ＄1000</p>    -->
+<!--             </div> -->
+<!--         </article> -->
+<!--         </div> -->
+        
+<!--         <div class="col-xs-12 col-sm-2"> -->
+<!--         <article class="card"> -->
+<!--             <header class="card__thumb"> -->
+<%--                 <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/08.png"/></a> --%>
+<!--             </header> -->
+<!--            <div class="card__body"> -->
+<!--                 <div class="card__category"><a href="#">特價商品</a></div> -->
+<!--                 <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2> -->
+<!--                 <div class="card__subtitle">本德医生正在煎熬！</div> -->
+<!--                 <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p> -->
+<!--                 <p class="delet_pri">原價 ＄1000</p>    -->
+<!--             </div> -->
+<!--         </article> -->
+<!--         </div> -->
+        
+<!--         <div class="col-xs-12 col-sm-2"> -->
+<!--         <article class="card"> -->
+<!--             <header class="card__thumb"> -->
+<%--                 <a href="#"><img src="<%=request.getContextPath()%>/img/index/share/08.png"/></a> --%>
+<!--             </header> -->
+<!--            <div class="card__body"> -->
+<!--                 <div class="card__category"><a href="#">特價商品</a></div> -->
+<!--                 <h2 class="card__title"><a href="#">尿布一箱 36入</a></h2> -->
+<!--                 <div class="card__subtitle">本德医生正在煎熬！</div> -->
+<!--                 <p class="card__description"><a id="des_pri">$500元</a><br>強力特價 包大人 很大包 很罩</p> -->
+<!--                 <p class="delet_pri">原價 ＄1000</p>    -->
+<!--             </div> -->
+<!--         </article> -->
+<!--         </div> -->
+        
     </div>
     
     </div>

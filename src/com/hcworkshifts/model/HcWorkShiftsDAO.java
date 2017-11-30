@@ -19,8 +19,8 @@ import jdbc.util.CompositeQuery.jdbcUtil_CompositeQuery_workShift;
 public class HcWorkShiftsDAO implements HcWorkShiftsDAO_interface {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "BA104G1";
-	String passwd = "123456";
+	String userid = "BA104G1DB";
+	String passwd = "BA104G1DB";
 	
 	private static final String INSERT_STMT = 
 		"INSERT INTO Hc_WorkShifts (MONTH_OF_YEAR,EMP_NO,WORK_SHIFT_STATUS,TOTAL_WORK_SHIFTS) "

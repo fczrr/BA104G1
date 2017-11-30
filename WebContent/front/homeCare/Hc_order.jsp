@@ -72,7 +72,7 @@ request.setCharacterEncoding("UTF-8");
             	width:250px;
             	height:200px;
             }
-            #showfinal-emp img{
+            #showfinal-emp img,{
            		max-width:100%;
 				max-height:100%;
 				margin:auto;
@@ -93,19 +93,32 @@ request.setCharacterEncoding("UTF-8");
 
 
 <!-- 內容 ============================================================================== -->
-
+<!--         <div class="container" style="height:55px"> </div> -->
+<div class="container">
+  <div class="page-header" id="banner" style="margin-bottom:0px">
+  <img src="<%=request.getContextPath()%>/img/index/bannar/senior-asian-couple-walking-fix.jpg" style=" max-width:-webkit-fill-available;">
+<!--   <div class="row"> -->
+<!--   <hr> -->
+<!--           <i>  首頁/照護服務/短期照護</i> -->
+<!--   </div> -->
+</div>
+</div>
         <!-- 引言 --------------------------------------------------------------- -->
         <div class="container introduction">
             <div class="row">
                 <div class="col-xs-12 col-sm-12">
                     <div class="text-item text-center">
                         <h1>長照服務</h1>
-						<p>希望有照護人員輔助生活起居與陪同就醫。或是家庭照顧者想紓解照顧壓力，需要暫時的居家喘息服務嗎?甚至是等待外籍看護交班的空窗期，迫切需要短時間的照顧服務員、看護前來照顧嗎?現在，只要簡單幾步就能輕鬆獲得居家照護服!!</p>
+						<p>希望有照護人員輔助生活起居與陪同就醫。或是家庭照顧者想紓解照顧壓力，需要暫時的居家喘息服務嗎?<br>
+						甚至是等待外籍看護交班的空窗期，迫切需要短時間的照顧服務員、看護前來照顧嗎?<br>
+						現在，只要簡單幾步就能輕鬆獲得居家照護服!!</p>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- 服務流程 ------------------------------------------------- -->
+
         <div class="container instruction">
             <div class="row instruction-head">
                 <div class="col-xs-12 col-sm-4">
@@ -444,21 +457,22 @@ request.setCharacterEncoding("UTF-8");
     	});
     	$('#caredNo-final').change(function(){
     		console.log($(this).find(':selected').attr('value'));
-    		$('#caredNo').val($(this).find(':selected').attr('value'));
-    		
-    		
-			<% List<String> list = (List<String>)request.getAttribute("errorMsgs");%>
-    		var toAlert = [		
-			<% if(list != null){ %>
-			<% for(int i =0 ;i<list.size();i++){ %>
-    		'<%=list.get(i)%>',  		
-    		<% } %>
-    		<% }; %>
-    		"."]; 	
-//     		console.log(toAlert);
-//     		window.alert(toAlert);
+    		$('#caredNo').val($(this).find(':selected').attr('value'));    		
     		
     	});
+    	
+    	
+    	
+<%-- 			<% List<String> list = (List<String>)request.getAttribute("errorMsgs");%> --%>
+//     		var toAlert = [		
+<%-- 			<% if(list != null){ %> --%>
+<%-- 			<% for(int i =0 ;i<list.size();i++){ %> --%>
+<%--     		'<%=list.get(i)%>',  		 --%>
+<%--     		<% } %> --%>
+<%--     		<% }; %> --%>
+//     		"."]; 	
+//     		console.log(toAlert);
+//     		window.alert(toAlert);
     });
 
 // 	<c:if test="${not empty errorMsgs}">

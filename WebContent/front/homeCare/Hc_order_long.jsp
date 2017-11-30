@@ -51,6 +51,7 @@
 		padding: 5px 10px;
 		-webkit-border-radius: 5px;   
 	}
+	.layui-laydate .layui-this{    border-radius: 10px;}
 	
 /* 	.layui-laydate-content th { */
 /* 		height:70px; */

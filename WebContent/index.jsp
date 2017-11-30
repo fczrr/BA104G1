@@ -477,7 +477,7 @@
 
 <!--  footer連結 ====================================================================== -->
  <div class="footer" id="footer">
-        <div class="container">
+        <div class="container"> 
             <div id="footer_lab"></div>
             <div class="row" id="footer_tit">
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">

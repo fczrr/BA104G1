@@ -459,7 +459,7 @@ INSERT INTO EMPLOYEE
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '舒淇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '送餐', '送餐人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'c01', 'pw0000', '10');
-
+ 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張艾嘉', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),

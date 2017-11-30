@@ -13,6 +13,7 @@
 	List<MenuVO> menuList = menuSvc.getAll(10);
 	pageContext.setAttribute("menuList", menuList);
 %>
+<jsp:useBean id="dishSvc" scope="page" class="com.dish.model.DishService"/>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -86,6 +87,15 @@
 	width: 900px;
 }
 
+#mealTable th{
+   color:#FFD700;
+   font-size:18px;
+ 
+ }
+ 
+#mealTable td{
+   color:#FFFFFF;
+  font-size:16px;
 }
 </style>
 <!-- 本頁的CSS區 -->
@@ -224,7 +234,7 @@
 				<div class="col-xs-12 col-sm-10">
 					<h2>活力養身餐</h2>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6">
+						<div class="col-xs-12 col-sm-6" style="background-color:#FAF0E6;height:300px">
 							<p>${setMealVO.smIntro}</p>
 						</div>
 						<div class="col-xs-12 col-sm-6">
@@ -364,30 +374,30 @@
 
 					<br>
 					<h3>菜色內容</h3>
-					<table class="table table-hover">
+					<table class="table table-bordered" style="background-color:#FF7F50" id="mealTable">
 						<tr>
-							<th>元氣主食</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<th>元氣米食</th>
+							<td>雜糧糙米飯、南瓜糙米飯、栗子飯、堅果枸杞飯、黑糖黑芝麻飯、糙米飯、麻油飯、香椿飯、牛蒡香桂圓飯..等等</td>
 						</tr>
 						<tr>
 							<th>季節食蔬</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>九層塔杏鲍菇、薑絲燒南瓜、薑絲炒黑木耳絲、雙色花椰菜、紫山藥玉米筍、枸杞高麗菜、炒百菇、麻油紅菜..等等</td>
 						</tr>
 						<tr>
 							<th>健康主食</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>白切豬菲力、味噌魚片、栗子燜雞、清蒸鱈魚、椒鹽鮭魚、薑燒豬肉、梅汁排骨、彩椒雞柳、金針雲耳燒雞..等等</td>
 						</tr>
 						<tr>
 							<th>滋養湯品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>山藥玉竹排骨湯、天麻虱目魚湯、百菇燉排骨、粉光香菇雞湯、鱸魚薑絲湯、黃耆枸杞雞湯、粉光香菇雞湯..等等</td>
 						</tr>
 						<tr>
 							<th>養身飲品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>元氣茶、美人泉、止渴飲、滋生飲、紅棗茶、枸杞茶、麥冬茶、決明子茶、西洋參茶、龍眼茶、人參茶、胖大海..等等</td>
 						</tr>
 						<tr>
 							<th>美味甜品</th>
-							<td>南瓜飯、牛蒡香菇飯、桂圓飯、麥片糙米飯、糙米飯、麻油飯、香椿飯、栗子飯..等等</td>
+							<td>百合銀耳棗甜湯、杏仁五榖汁、花生湯、首烏芝麻糊、桂圓小米甜湯、桂圓百合棗甜湯、麥片堅果甜湯、..等等</td>
 						</tr>
 					</table>
 					<h3>一週膳食範例</h3>
@@ -401,6 +411,8 @@
 	
 	<div id="eventContent" title="Event Details" style="display:none;">
     <img id="dishImg">
+    <br><br>
+    <p id="dishIntro"></p>
     </div>
 	
 	
@@ -491,7 +503,7 @@
 				resourceId:'<%=menuList.get(i).getMealTime()%>',
 				start:'<%=menuList.get(i).getMenuDate()%>',
 				title:'<%=menuList.get(i).getDishName()%>',
-				
+				description:'<%= dishSvc.getIntroByName(menuList.get(i).getDishName()) %>'
                  },
 				<%}%>
 			],
@@ -499,8 +511,9 @@
 			eventTextColor:'#000000',
 			eventClick:function(event){
 				$("#dishImg").attr('src','<%= request.getContextPath()%>/DBGifReaderForDishByName?dishName='+event.title);
-				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"auto", buttons: {
-			          Cancel: function() {
+				$("#dishIntro").text(event.description);
+				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"25%", buttons: {
+			          Close: function() {
 			            $( this ).dialog( "close" );
 			          }
 			        }});

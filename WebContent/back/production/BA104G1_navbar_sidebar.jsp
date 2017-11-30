@@ -47,13 +47,7 @@
 	href="<%=request.getContextPath()%>/back/gentelella-master/build/css/custom.min.css"
 	rel="stylesheet">
 
-<style>
-ul.wrap {
-	display: table;
-	margin: 0 auto;
-	text-align: center;
-}
-</style>
+
 </head>
 
 <body class="nav-md">

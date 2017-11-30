@@ -6,7 +6,6 @@
 <%@ page import="com.member.model.*"%>
 <%@ page import="com.balance.model.*"%>
 <%@ include file="/front/navbar.jsp"%>
-<%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 
 <jsp:useBean id="memberSvc" class="com.member.model.MemberService" />
 <jsp:useBean id="balanceSvc" scope="page"

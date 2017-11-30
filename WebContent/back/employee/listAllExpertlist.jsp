@@ -19,11 +19,7 @@
 	int num = 0;
 %>
 
-<script>
-	$("#mytitle").css({
-		"-webkit-animation" : "twinkling 1s infinite ease-in-out"
-	});
-</script>
+
 <style>
 #middle {align ="center";
 	
@@ -33,9 +29,7 @@
 	background-color: #CCC;
 }
 
-breakall {
-	word-break: break-all;
-}
+
 
 .bigtoopp {
 	margin-top: 100px;
@@ -235,10 +229,11 @@ th {
 							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 								data-target="#mymodal">
 								<h1>
-									<i class="fa fa-child fa-spin" id="icone_grande"></i>  員工專長&nbsp;<b>管理頁面</b>
+									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+									員工專長&nbsp;<b>管理頁面</b>
 								</h1>
-								
-							</a>  
+
+							</a>
 
 						</div>
 						<ul class="nav navbar-right panel_toolbox">
@@ -314,7 +309,8 @@ th {
 
 											<tr align='left' valign='middle'>
 
-												<td>${expertlistVO.expNo}</td>
+												<td   >
+												<span class="glyphicon glyphicon-menu-right"></span>${expertlistVO.expNo}</td>
 												<td class="hover"><input type="text" name="expName"
 													style="width: 100%; height: 50px"
 													value="${expertlistVO.expName}"></td>
@@ -326,7 +322,8 @@ th {
 												<td>
 													<div class="btn-group">
 														<button type="submit" class="btn btn-info"
-															style="height: 50px; width: 146px; background-color: steelblue">確定</button>
+															style="height: 50px; width: 146px; background-color: steelblue">
+															<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;確定</button>
 													</div>
 
 												</td>
@@ -336,10 +333,12 @@ th {
 								</tbody>
 							</table>
 							<div class="col-xs-1 col-sm-1">
+							
+							
 								<a
 									href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
 									id="modifyBtn" class="btn btn-success btn-default"
-									role="button">新增專長</a>
+									role="button"><span class="glyphicon glyphicon-save"></span>&nbsp;新增專長</a>
 							</div>
 							<%@ include file="pages/page2.file"%>
 						</div>

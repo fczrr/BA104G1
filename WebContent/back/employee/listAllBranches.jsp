@@ -22,6 +22,14 @@
 
 
 <style>
+#middle {align ="center";
+	
+}
+
+.hover:hover {
+	background-color: #CCC;
+}
+
 table#table-1 {
 	width: 930px;
 	background-color: #DADFDF;
@@ -95,11 +103,18 @@ h4 {
 				<div class="x_panel">
 					<div class="x_title">
 						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								員工據點&nbsp;<b>管理頁面</b>
-							</h1>
+							style="padding: 10px; color: #FFFFFF; text-align: center;">
+							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+								data-target="#mymodal">
+								<h1>
+									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+									員工據點&nbsp;<b>管理頁面</b>
+								</h1>
+
+							</a>
+
 						</div>
+
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
 									class="fa fa-chevron-up"> </i>
@@ -144,7 +159,7 @@ h4 {
 						</div>
 
 						<div class="col-sm-12">
-							<table class="table table-hover">
+							<table class="table table-hover" style="font-size: 1.5em">
 								<thead>
 									<tr>
 										<th>據點編號</th>
@@ -168,17 +183,23 @@ h4 {
 
 											<tr align='center' valign='middle'>
 
-												<td>${branchesVO.empBranches}</td>
-												<td><input type="text" name="brcName"
+												<td><span class="glyphicon glyphicon-menu-right"></span>${branchesVO.empBranches}</td>
+												<td class="hover"><input type="text" name="brcName"
+													style="width: 100%; height: 40px"
 													value="${branchesVO.brcName}"></td>
-												<td><input type="text" name="brcLon"
+												<td class="hover"><input type="text" name="brcLon"
+													style="width: 100%; height: 40px"
 													value="${branchesVO.brcLon}"></td>
-												<td><input type="text" name="brcLat"
+												<td class="hover"><input type="text" name="brcLat"
+													style="width: 100%; height: 40px"
 													value="${branchesVO.brcLat}"></td>
 												<td>
+
 													<div class="btn-group">
-														<button type="submit" class="btn btn-info btn-default">
-															確定</button>
+														<button type="submit" class="btn btn-info"
+															style="width: 146px; background-color: steelblue">
+															<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;確定
+														</button>
 													</div>
 												</td>
 											</tr>
@@ -188,7 +209,8 @@ h4 {
 							</table>
 							<FORM METHOD="post"
 								ACTION="<%=request.getContextPath()%>/back/employee/addBranches.jsp">
-								<input type="submit" value="新增據點" class=" btn btn-success">
+								<span class="glyphicon glyphicon-save"></span>&nbsp; <input
+									type="submit" value="新增據點" class=" btn btn-success">
 							</FORM>
 							<%@ include file="pages/page2.file"%>
 						</div>

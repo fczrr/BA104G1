@@ -136,9 +136,9 @@ ul.wrap {
 								<li><a><i class="fa fa-automobile"></i> 派車管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">Dashboard</a></li>
-										<li><a href="#">Dashboard2</a></li>
-										<li><a href="#">Dashboard3</a></li>
+										<li><a href="<%=request.getContextPath()%>/back/carorder/listAllCarOrder.jsp">訂單管理</a></li>
+										<li><a href="<%=request.getContextPath()%>/back/carschedul/CarShiftTable.jsp">">班表管理</a></li>
+										<li><a href="#">">車型管理</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-cutlery"></i> 送餐管理 <span

@@ -1668,17 +1668,11 @@ commit;
  CONSTRAINT CAR_SCHEDUL_EMP_FK FOREIGN KEY(EMP_NO) REFERENCES EMPLOYEE(EMP_NO));
 
 commit;
- --假資料建立:員工-------------------------------------------------------------
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張三', '0919123456', 'M','ScottZHolmes@jourrapide.com', '派車', '派車人員', '專員', TO_DATE('2017/02/03 ', 'yyyy/mm/dd '), 'A1234567', 'A1234567','on', '10',CURRENT_TIMESTAMP);
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李四', '0919123123', 'M','JackALong@teleworm.us', '派車', '派車人員', '專員', TO_DATE('2013/05/22 ', 'yyyy/mm/dd '), 'B1234567', 'B1234567','on', '10',CURRENT_TIMESTAMP);
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '王五', '0933475532', 'M','JamesGMarsh@jourrapide.com', '派車', '派車人員', '專員', TO_DATE('2014/10/02 ', 'yyyy/mm/dd '), 'C1234567', 'C1234567','on', '10',CURRENT_TIMESTAMP);
-
-
-commit;
+ 
 --假資料建立:車型-------------------------------------------------------------------
- INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'四人座','豪華房車，溫馨小家庭出遊適用',1000,null);
- INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'七人座','休旅車，闔家歡樂適合上山下海',1800,null);
- INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'九人小巴','小巴士，樓頂揪樓咖奏夥來企逃',7500,null);
+ INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'四人座','豪華房車，溫馨小家庭出遊適用',1000,load_blob('CARTYPE1.png'));
+ INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'七人座','休旅車，闔家歡樂適合上山下海',1800,load_blob('CARTYPE2.jpg'));
+ INSERT INTO CARTYPE VALUES (cartype_seq.NEXTVAL,'九人小巴','小巴士，樓頂揪樓咖奏夥來企逃',7500,load_blob('CARTYPE3.png'));
  commit;
 --假資料建立:車輛-------------------------------------------------------------------
 INSERT INTO VEHICLE VALUES (vehicle_seq.NEXTVAL,'1001','EMP0021','ABC7001','躍動紅','2011',10);

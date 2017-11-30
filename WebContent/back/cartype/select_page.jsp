@@ -30,12 +30,6 @@ h4 {
 </head>
 <body bgcolor='white'>
 
-	<table id="table-1">
-		<tr>
-			<td><h3>派車管理頁面</h3>
-				</td>
-		</tr>
-	</table>
 
 	<p>後端</p>
 

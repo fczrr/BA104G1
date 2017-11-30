@@ -174,13 +174,63 @@ th, td {
 
 </head>
 <body>
+<%@ include file="/back/production/BA104G1_navbar_sidebar.jsp" %>
 
+       <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+
+            <div class="page-title">
+              <div class="title_left">
+                <h3>首頁</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+<!--                   <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Plain Page</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+<!--                         <ul class="dropdown-menu" role="menu"> -->
+<!--                           <li><a href="#">Settings 1</a> -->
+<!--                           </li> -->
+<!--                           <li><a href="#">Settings 2</a> -->
+<!--                           </li> -->
+<!--                         </ul> -->
+                      </li>
+                      <!-- XX -->
+<!--                       <li><a class="close-link"><i class="fa fa-close"></i></a> -->
+                      </li>
+                    </ul>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-3"></div>
 		<div class="col-xs-12 col-sm-3 ">
 
-			<img src="<%=request.getContextPath()%>/back/images/cleardriver2.png"
+			<img src="<%=request.getContextPath()%>/back/image/car/cleardriver2.png"
 				class="top">
 		</div>
 		<div class="col-xs-12 col-sm-3"></div>
@@ -211,18 +261,7 @@ th, td {
 					<div role="tabpanel" class="tab-pane active abox" id="tab1">
 						<div class="bbb">
 							<!-- ****************************************** -->
-							<table id="table-1">
-								<tr>
-									<td>
-										<h3>車型資料修改</h3>
-										<h4>
-											<a href="<%=request.getContextPath()%>/back/cartype/main.jsp"><img
-												src="<%=request.getContextPath()%>/back/images/back1.gif"
-												width="80" height="80" border="0">回首頁</a>
-										</h4>
-									</td>
-								</tr>
-							</table>
+							
 
 							<h3>資料修改:</h3>
 
@@ -341,23 +380,7 @@ th, td {
 							Rerum velit, distinctio aspernatur? Ea eum voluptatum possimus
 							nulla est repellendus et, reprehenderit ipsam laborum officiis
 							facere voluptatem nesciunt. Nobis sint sequi voluptatem quo
-							quaerat laborum impedit excepturi, iusto maxime, temporibus
-							commodi dicta accusantium ut sapiente qui dolor dolores at nihil
-							error perferendis fuga quasi? Minima eius modi soluta ullam
-							animi, sapiente similique provident qui harum culpa ducimus
-							laboriosam ea esse possimus! Officia debitis dolorum ullam, a
-							iste, vitae ad ea, qui nam in sunt repudiandae temporibus. Amet
-							laudantium itaque tempore possimus minima recusandae esse, quo
-							illum ipsam beatae architecto nihil magni necessitatibus
-							consequuntur voluptate blanditiis molestiae impedit. Cum, quasi
-							nemo temporibus, earum ab id illo pariatur, fugit ex natus atque
-							voluptatum quod possimus aliquam. Eligendi eveniet aperiam esse
-							reiciendis laborum sed a aut cupiditate ea, est totam! Est
-							explicabo, autem recusandae suscipit odit repudiandae non
-							mollitia ipsa ex molestias, dolore nulla, hic cum, quasi odio
-							neque nesciunt? Omnis, reiciendis ex dicta recusandae ut enim quo
-							ad est ab, optio minus iusto hic. Sunt dolorem, temporibus
-							inventore quibusdam! Accusantium, eos rem voluptates.
+				
 						<p>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="tab3">
@@ -382,6 +405,22 @@ th, td {
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		
+		
+		 <div id='calendar'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /page content -->
+
+
+<%@ include file="/back/production/BA104G1_footer.jsp" %>
+		
 </body>
 
 

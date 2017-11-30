@@ -508,7 +508,7 @@ tr:nth-child(even) {
 									    	
 									    	function creatQueryString2(cartypename,detail_date,detail_time_no,detail_time,county,district,address,arrival_address,defrayPoint){
 												
-												var queryString= {"action":"insert", "cartypename":cartypename, "detail_date":detail_date, "detail_time_no":detail_time_no, "detail_time":detail_time, "county":county, "district":district,"address":address , "arrival_address":arrival_address,"defrayPoint":defrayPoint ,"passenger_name":"R群","passenger_phone":"0979498988","sendcar_status":"未出車"};
+												var queryString= {"action":"insert", "cartypename":cartypename, "detail_date":detail_date, "detail_time_no":detail_time_no, "detail_time":detail_time, "county":county, "district":district,"address":address , "arrival_address":arrival_address,"defrayPoint":defrayPoint ,"passenger_name":${memberVO.memName},"passenger_phone":${memberVO.memPhone},"sendcar_status":"未出車"};
 												console.log(queryString);
 												return queryString;
 										

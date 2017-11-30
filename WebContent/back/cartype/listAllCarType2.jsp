@@ -55,12 +55,6 @@
 </head>
 <body bgcolor='white'>
 
-<table id="table-1">
-	<tr><td>
-		<h3>所有員工資料</h3>
-		<h4><a href="<%= request.getContextPath() %>/back/cartype/main.jsp"><img src="<%= request.getContextPath() %>/back/images/back1.gif" width="80" height="80" border="0">回首頁</a></h4>
-	</td></tr>
-</table>
 
 <c:if test="${not empty errorMsgs}">
 	<font style="color:red">請修正以下錯誤:</font>

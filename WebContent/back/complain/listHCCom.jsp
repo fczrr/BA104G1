@@ -39,20 +39,7 @@
 
 <div class="container">
 <div class="right_col" role="main">
-		<div class="col-md-12">
-		<div id="mytitle"
-					style="padding: 10px; color: #FFFFFF; text-align: center;">
-
-
-					<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
-						data-target="#mymodal">
-						<h1>
-							<i class="fa fa-user-md" aria-hidden="true"></i> 長照申訴&nbsp;<b>管理頁面</b>
-						</h1>
-
-					</a>
-
-				</div>
+		<div class="col-md-8">
 			<div class="tab-content ">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs custom-tab">
@@ -70,9 +57,9 @@
 					<div class="x_title">
 						<ul class="nav navbar-right panel_toolbox">
 							<div class="btn-group">
-								<a href="<%=request.getContextPath()%>/back/complain/listHCCom.jsp" class="btn btn-info" role="button">全部申訴</a>
-								<a href="<%=request.getContextPath()%>/hccomplain/hccomplain.do?action=Off_Status" class="btn btn-danger" role="button">未處理</a>
-								<a href="<%=request.getContextPath()%>/hccomplain/hccomplain.do?action=On_Status" class="btn btn-info" role="button">已完成</a>
+								<a href="<%=request.getContextPath()%>/back/mealOrder/listAllMealOrder.jsp" class="btn btn-info" role="button">全部申訴</a>
+								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=未處理" class="btn btn-danger" role="button">未處理</a>
+								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=已確認" class="btn btn-info" role="button">已完成</a>
 							</div>
 						</ul>
 						<div class="clearfix"></div>
@@ -247,10 +234,10 @@
                 <label for="complainIntro" id="complainTi"><i class="fa fa-envelope fo-1x" aria-hidden="true"></i> 回覆申訴 : </label>
                 <p id="complainIn" class="compRep"><%-- ${hcComplainVO.complainReply} --%></p>
               </div>
-<!--               <div class="form-group"> -->
-<!--                 <label for="complainIntro" id="complainTi"><i class="fa fa-user-o" aria-hidden="true"></i> 員工名字 : </label> -->
-<%--                 <p id="complainIn" class="empIdM">${employeeVO.empId}</p> --%>
-<!--               </div> -->
+              <div class="form-group">
+                <label for="complainIntro" id="complainTi"><i class="fa fa-user-o" aria-hidden="true"></i> 員工名字 : </label>
+                <p id="complainIn" class="empIdM"><%-- ${employeeVO.empId} --%></p>
+              </div>
               <div class="form-group">
                 <label for="complainIntro" id="complainTi"><i class="fa fa-clock-o" aria-hidden="true"></i> 回覆時間 : </label>
                 <p id="complainIn" class="reptime"><%-- ${sdf.format(hcComplainVO.replyDate)} --%></p>
@@ -298,7 +285,7 @@ window.onload = function (){
 		
 		
 		
-<!--     <script src="https://code.jquery.com/jquery.js"></script> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -433,11 +420,20 @@ $(document).ready(function () {
 		  		    	   swal({
 		  		    		    title: res.complainNo+': 已成功回覆',
 		  		    		    type:	'success',
-		  		    		  
-		  		    		})	  		    		
-		  		    		setTimeout(function(){ 
-  		    				    location.reload();
-  		    				} ,800);
+		  		    		    timer: 4500
+		  		    		}).then(
+		  		    		    function () {},
+		  		    		    // handling the promise rejection
+		  		    		    function (dismiss) {
+		  		    		        if (dismiss === 'timer') {
+		  		    		            console.log('I was closed by the timer')
+		  		    		        }
+		  		    		    }
+		  		    		)
+		  		    		if(res.complainNo == showNo){
+		  		    			alert('yaaaa');
+		  		    		}
+		  		    		
 		  		    		
 	  	    		 },
 	  	    		 error : function(xhr, ajaxOptions, thrownError){
@@ -481,7 +477,14 @@ $(document).ready(function () {
 		    	     $(".compRep").html(res.complainReply);
 		    	     $(".reptime").html(res.replyDate);
 	    		 },
-	    		
+	    		 beforeSend : function(){
+	    			 $(".clickDetail").attr({ disabled: "disabled" });
+	    			 $(".wait").show();
+	    		 },
+	    		 complete : function(){
+	    			 $(".clickDetail").removeAttr("disabled");
+	    			 $(".wait").hide();
+	    		 },
 	    		 
 	    		 error : function(xhr, ajaxOptions, thrownError){
 	                 alert(xhr.status+"\n"+thrownError);

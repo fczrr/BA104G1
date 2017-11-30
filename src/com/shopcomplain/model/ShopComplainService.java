@@ -3,8 +3,6 @@ package com.shopcomplain.model;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.carcomplain.model.CarComplainVO;
-
 public class ShopComplainService {
 	
 	public ShopComplainDAO_interface dao;
@@ -46,11 +44,5 @@ public class ShopComplainService {
 		return dao.getAll();
 	}
 	
-	public List<ShopComplainVO> getOnAll(){
-		return dao.getOnAll();
-	}
 	
-	public List<ShopComplainVO> getOffAll(){
-		return dao.getOffAll();
-	}
 }

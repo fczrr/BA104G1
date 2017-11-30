@@ -19,7 +19,6 @@ body {
   min-height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif ,Microsoft JhengHei;
 }
 .footer {
   grid-row-start: 2;
@@ -46,7 +45,7 @@ body {
         
   <!--  開始放鏈結區 ======================================================================== -->
             <ul class="nav navbar-nav navnavnav">
-<!--                 <li><a href="#">關於我們</a></li> -->
+                <li><a href="#">關於我們</a></li>
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">最新消息 <b class="caret"></b></a>
                     <ul class="dropdown-menu dropdownNew">
@@ -66,7 +65,7 @@ body {
                 <li><a href="#">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
                 <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
-<!--                 <li><a href="#">聯絡我們</a></li> -->
+                <li><a href="#">聯絡我們</a></li>
             </ul>
         
         

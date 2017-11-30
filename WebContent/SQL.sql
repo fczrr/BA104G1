@@ -456,10 +456,33 @@ to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '舒淇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '送餐', '送餐人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'c01', 'pw0000', '10');
+
+INSERT INTO EMPLOYEE 
+(EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張艾嘉', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '商城', '商城人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'d01', 'pw0000', '10');
+
+INSERT INTO EMPLOYEE 
+(EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '文淇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '客服', '客服人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'e01', 'pw0000', '10');
+
+INSERT INTO EMPLOYEE 
+(EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '惠英紅', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '總部', '總部人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'f01', 'pw0000', '10');
+
+INSERT INTO EMPLOYEE 
+(EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES ('EMP0000', '自動訂單', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M','careUX@care.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'a00', 'pw0000', '10');
-
 --派車部新增員工的語法(跟原本產生奇怪的衝突)
 --INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張三', '0919123456', 'M','ScottZHolmes@jourrapide.com', '派車', '派車人員', '專員', TO_DATE('2017/02/03 ', 'yyyy/mm/dd '), 'A1234567', 'A1234567','on', '10',CURRENT_TIMESTAMP);
 --INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李四', '0919123123', 'M','JackALong@teleworm.us', '派車', '派車人員', '專員', TO_DATE('2013/05/22 ', 'yyyy/mm/dd '), 'B1234567', 'B1234567','on', '10',CURRENT_TIMESTAMP);
@@ -643,11 +666,11 @@ INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_
 INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_ID,MEM_PWD,MEM_LOGINTIME,POINT) VALUES
  (to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),'李四', '0912000106', 'M','mem06@gmail.com', '桃園市中壢區中大路300號','mem06', 'pw0000',current_timestamp,3330);
 
-INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_ID,MEM_PWD,MEM_LOGINTIME,POINT) VALUES
- (to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),'王五', '0912000107', 'M','mem07@gmail.com', '桃園市中壢區中大路300號','mem07', 'pw0000',current_timestamp,1000);
+INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_ID,MEM_PWD,MEM_SRATUS,MEM_LOGINTIME,POINT) VALUES
+ (to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),'王五', '0912000107', 'M','mem07@gmail.com', '桃園市中壢區中大路300號','mem07', 'pw0000','已驗證',current_timestamp,1000);
 
-INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_ID,MEM_PWD,MEM_LOGINTIME,POINT) VALUES
- (to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),'趙六', '0912000108', 'M','mem08@gmail.com', '桃園市中壢區中大路300號','mem08', 'pw0000',current_timestamp,18000);
+INSERT INTO MEMBER (MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS, MEM_ID,MEM_PWD,MEM_SRATUS,MEM_LOGINTIME,POINT) VALUES
+ (to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),'趙六', '0912000108', 'M','mem08@gmail.com', '桃園市中壢區中大路300號','mem08', 'pw0000','已驗證',current_timestamp,18000);
 
 ------------------------------------------------------
 

@@ -47,12 +47,4 @@ public class CarComplainService {
 		return dao.getAll();
 	}
 	
-	public List<CarComplainVO> getOnAll(){
-		return dao.getOnAll();
-	}
-	
-	public List<CarComplainVO> getOffAll(){
-		return dao.getOffAll();
-	}
-	
 }

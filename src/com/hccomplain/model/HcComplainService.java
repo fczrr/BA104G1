@@ -3,8 +3,6 @@ package com.hccomplain.model;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.carcomplain.model.CarComplainVO;
-
 public class HcComplainService {
 	
 	public HcComplainDAO_interface dao;
@@ -49,12 +47,6 @@ public class HcComplainService {
 	public List<HcComplainVO> getAll(){
 		return dao.getAll();
 	}
-	public List<HcComplainVO> getOnAll(){
-		return dao.getOnAll();
-	}
 	
-	public List<HcComplainVO> getOffAll(){
-		return dao.getOffAll();
-	}
 	
 }

@@ -32,15 +32,6 @@ public class CarComplainJDBCDAO implements CarComplainDAO_interface {
 	private static final String GET_ONE_STMT = 
 			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINNO=?";
 
-	
-	// 申訴單號已完成查詢
-	private static final String GET_ONCOM_STMT = 
-			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINSTATUS='已完成'";
-
-	// 申訴單號已完成查詢
-	private static final String GET_OFFCOM_STMT = 
-			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINSTATUS='未處理'";
-
 	// 刪除
 		private static final String DELETE = 
 				"DELETE FROM CARCOMPLAIN WHERE COMPLAINNO = ?";
@@ -204,132 +195,8 @@ public class CarComplainJDBCDAO implements CarComplainDAO_interface {
 
 	
 	
-	@Override
-	public List<CarComplainVO> getOffAll() {
-		List<CarComplainVO> list = new ArrayList<CarComplainVO>();
-		CarComplainVO carComplainVO = null;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try{
-			
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_OFFCOM_STMT);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				carComplainVO = new CarComplainVO();
-				carComplainVO.setComplainNo(rs.getString("complainNo"));
-				carComplainVO.setOrder_no(rs.getString("order_no"));
-				carComplainVO.setComplainDetail(rs.getString("complainDetail"));
-				carComplainVO.setDetailDate(rs.getTimestamp("detailDate"));
-				carComplainVO.setComplainReply(rs.getString("complainReply"));
-				carComplainVO.setReplyDate(rs.getTimestamp("replyDate"));
-				carComplainVO.setEmp_no(rs.getString("emp_no"));
-				carComplainVO.setComplainStatus(rs.getString("complainStatus"));
-				list.add(carComplainVO);
-			}
-			
-			
-			
-			
-			
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-		
-		// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-		
-		// Clean up JDBC resources
-		} finally {
-			if(pstmt !=null){
-				try{
-					pstmt.close();
-				} catch (SQLException se){
-					se.printStackTrace(System.err);
-				}
-			}
-			
-			if(con != null){
-				try {
-					con.close();
-				} catch (Exception e){
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
 	
 	
-	@Override
-	public List<CarComplainVO> getOnAll() {
-		List<CarComplainVO> list = new ArrayList<CarComplainVO>();
-		CarComplainVO carComplainVO = null;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try{
-			
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
-			pstmt = con.prepareStatement(GET_ONCOM_STMT);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				carComplainVO = new CarComplainVO();
-				carComplainVO.setComplainNo(rs.getString("complainNo"));
-				carComplainVO.setOrder_no(rs.getString("order_no"));
-				carComplainVO.setComplainDetail(rs.getString("complainDetail"));
-				carComplainVO.setDetailDate(rs.getTimestamp("detailDate"));
-				carComplainVO.setComplainReply(rs.getString("complainReply"));
-				carComplainVO.setReplyDate(rs.getTimestamp("replyDate"));
-				carComplainVO.setEmp_no(rs.getString("emp_no"));
-				carComplainVO.setComplainStatus(rs.getString("complainStatus"));
-				list.add(carComplainVO);
-			}
-			
-			
-			
-			
-			
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-		
-		// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-		
-		// Clean up JDBC resources
-		} finally {
-			if(pstmt !=null){
-				try{
-					pstmt.close();
-				} catch (SQLException se){
-					se.printStackTrace(System.err);
-				}
-			}
-			
-			if(con != null){
-				try {
-					con.close();
-				} catch (Exception e){
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
 	
 	
 	
@@ -448,14 +315,14 @@ public class CarComplainJDBCDAO implements CarComplainDAO_interface {
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		// 新增
-//		for(int i= 0 ; i<10 ; i++){
-//		CarComplainVO carComplainVO1 = new CarComplainVO();
-//		carComplainVO1.setOrder_no("20171104-000001");
-//		carComplainVO1.setComplainDetail("司機太帥太犯規");
-//		carComplainVO1.setComplainStatus("未處理");
-//		dao.insert(carComplainVO1);
-//		System.out.println("新增成功"+ i);
-//	}
+		for(int i= 0 ; i<10 ; i++){
+		CarComplainVO carComplainVO1 = new CarComplainVO();
+		carComplainVO1.setOrder_no("20171104-000001");
+		carComplainVO1.setComplainDetail("司機太帥太犯規");
+		carComplainVO1.setComplainStatus("未處理");
+		dao.insert(carComplainVO1);
+		System.out.println("新增成功"+ i);
+	}
 //		
 		
 		// 修改
@@ -483,20 +350,18 @@ public class CarComplainJDBCDAO implements CarComplainDAO_interface {
 		
 		
 		// 查全部
-		List<CarComplainVO> list = dao.getAll();
-		for(CarComplainVO carComplainVO : list){
-			System.out.println("ComplainNo : " + carComplainVO.getComplainNo());
-			System.out.println("OrderNO : " + carComplainVO.getOrder_no());
-			System.out.println("ComplainDetail : " + carComplainVO.getComplainDetail());
-			System.out.println("DetailDate : " + carComplainVO.getDetailDate());
-			System.out.println("ComplainReply : " + carComplainVO.getComplainReply());
-			System.out.println("ReplyDate : " + carComplainVO.getReplyDate());
-			System.out.println("EmpNO : " + carComplainVO.getEmp_no());
-			System.out.println("Status : " + carComplainVO.getComplainStatus());
-			System.out.println();
-		}
+//		List<CarComplainVO> list = dao.getAll();
+//		for(CarComplainVO carComplainVO : list){
+//			System.out.println("ComplainNo : " + carComplainVO.getComplainNo());
+//			System.out.println("OrderNO : " + carComplainVO.getOrder_no());
+//			System.out.println("ComplainDetail : " + carComplainVO.getComplainDetail());
+//			System.out.println("DetailDate : " + sdf.format(carComplainVO.getDetailDate()));
+//			System.out.println("ComplainReply : " + carComplainVO.getComplainReply());
+//			System.out.println("ReplyDate : " + sdf.format(carComplainVO.getReplyDate()));
+//			System.out.println("EmpNO : " + carComplainVO.getEmp_no());
+//			System.out.println("Status : " + carComplainVO.getComplainStatus());
+//			System.out.println();
+//		}
 	}
-
-	
 	
 }

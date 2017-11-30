@@ -10,8 +10,6 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import com.carcomplain.model.CarComplainService;
-import com.carcomplain.model.CarComplainVO;
 import com.google.gson.Gson;
 import com.hccomplain.model.*;
 import com.hcorder.modal.HcOrderMasterService;
@@ -32,37 +30,7 @@ public class HcComplainServlet  extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		
-		
-		
-		
-		
-		
-		
 
-		if("On_Status".equals(action)){
-			
-			HcComplainService hcComplainSvc = new HcComplainService();
-			List<HcComplainVO> list = hcComplainSvc.getOnAll();
-			req.setAttribute("list", list);
-			
-			String url = "/back/complain/listHCCom.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url);
-			successView.forward(req, res);
-		}
-		
-		if("Off_Status".equals(action)){
-			HcComplainService hcComplainSvc = new HcComplainService();
-			List<HcComplainVO> list = hcComplainSvc.getOffAll();
-			req.setAttribute("list", list);
-			
-			String url = "/back/complain/listHCCom.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url);
-			successView.forward(req, res);
-		}
-
-		
-		
 /************************************** 會員前端查詢 getOne_For_Update **********************************************************************************/		
 		if ("getOne_For_Update_HcOrder".equals(action)) { // 來自listAllHcOrder.jsp
 			

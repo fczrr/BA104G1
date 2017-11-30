@@ -43,17 +43,6 @@ public class HcComplainJNDIDAO implements HcComplainDAO_interface{
 	private static final String DELETE =
 			"DELETE FROM HCCOMPLAIN WHERE COMPLAINNO = ?";
 	
-	
-	// 申訴單號單一查詢
-			private static final String GET_OFF_STMT = 
-					"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINSTATUS='未處理'";
-			
-			
-			// 申訴單一查詢
-			private static final String GET_ON_STMT = 
-					"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINSTATUS='已完成'";
-
-	
 	private static final String GET_STAT_STMT = 
 			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINSTATUS=?";
 
@@ -252,120 +241,6 @@ public class HcComplainJNDIDAO implements HcComplainDAO_interface{
 		}
 		return hcComplainVO;
 	}
-	
-	
-	
-	@Override
-	public List<HcComplainVO> getOffAll() {
-		List<HcComplainVO> list = new ArrayList<HcComplainVO>();
-		HcComplainVO hcComplainVO = null;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try{
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_OFF_STMT);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				hcComplainVO = new HcComplainVO();
-				hcComplainVO.setComplainNo(rs.getString("complainno"));
-				hcComplainVO.setOrder_no(rs.getString("order_no"));
-				hcComplainVO.setComplainDetail(rs.getString("complaindetail"));
-				hcComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
-				hcComplainVO.setComplainReply(rs.getString("complainreply"));
-				hcComplainVO.setReplyDate(rs.getTimestamp("replydate"));
-				hcComplainVO.setEmp_no(rs.getString("emp_no"));
-				hcComplainVO.setComplainStatus(rs.getString("complainstatus"));
-				list.add(hcComplainVO);
-			}
-			
-			
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-		
-		// Clean up JDBC resources
-		} finally {
-			if(pstmt !=null){
-				try{
-					pstmt.close();
-				} catch (SQLException se){
-					se.printStackTrace(System.err);
-				}
-			}
-			
-			if(con != null){
-				try {
-					con.close();
-				} catch (Exception e){
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
-	
-
-	@Override
-	public List<HcComplainVO> getOnAll() {
-		List<HcComplainVO> list = new ArrayList<HcComplainVO>();
-		HcComplainVO hcComplainVO = null;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try{
-			con = ds.getConnection();
-			pstmt = con.prepareStatement(GET_ON_STMT);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				hcComplainVO = new HcComplainVO();
-				hcComplainVO.setComplainNo(rs.getString("complainno"));
-				hcComplainVO.setOrder_no(rs.getString("order_no"));
-				hcComplainVO.setComplainDetail(rs.getString("complaindetail"));
-				hcComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
-				hcComplainVO.setComplainReply(rs.getString("complainreply"));
-				hcComplainVO.setReplyDate(rs.getTimestamp("replydate"));
-				hcComplainVO.setEmp_no(rs.getString("emp_no"));
-				hcComplainVO.setComplainStatus(rs.getString("complainstatus"));
-				list.add(hcComplainVO);
-			}
-			
-			
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-		
-		// Clean up JDBC resources
-		} finally {
-			if(pstmt !=null){
-				try{
-					pstmt.close();
-				} catch (SQLException se){
-					se.printStackTrace(System.err);
-				}
-			}
-			
-			if(con != null){
-				try {
-					con.close();
-				} catch (Exception e){
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-		return list;
-	}
-	
-	
-	
-	
-	
 	
 	
 	

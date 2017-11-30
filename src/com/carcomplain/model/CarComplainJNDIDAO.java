@@ -38,6 +38,15 @@ public class CarComplainJNDIDAO implements CarComplainDAO_interface {
 	private static final String GET_ONE_STMT = 
 			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINNO=?";
 
+	
+	// 申訴單號已完成查詢
+		private static final String GET_ONCOM_STMT = 
+				"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINSTATUS='已完成'";
+
+		// 申訴單號已完成查詢
+		private static final String GET_OFFCOM_STMT = 
+				"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM CARCOMPLAIN WHERE COMPLAINSTATUS='未處理'";
+
 	// 刪除
 		private static final String DELETE = 
 				"DELETE FROM CARCOMPLAIN WHERE COMPLAINNO = ?";
@@ -184,6 +193,117 @@ public class CarComplainJNDIDAO implements CarComplainDAO_interface {
 	}
 
 	
+	@Override
+	public List<CarComplainVO> getOffAll() {
+		List<CarComplainVO> list = new ArrayList<CarComplainVO>();
+		CarComplainVO carComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_OFFCOM_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				carComplainVO = new CarComplainVO();
+				carComplainVO.setComplainNo(rs.getString("complainNo"));
+				carComplainVO.setOrder_no(rs.getString("order_no"));
+				carComplainVO.setComplainDetail(rs.getString("complainDetail"));
+				carComplainVO.setDetailDate(rs.getTimestamp("detailDate"));
+				carComplainVO.setComplainReply(rs.getString("complainReply"));
+				carComplainVO.setReplyDate(rs.getTimestamp("replyDate"));
+				carComplainVO.setEmp_no(rs.getString("emp_no"));
+				carComplainVO.setComplainStatus(rs.getString("complainStatus"));
+				list.add(carComplainVO);
+			}
+			
+			
+			
+			
+			
+		
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	
+	@Override
+	public List<CarComplainVO> getOnAll() {
+		List<CarComplainVO> list = new ArrayList<CarComplainVO>();
+		CarComplainVO carComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ONCOM_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				carComplainVO = new CarComplainVO();
+				carComplainVO.setComplainNo(rs.getString("complainNo"));
+				carComplainVO.setOrder_no(rs.getString("order_no"));
+				carComplainVO.setComplainDetail(rs.getString("complainDetail"));
+				carComplainVO.setDetailDate(rs.getTimestamp("detailDate"));
+				carComplainVO.setComplainReply(rs.getString("complainReply"));
+				carComplainVO.setReplyDate(rs.getTimestamp("replyDate"));
+				carComplainVO.setEmp_no(rs.getString("emp_no"));
+				carComplainVO.setComplainStatus(rs.getString("complainStatus"));
+				list.add(carComplainVO);
+			}
+			
+			
+		
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
 	
 	
 	
@@ -339,5 +459,7 @@ public class CarComplainJNDIDAO implements CarComplainDAO_interface {
 //			System.out.println();
 //		}
 	}
+
+
 	
 }

@@ -43,6 +43,18 @@ public class MealComplainJNDIDAO implements MealComplainDAO_interface {
 	private static final String GET_ONE_STMT = 
 			"SELECT COMPLAINNO, MO_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM MEALCOMPLAIN WHERE COMPLAINNO=?";
 
+	// 申訴單號單一查詢
+			private static final String GET_ONCOM_STMT = 
+					"SELECT COMPLAINNO, MO_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM MEALCOMPLAIN WHERE COMPLAINNO='已完成'";
+
+
+			// 申訴單號單一查詢
+				private static final String GET_OFFCOM_STMT = 
+						"SELECT COMPLAINNO, MO_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM MEALCOMPLAIN WHERE COMPLAINNO='未處理'";
+
+	
+	
+	
 	private static final String DELETE =
 			"DELETE FROM MEALCOMPLAIN WHERE COMPLAINNO = ?";
 	
@@ -182,6 +194,114 @@ public class MealComplainJNDIDAO implements MealComplainDAO_interface {
 			}
 		}
 		return mealComplainVO;
+	}
+	
+	
+	
+	@Override
+	public List<MealComplainVO> getOffAll() {
+		List<MealComplainVO> list = new ArrayList<MealComplainVO>();
+		MealComplainVO mealComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_OFFCOM_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				mealComplainVO = new MealComplainVO();
+				mealComplainVO.setComplainNo(rs.getString("complainno"));
+				mealComplainVO.setMo_no(rs.getString("mo_no"));
+				mealComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				mealComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				mealComplainVO.setComplainReply(rs.getString("complainreply"));
+				mealComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				mealComplainVO.setEmp_no(rs.getString("emp_no"));
+				mealComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(mealComplainVO);
+			}
+			
+		
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	@Override
+	public List<MealComplainVO> getOnAll() {
+		List<MealComplainVO> list = new ArrayList<MealComplainVO>();
+		MealComplainVO mealComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ONCOM_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				mealComplainVO = new MealComplainVO();
+				mealComplainVO.setComplainNo(rs.getString("complainno"));
+				mealComplainVO.setMo_no(rs.getString("mo_no"));
+				mealComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				mealComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				mealComplainVO.setComplainReply(rs.getString("complainreply"));
+				mealComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				mealComplainVO.setEmp_no(rs.getString("emp_no"));
+				mealComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(mealComplainVO);
+			}
+			
+		
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
 	}
 	
 	

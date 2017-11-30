@@ -844,7 +844,7 @@ body {
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
 			<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
 		<script>
-
+		var emp_no="EMP0021";
 	$(document).ready(function() {
 		//載入頁面初始設定
 		var empNameSelected =  $('.form-control :selected').text()
@@ -886,7 +886,7 @@ body {
 
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
-		var emp_no="EMP0021";
+		
 		
 		var day = new Date();
 		var month = day.getMonth()+1;
@@ -917,8 +917,11 @@ body {
 			$('#empSelect').change(function(){
 					
 				emp_no=	$(this).val();
-				console.log("切換器找到的員工編號:"+emp_no);
+				newEmpNo = $(this).val();
+				console.log("切換器找到的員工編號:"+newEmpNo);
 				$('#calendar').fullCalendar( 'refetchEvents' ) 
+				//斷開連線
+				disconnect ();
 			    
 				
 				//切換員工資料區
@@ -970,7 +973,8 @@ body {
 					});
 
 				});
-				
+				//取得新連線
+				connect(newEmpNo);
 			});
 			
 		$('#calendar').fullCalendar({
@@ -1227,21 +1231,24 @@ body {
 		
 	});
 	
+	//推播  (主管)
 	
-	//推播
-	var MyPoint = "/SchedulEchoServer/peter/309";
+	
     var host = window.location.host;
     var path = window.location.pathname;
     var webCtx = path.substring(0, path.indexOf('/', 1));
-    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+    
+    
     
 	var statusOutput = document.getElementById("statusOutput");
 	var webSocket;
 	
-	function connect() {
+	function connect(newEmpNo) {
 		// 建立 websocket 物件
+		var MyPoint = "/SchedulEchoServer/shift/"+newEmpNo;
+		var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
 		webSocket = new WebSocket(endPointURL);
-		
+		console.log("我現在的連線為:"+endPointURL)
 		webSocket.onopen = function(event) {
 			console.log("WebSocket 成功連線");
 			
@@ -1284,6 +1291,9 @@ body {
 		webSocket.close();
 		
 	}
+	
+	
+	
 
 </script>
 							

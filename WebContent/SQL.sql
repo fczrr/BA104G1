@@ -15,7 +15,7 @@ BEGIN
     dbms_lob.fileclose(myBFILE);
     RETURN myBLOB;
 END load_blob;
-/   
+/     
 
 --------DROP 檢舉SEQ-------
 DROP SEQUENCE SHOPCOM_NO_SEQ;

@@ -9,6 +9,14 @@
 	String param = (String) request.getAttribute("param");
 %>
 <style>
+#middle {align ="center";
+	
+}
+
+.hover:hover {
+	background-color: #CCC;
+}
+
 table#table-1 {
 	width: 930px;
 	background-color: #DADFDF;

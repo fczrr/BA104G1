@@ -110,8 +110,8 @@ h4 {
 		width: 49%;
 		padding: 10px;
 		position: relative;
-	} 
-} 
+	}
+}
 <!--
 --------------------------------
 -->
@@ -133,11 +133,16 @@ h4 {
 				<div class="x_panel">
 					<div class="x_title">
 						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								新增&nbsp;<b>據點</b>
-							</h1>
+							style="padding: 10px; color: #FFFFFF; text-align: center;">
+							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+								data-target="#mymodal">
+								<h1>
+									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+									新增&nbsp;<b>據點</b>
+								</h1>
+							</a>
 						</div>
+
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -227,23 +232,14 @@ h4 {
 										</div>
 									</div>
 
-									<!-------------------------------------------------------------------------------- 神奇小按鈕 ------------------------------------------------------------------------------------------------------->
-									<div class="form-group">
-										<label class="col-sm-1 col-sm-offset-3"></label>
-										<div class="col-md-4">
-											<button type="submit" class="btn btn-default">
-										</div>
-									</div>
-									<!-------------------------------------------------------------------------------- 神奇小按鈕 ------------------------------------------------------------------------------------------------------->
 									<!-- Button -->
 									<div class="form-group">
 										<label class="col-md-4 col-sm-3 col-sm-offset-1 control-label"></label>
 										<div class="col-md-4">
 											<br>
-											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
 											<button type="submit" class="btn btn-warning">
-												&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
-													class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+												SUBMIT <span class="glyphicon glyphicon-send"></span>
 											</button>
 										</div>
 									</div>

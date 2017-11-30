@@ -47,7 +47,13 @@
 	href="<%=request.getContextPath()%>/back/gentelella-master/build/css/custom.min.css"
 	rel="stylesheet">
 
-
+<style>
+ul.wrap {
+	display: table;
+	margin: 0 auto;
+	text-align: center;
+}
+</style>
 </head>
 
 <body class="nav-md">
@@ -72,7 +78,7 @@
 									test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
 									<img style="width: 60px; height: 50px"
 										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
-										alt="圖片仔入中" class="img-circle profile_img">
+										alt="圖片載入中" class="img-circle profile_img">
 								</c:when>
 								<c:otherwise>
 									<img style="width: 60px; height: 50px"
@@ -100,15 +106,15 @@
 							<ul class="nav side-menu">
 
 
-<!-- 								<li><a><i class="fa fa-home"></i> 首頁 </a> -->
-<!-- 									<ul class="nav child_menu"> -->
-<!-- 										<li><a -->
-<%-- 											href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp">首頁</a></li> --%>
-<!-- 										<li><a -->
-<%-- 											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料</a></li> --%>
+								<!-- 								<li><a><i class="fa fa-home"></i> 首頁 </a> -->
+								<!-- 									<ul class="nav child_menu"> -->
+								<!-- 										<li><a -->
+								<%-- 											href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp">首頁</a></li> --%>
+								<!-- 										<li><a -->
+								<%-- 											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料</a></li> --%>
 
-<!-- 										<li><a href="#">個人班表</a></li> -->
-<!-- 									</ul></li> -->
+								<!-- 										<li><a href="#">個人班表</a></li> -->
+								<!-- 									</ul></li> -->
 
 								<li><a><i class="fa fa-home"></i>員工管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -155,12 +161,13 @@
 								<li><a><i class="fa fa-users"></i> 長照管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
 										<li><a href="#">班表管理</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
-										class="fa fa-chevron-down"></span></a>  
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopMaster.jsp">訂單管理</a></li>
@@ -262,7 +269,7 @@
 											test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
 											<img style="width: 40px; height: 40px"
 												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
-												alt="圖片仔入中">
+												alt="圖片載入中">
 										</c:when>
 										<c:otherwise>
 											<img style="width: 40px; height: 40px"
@@ -271,8 +278,10 @@
 										</c:otherwise>
 									</c:choose> ${employeeVO.empName} <span class=" fa fa-angle-down"></span>
 							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
+								<ul class="dropdown-menu dropdown-usermenu pull-right wrap">
+									<li><a
+										href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">
+											個人基本資料</a></li>
 									<!--                     <li> -->
 									<!--                       <a href="javascript:;"> -->
 									<!--                         <span class="badge bg-red pull-right">50%</span> -->
@@ -280,68 +289,80 @@
 									<!--                       </a> -->
 									<!--                     </li> -->
 									<!--                     <li><a href="javascript:;">Help</a></li> -->
-									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+									<!-- 									<i class="fa fa-sign-out pull-right"> -->
+									<li>
+										<form
+											action="<%=request.getContextPath()%>/employee/employee.do"
+											method="post">
+
+											<input type="hidden" name="action" value="logout">
+											<button>
+												員工登出<span class="fa fa-sign-out pull-right"></span>
+											</button>
+
+
+										</form>
+									</li>
 								</ul></li>
 
-<!-- 							<li role="presentation" class="dropdown"><a -->
-<!-- 								href="javascript:;" class="dropdown-toggle info-number" -->
-<!-- 								data-toggle="dropdown" aria-expanded="false"> <i -->
-<!-- 									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span> -->
-<!-- 							</a> -->
-<!-- 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" -->
-<!-- 									role="menu"> -->
-<!-- 									<li><a> <span class="image"><img -->
-<%-- 												src="<%=request.getContextPath()%>/back/production/images/img.jpg" --%>
-<!-- 												alt="Profile Image" /></span> <span> <span>John -->
-<!-- 													Smith</span> <span class="time">3 mins ago</span> -->
-<!-- 										</span> <span class="message"> Film festivals used to be -->
-<!-- 												do-or-die moments for movie makers. They were where... </span> -->
-<!-- 									</a></li> -->
-									<!--                     <li> -->
-									<!--                       <a> -->
-									<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
-									<!--                         <span> -->
-									<!--                           <span>John Smith</span> -->
-									<!--                           <span class="time">3 mins ago</span> -->
-									<!--                         </span> -->
-									<!--                         <span class="message"> -->
-									<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
-									<!--                         </span> -->
-									<!--                       </a> -->
-									<!--                     </li> -->
-									<!--                     <li> -->
-									<!--                       <a> -->
-									<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
-									<!--                         <span> -->
-									<!--                           <span>John Smith</span> -->
-									<!--                           <span class="time">3 mins ago</span> -->
-									<!--                         </span> -->
-									<!--                         <span class="message"> -->
-									<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
-									<!--                         </span> -->
-									<!--                       </a> -->
-									<!--                     </li> -->
-									<!--                     <li> -->
-									<!--                       <a> -->
-									<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
-									<!--                         <span> -->
-									<!--                           <span>John Smith</span> -->
-									<!--                           <span class="time">3 mins ago</span> -->
-									<!--                         </span> -->
-									<!--                         <span class="message"> -->
-									<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
-									<!--                         </span> -->
-									<!--                       </a> -->
-									<!--                     </li> -->
-<!-- 									<li> -->
-<!-- 										<div class="text-center"> -->
-<!-- 											<a> <strong>See All Alerts</strong> <i -->
-<!-- 												class="fa fa-angle-right"></i> -->
-<!-- 											</a> -->
-<!-- 										</div> -->
-<!-- 									</li> -->
-<!-- 								</ul></li> -->
+							<!-- 							<li role="presentation" class="dropdown"><a -->
+							<!-- 								href="javascript:;" class="dropdown-toggle info-number" -->
+							<!-- 								data-toggle="dropdown" aria-expanded="false"> <i -->
+							<!-- 									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span> -->
+							<!-- 							</a> -->
+							<!-- 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" -->
+							<!-- 									role="menu"> -->
+							<!-- 									<li><a> <span class="image"><img -->
+							<%-- 												src="<%=request.getContextPath()%>/back/production/images/img.jpg" --%>
+							<!-- 												alt="Profile Image" /></span> <span> <span>John -->
+							<!-- 													Smith</span> <span class="time">3 mins ago</span> -->
+							<!-- 										</span> <span class="message"> Film festivals used to be -->
+							<!-- 												do-or-die moments for movie makers. They were where... </span> -->
+							<!-- 									</a></li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!-- 									<li> -->
+							<!-- 										<div class="text-center"> -->
+							<!-- 											<a> <strong>See All Alerts</strong> <i -->
+							<!-- 												class="fa fa-angle-right"></i> -->
+							<!-- 											</a> -->
+							<!-- 										</div> -->
+							<!-- 									</li> -->
+							<!-- 								</ul></li> -->
 						</ul>
 					</nav>
 				</div>

@@ -10,5 +10,6 @@ public interface CarDetail_interface {
 	public CarDetailVO findByPrimaryKey(String detail_no);
 	public List<CarDetailVO> getAll();
 	List<CarDetailVO> findByOrderNo(String order_no);
+	public List<CarDetailVO> getByOrderNo(String orderNo);
 	
 }

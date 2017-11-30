@@ -65,4 +65,8 @@ public class CarDetailService {
 	public List<CarDetailVO> findByOrderNo(String order_no) {
 		return dao.findByOrderNo(order_no);
 	}
+	public List<CarDetailVO> getByOrderNo(String orderNo){
+		return dao.getByOrderNo(orderNo);
+	}
+
 }

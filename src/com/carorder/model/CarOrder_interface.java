@@ -13,6 +13,7 @@ public interface CarOrder_interface {
 	public void delete(String order_no);
 	public CarOrderVO findByPrimaryKey(String order_no);
 	public List<CarOrderVO> getAll();
+	public List<CarOrderVO> getByMemNo(String memNo);
 	
 	
 }

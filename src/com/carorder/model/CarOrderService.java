@@ -58,4 +58,8 @@ public class CarOrderService {
 	public List<CarOrderVO> getAll() {
 		return dao.getAll();
 	}
+	public List<CarOrderVO> getByMemNo(String memNo){
+		return dao.getByMemNo(memNo);
+	}
+
 }

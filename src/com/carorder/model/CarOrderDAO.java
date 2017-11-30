@@ -45,6 +45,8 @@ public class CarOrderDAO implements CarOrder_interface {
 	private static final String SELECT_ATTENDANCE ="select ATTENDANCE, WORK_HOURS from CAR_SCHEDUL where YEAR_MONTH = ? and EMP_NO = ?";
 	private static final String UPDATE_CAR_SCHEDUL = "UPDATE CAR_SCHEDUL SET ATTENDANCE = ?,WORK_HOURS =? WHERE SERIAL_NO=?";
 	private static final String UPDATE_MEMBER_POINT = "UPDATE MEMBER SET POINT = ? WHERE MEM_NO=?";
+	private static final String SELECT_BY_MEM = "SELECT * FROM CAR_ORDER WHERE MEM_NO=?";
+
 	
 
 	@Override
@@ -353,7 +355,50 @@ public class CarOrderDAO implements CarOrder_interface {
 		}
 		return list;
 	}
+	
+	
+	@Override
+	public List<CarOrderVO> getByMemNo(String memNo) {
+ 		Connection con = null;
+ 		PreparedStatement pstmt = null;
+ 		ResultSet rs = null;
+ 		List<CarOrderVO> list = new ArrayList<>();
+ 		
+ 		try {
+ 			 con = ds.getConnection();
+ 			 
+ 			pstmt = con.prepareStatement(SELECT_BY_MEM);
+ 			
+ 			pstmt.setString(1,memNo);
+ 			rs = pstmt.executeQuery();
+ 
+ 			while (rs.next()) {
+ 				CarOrderVO carorderVO = new CarOrderVO();
+ 				carorderVO.setOrder_no(rs.getString("order_no"));
+ 				carorderVO.setMem_no(rs.getString("mem_no"));
+ 				carorderVO.setOrder_date(rs.getDate("order_date"));
+ 				carorderVO.setOrder_status(rs.getString("order_status"));
+ 				list.add(carorderVO);
+ 			}
+ 
+ 		} catch (SQLException se) {
+ 			throw new RuntimeException("A database error occured. " + se.getMessage());
+ 			// Clean up JDBC resources
+ 		} finally {
+	
+ 			if (con != null) {
+ 				try {
+ 					con.close();
+ 				} catch (Exception e) {
+ 					e.printStackTrace(System.err);
+ 				}
+ 			}
+ 		}
+ 		return list;
+ 	}
 
+	
+	
 	public static void main(String[] args) throws IOException {
 		// String picName = "WebContent/images/tomcat.png";
 		// File pic = new File(picName);

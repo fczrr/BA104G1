@@ -380,7 +380,51 @@ public class CarDetailDAO implements CarDetail_interface {
 		}
 		return list;
 	}
-	
+	private static final String GET_BY_ORDER_NO="SELECT * FROM CAR_DETAIL WHERE ORDER_NO = ?";
+ 	@Override
+ 	public List<CarDetailVO> getByOrderNo(String orderNo) {
+ 		List<CarDetailVO> list = new ArrayList<CarDetailVO>();
+ 		Connection con = null;
+ 		PreparedStatement pstmt = null;
+ 		ResultSet rs = null;
+ 
+ 		try {
+ 
+ 			con = ds.getConnection();
+ 			pstmt = con.prepareStatement(GET_BY_ORDER_NO);
+ 			pstmt.setString(1, orderNo);
+ 			rs = pstmt.executeQuery();
+ 
+ 			while (rs.next()) {
+ 
+ 				CarDetailVO cardetailVO = new CarDetailVO();
+ 				cardetailVO.setDetail_no(rs.getString("detail_no"));
+ 				cardetailVO.setOrder_no(rs.getString("order_no"));
+ 				cardetailVO.setVehicle_no(rs.getInt("vehicle_no"));
+ 				cardetailVO.setDetail_date(rs.getDate("detail_date"));
+ 				cardetailVO.setDetail_time(rs.getString("detail_time"));
+ 				cardetailVO.setPassenger_name(rs.getString("passenger_name"));
+ 				cardetailVO.setPassenger_phone(rs.getString("passenger_phone"));
+ 				cardetailVO.setGetinto_address(rs.getString("getinto_address"));
+ 				cardetailVO.setArrival_address(rs.getString("arrival_address"));
+ 				cardetailVO.setSendcar_status(rs.getString("sendcar_status"));
+
+ 				list.add(cardetailVO);
+ 			}
+ 		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+ 		} finally {
+ 			if (con != null) {
+				try {
+ 					con.close();
+ 				} catch (Exception e) {
+ 					e.printStackTrace(System.err);
+ 				}
+ 			}
+ 		}
+ 		return list;
+ 	}
+
 	
 
 //	public static void main(String[] args) throws IOException {

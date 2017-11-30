@@ -28,7 +28,7 @@
 							<!-- Form Name -->
 							<legend>
 								<center>
-									<h2>
+									<h2> 
 										<b>有我罩你會員註冊</b>
 									</h2>
 								</center>

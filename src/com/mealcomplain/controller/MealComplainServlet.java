@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import com.google.gson.Gson;
+import com.hccomplain.model.HcComplainService;
+import com.hccomplain.model.HcComplainVO;
 import com.mealcomplain.model.*;
 import com.mealorder.model.MealOrderService;
 import com.mealorder.model.MealOrderVO;
@@ -29,6 +31,31 @@ public class MealComplainServlet  extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		
+
+		if("On_Status".equals(action)){
+			
+			MealComplainService mealComplainSvc = new MealComplainService();
+			List<MealComplainVO> list = mealComplainSvc.getOnAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listMealCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		if("Off_Status".equals(action)){
+			MealComplainService mealComplainSvc = new MealComplainService();
+			List<MealComplainVO> list = mealComplainSvc.getOffAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listMealCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		
+		
 /************************************** 會員前端查詢 getOne_For_Update **********************************************************************************/		
 //		這裡要改瑞民model的資訊
 		
@@ -46,11 +73,11 @@ public class MealComplainServlet  extends HttpServlet {
 			
 			try {
 				/***************************1.接收請求參數****************************************/
-				String moNo = new String(req.getParameter("moNo"));
+				String mo_no = new String(req.getParameter("mo_no"));
 				
 				/***************************2.開始查詢資料****************************************/
 				MealOrderService mealOrderSvc = new MealOrderService();
-				MealOrderVO mealOrderVO = mealOrderSvc.getOneMealOrder(moNo);
+				MealOrderVO mealOrderVO = mealOrderSvc.getOneMealOrder(mo_no);
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("mealOrderVO", mealOrderVO); // 資料庫取出的VO物件,存入req
@@ -115,30 +142,27 @@ public class MealComplainServlet  extends HttpServlet {
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 			
-			String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/complain/listAllMealCom.jsp】
-			req.setAttribute("requestURL", requestURL); // 送出修改的來源網頁路徑, 存入req (是為了給update_Meal_input.jsp)
-			
-			String whichPage = req.getParameter("whichPage");
-			req.setAttribute("whichPage", whichPage);   // 送出修改的來源網頁的第幾頁, 存入req(只用於:listAllMealcom.jsp)
 
-			try {
 				/***************************1.接收請求參數****************************************/
 				
 				String complainNo = req.getParameter("complainNo");
-				System.out.println(complainNo);
+System.out.println("CCC查詢 ---" + complainNo);
 				
 				
 				
 				/***************************2.開始查詢資料****************************************/
 				MealComplainService mealComplainSvc = new MealComplainService();
 				MealComplainVO mealComplainVO = mealComplainSvc.getOneMealCom(complainNo);
-				
+System.out.println(complainNo);	
+
+
 				String responseJSONObject ="";
 				Gson gson=  new Gson();
 				responseJSONObject = gson.toJson(mealComplainVO);
 				res.setCharacterEncoding("UTF-8");
 				PrintWriter out = res.getWriter();
 		        System.out.println(responseJSONObject);
+		        out.println(responseJSONObject);
 		        out.flush();
 	            out.close();
 				
@@ -152,12 +176,6 @@ public class MealComplainServlet  extends HttpServlet {
 //				successView.forward(req, res);
 
 				/***************************其他可能的錯誤處理************************************/
-			} catch (Exception e) {
-				errorMsgs.add("修改資料取出時失敗:"+e.getMessage());
-				RequestDispatcher failureView = req
-						.getRequestDispatcher(requestURL);
-				failureView.forward(req, res);
-			}
 		}
 		
 		

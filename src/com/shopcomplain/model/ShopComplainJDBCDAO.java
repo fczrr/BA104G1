@@ -39,6 +39,14 @@ public class ShopComplainJDBCDAO implements ShopComplainDAO_interface{
 	private static final String GET_ONE_STMT = 
 			"SELECT COMPLAINNO, ORDERNO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM SHOPCOMPLAIN WHERE COMPLAINNO=?";
 	
+	private static final String GET_ON_STMT = 
+			"SELECT COMPLAINNO, ORDERNO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM SHOPCOMPLAIN WHERE COMPLAINSTATUS='已完成'";
+	
+	private static final String GET_OFF_STMT = 
+			"SELECT COMPLAINNO, ORDERNO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS  FROM SHOPCOMPLAIN WHERE COMPLAINSTATUS='未處理'";
+	
+	
+	
 	private static final String DELETE =
 			"DELETE FROM SHOPCOMPLAIN WHERE COMPLAINNO = ?";
 	
@@ -198,6 +206,138 @@ public class ShopComplainJDBCDAO implements ShopComplainDAO_interface{
 		}
 		return shopComplainVO;
 	}
+	
+	
+	@Override
+	public List<ShopComplainVO> getOffAll() {
+		List<ShopComplainVO> list = new ArrayList<ShopComplainVO>();
+		ShopComplainVO shopComplainVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_OFF_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				shopComplainVO = new ShopComplainVO();
+				shopComplainVO.setComplainNo(rs.getString("complainno"));
+				shopComplainVO.setOrderno(rs.getString("orderno"));
+				shopComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				shopComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				shopComplainVO.setComplainReply(rs.getString("complainreply"));
+				shopComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				shopComplainVO.setEmp_no(rs.getString("emp_no"));
+				shopComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(shopComplainVO);
+			}
+			
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+
+
+	@Override
+	public List<ShopComplainVO> getOnAll() {
+		List<ShopComplainVO> list = new ArrayList<ShopComplainVO>();
+		ShopComplainVO shopComplainVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_ON_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				shopComplainVO = new ShopComplainVO();
+				shopComplainVO.setComplainNo(rs.getString("complainno"));
+				shopComplainVO.setOrderno(rs.getString("orderno"));
+				shopComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				shopComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				shopComplainVO.setComplainReply(rs.getString("complainreply"));
+				shopComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				shopComplainVO.setEmp_no(rs.getString("emp_no"));
+				shopComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(shopComplainVO);
+			}
+			
+			
+			
+			
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+
+	
+	
+	
 
 	@Override
 	public List<ShopComplainVO> getAll() {

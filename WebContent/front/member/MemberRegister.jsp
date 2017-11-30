@@ -27,7 +27,7 @@
 						<fieldset>
 							<!-- Form Name -->
 							<legend>
-								<center>
+								<center> 
 									<h2> 
 										<b>有我罩你會員註冊</b>
 									</h2>

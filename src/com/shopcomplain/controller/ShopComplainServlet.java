@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import com.google.gson.Gson;
+import com.hccomplain.model.HcComplainService;
+import com.hccomplain.model.HcComplainVO;
 import com.shopcomplain.model.*;
 import com.shoporder.model.*;
 
@@ -29,6 +31,35 @@ public class ShopComplainServlet extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		
+		
+		
+		
+		
+		
+		
+		
+
+		if("On_Status".equals(action)){
+			
+			ShopComplainService shopComplainSvc = new ShopComplainService();;
+			List<ShopComplainVO> list = shopComplainSvc.getOnAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listShopCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		if("Off_Status".equals(action)){
+			ShopComplainService shopComplainSvc = new ShopComplainService();
+			List<ShopComplainVO> list = shopComplainSvc.getOffAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listShopCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
 		
 /************************************** 會員前端查詢 getOne_For_Update **********************************************************************************/		
 //		這裡要改小石model的資訊

@@ -218,14 +218,11 @@
 											href="<%=request.getContextPath()%>/back/healthnewsdetali/AllNews.jsp">保健資訊管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-quote-right"></i> 線上客服管理 <span
+								<li><a href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i class="fa fa-quote-right"></i> 線上客服管理
+								<span class="label label-danger" id="notifly" style="display:none">0</span> <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
+									
 									</ul></li>
 
 							</ul>

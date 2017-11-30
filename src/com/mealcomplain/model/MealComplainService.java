@@ -3,6 +3,8 @@ package com.mealcomplain.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.carcomplain.model.CarComplainVO;
+
 public class MealComplainService {
 	
 	public MealComplainDAO_interface dao;
@@ -44,5 +46,12 @@ public class MealComplainService {
 		return dao.getAll();
 	}
 	
+	public List<MealComplainVO> getOnAll(){
+		return dao.getOnAll();
+	}
+	
+	public List<MealComplainVO> getOffAll(){
+		return dao.getOffAll();
+	}
 	
 }

@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-	<meta name="keywords" content="">
+	<meta name="keywords" content=""> 
  
     <title>有我罩你</title>
  
@@ -32,9 +32,41 @@
 <style type="text/css">
 .aboutUs_img{
 	background: url(<%=request.getContextPath()%>/img/index/BigImg/bannerAbout.jpg) no-repeat center center scroll;
-
 }
+.body{
+ font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif ,Microsoft JhengHei;
+}
+
+#navbarTopColor li a {
+    color: white;
+    font-size: 1.5em;
+    }
+    
+.service_top {
+    margin: 80px 0px 5px;
+    font-size: 3.5em;
+    text-align: center;
+    color: #a30000;
+    }
+    
+.service_title {
+    margin-top: 30px;
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom:50px;
+    color: #233D4D;
+  }
+  .content_form{
+  	margin-left: 150px;
+  	margin-top:40px;
+  }
+  
+  .chat-circle{
+  	z-index:1;
+  }
+    
 </style>
+<%@ include file="/front/message/msgFor_Mem999.jsp" %>
 <%@ include file="/front/css/navbar/navCss.file" %>
 </head>
 <body>     
@@ -93,7 +125,7 @@
         
   <!--  開始放鏈結區 ======================================================================== -->
             <ul class="nav navbar-nav navnavnav">
-                <li><a href="#">關於我們</a></li>
+<!--                 <li><a href="#">關於我們</a></li> -->
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">最新消息 <b class="caret"></b></a>
                     <ul class="dropdown-menu dropdownNew">
@@ -112,7 +144,7 @@
                 <li><a href="#">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
                 <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
-                <li><a href="#"  class="aboutUs">聯絡我們</a></li>
+<!--                 <li><a href="#"  class="aboutUs">聯絡我們</a></li> -->
             </ul>
         
         
@@ -269,14 +301,14 @@
         </a>
     </li>
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/02_white.png"></span>
             <h3 class="cbp-ig-title">送餐服務</h3>
             <span class="cbp-ig-category">Meal</span>
         </a>
     </li>
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%=request.getContextPath()%>/front/shopindex.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/07_white.png"></span>
             <h3 class="cbp-ig-title">商&nbsp&nbsp城</h3>
             <span class="cbp-ig-category">Shopping</span>
@@ -295,12 +327,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
-            <div class="aboutUs_img">
+            <div class="aboutUs_img" style= "width: 125%; height: 650px">
                 <div class="row">
                 <div class="col-xs-12 col-sm-4">
-             <div class="aboutUs_Title">
-              <p class="Us_ti"><b>關於我們</b></p>
-              <p class="Us_index">有我罩你專業團隊以長者為中心，提供一站式資源，提供高品質銀髮居家照顧服務，包括一般生活陪伴、健康促進、失智症照顧、癌症照顧、安寧照顧、術後照顧及陪同就醫等...</p>
+             <div class="aboutUs_Title" style="z-index: 300; color: #233D4D; margin-top: 250px;">
+              <p class="Us_ti"><b style=" font-size: 5em; padding-bottom: 40px; color: #a30000;">關於我們</b></p>
+              <p class="Us_index" style="font-size: 1.3em; padding-left: 2px;padding-bottom: 20px; letter-spacing: 3px;
+    line-height: 20px;">有我罩你專業團隊以長者為中心，提供一站式資源，提供高品質銀髮居家照顧服務，包括一般生活陪伴、健康促進、失智症照顧、癌症照顧、安寧照顧、術後照顧及陪同就醫等...</p>
               <p><a class="btn btn-danger btn-lg" href="#" role="button">詳細內容</a></p>
               </div>
             </div>
@@ -325,7 +358,13 @@
 <div class="container-fluid">
      <div class="row">
         <div class="col-xs-12 col-sm-12">
-      <h1 class="pro_top">熱門商品</h1>
+      <h1 class="pro_top" style="
+    text-align: center;
+    color: #a30000;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 3em;
+    margin-bottom: -60px">熱門商品</h1>
     </div>
         </div>
     <div class="row" id="prodet_img">
@@ -447,13 +486,13 @@
 
 <!--  footer連結 ====================================================================== -->
  <div class="footer" id="footer">
-        <div class="container">
+        <div class="container"> 
             <div id="footer_lab"></div>
             <div class="row" id="footer_tit">
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> 團隊介紹 </h3>
                     <ul>
-                        <li> <a href="#"> 關於我們 </a> </li>
+<!--                         <li> <a href="#"> 關於我們 </a> </li> -->
                         <li> <a href="<%=request.getContextPath()%>/front/newsdetail/allNew.jsp"> 最新消息 </a> </li>
                         <li> <a href="<%=request.getContextPath()%>/front/healthnews/allNew.jsp"> 保健資訊 </a> </li>
                     </ul>
@@ -461,9 +500,9 @@
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3> 居家照護 </h3>
                     <ul>
-                        <li> <a href="#"> 長照服務 </a> </li>
+                        <li> <a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp"> 長照服務 </a> </li>
                         <li> <a href="#"> 派車服務 </a> </li>
-                        <li> <a href="#"> 送餐服務 </a> </li>
+                        <li> <a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp"> 送餐服務 </a> </li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
@@ -496,21 +535,21 @@
 
 
 
-<footer>
-        <div class="container-fluid" id="footer_footer">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12">
-                    <p>BA104G1&nbsp©&nbsp2017 有我罩你</p>
-                </div>
-            </div>
-        </div>
-</footer>
+<!-- <footer> -->
+<!--         <div class="container-fluid" id="footer_footer"> -->
+<!--             <div class="row"> -->
+<!--                 <div class="col-xs-12 col-sm-12"> -->
+<!--                     <p>BA104G1&nbsp©&nbsp2017 有我罩你</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+<!-- </footer> -->
 
 
 <!--  footer ====================================================================== -->
 
 
-
+<%@ include file="/front/footerbar.jsp" %>
     
 	<!-- START JAVASCRIPT -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -539,6 +578,6 @@ $(document).ready(function () {
 			)
 		});
 	});
-});
+
 </script>
 </html>

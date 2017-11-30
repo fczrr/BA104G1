@@ -11,6 +11,8 @@ import javax.servlet.http.*;
 
 import com.carcomplain.model.*;
 import com.google.gson.Gson;
+import com.healthnewsdetail.model.HealthNewsDetailService;
+import com.healthnewsdetail.model.HealthNewsDetailVO;
 import com.carorder.model.*;
 
 
@@ -31,6 +33,35 @@ public class CarComplainServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 System.out.println("近來---------"+action);		
+
+
+
+
+
+		if("On_Status".equals(action)){
+			
+			CarComplainService carComplainSvc = new CarComplainService();
+			List<CarComplainVO> list = carComplainSvc.getOnAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listCarCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+		
+		if("Off_Status".equals(action)){
+			CarComplainService carComplainSvc = new CarComplainService();
+			List<CarComplainVO> list = carComplainSvc.getOffAll();
+			req.setAttribute("list", list);
+			
+			String url = "/back/complain/listCarCom.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);
+		}
+
+
+
+
 
 /************************************** getOne_For_Update **********************************************************************************/		
 		if ("getOne_For_Update_front".equals(action) ){ // 來自listAllOrder.jsp 或  /dept/listEmps_ByDeptno.jsp 的請求
@@ -247,7 +278,7 @@ System.out.println("查詢-----" + complainNo);
 				Timestamp replyDate = new Timestamp(System.currentTimeMillis());
 				
 				String emp_no = req.getParameter("emp_no");
-//				System.out.println("emp_no================"+emp_no);
+		System.out.println("emp_no================"+emp_no);
 				
 				String complainStatus = req.getParameter("complainStatus");
 				

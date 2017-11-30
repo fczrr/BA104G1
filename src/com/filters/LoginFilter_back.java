@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class LoginFilter implements Filter {
+public class LoginFilter_back implements Filter {
 
 	public void destroy() {
 		
@@ -25,12 +25,12 @@ public class LoginFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		// 【從 session 判斷此user是否登入過】
 		HttpSession session = req.getSession();
-		Object memberVO = session.getAttribute("memberVO");
+		Object memberVO = session.getAttribute("empVO");
 		
 		if(memberVO==null){
 			session.setAttribute("location", req.getRequestURI());
-			res.sendRedirect(req.getContextPath()+"/front/Login.jsp");
-		//	res.sendRedirect(req.getContextPath()+"/index.jsp");
+		//	res.sendRedirect(req.getContextPath()+"/front/Login.jsp");
+			res.sendRedirect(req.getContextPath()+"/back/Login.jsp");
 
 			return;
 		}else{

@@ -21,113 +21,137 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>新增被照顧者資料</title>
-	<style type="text/css">
-		.mb20{
-			margin-bottom: 20px;	
-		}
-	</style>
+<style type="text/css">
+.mb20 {
+	margin-bottom: 20px;
+}
+</style>
 </head>
 <body>
-<h1 class="text-center">新增 被照顧者名單</h1>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-sm-offset-3" >
-				
-					<form METHOD="post" ACTION="<%=request.getContextPath()%>/member/member.do">
-					
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者姓名</span>
-				  		<input type="text" class="form-control" placeholder="name" 
-				  		id="caredName" name="caredName" value="">			  
-						</div>
+	<div class="container">
+		<div class="row">
+			<img alt=""
+				src="<%=request.getContextPath()%>/img/member/longterm10.jpg">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a
+					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+			</ol>
+			<hr>
+			<h1 class="text-center">新增 被照顧者名單</h1>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者性別</span>
-				  		<input type="text" class="form-control" 
-				  		id="caredGender" name="caredGender" >
-				  		</div>	
+						<form METHOD="post"
+							ACTION="<%=request.getContextPath()%>/member/member.do">
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">會員對其稱呼</span>
-				  		<input type="text" class="form-control"  
-				  		id="kinship" name="kinship" >
-						</div>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者姓名</span>
+								<input type="text" class="form-control" placeholder="name"
+									id="caredName" name="caredName" value="">
+							</div>
 
-						<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者身高</span>
-				  		<input type="text" class="form-control"  
-				  		id="caredHeight" name="caredHeight" >
-				  		<div class="input-group-addon">公分</div>			  
-						</div>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者性別</span>
+								<input type="text" class="form-control" id="caredGender"
+									name="caredGender">
+							</div>
 
-						<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者體重</span>
-				  		<input type="text" class="form-control" placeholder="如：70" 
-				  		id="caredWeight" name="caredWeight" >
-				  		<div class="input-group-addon">公斤</div>
-						</div>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">會員對其稱呼</span>
+								<input type="text" class="form-control" id="kinship"
+									name="kinship">
+							</div>
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者地址</span>
-				  		<input type="text" class="form-control" placeholder="如：桃園市中壢區中大路300號" 
-				  		id="caredAddress" name="caredAddress" >
-						</div>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者身高</span>
+								<input type="text" class="form-control" id="caredHeight"
+									name="caredHeight">
+								<div class="input-group-addon">公分</div>
+							</div>
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">被照顧者電話</span>
-				  		<input type="text" class="form-control" placeholder="如：0910111222" 
-				  		id="caredPhone" name="caredPhone" >
-				  		</div>	
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者體重</span>
+								<input type="text" class="form-control" placeholder="如：70"
+									id="caredWeight" name="caredWeight">
+								<div class="input-group-addon">公斤</div>
+							</div>
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">認知功能狀態</span>
-				  		<input type="text" class="form-control" placeholder="請下拉選擇" 
-				  		id="conStatus" name="conStatus" >
-						</div>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者地址</span>
+								<input type="text" class="form-control"
+									placeholder="如：桃園市中壢區中大路300號" id="caredAddress"
+									name="caredAddress">
+							</div>
 
-				  		<div class="input-group mb20">
-				  		<span class="input-group-addon" id="basic-addon1">生理功能狀態</span>
-				  		<input type="text" class="form-control" placeholder="請下拉選擇" 
-				  		id="bioStatus" name="bioStatus" >
-				  		</div>
-				  		
-						<p>
-					  		<input type="hidden" name="action" value="cared_insert">
-							<input type="hidden" name="memNo" value="${memberVO.memNo}" >
-							<input type="submit" value="確認新增">	
-						</p>
-				  	</form>
-				  	
-	
-				</div>
-			</div>
-				  		
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">被照顧者電話</span>
+								<input type="text" class="form-control"
+									placeholder="如：0910111222" id="caredPhone" name="caredPhone">
+							</div>
 
-			<button onclick="myFunction()">
-				<div class="col-xs-12 col-sm-6">
-					<div class="btn"><span >magic</span>
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">認知功能狀態</span>
+								<input type="text" class="form-control" placeholder="請下拉選擇"
+									id="conStatus" name="conStatus">
+							</div>
+
+							<div class="input-group mb20">
+								<span class="input-group-addon" id="basic-addon1">生理功能狀態</span>
+								<input type="text" class="form-control" placeholder="請下拉選擇"
+									id="bioStatus" name="bioStatus">
+							</div>
+
+							<p>
+								<input type="hidden" name="action" value="cared_insert">
+								<input type="hidden" name="memNo" value="${memberVO.memNo}">
+								<input type="submit" value="確認新增">
+							</p>
+						</form>
+
+
 					</div>
 				</div>
-			</button>
+
+
+				<button onclick="myFunction()">
+					<div class="col-xs-12 col-sm-6">
+						<div class="btn">
+							<span>magic</span>
+						</div>
+					</div>
+				</button>
+			</div>
 		</div>
-		
-<br><br><br><br>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
 	<script type="text/JavaScript">
 		function myFunction() {
-		    document.getElementById("caredName").value = "劉姥姥";
-		    document.getElementById("caredGender").value = "F";
-		    document.getElementById("kinship").value = "伯母";
-		    document.getElementById("caredHeight").value = "160";
-		    document.getElementById("caredWeight").value = "60";
-		    document.getElementById("caredAddress").value = "大觀園";
-		    document.getElementById("caredPhone").value = "0900123000";
-		    document.getElementById("conStatus").value = "輕度";
-		    document.getElementById("bioStatus").value = "重度";
+			document.getElementById("caredName").value = "劉姥姥";
+			document.getElementById("caredGender").value = "F";
+			document.getElementById("kinship").value = "伯母";
+			document.getElementById("caredHeight").value = "160";
+			document.getElementById("caredWeight").value = "60";
+			document.getElementById("caredAddress").value = "大觀園";
+			document.getElementById("caredPhone").value = "0900123000";
+			document.getElementById("conStatus").value = "輕度";
+			document.getElementById("bioStatus").value = "重度";
 		}
 	</script>
 </body>
 <%@ include file="/front/footerbar.jsp"%>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+<script
+	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </html>

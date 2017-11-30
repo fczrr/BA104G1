@@ -35,16 +35,20 @@
 <body>
 			<div class="container-fluid">
 <!-- ----------------------下方會員區麵包屑 ------------------------->	
-					<nav aria-label="breadcrumb" role="navigation">
-					  <ol class="breadcrumb">
-					    <li class="breadcrumb-item">
-					    <a href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-					    <li class="breadcrumb-item">
-					    <a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員管理</a></li>
-					    <li class="breadcrumb-item active" aria-current="page">
-					    <a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</li>
-					  </ol>
-					</nav>
+			<hr>
+			<img alt=""
+				src="<%=request.getContextPath()%>/img/member/longterm8.jpg">
+
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a
+					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+			</ol>
 <!-- ----------------------上方會員區麵包屑 ------------------------->
 <!-- ----------------------下方訂單管理區選項------------------------->					
 					<ul class="nav nav-tabs" id="navList">

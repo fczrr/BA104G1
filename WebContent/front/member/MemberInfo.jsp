@@ -5,7 +5,6 @@
 
 
 <%@ include file="/front/navbar.jsp"%>
-<%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,7 +27,22 @@
 
 <body>
 	<div class="container ">
+<!-- ----------------------下方會員區麵包屑 ------------------------->	
+			<hr>
+			<img alt=""
+				src="<%=request.getContextPath()%>/img/member/longterm9.jpg">
 
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+				<li class="breadcrumb-item"><a
+					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a
+					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+			</ol>
+<!-- ----------------------上方會員區麵包屑 ------------------------->
 <!-- ----------------------下方訂單管理區選項------------------------->					
 					<ul class="nav nav-tabs active" id="navList">
 						<li data-name="loginLogTab" >

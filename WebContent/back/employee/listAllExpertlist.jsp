@@ -29,8 +29,6 @@
 	background-color: #CCC;
 }
 
-
-
 .bigtoopp {
 	margin-top: 100px;
 	margin-bottom: 100px;
@@ -254,19 +252,7 @@ th {
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-						<div class="col-xs-12 col-sm-3 ">
-							<!--  					<form
-								action="<%=request.getContextPath()%>/employee/employee.do?action=branches_query"
-								method="post">
-								<div class="form-group form-inline input-group">
-									<input type="text" class="form-control" name="expName" value=""
-										placeholder="依專長名稱查詢" /> <span class="input-group-btn">
-										<button type="submit" class="btn btn-primary">查詢</button>
-									</span>
-								</div>
-							</form>
-	-->
-						</div>
+						<div class="col-xs-12 col-sm-3 "></div>
 						<div class="col-xs-12 col-sm-3">
 							<c:if test="${not empty errorMsgs}">
 								<font color='red'>請修正以下錯誤:
@@ -278,69 +264,69 @@ th {
 								</font>
 							</c:if>
 						</div>
-						<div class="col-xs-12 col-sm-12">
-							<div class="col-xs-11 col-sm-11"></div>
-
-						</div>
-						<div class="col-sm-12">
-							<!-- 							<table id="mytable" class="table table-striped table-bordered table-list results"> -->
-							<table class="table table-hover" style="font-size: 1.5em">
-								<thead>
-									<tr>
-										<th width="7%">專長編號</th>
-										<th width="15%">專長名稱</th>
-										<th width="40%">專長描述</th>
-										<th width="10%">專長定價</th>
-										<th width="10%">修改</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<%@ include file="pages/page1.file"%>
-									<c:forEach var="expertlistVO" items="${list}" varStatus="s"
-										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-										<form
-											action="<%=request.getContextPath()%>/employee/employee.do"
-											method="post">
-											<input type="hidden" name="action" value="expertlist_update">
-											<input type="hidden" name="expNo"
-												value="${expertlistVO.expNo}">
-
-
-											<tr align='left' valign='middle'>
-
-												<td   >
-												<span class="glyphicon glyphicon-menu-right"></span>${expertlistVO.expNo}</td>
-												<td class="hover"><input type="text" name="expName"
-													style="width: 100%; height: 50px"
-													value="${expertlistVO.expName}"></td>
-												<td class="hover"><textarea
-														style="width: 100%; height: 50px" name="expSpec">${expertlistVO.expSpec}</textarea></td>
-												<td class="hover"><input type="text" name="expPrice"
-													style="width: 100%; height: 50px"
-													value="${expertlistVO.expPrice}"></td>
-												<td>
-													<div class="btn-group">
-														<button type="submit" class="btn btn-info"
-															style="height: 50px; width: 146px; background-color: steelblue">
-															<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;確定</button>
-													</div>
-
-												</td>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12">
+									<!-- 							<table id="mytable" class="table table-striped table-bordered table-list results"> -->
+									<table class="table table-hover" style="font-size: 1.5em">
+										<thead>
+											<tr>
+												<th width="7%">專長編號</th>
+												<th width="15%">專長名稱</th>
+												<th width="40%">專長描述</th>
+												<th width="10%">專長定價</th>
+												<th width="10%">修改</th>
 											</tr>
-										</form>
-									</c:forEach>
-								</tbody>
-							</table>
-							<div class="col-xs-1 col-sm-1">
-							
-							
-								<a
-									href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
-									id="modifyBtn" class="btn btn-success btn-default"
-									role="button"><span class="glyphicon glyphicon-save"></span>&nbsp;新增專長</a>
+										</thead>
+										<tbody>
+
+											<%@ include file="pages/page1.file"%>
+											<c:forEach var="expertlistVO" items="${list}" varStatus="s"
+												begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+												<form
+													action="<%=request.getContextPath()%>/employee/employee.do"
+													method="post">
+													<input type="hidden" name="action"
+														value="expertlist_update"> <input type="hidden"
+														name="expNo" value="${expertlistVO.expNo}">
+
+
+													<tr align='left' valign='middle'>
+
+														<td><span class="glyphicon glyphicon-menu-right"></span>${expertlistVO.expNo}</td>
+														<td class="hover"><input type="text" name="expName"
+															style="width: 100%; height: 50px"
+															value="${expertlistVO.expName}"></td>
+														<td class="hover"><textarea
+																style="width: 100%; height: 50px" name="expSpec">${expertlistVO.expSpec}</textarea></td>
+														<td class="hover"><input type="text" name="expPrice"
+															style="width: 100%; height: 50px"
+															value="${expertlistVO.expPrice}"></td>
+														<td>
+															<div class="btn-group">
+																<button type="submit" class="btn btn-info"
+																	style="height: 50px; width: 146px; background-color: steelblue">
+																	<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;確定
+																</button>
+															</div>
+
+														</td>
+													</tr>
+												</form>
+											</c:forEach>
+										</tbody>
+									</table>
+									<div class="col-xs-1 col-sm-1">
+
+
+										<a
+											href="<%=request.getContextPath()%>/back/employee/addExpertlist.jsp"
+											id="modifyBtn" class="btn btn-success btn-default"
+											role="button"><span class="glyphicon glyphicon-save"></span>&nbsp;新增專長</a>
+									</div>
+									<%@ include file="pages/page2.file"%>
+								</div>
 							</div>
-							<%@ include file="pages/page2.file"%>
 						</div>
 					</div>
 				</div>

@@ -4,7 +4,7 @@
 <%@ page import="com.employee.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
-   
+
 <%
 	Object obj = request.getAttribute("list");
 	List<EmployeeVO> list = new ArrayList<EmployeeVO>();
@@ -118,25 +118,22 @@ h4 {
 
 <div class="right_col" role="main">
 	<div class="">
-		<div class="page-title">
-			<div id="mytitle"
-				style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-				<h1>
-					員工註冊&nbsp;<b>頁面</b>
-				</h1>
-			</div>
-			<div class="title_right">
-				<div
-					class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-				</div>
-			</div>
-		</div>
+
 		<div class="clearfix"></div>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-
+						<div id="mytitle"
+							style="padding: 10px; color: #FFFFFF; text-align: center;">
+							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+								data-target="#mymodal">
+								<h1>
+									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+									員工註冊&nbsp;<b>頁面</b>
+								</h1>
+							</a>
+						</div>
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i
@@ -162,10 +159,10 @@ h4 {
 							<form class="well form-horizontal"
 								action="<%=request.getContextPath()%>/employee/employee.do?action=register"
 								method="post" id="contact_form">
-								<fieldset>
+								<fieldset style="font-size: 1.5em">
 									<!-- Form Name -->
 									<legend>
-		
+
 										<c:if test="${not empty errorMsgs}">
 											<font color='red'>請修正以下錯誤: <c:forEach var="message"
 													items="${errorMsgs}">
@@ -213,7 +210,7 @@ h4 {
 												<span class="input-group-addon"> <i
 													class="glyphicon glyphicon-list"></i>
 												</span> <select name="empDep" class="form-control selectpicker">
-													<option value="">選擇部門</option>
+													<option value="">總部部門</option>
 													<option value="長照">長照部門</option>
 													<option value="派車">派車部門</option>
 													<option value="送餐">送餐部門</option>
@@ -232,7 +229,7 @@ h4 {
 													class="glyphicon glyphicon-list"></i>
 												</span> <select name="empBranches"
 													class="form-control selectpicker">
-													<option value="">選擇據點</option>
+													<option value="">高雄分部</option>
 													<option value="10">台北分部</option>
 													<option value="20">桃園分部</option>
 													<option value="30">台中分部</option>
@@ -249,7 +246,7 @@ h4 {
 												<span class="input-group-addon"> <i
 													class="glyphicon glyphicon-list"></i>
 												</span> <select name="empTitle" class="form-control selectpicker">
-													<option value="">選擇職位</option>
+													<option value="">專員</option>
 													<option value="總經理">總經理</option>
 													<option value="經理">經理</option>
 													<option value="專員">專員</option>
@@ -317,12 +314,14 @@ h4 {
 										<label class="col-md-4 col-sm-3 col-sm-offset-1 control-label"></label>
 										<div class="col-md-4">
 											<br>
-											&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-											<button type="submit" class="btn btn-warning">
-												&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span
-													class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+											<button type="submit" class="btn btn-danger">
+												SUBMIT <div class="glyphicon glyphicon-send"></div>
 
-											
+
+											</button>
+
+
+
 										</div>
 									</div>
 								</fieldset>
@@ -332,7 +331,7 @@ h4 {
 
 						</div>
 					</div>
-					</button>
+					
 					<button onclick="addEmp()">
 						<div class="col-xs-12 col-sm-6">
 							<div class="btn">

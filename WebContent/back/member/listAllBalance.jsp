@@ -21,12 +21,8 @@
 	MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
 %>
 <style>
-.mytitle {
-	color: #fff;
-	background: #40b2cd;
-	padding: 16px 25px;
-	margin: -20px -25px 10px;
-	border-radius: 3px 3px 0 0;
+.hover:hover {
+	background-color: #CCC;
 }
 
 table#table-1 {
@@ -72,11 +68,21 @@ h4 {
 			</div>
 			<div class="clearfix"></div>
 			<div class="row">
-				<div id="mytitle" style="background-color:#40b2cd;padding:10px;color:#FFFFFF;text-align:center;">
-					<h1>
-						會員加值狀態&nbsp;<b>管理頁面</b>
-					</h1>
+				<div id="mytitle"
+					style="padding: 10px; color: #FFFFFF; text-align: center;">
+
+
+					<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+						data-target="#mymodal">
+						<h1>
+							<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+							會員加值狀態&nbsp;<b>管理頁面</b>
+						</h1>
+
+					</a>
+
 				</div>
+
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="x_panel">
 						<div class="x_title">
@@ -110,7 +116,7 @@ h4 {
 								<div class="form-group form-inline input-group">
 									<input type="text" class="form-control" name="memNo" value=""
 										placeholder="依會員帳號查詢" /> <span class="input-group-btn">
-										<button type="submit" class="btn btn-primary">查詢</button>
+										<button type="submit" class="btn btn-danger">查詢</button>
 									</span>
 								</div>
 
@@ -129,29 +135,31 @@ h4 {
 						</div>
 
 						<div class="col-sm-12">
-							<table class="table table-hover table-striped">
-								<thead>
-									<tr>
-										<th>加值單號</th>
-										<th>會員編號</th>
-										<th>加值點數</th>
-										<th>加值方式</th>
-										<th>加值狀態</th>
-										<th>加值日期</th>
-										<th>異常加註</th>
-									</tr>
-								</thead>
-								<tbody>
-									<%@ include file="pages/page1.file"%>
-									<c:forEach var="balanceVO" items="${list}"
-										begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-										<form action="<%=request.getContextPath()%>/member/member.do"
-											method="post">
-											<input type="hidden" name="action"
-												value="changeBalanceStatus"> <input type="hidden"
-												name="topupNo" value="${balanceVO.topupNo}">
+							<form action="<%=request.getContextPath()%>/member/member.do"
+								method="post">
+								<table class="table " style="font-size: 1.5em">
+									<thead>
+										<tr>
+											<th>加值單號</th>
+											<th>會員編號</th>
+											<th>加值點數</th>
+											<th>加值方式</th>
+											<th>加值狀態</th>
+											<th>加值日期</th>
+											<th>異常加註</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%@ include file="pages/page1.file"%>
+										<c:forEach var="balanceVO" items="${list}"
+											begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 
-											<tr align='center' valign='middle'>
+											<input type="hidden" name="action"
+												value="changeBalanceStatus">
+											<input type="hidden" name="topupNo"
+												value="${balanceVO.topupNo}">
+
+											<tr align='center' valign='middle' class="hover">
 												<td>${balanceVO.topupNo}</td>
 												<td>${balanceVO.memNo}</td>
 												<td>${balanceVO.topupValue}</td>
@@ -166,15 +174,20 @@ h4 {
 
 												<td>${balanceVO.topupTime}</td>
 												<td>
-													<button type="submit" class="btn btn-info btn-default">
-														修改</button>
+
+													<div class="btn-group">
+														<button type="submit" class="btn btn-info"
+															style="height: 40px; width: 146px; background-color: steelblue">
+															<span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;修改
+														</button>
+													</div>
 												</td>
 											</tr>
-										</form>
-									</c:forEach>
-								</tbody>
-							</table>
 
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
 							<%@ include file="pages/page2.file"%>
 						</div>
 					</div>

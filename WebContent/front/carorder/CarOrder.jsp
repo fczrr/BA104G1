@@ -102,6 +102,29 @@ display:inline-block;
 tr:nth-child(even) {
     background-color: #ffffff;
 }
+.glyphicon-pencil:before {
+    content: "\270f";
+    position: relative;
+    top: 18px;
+    background-color: white;
+    width: 500px;
+}
+
+
+
+.caricon {
+    position: relative;
+    top: 13px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    width: 40;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 
 
 </style>
@@ -121,8 +144,9 @@ tr:nth-child(even) {
 
 							<li role="presentation" id="presentation1"><a href="#step1"
 								data-toggle="tab" aria-controls="step1" role="tab"
-								title="步驟一 :選擇服務車型"> <span class="round-tab"> <i
-										class="glyphicon glyphicon-folder-open"></i>
+								title="步驟一 :選擇服務車型"> <span class="round-tab"> <!-- <i
+										class="glyphicon glyphicon-pencil"></i> -->
+										<img class="caricon" src="<%=request.getContextPath()%>/front/image/carorder/caricon.svg">
 								</span>
 							</a></li>
 
@@ -135,7 +159,7 @@ tr:nth-child(even) {
 							<li role="presentation" class="disabled"><a href="#step3"
 								data-toggle="tab" aria-controls="step3" role="tab"
 								title="步驟三 :選擇往來地點"> <span class="round-tab"> <i
-										class="glyphicon glyphicon-picture"></i>
+										class="glyphicon glyphicon-pencil"></i>
 								</span>
 							</a></li>
 
@@ -162,10 +186,10 @@ tr:nth-child(even) {
 										<div class="carousel-inner">
 
 											<div class="item active">
-												<img src="http://placehold.it/1200x400/cccccc/ffffff">
+												<img src="<%=request.getContextPath()%>/front/image/carorder/main.png">
 													<div class="carousel-caption">
-														<h3>選擇您想要的車型</h3>
-														<p>這邊是動態展示現有車型的地方</p>
+														<h3><b>選擇您想要的車型</b></h3>
+														<p>下方按鈕選擇您想搭乘的服務車型</p>
 													</div>
 											</div>
 

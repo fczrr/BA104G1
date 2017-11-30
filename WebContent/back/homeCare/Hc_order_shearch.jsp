@@ -41,7 +41,19 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>長照訂單管理</h2>
+                    		<div id="mytitle"
+								style="padding: 10px; color: #FFFFFF; text-align: center;">
+
+
+								<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+									data-target="#mymodal">
+									<h1>
+										<b>長照訂單管理</b>
+									</h1>
+
+								</a>
+
+							</div>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -157,7 +169,11 @@
 
 									<div class="panel-group" id="accordion2" role="tablist"
 										aria-multiselectable="true">
-
+										<% 
+										if(request.getAttribute("listOrds_ByCompositeQuery") == null){
+											request.setAttribute("listOrds_ByCompositeQuery",hcOrderSvc.getAll());
+										}																						
+											%>
 										<c:forEach var="hcOrder"
 											items="${listOrds_ByCompositeQuery}"
 											varStatus="s">

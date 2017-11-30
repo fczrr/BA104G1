@@ -178,6 +178,7 @@ public class HcOrderController extends HttpServlet {
 				String[] servDates = req.getParameterValues("servDate");				
 				String caredNo = req.getParameter("caredNo");
 				String memNo = req.getParameter("memNo");
+				System.out.println(memNo);
 				
 			if (servDates == null || servDates.length == 0) {
 				errorMsgs.add("請選擇服務日期");
@@ -211,7 +212,9 @@ public class HcOrderController extends HttpServlet {
 						errorMsgs.add(servDate+": 服務日期格式不正確");
 					}
 					
+					
 					if(serviceDate.getTime() < System.currentTimeMillis()){
+						errorMsgs.add(servDate+servTime+": 時間已過期");
 						continue;
 					}
 					
@@ -232,22 +235,13 @@ public class HcOrderController extends HttpServlet {
 					hcOrderDetailList.add(hcOrderDetail);
 				}
 				
-//				if(req.getSession().getAttribute("memVO") == null){
-//					errorMsgs.add("請登入");
-//					RequestDispatcher failureView = req
-//							.getRequestDispatcher("/front/homeCare/Hc_order.jsp");
-//					failureView.forward(req, res);
-//					
-//				}
-				
-				if (!errorMsgs.isEmpty()) {
+				if(req.getSession().getAttribute("memVO") == null){
+					errorMsgs.add("請登入");
 					RequestDispatcher failureView = req
-							.getRequestDispatcher(forwardURL);
+							.getRequestDispatcher("/front/homeCare/Hc_order.jsp");
 					failureView.forward(req, res);
-					return;//程式中斷
+					
 				}
-				
-
 				
 
 				if (!errorMsgs.isEmpty()) {

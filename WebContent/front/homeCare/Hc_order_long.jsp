@@ -5,8 +5,8 @@
 <%@ include file="/front/navbar.jsp" %>
 <jsp:useBean id="crdSvc" scope="page" class="com.thecared.model.ThecaredService"/>
 <% MemberService memSvc = new MemberService();
-   MemberVO memVO = (MemberVO)memSvc.getOneMemByNo("MEM0002");
-   session.setAttribute("memVO",memVO);           
+   MemberVO memberVO = (MemberVO)memSvc.getOneMemByNo("MEM0002");
+   session.setAttribute("memberVO",memberVO);           
 %> 
 
 
@@ -17,15 +17,13 @@
 <style>
 /* //內容距離footer30px */
 	.innnerContent{
+		margin-top:40px;
 		margin-bottom:30px;
 	}
 	
 	.dateTitle{
 	float:left;
 	}
-	
-	
-
 	
 	.divCheck input[type="checkbox"] {
 		display: none;
@@ -57,13 +55,29 @@
 /* 		height:70px; */
 /* 	} */
 
-
+body{
+display:block;
+}
 
 </style>
 </head>
+<body>
 
 
 
+
+
+
+<div class="container">
+  <div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1>長期照護服務</h1>
+      <p class="lead">        歡迎使用長期照護服務,</p>
+    </div>
+  </div>
+</div>
+</div>
 <c:if test="${not empty errorMsgs}">
 		<ul>
 		<c:forEach var="message" items="${errorMsgs}">
@@ -71,7 +85,6 @@
 		</c:forEach>
 		</ul>
 </c:if>
-
 <div class="container innnerContent">
 	<div class="panel-body calender-container text-center">
 		 <form action="<%=request.getContextPath()%>/HcOrder/HcOrderController.do" class="hc_order" method="post" id="hc_order">		 
@@ -79,12 +92,12 @@
 
 					<div class="row">
 						<div class="col-xs-12 col-sm-2">
-						<span class="dateTitle">請選擇照護對象</span>
+						<span class="dateTitle">請選擇照護對象:</span>
 						</div>
 						<div class="col-xs-12 col-sm-8">
 							<select size="1" class="form-control" name="caredNo"  id="caredNo-final" aria-describedby="helpBlock2">
 								<option value="" selected>請選擇服務對象</option>
-								<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo('MEM0002')}" > 
+								<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo(memberVO.getMemNo())}" > 
 									<option value="${crdVO.caredNo}">${crdVO.caredName}
 								</c:forEach>   
 							</select>
@@ -97,7 +110,7 @@
 					
 					<div class="row">
 						<div class="col-xs-12 col-sm-10">
-							<span class="dateTitle">請選擇服務時間</span>
+							<span class="dateTitle">請選擇服務時間:</span>
 							<br>
 							<br>
 						</div>
@@ -108,6 +121,7 @@
 				    <div class="row">
 					    <div id="test-n1" class=" center-block calender-body"></div>
 						<input type="hidden" name="action" value="add_hc_order_many">
+						<input type="hidden" name="memNo" value="${memberVO.getMemNo()}">
 						<input type="hidden" name="forwardURL" value="<%=request.getServletPath()%>">
 					</div>
 		    
@@ -116,6 +130,7 @@
 	</div>
 </div>
 
+</body>
 
 <%@ include file="/front/footerbar.jsp" %>
 
@@ -141,7 +156,10 @@
 			    for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
 			} 
 			
+			$('body').on('click','.laydate-disabled',function(){
+				return false;
+			});
+			
 			
 
 		</script>
-

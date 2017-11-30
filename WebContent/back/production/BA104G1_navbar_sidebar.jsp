@@ -96,19 +96,19 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>General</h3>
+							<h3>主要功能</h3>
 							<ul class="nav side-menu">
 
 
-								<li><a><i class="fa fa-home"></i> 首頁 </a>
-									<ul class="nav child_menu">
-										<li><a
-											href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp">首頁</a></li>
-										<li><a
-											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料</a></li>
+<!-- 								<li><a><i class="fa fa-home"></i> 首頁 </a> -->
+<!-- 									<ul class="nav child_menu"> -->
+<!-- 										<li><a -->
+<%-- 											href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp">首頁</a></li> --%>
+<!-- 										<li><a -->
+<%-- 											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料</a></li> --%>
 
-										<li><a href="#">個人班表</a></li>
-									</ul></li>
+<!-- 										<li><a href="#">個人班表</a></li> -->
+<!-- 									</ul></li> -->
 
 								<li><a><i class="fa fa-home"></i>員工管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -125,7 +125,7 @@
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
-									</ul></li>>
+									</ul></li>
 
 								<li><a><i class="fa fa-automobile"></i> 派車管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -155,8 +155,7 @@
 								<li><a><i class="fa fa-users"></i> 長照管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">人員管理</a></li>
-										<li><a href="#">訂單管理</a></li>
+										<li><a href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
 										<li><a href="#">班表管理</a></li>
 									</ul></li>
 
@@ -179,7 +178,7 @@
 
 
 						<div class="menu_section">
-							<h3>Live On</h3>
+							<h3>其他功能</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-bug"></i> 申訴管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -285,20 +284,20 @@
 											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 								</ul></li>
 
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
-							</a>
-								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-									role="menu">
-									<li><a> <span class="image"><img
-												src="<%=request.getContextPath()%>/back/production/images/img.jpg"
-												alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
+<!-- 							<li role="presentation" class="dropdown"><a -->
+<!-- 								href="javascript:;" class="dropdown-toggle info-number" -->
+<!-- 								data-toggle="dropdown" aria-expanded="false"> <i -->
+<!-- 									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span> -->
+<!-- 							</a> -->
+<!-- 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" -->
+<!-- 									role="menu"> -->
+<!-- 									<li><a> <span class="image"><img -->
+<%-- 												src="<%=request.getContextPath()%>/back/production/images/img.jpg" --%>
+<!-- 												alt="Profile Image" /></span> <span> <span>John -->
+<!-- 													Smith</span> <span class="time">3 mins ago</span> -->
+<!-- 										</span> <span class="message"> Film festivals used to be -->
+<!-- 												do-or-die moments for movie makers. They were where... </span> -->
+<!-- 									</a></li> -->
 									<!--                     <li> -->
 									<!--                       <a> -->
 									<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
@@ -335,14 +334,14 @@
 									<!--                         </span> -->
 									<!--                       </a> -->
 									<!--                     </li> -->
-									<li>
-										<div class="text-center">
-											<a> <strong>See All Alerts</strong> <i
-												class="fa fa-angle-right"></i>
-											</a>
-										</div>
-									</li>
-								</ul></li>
+<!-- 									<li> -->
+<!-- 										<div class="text-center"> -->
+<!-- 											<a> <strong>See All Alerts</strong> <i -->
+<!-- 												class="fa fa-angle-right"></i> -->
+<!-- 											</a> -->
+<!-- 										</div> -->
+<!-- 									</li> -->
+<!-- 								</ul></li> -->
 						</ul>
 					</nav>
 				</div>

@@ -160,7 +160,7 @@
 									</ul></li>
 
 								<li><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
-										class="fa fa-chevron-down"></span></a>
+										class="fa fa-chevron-down"></span></a>  
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopMaster.jsp">訂單管理</a></li>

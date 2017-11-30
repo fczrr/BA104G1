@@ -54,7 +54,7 @@
                 </li>
                 <li><a href="#">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
-                <li><a href="#">商城</a></li>
+                <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
                 <li><a href="#">聯絡我們</a></li>
             </ul>
         

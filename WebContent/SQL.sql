@@ -16,7 +16,6 @@ BEGIN
     RETURN myBLOB;
 END load_blob;
 /     
-
 --------DROP 檢舉SEQ-------
 DROP SEQUENCE SHOPCOM_NO_SEQ;
 DROP SEQUENCE HCCOM_NO_SEQ;
@@ -1388,29 +1387,53 @@ VALUES(setMeal_seq.NEXTVAL,'術後調理餐',150,300,'手術耗氣傷血，損�
 INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
 VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0001','未處理','三井壽','桃園市中壢區中大路300號','0987390369');
 INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0002','未處理','牧神一','桃園市中壢區中大路300號','0987390369');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0002','已確認','牧紳一','桃園市中壢區中大路300號','0987390369');
+INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0003','服務中','仙道彰','桃園市中壢區中大路300號','0987390369');
+INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0004','已完成','赤木晴子','桃園市中壢區中大路300號','0987390369');
+INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),'MEM0005','已取消','流川楓','桃園市中壢區中大路300號','0987390369');
 
 INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
-VALUES('20171103-000002','MEM0001','未處理','劉備','桃園市中壢區中大路300號','0987390369');
+VALUES('20171103-000002','MEM0001','已完成','劉備','桃園市中壢區中大路300號','0987390369');
 INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
-VALUES('20171103-000003','MEM0002','未處理','孫權','桃園市中壢區中大路300號','0987390369');
+VALUES('20171103-000003','MEM0002','已完成','孫權','桃園市中壢區中大路300號','0987390369');
 INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)
-VALUES('20171103-000004','MEM0002','未處理','孫權','桃園市中壢區中大路300號','0987390369');
+VALUES('20171103-000004','MEM0002','已完成','孫權','桃園市中壢區中大路300號','0987390369');
 
 
 --新增送餐訂單明細--
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-16', 'yyyy-mm-dd'),'早餐',10,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-01', 'yyyy-mm-dd'),'早餐',10,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-17', 'yyyy-mm-dd'),'早餐',10,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-02', 'yyyy-mm-dd'),'早餐',10,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-18', 'yyyy-mm-dd'),'早餐',10,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000001',to_date('2017-12-03', 'yyyy-mm-dd'),'早餐',10,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-20', 'yyyy-mm-dd'),'午餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-04', 'yyyy-mm-dd'),'午餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-21', 'yyyy-mm-dd'),'午餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-05', 'yyyy-mm-dd'),'午餐',20,1);
 INSERT INTO MEAL_ORDER_DETAIL
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-23', 'yyyy-mm-dd'),'午餐',20,1);
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-12-06', 'yyyy-mm-dd'),'午餐',20,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000003',to_date('2017-12-07', 'yyyy-mm-dd'),'晚餐',30,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000003',to_date('2017-12-08', 'yyyy-mm-dd'),'晚餐',30,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000003',to_date('2017-12-09', 'yyyy-mm-dd'),'晚餐',30,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000004',to_date('2017-12-02', 'yyyy-mm-dd'),'早餐',10,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000004',to_date('2017-12-02', 'yyyy-mm-dd'),'中餐',10,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000004',to_date('2017-12-02', 'yyyy-mm-dd'),'晚餐',10,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000005',to_date('2017-12-16', 'yyyy-mm-dd'),'早餐',20,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000005',to_date('2017-12-17', 'yyyy-mm-dd'),'中餐',20,1);
+INSERT INTO MEAL_ORDER_DETAIL
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||'000005',to_date('2017-12-18', 'yyyy-mm-dd'),'晚餐',20,1);
 
 INSERT INTO MEAL_ORDER_DETAIL
 VALUES ('20171103-000002',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-23', 'yyyy-mm-dd'),'晚餐',20,1);
@@ -1421,6 +1444,114 @@ VALUES ('20171103-000004',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('20
 
 
 --新增菜單表--
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','南瓜飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','水晶雞');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','四神豬肚湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','豬肝菠菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','紅棗銀耳湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','糙米飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','清蒸鱈魚');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','紅棗補氣魚湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','百果雪蓮子粥');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','紅豆飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','油雞');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','首烏燉烏雞湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','薑拌龍鬚菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','黑豆飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','彩椒蝦仁');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','刺五加燉雞湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','枸杞吻魚紅鳳菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','珍珠薏仁饌');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','健康飲');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','淮山藥膳活力粥');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','清蒸鱈魚');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','紅棗補氣魚湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','百果雪蓮子粥');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','紅豆飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','油雞');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','首烏燉烏雞湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','薑拌龍鬚菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,20,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','黑豆飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','彩椒蝦仁');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','刺五加燉雞湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','枸杞吻魚紅鳳菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','珍珠薏仁饌');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','健康飲');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','淮山藥膳活力粥');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','清蒸鱈魚');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','紅棗補氣魚湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','百果雪蓮子粥');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'中餐','養肝茶');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','紅豆飯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','油雞');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','首烏燉烏雞湯');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','雙鮮綠蘆筍');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','薑拌龍鬚菜');
+INSERT INTO MENU
+VALUES(menu_seq.NEXTVAL,30,to_date('2017-12-01', 'yyyy-mm-dd'),'晚餐','養肝茶');
 
 
 COMMIT;

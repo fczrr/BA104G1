@@ -227,12 +227,11 @@ th {
 							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 								data-target="#mymodal">
 								<h1>
-									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
-									員工專長&nbsp;<b>管理頁面</b>
+									<img alt=""
+										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+										width="70px";>&nbsp;員工專長&nbsp;<b>管理頁面</b>
 								</h1>
-
 							</a>
-
 						</div>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i

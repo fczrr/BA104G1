@@ -100,8 +100,9 @@ h4 {
 								<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 									data-target="#mymodal">
 									<h1>
-										<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
-										員工&nbsp;<b>管理頁面</b>
+										<img alt=""
+											src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+											width="70px";>&nbsp; 員工&nbsp;<b>管理頁面</b>
 									</h1>
 
 								</a>
@@ -132,7 +133,9 @@ h4 {
 									<div class="form-group form-inline input-group">
 										<input type="text" class="form-control" name="empNo"
 											placeholder="依員工編號查詢" /> <span class="input-group-btn">
-											<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;查詢</button>
+											<button type="submit" class="btn btn-primary">
+												<span class="glyphicon glyphicon-search"></span>&nbsp;查詢
+											</button>
 										</span>
 									</div>
 								</form>

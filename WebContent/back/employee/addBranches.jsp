@@ -137,7 +137,9 @@ h4 {
 							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 								data-target="#mymodal">
 								<h1>
-									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
+									<img alt=""
+										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+										width="70px";>&nbsp;
 									新增&nbsp;<b>據點</b>
 								</h1>
 							</a>

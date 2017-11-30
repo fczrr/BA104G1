@@ -107,8 +107,9 @@ h4 {
 							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 								data-target="#mymodal">
 								<h1>
-									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
-									員工據點&nbsp;<b>管理頁面</b>
+									<img alt=""
+										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+										width="70px";>&nbsp; 員工據點&nbsp;<b>管理頁面</b>
 								</h1>
 
 							</a>

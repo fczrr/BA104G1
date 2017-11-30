@@ -89,11 +89,21 @@ h4 {
 				<div class="x_panel">
 					<div class="x_title">
 						<div id="mytitle"
-							style="background-color: #40b2cd; padding: 10px; color: #FFFFFF; text-align: center;">
-							<h1>
-								個人資料維護&nbsp;<b>頁面</b>
-							</h1>
+							style="padding: 10px; color: #FFFFFF; text-align: center;">
+
+
+							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+								data-target="#mymodal">
+								<h1>
+									<img alt=""
+										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+										width="70px";>&nbsp;個人資料維護&nbsp;<b>頁面</b>
+								</h1>
+
+							</a>
+
 						</div>
+
 
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"> <i

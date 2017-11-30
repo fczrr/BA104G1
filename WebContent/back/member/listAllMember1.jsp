@@ -86,8 +86,9 @@ h4 {
 								<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 									data-target="#mymodal">
 									<h1>
-										<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
-										會員列表&nbsp;<b>管理頁面</b>
+										<img alt=""
+											src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+											width="70px";> 會員列表&nbsp;<b>管理頁面</b>
 									</h1>
 
 								</a>
@@ -184,7 +185,7 @@ h4 {
 												begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 
 												<input type="hidden" name="memNo" value=${memberVO.memNo} >
-												<tr class="hover"align='center' valign='middle' >
+												<tr class="hover" align='center' valign='middle'>
 
 													<td>${memberVO.memNo}</td>
 													<td>${memberVO.memName}</td>

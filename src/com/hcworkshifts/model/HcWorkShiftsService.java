@@ -6,7 +6,7 @@ import java.util.Map;
 public class HcWorkShiftsService {
 	private HcWorkShiftsDAO_interface dao;
 	public HcWorkShiftsService(){
-		dao = new HcWorkShiftsDAO();
+		dao = new HcWorkShiftsJDBCDAO();
 	}
 	
 	public HcWorkShiftsVO addHcWorkShifts (String monthOfYear,String empNo,

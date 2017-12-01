@@ -37,7 +37,7 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 	private static final String GET_ALL_BY_MEMBER_STMT = "SELECT * FROM MEAL_ORDER WHERE MEM_NO=? ORDER BY MO_NO";
 
 	@Override 
-	public void insert(MealOrderVO mealOrderVO, List<MealOrderDetailVO> mealOrderDetailVOList) {
+	public String insert(MealOrderVO mealOrderVO, List<MealOrderDetailVO> mealOrderDetailVOList) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -101,7 +101,7 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				}
 			}
 		}
-
+         return next_orderid;
 	}
 
 	@Override

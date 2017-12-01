@@ -11,8 +11,10 @@ public class MealOrderService {
 		dao = new MealOrderDAO();
 	}
 
-	public void addMealOrder(MealOrderVO mealOrderVO, List<MealOrderDetailVO> mealOrderDetailVOList) {
-		dao.insert(mealOrderVO, mealOrderDetailVOList);
+	public String addMealOrder(MealOrderVO mealOrderVO, List<MealOrderDetailVO> mealOrderDetailVOList) {
+		String moNo=null;
+		moNo=dao.insert(mealOrderVO, mealOrderDetailVOList);
+		return moNo;
 	}
 
 	public void updateStatus(String moNo, String moStatus) {

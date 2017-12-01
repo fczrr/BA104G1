@@ -106,16 +106,18 @@ public class MealOrderServlet extends HttpServlet {
 			Set<String> set=new HashSet<>();
 			
 			String dates=req.getParameter("dates").trim();
-//		    if(dates==null||(dates.trim()).length() == 0){
-//		    	errorMsgs.add("請輸入員工編號");
-//		    }
-//			
-//		    if (!errorMsgs.isEmpty()) {
-//				RequestDispatcher failureView = req
-//						.getRequestDispatcher("/front/mealService/ChooseMeal.jsp");
-//				failureView.forward(req, res);
-//				return;//程式中斷
-//			}
+		    if(dates==null||(dates.trim()).length() == 0){
+		    	errorMsgs.add("請至少選擇一餐");
+		    }
+			
+		    if (!errorMsgs.isEmpty()) {
+		    	String errorMsgStr =String.join(",", errorMsgs);
+		    	req.setAttribute("errorMsgStr", errorMsgStr);
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/front/mealService/ChooseMeal.jsp");
+				failureView.forward(req, res);
+				return;//程式中斷
+			}
 			
 			
 			
@@ -189,7 +191,7 @@ public class MealOrderServlet extends HttpServlet {
 		}
 
 		if ("insert".equals(action)) {
-			System.out.println("進來訂單新增");
+		    String moNo=null;
 
 			HttpSession session = req.getSession();
 			session.removeAttribute("datesStr");
@@ -237,8 +239,8 @@ public class MealOrderServlet extends HttpServlet {
 				System.out.println("======="+new Gson().toJson(mealOrderVO));
 				System.out.println(new Gson().toJson(list));
 				MealOrderService mealOrderSvc = new MealOrderService();
-				mealOrderSvc.addMealOrder(mealOrderVO, list);
-
+				moNo=(String)mealOrderSvc.addMealOrder(mealOrderVO, list);
+                req.setAttribute("moNo", moNo);
 				MemberService memberSvc = new MemberService();
 				memberSvc.updatePoint((memberPoint - totalPrice), memberVO.getMemNo());
 				

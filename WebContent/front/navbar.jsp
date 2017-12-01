@@ -29,6 +29,7 @@ body {
 </head>
 
 <body>
+<%@ include file="/front/message/msgFor_Mem999.jsp" %>
 
 <nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
     <div class="container-fliud">

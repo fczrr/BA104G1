@@ -811,18 +811,18 @@ CONSTRAINT FK_MEMBERNO  FOREIGN KEY (MEM_NO) REFERENCES MEMBER(MEM_NO)
 
 ----------------商品訂單假資料------------------
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('2017/5/5', 'yyyy-mm-dd'),'台北天龍國','0926','張飛','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('2017/5/5', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0926','張飛','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0002',TO_DATE('2010/4/5', 'yyyy-mm-dd'),'人情台南市','0918','劉備','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0002',TO_DATE('2010/4/5', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0918','劉備','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0003',TO_DATE('2013/2/9', 'yyyy-mm-dd'),'人情台南市','0800','孫權','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0003',TO_DATE('2013/2/9', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0800','孫權','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1950/4/5', 'yyyy-mm-dd'),'台北天龍國','0987','曹操','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1950/4/5', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0987','曹操','1');
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1966/12/5', 'yyyy-mm-dd'),'台北天龍國','0926','曹操','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0004',TO_DATE('1966/12/5', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0926','曹操','1');
 
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
-VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926','張飛','1');
+VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(FORSHOPORDER.Nextval),6,'0'),'MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'桃園市中壢區中大路300號','0926','張飛','1');
 
 INSERT INTO SHOPORDER(ORDERNO,MEM_NO,ORDER_DATE,CUSTOMER_ADDRESS,CUSTOMER_phone,CUSTOMER_NAME,ORDER_STATUS) 
 VALUES('20171026-000001','MEM0001',TO_DATE('1960/5/5', 'yyyy-mm-dd'),'熱情屏東市','0926789123','張飛','1');

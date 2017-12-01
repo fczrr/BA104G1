@@ -378,7 +378,7 @@ request.setCharacterEncoding("UTF-8");
 		                         </div>	                        
 	                    </div>
 	                    <div class="modal-footer">
-	                    	<span id="helpBlock2" class="help-block pull-left">還沒儲值嗎?<a href="#">點我儲值</a></span>                      
+	                    	<span id="helpBlock2" class="help-block pull-left">還沒儲值嗎?<a href="<%=request.getContextPath()%>/front/member/BalanceInsert.jsp">點我儲值</a></span>                      
 	                        <button type="submit" class="btn btn-primary" >確認送出</button>                        
 	                    </div>
                     </form>

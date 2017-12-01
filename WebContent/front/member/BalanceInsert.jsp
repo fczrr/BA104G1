@@ -9,14 +9,12 @@
 <%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 <jsp:useBean id="balanceSvc" class="com.balance.model.BalanceService" />
 <jsp:useBean id="memberSvc" class="com.member.model.MemberService" />
-
+ 
 <%
 	String memNo = request.getParameter("memNo");
 	List<BalanceVO> balanceVO = balanceSvc.getBalanceByMemNo(memNo);
 	pageContext.setAttribute("balanceVO", balanceVO);
-
-	MemberVO memberVO = memberSvc.getOneMemByNo(memNo);
-	pageContext.setAttribute("memberVO", memberVO);
+ 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

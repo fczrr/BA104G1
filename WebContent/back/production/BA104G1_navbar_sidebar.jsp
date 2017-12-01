@@ -213,9 +213,9 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
-											href="<%=request.getContextPath()%>/back/newsdetali/AllNews.jsp">最新消息管理</a></li>
+											href="<%=request.getContextPath()%>/back/newsdetail/AllNews.jsp">最新消息管理</a></li>
 										<li><a
-											href="<%=request.getContextPath()%>/back/healthnewsdetali/AllNews.jsp">保健資訊管理</a></li>
+											href="<%=request.getContextPath()%>/back/healthnewsdetail/AllNews.jsp">保健資訊管理</a></li>
 									</ul></li>
 
 								<li><a href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i class="fa fa-quote-right"></i> 線上客服管理

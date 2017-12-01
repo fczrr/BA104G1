@@ -139,7 +139,7 @@
 											</ul>
 									</li>
 										
-										<li><a href="#">車型管理</a></li>
+										<li><a href="<%=request.getContextPath()%>/back/cartype/main.jsp">車型管理</a></li>
 									</ul>
 								</li>
 

@@ -480,7 +480,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<%=request.getContextPath()%>/front/js/index/bootstrap.min.js"></script>
     
-    <!-- Bootsnavs -->
+    <!-- Bootsnavs --> 
     <script src="<%=request.getContextPath()%>/front/js/index/bootsnav.js"></script>
 	<!-- START JAVASCRIPT -->
 </body>

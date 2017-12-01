@@ -51,7 +51,7 @@
 					<thead>
 						<tr>
 							<th>產品名稱</th>
-							<th>數量</th>
+							<th style="text-align: center;">數量</th>
 							<th class="text-center">單價</th>
 							<th class="text-center">總價</th>
 							

@@ -348,7 +348,7 @@
 		<url-pattern>/front/homeCare/*</url-pattern>
 		<url-pattern>/front/member/*</url-pattern>
 		<url-pattern>/front/mealService/FileInAForm.jsp</url-pattern>
-
+		<url-pattern>/MasterOrder/Checkout.jsp</url-pattern>
 
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>

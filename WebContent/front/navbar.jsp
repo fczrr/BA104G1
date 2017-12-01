@@ -29,8 +29,8 @@ body {
 </head>
 
 <body>
-<%@ include file="/front/message/msgFor_Mem999.jsp" %>
 
+<%@ include file="/front/message/msgFor_Mem999.jsp" %>
 <nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
     <div class="container-fliud">
         <div class="navbar-header">
@@ -114,7 +114,7 @@ body {
 
 
 
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--         <script src="https://code.jquery.com/jquery.js"></script> -->
+<!--         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </body>
 </html>

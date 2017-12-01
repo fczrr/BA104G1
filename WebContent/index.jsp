@@ -484,7 +484,8 @@
     <script src="<%=request.getContextPath()%>/front/js/index/bootsnav.js"></script>
 	<!-- START JAVASCRIPT -->
 </body>
-
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <script>

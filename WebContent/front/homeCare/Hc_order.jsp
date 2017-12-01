@@ -3,17 +3,14 @@
 <%@ page import="com.hcworkshifts.model.*" %>
 <%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% MemberService memSvc = new MemberService();
-   MemberVO memVO = (MemberVO)memSvc.getOneMemByNo("MEM0002");
-   session.setAttribute("memVO",memVO);
-%>
+
 <jsp:useBean id="crdSvc" scope="page" class="com.thecared.model.ThecaredService"/>
 <jsp:useBean id="empPhSvc" scope="page" class="com.employee_photo.model.EmpPhotosService"/>
 <jsp:useBean id="expertlistService" scope="page" class="com.expertlist.model.ExpertlistService"/>
 <jsp:useBean id="expertService"  class="com.expert.model.ExpertService"/>
 <jsp:useBean id="employeeService" scope="page" class="com.employee.model.EmployeeService"/>
 
-<% String memNo = memVO.getMemNo();
+<% 
 request.setCharacterEncoding("UTF-8");
 	
 %>
@@ -366,14 +363,14 @@ request.setCharacterEncoding("UTF-8");
 <%-- 	                              + ${expertService.getAllByEmpNo(param.empNo).size()} --%>
 <%-- 	                              ++ ${expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()} --%>
 <%-- 	                              <span id='price'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br> --%>
-	                            <c:choose>
-	                               <c:when test='expertService.getAllByEmpNo(param.empNo).size() != 0)'>
-	                              <span id='price'>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()).getExpPrice()}</span>
-	                               </c:when>
-	                               <c:otherwise>
-	                              <span id='price'>下定後結算</span>	                               
-	                               </c:otherwise>
-	                            </c:choose>
+<%-- 	                            <c:choose> --%>
+<%-- 	                               <c:when test='expertService.getAllByEmpNo(param.empNo).size() != 0)'> --%>
+<%-- 	                              <span id='price'>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()).getExpPrice()}</span> --%>
+<%-- 	                               </c:when> --%>
+<%-- 	                               <c:otherwise> --%>
+<!-- 	                              <span id='price'>下定後結算</span>	                                -->
+<%-- 	                               </c:otherwise> --%>
+<%-- 	                            </c:choose> --%>
 	                              <input type="hidden" class="form-control" id="empNo-final" name="empNo" value="${param.empNo}" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="memNo" value="${memVO.memNo}" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="action" value="add_hc_order" aria-describedby="helpBlock2">

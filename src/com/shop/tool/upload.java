@@ -13,8 +13,8 @@ import java.sql.SQLException;
 
 public class upload {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String USER = "BA104G1DB";
-	private static final String PASSWORD = "BA104G1DB";
+	private static final String USER = "BA104G1";
+	private static final String PASSWORD = "123456";
 	private static final String INSERT_STMT = "UPDATE ShoppingMall set PICTURE1=? where ITEMNO = ?";
 	
 	

@@ -12,13 +12,16 @@
 	class="com.expertlist.model.ExpertlistService" />
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
-<%
-	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
-	session.setAttribute("employeeVO", employeeVO);
-%>
-
-
+<<<<<<< HEAD
 <!DOCTYPE html>
+<%--
+// 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
+// 	session.setAttribute("employeeVO", employeeVO);
+--%>
+=======
+
+
+
 <html lang="zh-TW">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

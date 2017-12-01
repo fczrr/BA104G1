@@ -8,6 +8,10 @@
 <jsp:useBean id="expertService"  class="com.expert.model.ExpertService"/>
 <jsp:useBean id="expertlistService"  class="com.expertlist.model.ExpertlistService"/>
 
+
+<jsp:useBean id="hcOrderDetailService" scope="page" class="com.hcorder.modal.HcOrderDetailService"/>
+
+
 <!-- 不可快取 -->
 <% response.setDateHeader("Expires",0); %>
 <!-- 放入假的會員 -->
@@ -416,7 +420,7 @@ a.thumbnail{
                                         	<li>${expertlistService.getOneEXPLIST(experVO.getExpNo()).getExpName()}</li>
                                         </c:forEach>
                                         </ul>
-                                        <span>經驗豐富</span>
+                                        <span>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcWorkShiftsVO.getEmpNo()).get(0).getExpNo()).getExpPrice()}元</span>
                                         <span class="badge pull-right" style="background-color:#ffd340; font-size:20px;">選擇我</span>
 									        
 							      </div>

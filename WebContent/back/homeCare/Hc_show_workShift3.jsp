@@ -283,12 +283,12 @@
                     </tbody>
                 </table>
 				<hr>
-					<c:forEach var="WorkShift" items="${WorkShiftslist}">						
-                        <tr>
-                            <td>${WorkShift}----</td>
+<%-- 					<c:forEach var="WorkShift" items="${WorkShiftslist}">						 --%>
+<!--                         <tr> -->
+<%--                             <td>${WorkShift}----</td> --%>
             
-                        </tr>
-                     </c:forEach>						
+<!--                         </tr> -->
+<%--                      </c:forEach>						 --%>
 
 
 
@@ -529,8 +529,9 @@
 				                    el.data('event', { title: event.title, id :event.id, stick: true ,});
 				                    
 				                    console.log(event.title);
-				                    
-				                    var  detailObj={ orderDetailNo: event.title };
+				                    var title= event.title.split(':');
+				                    var  detailObj={ orderDetailNo: title[1] };
+				                    console.log(title[1]);
 				      		      $.ajax({
 				 					 type: "post",
 				 					 

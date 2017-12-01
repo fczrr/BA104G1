@@ -4,10 +4,10 @@
 
 <%@ include file="/front/navbar.jsp" %>
 <jsp:useBean id="crdSvc" scope="page" class="com.thecared.model.ThecaredService"/>
-<% MemberService memSvc = new MemberService();
-   MemberVO memberVO = (MemberVO)memSvc.getOneMemByNo("MEM0002");
-   session.setAttribute("memberVO",memberVO);           
-%> 
+<%-- <% MemberService memSvc = new MemberService(); --%>
+//    MemberVO memberVO = (MemberVO)memSvc.getOneMemByNo("MEM0002");
+//    session.setAttribute("memberVO",memberVO);           
+<%-- %>  --%>
 
 
 <head>

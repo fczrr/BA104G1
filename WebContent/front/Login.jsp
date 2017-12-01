@@ -66,7 +66,7 @@
 						</div>
 	
 						<div class="footer">
-							<a href="<%=request.getContextPath()%>/front/member/MemberRegister.jsp">註冊</a>
+							<a href="<%=request.getContextPath()%>/front/MemberRegister.jsp">註冊</a>
 						</div>
 					</form>
 					

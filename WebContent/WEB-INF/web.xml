@@ -343,9 +343,7 @@
 	<filter-mapping>
 		<filter-name>loginFilter</filter-name>
 
-		<url-pattern>/front/carorder/CarOrder.jsp</url-pattern>
 		<url-pattern>/front/complain/*</url-pattern>
-		<url-pattern>/front/homeCare/*</url-pattern>
 		<url-pattern>/front/member/*</url-pattern>
 		<url-pattern>/front/mealService/FileInAForm.jsp</url-pattern>
 		<url-pattern>/MasterOrder/Checkout.jsp</url-pattern>

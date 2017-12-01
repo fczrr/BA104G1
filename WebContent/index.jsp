@@ -178,7 +178,7 @@
                 <div class="carousel-caption" id="fourTit">
                     <h1 class="h1_index_3">長期回診 醫院家裡兩邊跑</h1>
                     <p class="h2_index_3">有我罩你 提供天天定時接送服務</p>
-                    <p><a class="btn btn-lg btn-warning" href="#" role="button">詳細內容</a></p>
+                    <p><a class="btn btn-lg btn-warning" href="<%=request.getContextPath()%>/front/carorder/CarOrder.jsp" role="button">詳細內容</a></p>
                 </div>
             </div>
         </div>
@@ -222,28 +222,28 @@
     <div class="row topService">
 <ul class="cbp-ig-grid">
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/09_white.png"></span>
             <h3 class="cbp-ig-title">長照服務</h3>
             <span class="cbp-ig-category">Long Term Care</span>
         </a>
     </li>
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%=request.getContextPath()%>/front/carorder/CarOrder.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/06_white.png"></span>
             <h3 class="cbp-ig-title">派車服務</h3>
             <span class="cbp-ig-category">Car</span>
         </a>
     </li>
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/02_white.png"></span>
             <h3 class="cbp-ig-title">送餐服務</h3>
             <span class="cbp-ig-category">Meal</span>
         </a>
     </li>
     <li class="spaceForService">
-        <a href="#">
+        <a href="<%=request.getContextPath()%>/front/shopindex.jsp">
             <span class="cbp-ig-icon"><img src="<%=request.getContextPath()%>/img/index/share/07_white.png"></span>
             <h3 class="cbp-ig-title">商&nbsp&nbsp城</h3>
             <span class="cbp-ig-category">Shopping</span>
@@ -428,7 +428,7 @@
                     <h3> 居家照護 </h3>
                     <ul>
                         <li> <a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp"> 長照服務 </a> </li>
-                        <li> <a href="#"> 派車服務 </a> </li>
+                        <li> <a href="<%=request.getContextPath()%>/front/carorder/CarOrder.jsp"> 派車服務 </a> </li>
                         <li> <a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp"> 送餐服務 </a> </li>
                     </ul>
                 </div>

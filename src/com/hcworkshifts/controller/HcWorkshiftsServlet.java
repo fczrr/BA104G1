@@ -257,41 +257,48 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				//Map<String, String[]> map = req.getParameterMap();
 				HttpSession session = req.getSession();
 				Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
-//				if (req.getParameter("whichPage") == null){
+				HashMap<String, String[]> map3 = new HashMap<String, String[]>();
+				if (req.getParameter("whichPage") == null){
 					HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
 					HashMap<String, String[]> map2 = new HashMap<String, String[]>();
 						
-					Set<String> keys = map1.keySet();
-					for (String key : keys) {
-						String[] value = map1.get(key);
-						map2.put(key, value);						
-					}	
-//					map2 = (HashMap<String, String[]>)map1.clone();
-//					session.setAttribute("map",map2);
-//					map = (HashMap<String, String[]>)req.getParameterMap();
-//				} 
+//					Set<String> keys = map1.keySet();
+//					for (String key : keys) {
+//						String[] value = map1.get(key);
+//						map2.put(key, value);						
+//					}	
+					map2 = (HashMap<String, String[]>)map1.clone();
+					session.setAttribute("map",map2);
+					map3 = map2;
+					map = (HashMap<String, String[]>)req.getParameterMap();
+				} 
+//				Set<String> keys = map.keySet();
+//				for (String key : keys) {
+//					String[] value = map.get(key);
+//					System.out.println("--"+key+"--"+value[0]);
+//				}	 
 				
 				
+//				if(map.get("servDate")[0].equals("")){
+//					errorMsgs.add("請輸入日期");
+//				}
+//				if(map.get("servTime")[0].equals("")){
+//					errorMsgs.add("請輸入時間");
+//				}
 				
-				if(map2.get("servDate")[0].equals("")){
-					errorMsgs.add("請輸入日期");
-				}
-				if(map2.get("servTime")[0].equals("")){
-					errorMsgs.add("請輸入時間");
-				}
-				String servDate = map2.get("servDate")[0];
-				String servTime = map2.get("servTime")[0];
-				
-//				if(map2.get("shiftNumber")[0].equals("00")){
+				if(req.getAttribute("servDate") !=null ||req.getAttribute("servTime")!=null){
+				String servDate = map3.get("servDate")[0];
+				String servTime = map3.get("servTime")[0];
 					
 					System.out.println("test yes0");
 					String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , servTime );
 					String shiftNumber = Number[1] ;
 					String monthOfYear = Number[0];
-					map2.put("shiftNumber", new String[] {shiftNumber});	
-					map2.put("monthOfYear", new String[] {monthOfYear});
+					map3.put("shiftNumber", new String[] {shiftNumber});	
+					map3.put("monthOfYear", new String[] {monthOfYear});
+					map = map3;
 
-//				}
+				}
 				
 				System.out.println("test yes1");
 				
@@ -306,10 +313,10 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 				/***************************2.開始複合查詢***************************************/
 				HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
-				List<HcWorkShiftsVO> hcWorkShiftsVOList  = hcWorkShiftsService.getAll(map2);
+				List<HcWorkShiftsVO> listHcWorks_ByCompositeQuery  = hcWorkShiftsService.getAll(map);
 				
 				System.out.println("test yes2");
-				if(hcWorkShiftsVOList.size() == 0){
+				if(listHcWorks_ByCompositeQuery.size() == 0){
 					errorMsgs.add("查無人選，請重新查詢");
 				}
 				
@@ -322,7 +329,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
-				req.setAttribute("hcWorkShiftsVOList", hcWorkShiftsVOList); // 資料庫取出的list物件,存入request
+				req.setAttribute("listHcWorks_ByCompositeQuery", listHcWorks_ByCompositeQuery); // 資料庫取出的list物件,存入request
 				RequestDispatcher successView = req.getRequestDispatcher(req.getParameter("successView")); // 成功轉交listEmps_ByCompositeQuery.jsp
 				successView.forward(req, res);
 				
@@ -468,35 +475,79 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 				JsonObject jjj = new JsonObject();
 				
+				String aass =  "516516161";				
+				jjj.addProperty("xxx", aass);;
+				
 				res.getWriter().println(jjj.toString());
 				
 				
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-//				DeptService deptSvc = new DeptService();
-//				if(requestURL.equals("/dept/listEmps_ByDeptno.jsp") || requestURL.equals("/dept/listAllDept.jsp"))
-//					req.setAttribute("listEmps_ByDeptno",deptSvc.getEmpsByDeptno(deptno)); // 資料庫取出的list物件,存入request
-//				
-//				if(requestURL.equals("/emp/listEmps_ByCompositeQuery.jsp")){
-//					HttpSession session = req.getSession();
-//					Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
-//					List<EmpVO> list  = empSvc.getAll(map);
-//					req.setAttribute("listEmps_ByCompositeQuery",list); //  複合查詢, 資料庫取出的list物件,存入request
-//				}
-//                
 
 
 				/***************************其他可能的錯誤處理*************************************/
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				res.setStatus(200);
-				PrintWriter out = res.getWriter();
-				for(int i=0;i<errorMsgs.size();i++){
-					out.println(errorMsgs.get(i));
-				}
+				
+				JsonObject jjj = new JsonObject();				
+				String aass =  "更新有誤  請重試";				
+				jjj.addProperty("xxx", aass);;
+				res.getWriter().println(jjj.toString());
+
 			
 
 			}
 		}
+			
+			if ("chageDetail_ajax".equals(action)) { // 來自update_emp_input.jsp的請求
+				
+				List<String> errorMsgs = new LinkedList<String>();
+				// Store this set in the request scope, in case we need to
+				// send the ErrorPage view.
+				req.setAttribute("errorMsgs", errorMsgs);
+				
+				try {
+					/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+					
+					Gson gson=  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+
+
+					String test = req.getParameter("test"); 
+					JsonObject obj = gson.fromJson(test, JsonObject.class);
+					String orderDetailNo = obj.get("orderDetailNo").getAsString();
+	
+
+					
+				/***************************2.開始修改資料*****************************************/
+					HcOrderDetailService hcOrderDetailService = new HcOrderDetailService();
+					hcOrderDetailService.getToAuto(orderDetailNo);
+
+					
+					System.out.println(" chageDetail_ajax come back");
+					
+					JsonObject objBack = new JsonObject();
+					
+				String msg =  "明細更新完成";				
+				objBack.addProperty("xxx", msg);
+					
+					res.getWriter().println(objBack.toString());
+					
+					
+					/***************************3.修改完成,準備轉交(Send the Success view)*************/				
+     
+					
+					
+					/***************************其他可能的錯誤處理*************************************/
+				} catch (Exception e) {
+					JsonObject jjj = new JsonObject();				
+					String aass =  "更新有誤  請重試";				
+					jjj.addProperty("xxx", aass);;
+					jjj.addProperty("exc", e.getMessage());;
+					res.getWriter().println(jjj.toString());
+					
+					
+				}
+			}
 
 
 		

@@ -106,7 +106,7 @@
             <span class="texto_grande"><i class="fa fa-edit"></i>送餐管理</span></a>
       </div> 
       <div class="col-md-4">
-        <a class="btn btn-block btn-lg btn-default mybtn btn-size" href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">
+        <a class="btn btn-block btn-lg btn-default mybtn btn-size" href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">
             <i class="fa fa-home" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>長照管理</span></a>
       </div> 

@@ -5,7 +5,6 @@
 <%@ page import="java.util.*" %>
 
 
-<%@ include file="/back/production/BA104G1_navbar_sidebar.jsp" %>
 <jsp:useBean id="hcOrderDetailSvc" scope="page" class="com.hcorder.modal.HcOrderDetailService"/>
 
 
@@ -59,7 +58,7 @@
 
 
 <%  HcWorkShiftsService hcWorkShiftsSrv =  new HcWorkShiftsService();
-	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne(request.getParameter("monthOfyear"),request.getParameter("empNo"));      //<!--       寫死的要改質         -->
+	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne("10611","EMP0002");
 	pageContext.setAttribute("hcWorkShiftsVO", hcWorkShiftsVO);
 	List mylist = convertNumberToDate(hcWorkShiftsVO.getMonthOfYear(),hcWorkShiftsVO.getWorkShiftStatus());
 	List<String> WorkShiftslist = (ArrayList<String>)mylist.get(0);
@@ -107,6 +106,9 @@
 		hiehgt:30px;
 		backgroung: #aaa;
 	}
+	
+	
+
 
 	#wrap {
 		text-align: center;
@@ -197,8 +199,6 @@
 
 
        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
 
             <div class="page-title">
               <div class="title_left">
@@ -206,14 +206,14 @@
               </div>
 
               <div class="title_right">
-<!--                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search"> -->
-<!--                   <div class="input-group"> -->
-<!--                     <input type="text" class="form-control" placeholder="Search for..."> -->
-<!--                     <span class="input-group-btn"> -->
-<!--                       <button class="btn btn-default" type="button">Go!</button> -->
-<!--                     </span> -->
-<!--                   </div>  -->
-<!--                 </div> -->
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> 
+                </div>
               </div>
             </div>
 
@@ -225,22 +225,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>班表管理</h2>
-<!--                     <ul class="nav navbar-right panel_toolbox"> -->
-<!--                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
-<!--                       </li> -->
-<!--                       <li class="dropdown"> -->
-<!--                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a> -->
-<!--                         <ul class="dropdown-menu" role="menu"> -->
-<!--                           <li><a href="#">Settings 1</a> -->
-<!--                           </li> -->
-<!--                           <li><a href="#">Settings 2</a> -->
-<!--                           </li> -->
-<!--                         </ul> -->
-<!--                       </li> -->
-<!--                       XX -->
-<!--                       <li><a class="close-link"><i class="fa fa-close"></i></a> -->
-<!--                       </li> -->
-<!--                     </ul> -->
+
                     
                     <div class="clearfix"></div>
                   </div>
@@ -248,47 +233,7 @@
                       
 
 
-                <table class="table table-hover" >
-                    <caption>長期照護 班表清單</caption>
-                    <thead>
-                        <tr>
-                            <th>月份</th>
-                            <th>員工編號</th>
-                            <th>員工姓名</th>
-                            <th>總工作時段</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>${hcWorkShiftsVO.monthOfYear}</td>
-                            <td>${hcWorkShiftsVO.empNo}</td>
-                            <td>${hcWorkShiftsVO.empNo}</td>
-                            <td>${hcWorkShiftsVO.totalWorkShifts}</td>
-                            	
-                            
-                        </tr>
-	
-					<c:forEach var="hcWorkShiftsVO11" items="${listHcWorks_ByCompositeQuery}">						
-                        <tr>
-                            <td>${hcWorkShiftsVO11.monthOfYear}</td>
-                            <td>${hcWorkShiftsVO11.empNo}</td>
-                            <td>${hcWorkShiftsVO11.empNo}</td>
-                            <td>${hcWorkShiftsVO11.totalWorkShifts}</td>
-                            <td>${hcWorkShiftsVO11.workShiftStatus}</td>
-                                     
-                        </tr>
-                     </c:forEach>						
-
-                    </tbody>
-                </table>
-				<hr>
-					<c:forEach var="WorkShift" items="${WorkShiftslist}">						
-                        <tr>
-                            <td>${WorkShift}----</td>
-            
-                        </tr>
-                     </c:forEach>						
 
 
 
@@ -298,7 +243,7 @@
 		<div id='external-events-listing2'>
 			<h4>員工排班</h4>
 
-			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(12,"EMP0000")}'>     <!--       寫死的要改質         -->
+			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(11,"EMP0000")}'>
 			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
 			</c:forEach>
 			<p>
@@ -340,12 +285,10 @@
               </div>
             </div>
 
-          </div>
-        </div>
+
         <!-- /page content -->
 
 
-<%@ include file="/back/production/BA104G1_footer.jsp" %>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 <script
@@ -429,12 +372,12 @@
 							scrollTime: '00:00',
 							droppable : true,
 							dragRevertDuration:0,
-// 							validRange:function(currentDate) { 
-// 							    return { 
-// 							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
-// 							        end: myDate.getFullYear()+"-"+((myDate.getMonth() + 2)%12 !=0 ? (myDate.getMonth()+2):12)+"-01"
-// 							    };
-// 							 },
+							validRange:function(currentDate) { 
+							    return { 
+							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
+							        end: myDate.getFullYear()+"-"+((myDate.getMonth() + 2)%12 !=0 ? (myDate.getMonth()+2):12)+"-01"
+							    };
+							 },
 							slotEventOverlap : false,
 // 							eventLimit : true,
 							header: {
@@ -475,7 +418,7 @@
 							events:[
 								<% for(int i=0;i<WorkShiftslist.size();i++){ %>
 							 	{<%String date= WorkShiftslist.get(i).substring(0, 10) ; %>
-								<%System.out.print("++++"+date+WorkShiftslist.get(i).substring(10, 11)+hcWorkShiftsVO.getEmpNo());
+								<%System.out.print(date+WorkShiftslist.get(i).substring(10, 11)+hcWorkShiftsVO.getEmpNo());
 								  HcOrderDetailVO hcOrderDetailVO =hcOrderDetailSvc.getAllBySreviceTimeInPerson(date,WorkShiftslist.get(i).substring(10, 11),hcWorkShiftsVO.getEmpNo());
 								%>								
 								id:'<%= i %>',
@@ -527,28 +470,6 @@
 				                      revertDuration: 0 
 				                    });
 				                    el.data('event', { title: event.title, id :event.id, stick: true ,});
-				                    
-				                    console.log(event.title);
-				                    
-				                    var  detailObj={ orderDetailNo: event.title };
-				      		      $.ajax({
-				 					 type: "post",
-				 					 
-				 					 url: "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=chageDetail_ajax",
-				 					 data: {
-				 						   test:JSON.stringify(detailObj)						 
-				 					 },
-				 					
-				 					 
-				 					 dataType: "json",
-				 					 success: function (data){
-				 						 console.log(data.xxx);
-				 						 alert(data.xxx);
-				 						
-				 				     },
-				 		            error: function(e){alert(e.xxx+'!!'+e.exc)}
-				 		        });
-				                    
 				                }
 								
 
@@ -641,8 +562,8 @@
 				objArray.push(myObj);
 
 
-
 // 		console.log(myObj);
+
 				});
 			
 // 		     console.log(JSON.stringify(objArray));
@@ -657,12 +578,11 @@
 					 
 					 dataType: "json",
 					 success: function (data){
-						 console.log(data.xxx);
 						 alert("success")
 						
 				     },
 		            error: function(e){alert(e+'777')}
-		        });
+		        })
 		  
 		      
 		});

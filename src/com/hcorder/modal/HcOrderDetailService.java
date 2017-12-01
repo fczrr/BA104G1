@@ -14,6 +14,13 @@ public class HcOrderDetailService {
 	public void updateAll(List<HcOrderDetailVO> hcOrderDetailVOList, HcWorkShiftsVO hcWorkShiftsVO){
 		dao.updateAll(hcOrderDetailVOList,hcWorkShiftsVO);
 	} 
+	public void getToAuto(String orderDetailNo){
+		HcOrderDetailVO hcOrderDetailVO = dao.findByPrimaryKey(orderDetailNo);
+		hcOrderDetailVO.setEmpNo("EMP0000");
+		
+		System.out.println(hcOrderDetailVO.getEmpNo());
+		dao.update(hcOrderDetailVO);
+	} 
 	
 	
 	public  List<HcOrderDetailVO> getAllByOrderNo(String orderNo){

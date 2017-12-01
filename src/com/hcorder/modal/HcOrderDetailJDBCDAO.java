@@ -113,7 +113,8 @@ public class HcOrderDetailJDBCDAO implements HcOrderDetailDAO_interface {
 
 
 			int i = pstmt.executeUpdate();
-			System.out.println("Update  "+i+" row");
+			System.out.println("hcdetail Update  "+i+" row");
+			System.out.println("OK");
 
 			// Handle any driver errors
 		}  catch (SQLException se) {
@@ -213,7 +214,7 @@ public class HcOrderDetailJDBCDAO implements HcOrderDetailDAO_interface {
 
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
+			rs.next();
 				
 				hcOrderDetail = new HcOrderDetailVO();
 				hcOrderDetail.setOrderDetailNo(rs.getString("ORDER_DETAIL_NO"));
@@ -223,7 +224,7 @@ public class HcOrderDetailJDBCDAO implements HcOrderDetailDAO_interface {
 				hcOrderDetail.setEmpNo(rs.getString("EMP_NO"));
 				hcOrderDetail.setOrderDetailStataus(rs.getString("ORDER_DEDIAL_STATUS"));
 
-			}
+			
 
 			// Handle any driver errors
 		}  catch (SQLException se) {

@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.hcworkshifts.model.*" %>
-<%@ page import="com.hcorder.modal.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.hcorder.modal.*" %>
+
 
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp" %>
 <jsp:useBean id="hcOrderDetailSvc" scope="page" class="com.hcorder.modal.HcOrderDetailService"/>
 
 
+	
 	
 	<%! List convertNumberToDate(String monthOfYear,String workShiftsStatus){
 		List<String> workShifts = new ArrayList<String>();
@@ -59,7 +61,7 @@
 
 
 <%  HcWorkShiftsService hcWorkShiftsSrv =  new HcWorkShiftsService();
-	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne(request.getParameter("monthOfyear"),request.getParameter("empNo"));      //<!--       寫死的要改質         -->
+	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne("10612","EMP0002");
 	pageContext.setAttribute("hcWorkShiftsVO", hcWorkShiftsVO);
 	List mylist = convertNumberToDate(hcWorkShiftsVO.getMonthOfYear(),hcWorkShiftsVO.getWorkShiftStatus());
 	List<String> WorkShiftslist = (ArrayList<String>)mylist.get(0);
@@ -67,10 +69,10 @@
 	pageContext.setAttribute("WorkShiftslist", WorkShiftslist);
 	pageContext.setAttribute("restShiftslist", restShiftslist);	
 	for(String aaa :WorkShiftslist){
-		System.out.println("wjsp++"+aaa);
+		System.out.println("whjsp++"+aaa);
 	}
 	for(String aaa :restShiftslist){
-		System.out.println("wjsp--"+aaa);
+		System.out.println("whjsp--"+aaa);
 	}
 
 %>
@@ -202,18 +204,18 @@
 
             <div class="page-title">
               <div class="title_left">
-<!--                 <h3>長照班表查詢</h3> -->
+                <h3>長照班表查詢</h3>
               </div>
 
               <div class="title_right">
-<!--                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search"> -->
-<!--                   <div class="input-group"> -->
-<!--                     <input type="text" class="form-control" placeholder="Search for..."> -->
-<!--                     <span class="input-group-btn"> -->
-<!--                       <button class="btn btn-default" type="button">Go!</button> -->
-<!--                     </span> -->
-<!--                   </div>  -->
-<!--                 </div> -->
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div> 
+                </div>
               </div>
             </div>
 
@@ -225,22 +227,22 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>班表管理</h2>
-<!--                     <ul class="nav navbar-right panel_toolbox"> -->
-<!--                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
-<!--                       </li> -->
-<!--                       <li class="dropdown"> -->
-<!--                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a> -->
-<!--                         <ul class="dropdown-menu" role="menu"> -->
-<!--                           <li><a href="#">Settings 1</a> -->
-<!--                           </li> -->
-<!--                           <li><a href="#">Settings 2</a> -->
-<!--                           </li> -->
-<!--                         </ul> -->
-<!--                       </li> -->
-<!--                       XX -->
-<!--                       <li><a class="close-link"><i class="fa fa-close"></i></a> -->
-<!--                       </li> -->
-<!--                     </ul> -->
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <!-- XX -->
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
                     
                     <div class="clearfix"></div>
                   </div>
@@ -248,7 +250,16 @@
                       
 
 
-                <table class="table table-hover" >
+
+
+
+
+
+
+	
+
+
+                <table class="table table-hover" style="border:3 px;">
                     <caption>長期照護 班表清單</caption>
                     <thead>
                         <tr>
@@ -260,32 +271,24 @@
                         </tr>
                     </thead>
                     <tbody>
+
+	
+					<c:forEach var="hcWorkShiftsVO" items="${listHcWorks_ByCompositeQuery}">						
                         <tr>
                             <td>${hcWorkShiftsVO.monthOfYear}</td>
                             <td>${hcWorkShiftsVO.empNo}</td>
                             <td>${hcWorkShiftsVO.empNo}</td>
                             <td>${hcWorkShiftsVO.totalWorkShifts}</td>
-                            	
-                            
-                        </tr>
-	
-					<c:forEach var="hcWorkShiftsVO11" items="${listHcWorks_ByCompositeQuery}">						
-                        <tr>
-                            <td>${hcWorkShiftsVO11.monthOfYear}</td>
-                            <td>${hcWorkShiftsVO11.empNo}</td>
-                            <td>${hcWorkShiftsVO11.empNo}</td>
-                            <td>${hcWorkShiftsVO11.totalWorkShifts}</td>
-                            <td>${hcWorkShiftsVO11.workShiftStatus}</td>
-                                     
+                            <td>${hcWorkShiftsVO.workShiftStatus}</td>         
                         </tr>
                      </c:forEach>						
 
                     </tbody>
                 </table>
-				<hr>
+
 					<c:forEach var="WorkShift" items="${WorkShiftslist}">						
                         <tr>
-                            <td>${WorkShift}----</td>
+                            <td>${WorkShift}</td>
             
                         </tr>
                      </c:forEach>						
@@ -298,7 +301,7 @@
 		<div id='external-events-listing2'>
 			<h4>員工排班</h4>
 
-			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(12,"EMP0000")}'>     <!--       寫死的要改質         -->
+			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(11,"EMP0000")}'>
 			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
 			</c:forEach>
 			<p>
@@ -361,15 +364,13 @@
 <script
 	src="<%=request.getContextPath()%>/back/fullcalendar-scheduler/js/zh-tw.js"></script>
 <script>
-	var myDate= new Date();
-	
 
 
 	$(function() { // document ready
     
 		/* initialize the external events
 		-----------------------------------------------------------------*/
-       console.log(myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-"+ myDate.getDate()+"T"+(myDate.getHours()+1)+":"+myDate.getMinutes()+":"+myDate.getSeconds()+"Z");
+		var myDate= new Date();
 		$('#external-events .fc-event').each(function() {
 
 			// store data so the calendar knows to render an event upon drop
@@ -422,44 +423,27 @@
 						{
 							schedulerLicenseKey : 'CC-Attribution-NonCommercial-NoDerivatives',
 
-// 							locale : 'zh-tw',
-// 							themeSystem:'bootstrap3',
+							locale : 'zh-tw',
 							editable : true,
 							aspectRatio : 1.8,
 							scrollTime: '00:00',
 							droppable : true,
-							dragRevertDuration:0,
-// 							validRange:function(currentDate) { 
-// 							    return { 
-// 							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
-// 							        end: myDate.getFullYear()+"-"+((myDate.getMonth() + 2)%12 !=0 ? (myDate.getMonth()+2):12)+"-01"
-// 							    };
-// 							 },
-							slotEventOverlap : false,
-// 							eventLimit : true,
+							eventLimit : true,
+// 							 weekNumbers: true,
 							header: {
 								left: 'today prev,next',
 								center: 'title',
-								right: 'timelineThreeDays,agendaWeek,month'
+								right: 'timelineDay,timelineThreeDays,agendaWeek,month'
 							},
-							defaultView: 'month',
-							defaultEventMinutes:'240',
-							slotLabelFormat : [ 'HH:mm',
-							//top level of text
-							],
-							eventClick: function(calEvent, jsEvent, view) {
-								 
-						        alert('Event: ' + calEvent.title);
-						        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-						        alert('View: ' + view.name);
-						 
-						        // change the border color just for fun
-// 						        $(this).css('border-color', 'red');
-						    },
+							
 
-							eventDurationEditable : false,
+							slotLabelFormat : [ 'ddd M/D',
+							// top level of text
+							],
+
+							eventDurationEditable : true,
 							resourceAreaWidth : 100,
-							resourceLabelText : '班次',
+							resourceLabelText : 'aa',
 							resources : [ {
 								id : '早班',
 								title : '早班'
@@ -470,12 +454,11 @@
 								id : '晚班',
 								title : '晚班'
 							}, ],
-							eventColor:'#428fdc',
-							eventBackgroundColor:'#428fdc',
+
 							events:[
 								<% for(int i=0;i<WorkShiftslist.size();i++){ %>
 							 	{<%String date= WorkShiftslist.get(i).substring(0, 10) ; %>
-								<%System.out.print("++++"+date+WorkShiftslist.get(i).substring(10, 11)+hcWorkShiftsVO.getEmpNo());
+								<%System.out.print(date+WorkShiftslist.get(i).substring(10, 11)+hcWorkShiftsVO.getEmpNo());
 								  HcOrderDetailVO hcOrderDetailVO =hcOrderDetailSvc.getAllBySreviceTimeInPerson(date,WorkShiftslist.get(i).substring(10, 11),hcWorkShiftsVO.getEmpNo());
 								%>								
 								id:'<%= i %>',
@@ -499,25 +482,20 @@
 							 	allDay:false
 							 	},
 								<%	};%>
-							 	], 
+							 							], 
 
 						    	
 							drop : function(date, jsEvent, ui, resourceId,resourceId) {
 						
-								console.log( $(this).closest("div").attr('class') );
+
 								// is the "remove after drop" checkbox checked?
 								if ($('#drop-remove').is(':checked')) {
 									// if so, remove the element from the "Draggable Events" list
 									$(this).remove();
 								}
-								if ($('#drop-remove2').is(':checked')) {
-									// if so, remove the element from the "Draggable Events" list
-									$(this).remove();
-								}
 							},
 							eventDragStop : function(event, jsEvent, ui, view) {
-								
-								
+
 								if(isEventOverDiv2(jsEvent.clientX, jsEvent.clientY)) {
 				                    $('#calendar').fullCalendar('removeEvents', event._id);
 				                    var el = $( "<div class='fc-event'>" ).appendTo( '#external-events-listing2' ).text( event.title );
@@ -527,28 +505,6 @@
 				                      revertDuration: 0 
 				                    });
 				                    el.data('event', { title: event.title, id :event.id, stick: true ,});
-				                    
-				                    console.log(event.title);
-				                    
-				                    var  detailObj={ orderDetailNo: event.title };
-				      		      $.ajax({
-				 					 type: "post",
-				 					 
-				 					 url: "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=chageDetail_ajax",
-				 					 data: {
-				 						   test:JSON.stringify(detailObj)						 
-				 					 },
-				 					
-				 					 
-				 					 dataType: "json",
-				 					 success: function (data){
-				 						 console.log(data.xxx);
-				 						 alert(data.xxx);
-				 						
-				 				     },
-				 		            error: function(e){alert(e.xxx+'!!'+e.exc)}
-				 		        });
-				                    
 				                }
 								
 
@@ -575,9 +531,22 @@
 
 							eventReceive : function(event) { // called when a proper external event is dropped
 							    console.log('eventReceive', event);
-							    
 							
+// 								var aaa = {
 
+// 									date:null,
+// 									time:null,
+// 									dish:null
+// 								};
+// 							aaa.date = moment(value.start).format('YYYY-MM-DD');
+// 							aaa.time = value.resourceId;
+// 							aaa.dish = value.title;
+							
+// 						  objArray.push(aaa);
+// 						  console.log(aaa);
+// 						  console.log(objArray);
+// 								console.log( event.title);
+// 								console.log( moment(event.start).format('YYYY-MM-DD'));
 
 							},
 							eventDrop : function(event) { // called when an event (already on the calendar) is moved
@@ -588,6 +557,7 @@
 // 									console.log( moment(event.start).format('YYYY-MM-DD'));
 							}
 						});
+
 
 		var isEventOverDiv = function(x, y) {
 
@@ -657,7 +627,6 @@
 					 
 					 dataType: "json",
 					 success: function (data){
-						 console.log(data.xxx);
 						 alert("success")
 						
 				     },
@@ -672,7 +641,5 @@
 		
 		
 	});
-	
-
 	
 </script>

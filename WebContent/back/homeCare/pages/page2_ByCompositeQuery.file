@@ -1,0 +1,39 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<table border="0">    
+ <tr>
+  <%if (rowsPerPage<rowNumber) {%>
+    <%if(pageIndex>=rowsPerPage){%>
+        <td><A href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?whichPage=1&action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">至第一頁</A>&nbsp;</td>
+        <td><A href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?whichPage=<%=whichPage-1%>&action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">上一頁  </A>&nbsp;</td>
+    <%}%>
+  
+    <%if(pageIndex<pageIndexArray[pageNumber-1]){%>
+        <td><A href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?whichPage=<%=whichPage+1%>&action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">下一頁 </A>&nbsp;</td>
+        <td><A href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?whichPage=<%=pageNumber%>&action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">至最後一頁</A>&nbsp;</td>
+    <%}%>
+  <%}%>  
+ </tr>
+</table>    
+<%if ( pageNumber > 1) {%>
+<table border="0">   
+ <tr> 
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+   <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do">   
+        <td>
+           <select size="1" name="whichPage">
+        <%for (int i=1; i<=pageNumber; i++){%>
+           <option value="<%=i%>">跳至第<%=i%>頁
+        <%}%> 
+           </select>
+           <input type="submit" value="確定" >
+           <input type="hidden" name="action"  value="listHcWorks_ByCompositeQuery">  
+           <input type="hidden" name="successView"  value="/back/homeCare/Hc_show_workShift2.jsp">  
+           <input type="hidden" name="failureV"  value="/back/homeCare/Hc_show_workShift2.jsp">  
+        </td>
+   </FORM>
+ </tr>
+</table>
+<%}%>
+

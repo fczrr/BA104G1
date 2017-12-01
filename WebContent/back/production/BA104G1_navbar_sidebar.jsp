@@ -12,10 +12,10 @@
 	class="com.expertlist.model.ExpertlistService" />
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
-<%
-	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
-	session.setAttribute("employeeVO", employeeVO);
-%>
+<%-- <% --%>
+// 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
+// 	session.setAttribute("employeeVO", employeeVO);
+<%-- %> --%>
 
 
 <!DOCTYPE html>
@@ -77,7 +77,7 @@
 								<c:otherwise>
 									<img style="width: 60px; height: 50px"
 										src="<%=request.getContextPath()%>/noData/noPic.jpg"
-										alt="圖片連線中" class="chose-img${s.index}">
+										alt="圖片連線中" class="img-circle profile_img">
 								</c:otherwise>
 							</c:choose>
 
@@ -156,7 +156,7 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
-										<li><a href="#">班表管理</a></li>
+										<li><a href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">班表管理</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
@@ -281,7 +281,7 @@
 									<!--                     </li> -->
 									<!--                     <li><a href="javascript:;">Help</a></li> -->
 									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+											class="fa fa-sign-out pull-right"></i>登入</a></li>
 								</ul></li>
 
 <!-- 							<li role="presentation" class="dropdown"><a -->

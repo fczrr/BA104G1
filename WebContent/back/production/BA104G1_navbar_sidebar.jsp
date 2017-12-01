@@ -367,7 +367,7 @@
 						</ul>
 					</nav>
 				</div>
-			</div>
+			</div>   
 			<!-- /top navigation -->
 
 			<!-- page content -->

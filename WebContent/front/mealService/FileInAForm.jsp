@@ -224,7 +224,7 @@
 							</div>
 						</div>
 						<div class="col-sm-12">
-							<h2>收件人資訊</h2>
+							<h2>收件人資訊</h2>	
 							<form action="<%=request.getContextPath()%>/MealOrder.do"
 								method="post">
 								<div class="form-group">

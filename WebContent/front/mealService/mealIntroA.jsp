@@ -546,7 +546,7 @@
 		// carousel function for thumbnail slider
 		thumbnailSlider.owlCarousel({
 		loop:false,
-		center:true, //to display the thumbnail item in center
+		center:false, //to display the thumbnail item in center
 		nav:false,
 		responsive:{
 		0:{

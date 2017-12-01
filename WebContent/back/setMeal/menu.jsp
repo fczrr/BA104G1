@@ -3,6 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.dish.model.*"%>
 <%@ page import="com.menu.model.*"%>
+<%@ page import="com.employee.model.*"%>
 <%
 	MenuService menuSvc = new MenuService();
 	Integer smNo = (Integer) request.getAttribute("smNo");
@@ -674,9 +675,8 @@ font-size:20px;
 								resourceId:'<%=menuList.get(i).getMealTime()%>',
 								start:'<%=menuList.get(i).getMenuDate()%>',
 								title:'<%=menuList.get(i).getDishName()%>',
-								editable:false,
-								color:'red',
-								className:"myClass"
+								editable:true,
+								color:'red'
 		                         },
 								<%}%>
 							], 

@@ -37,6 +37,7 @@
 <link
 	href="https://code.jquery.com/ui/1.12.1/themes/pepper-grinder/jquery-ui.css"
 	rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.6/sweetalert2.min.css" rel="stylesheet">
 
 <style type="text/css">
 .btn3d {
@@ -369,6 +370,7 @@
 	<script
 		src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 	<!-- 這裡是JS專區 =========================================================== -->
+	
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/front/js/fullcalendar-scheduler/moment.min.js"></script>
@@ -378,6 +380,9 @@
 		src="<%=request.getContextPath()%>/front/js/fullcalendar-scheduler/scheduler.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/front/js/fullcalendar-scheduler/zh-tw.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.6/sweetalert2.all.min.js"></script>
+	
+		
 	<script>
 	    var selectedDays=[];
 	    
@@ -390,6 +395,15 @@
 	    	selectedDays=array;
 	    }
 	    
+	    var errorMsgs="<%= (request.getAttribute("errorMsgStr")==null)? "0" :request.getAttribute("errorMsgStr") %>";
+	    console.log(errorMsgs);
+	    if(errorMsgs!=0){
+	    	swal({	    			
+	    		title:"Error!",
+	    		text:errorMsgs,
+	    		type:'error'
+	    	})
+	    }
 	    
 	    
 	    

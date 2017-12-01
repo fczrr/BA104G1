@@ -494,7 +494,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				jjj.addProperty("xxx", aass);;
 				res.getWriter().println(jjj.toString());
 
-			
+			 
 
 			}
 		}

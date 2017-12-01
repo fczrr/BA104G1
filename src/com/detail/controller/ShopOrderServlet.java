@@ -117,7 +117,7 @@ public class ShopOrderServlet extends HttpServlet{
 			System.out.println("setAttribute");
 			
 			session.setAttribute("mylocation", "/MasterOrder/Checkout.jsp");
-			System.out.println("setAttribute2");
+			System.out.println("setAttribute2"); 
 			//這邊要先查詢一次這位會員的POINT有沒有低於總金額在執行下面動做
 			if(Point>=amount) {
 				System.out.println("餘額足夠");

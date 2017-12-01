@@ -9,7 +9,7 @@
 <%@ include file="/front/member/Breadcrumbs_Main.jsp"%>
 <jsp:useBean id="balanceSvc" class="com.balance.model.BalanceService" />
 <jsp:useBean id="memberSvc" class="com.member.model.MemberService" />
-
+ 
 <%
 	String memNo = request.getParameter("memNo");
 	List<BalanceVO> balanceVO = balanceSvc.getBalanceByMemNo(memNo);

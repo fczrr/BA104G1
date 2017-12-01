@@ -26,7 +26,7 @@
 	crossorigin="anonymous"></script>
 	    <div class="col-lg-12">
 	     <br><br><br>
-      <h1 style="font-size: 72px;text-align: center;">定貨成功</h1>
+      <h1 style="font-size: 72px;text-align: center;">訂貨成功</h1>
       
     </div>
 <body>

@@ -35,7 +35,7 @@
 }
 </style>
 <%@ include file="/front/css/navbar/navCss.file" %>
-<%-- <%@ include file="/front/message/msgFor_Mem.jsp" %>  --%>
+
 </head>
 <body>     
 
@@ -477,15 +477,15 @@
 
     
 	<!-- START JAVASCRIPT -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="<%=request.getContextPath()%>/front/js/index/bootstrap.min.js"></script>
+<!--     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<%--     <script src="<%=request.getContextPath()%>/front/js/index/bootstrap.min.js"></script> --%>
     
     <!-- Bootsnavs --> 
     <script src="<%=request.getContextPath()%>/front/js/index/bootsnav.js"></script>
 	<!-- START JAVASCRIPT -->
 </body>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 
 <script>

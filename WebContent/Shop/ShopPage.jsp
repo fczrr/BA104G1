@@ -303,10 +303,6 @@ div.backgroundpng {
   opacity: 0.9;
 }
 
-body {
-  font-family: Arial, Verdana, Helvetica, "LiHei Pro Medium", 微軟正黑體,
-    sans-serif;
-}
 
 .special-price {
 	font-size: 1.3em;
@@ -317,16 +313,8 @@ body {
 	text-decoration: line-through;
 }
 
-.navbar {
-/*   background-color: #ffffff; */
-  margin-bottom: 0;
-  border-radius: 0;
 
-}
 
-.navshadow {
-  box-shadow: 0px 2px 1px #bdbdbd;
-}
 
 .activebar>li>a {
   background-color: #ffffff;
@@ -351,16 +339,6 @@ body {
     color: #333;
 }
 
-.backgroundpng {
-  position: fixed;
-  top: 0;
-  z-index: -15;
-}
-
-.backgroundpng img {
-  width: 115%;
-  opacity: 0.9;
-}
 
 .form-control {
   height: 38.4px;
@@ -388,14 +366,8 @@ body {
   width: calc(60px);
 }
 
-.navbar-brand {
-  z-index: 20;
-}
 
-.navbar-brand img {
-  background-color: #FFF;
-  border-radius: 15px;
-}
+
 
 .tooltip-inner {
   font-size: 22px;
@@ -443,10 +415,14 @@ footer {
   margin-top: 3em;
 }
 
-nav * {
-  font-weight: bold;
-}
 
+#navbarTopColor{
+	background-color:#FFA500;
+	color: white;
+    margin-right: 40px;
+    margin-left: 40px;
+
+}
 .unlimited {
   width: 69%;
 }
@@ -809,11 +785,12 @@ color: #333;
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
-    <div class="container-fliud">
+    <div class="container-fliud" style="    height: 50px;
+    font-size: 1.3em;background-color: #FFA500;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             </button>
-            <a class="navbar-brand" href="#"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
         </div>
         
         <!-- 手機隱藏選單區 -->
@@ -1064,8 +1041,8 @@ color: #333;
 
 
 <!-- 是footer bar 不要亂刪 感謝～～ ==================================================================== -->
-<div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
+<div class="navbar navbar-default navbar-fixed-bottom" style="background-color: #FFA500;">
+        <div class="container" style="background-color: #FFA500;">
             <p class="navbar-text text-center" 　>BA104G1&nbsp ©&nbsp 2017 &nbsp&nbsp 有我罩你全家股份有限公司 </p>
         </div>
     </div>

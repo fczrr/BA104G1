@@ -24,6 +24,9 @@ body {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+#chat-circle{
+	z-index:1;
+}
 </style>
 <%@ include file="/front/css/navbar/navCss.file" %>
 </head>

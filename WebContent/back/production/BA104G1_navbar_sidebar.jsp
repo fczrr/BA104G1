@@ -13,6 +13,12 @@
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
 <<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/fczrr/BA104G1.git
 <!DOCTYPE html>
 <%--
 // 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");

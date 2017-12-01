@@ -223,7 +223,7 @@
 						</tbody>
 					</table>
 					<br>
-					<div class="text-center"><a href="<%= request.getContextPath()%>/fornt/mealService/ChooseMeal.jsp" class="btn btn-warning" role="button">繼續訂餐</a></div>
+					<div class="text-center"><a href="<%= request.getContextPath()%>/front/mealService/ChooseMeal.jsp" class="btn btn-warning" role="button">繼續訂餐</a></div>
 				</div>
 			</div>
 		</div>

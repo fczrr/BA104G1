@@ -364,9 +364,9 @@ tr:nth-child(even) {
 									
 									<table class = "table" id="showFormMsg">
 									<thead class="thead-light">
-									<tr><th>車型</th><th>日期</th><th>時段</th><th>接送地點</th><th>目的地</th><th>總價(點數)</th></tr>
+									<tr><th>車型</th><th>日期</th><th>時段</th><th>申請會員</th><th>會員電話</th><th>接送地點</th><th>目的地</th><th>總價(點數)</th></tr>
 									</thead>
-									<tr><td id="inputmsg1"></td><td id="inputmsg2"></td><td id="inputmsg3"></td><td id="inputmsg4"></td><td id="inputmsg5"></td><td id="inputmsg6"></td></tr>
+									<tr><td id="inputmsg1"></td><td id="inputmsg2"></td><td id="inputmsg3"></td><td id="inputmsg7"><td id="inputmsg8"><td id="inputmsg4"></td><td id="inputmsg5"></td><td id="inputmsg6"></td></tr>
 									</table>
 									
 									
@@ -382,10 +382,13 @@ tr:nth-child(even) {
 										    <input type="hidden" name="district" 	id="districtfor">
 										    <input type="hidden" name="address" 	id="addressfor" >
 										    <input type="hidden" name="arrival_address" 	id="arrival_address" > -->
-										    <input type="hidden" name="passenger_name" 	id="passenger_name" value="李安">  
-										    <input type="hidden" name="passenger_phone" 	id="passenger_phone"  value="09787877878">
+										    <input type="hidden" name="passenger_name" 	id="passenger_name" value="${memberVO.memName}">  
+										    <input type="hidden" name="passenger_phone" 	id="passenger_phone"  value="${memberVO.memPhone}">
+										    <input type="hidden" name="memNO" 	id="memNO"  value="${memberVO.memNo}">
 										    <input type="hidden" name="sendcar_status" 	id="sendcar_status" value="A" >
 										   <%--  <input type="hidden" name="formCheck" 	id="formCheck" value="${formCheck}"> --%>
+										   
+										   
 										  
 									<ul class="list-inline pull-right">
 									<li><button type="button"
@@ -451,8 +454,12 @@ tr:nth-child(even) {
 														var arrTxt2 = $('#district2').val();
 														var arrTxt3 = $('#address2').val();
 														$("#inputmsg5").html(arrTxt1+ arrTxt2 + arrTxt3);
-														
-													
+														$("#inputmsg7").html($('#passenger_name').val());
+														$("#inputmsg8").html($('#passenger_phone').val());
+														 
+														 memNO = $('#memNO').val();
+														 passenger_name = $('#passenger_name').val();
+														 passenger_phone = $('#passenger_phone').val();
 														 cartypename = $('li.active>a').text().trim();
 														 detail_date = $('#chooseDate').val();
 														 detail_date = detail_date.replace(/\s+/g, "");
@@ -507,8 +514,8 @@ tr:nth-child(even) {
 									    	});
 									    	
 									    	function creatQueryString2(cartypename,detail_date,detail_time_no,detail_time,county,district,address,arrival_address,defrayPoint){
-									    		${memberVO.memName}${memberVO.memPhone}
-												var queryString= {"action":"insert", "cartypename":cartypename, "detail_date":detail_date, "detail_time_no":detail_time_no, "detail_time":detail_time, "county":county, "district":district,"address":address , "arrival_address":arrival_address,"defrayPoint":defrayPoint ,"passenger_name":'張飛',"passenger_phone":'0964478778',"sendcar_status":"未出車"};
+									    		
+												var queryString= {"action":"insert", "cartypename":cartypename, "detail_date":detail_date, "detail_time_no":detail_time_no, "detail_time":detail_time, "county":county, "district":district,"address":address , "arrival_address":arrival_address,"defrayPoint":defrayPoint ,"passenger_name":passenger_name,"memNO":memNO,"passenger_phone":passenger_phone,"sendcar_status":"未出車"};
 												console.log(queryString);
 												return queryString;
 										

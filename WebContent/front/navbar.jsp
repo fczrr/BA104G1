@@ -30,12 +30,13 @@ body {
 
 <body>
 
+<%@ include file="/front/message/msgFor_Mem999.jsp" %>
 <nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
     <div class="container-fliud">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             </button>
-            <a class="navbar-brand" href="#"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
         </div>
         
         <!-- 手機隱藏選單區 -->
@@ -113,7 +114,7 @@ body {
 
 
 
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--         <script src="https://code.jquery.com/jquery.js"></script> -->
+<!--         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </body>
 </html>

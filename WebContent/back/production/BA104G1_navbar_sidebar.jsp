@@ -12,11 +12,14 @@
 	class="com.expertlist.model.ExpertlistService" />
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
+<<<<<<< HEAD
 <!DOCTYPE html>
 <%--
 // 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
 // 	session.setAttribute("employeeVO", employeeVO);
 --%>
+=======
+
 
 
 <html lang="zh-TW">
@@ -139,9 +142,9 @@
 											</ul>
 									</li>
 										
-										<li><a href="#">車型管理</a></li>
+										<li><a href="<%=request.getContextPath()%>/back/cartype/main.jsp">車型管理</a></li>
 									</ul>
-								</li>
+								</li>  
 
 								<li><a><i class="fa fa-cutlery"></i> 送餐管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -213,9 +216,9 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
-											href="<%=request.getContextPath()%>/back/newsdetali/AllNews.jsp">最新消息管理</a></li>
+											href="<%=request.getContextPath()%>/back/newsdetail/AllNews.jsp">最新消息管理</a></li>
 										<li><a
-											href="<%=request.getContextPath()%>/back/healthnewsdetali/AllNews.jsp">保健資訊管理</a></li>
+											href="<%=request.getContextPath()%>/back/healthnewsdetail/AllNews.jsp">保健資訊管理</a></li>
 									</ul></li>
 
 								<li><a href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i class="fa fa-quote-right"></i> 線上客服管理

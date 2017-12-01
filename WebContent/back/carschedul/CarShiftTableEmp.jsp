@@ -719,7 +719,7 @@ body {
           </div>
         </div> 
         <!-- /page content -->
-	
+	<input type="hidden" name="empNo" 	id="empNo" value="${empVO.empNo}" >
 	 <%@ include file="/back/production/BA104G1_footer.jsp" %>
 	 
 	 		<script src="<%=request.getContextPath()%>/back/js/carschedul/moment.min.js"></script><!-- -->
@@ -736,7 +736,8 @@ body {
 		$('.fc-event').attr('c' , empNameSelected);
 		$('.media-heading').text(empNameSelected);
 		$('.media-heading').text(empNameSelected);
-		
+		emp_no =$('#empNo').val();
+		console.log('目前員工編號:'+emp_no);
 		//事件選單
 		
 	    $('.navbar-toggler').on('click', function(event) {

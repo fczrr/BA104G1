@@ -311,8 +311,8 @@ public class CarDetailServlet extends HttpServlet {
 			 * 1.接收請求參數 - 輸入格式的錯誤處理
 			 *************************/
 			System.out.println("------------接收訂單開始!!-------------");
-			String mem_no = "MEM0001";
-			String order_status = "A";
+			String mem_no = req.getParameter("memNO").trim();
+			String order_status = "未確認";
 			Integer vehicle_no;
 			
 			

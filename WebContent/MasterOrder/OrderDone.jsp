@@ -25,7 +25,8 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 	    <div class="col-lg-12">
-      <h1 style="font-size: 72px;text-align: center;">定貨成功</h1>
+	     <br><br><br>
+      <h1 style="font-size: 72px;text-align: center;">訂貨成功</h1>
       
     </div>
 <body>
@@ -50,7 +51,7 @@
 					<thead>
 						<tr>
 							<th>產品名稱</th>
-							<th>數量</th>
+							<th style="text-align: center;">數量</th>
 							<th class="text-center">單價</th>
 							<th class="text-center">總價</th>
 							

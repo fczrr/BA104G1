@@ -6,7 +6,7 @@
 <%@ page import="com.member.model.*"%>
 <%@ include file="/front/navbar.jsp"%>
 
-<jsp:useBean id="shopOrderSvc"
+<jsp:useBean id="shopOrderSvc" scope="page"
 	class="com.shoporder.model.ShopOrderService" />
 
 
@@ -115,7 +115,7 @@
 											aria-multiselectable="true">
 
 											<c:forEach var="shopOrder"
-												items="${shopOrderSvc.getMemNo(memberVO.memNo)}"
+												items="${shopOrderSvc.getOneByMenNO(memberVO.memNo)}"
 												varStatus="s">
 
 												<div class="panel panel-default">
@@ -132,10 +132,19 @@
 																<div class="col-xs-12 col-sm-2">${shopOrder.customer_name}</div>
 																<div class="col-xs-12 col-sm-2">${shopOrder.customer_phone}</div>
 																<div class="col-xs-12 col-sm-2">${shopOrder.customer_address}</div>
-																<div class="col-xs-12 col-sm-4">
-																	<!-- 歐歐加的申訴新增button========================================-->
-																	<%@ include file="/front/complain/ShopBtn.file"%>
-																	<!-- 歐歐加的申訴新增button========================================-->
+																<div class="col-xs-12 col-sm-2">
+																	<div>
+																		<p class="col-text" data-toggle="modal"
+																			data-target="#ansower">
+																			<input type="button"
+																				class="btn btn-danger clickDetail" value="申訴">
+																			<input type="hidden" name="orderNo"
+																				class="order_noBtn" value="${shopOrder.orderno}">
+																			<input type="hidden" name="action"
+																				value="getOne_For_Update_front">
+																		<p>
+																	</div>
+																	
 																</div>
 															</div>
 														</h4>
@@ -185,19 +194,19 @@
 					</div>
 				</div>
 			</div>
-				</div>
-			</div>
-			<%@ include file="/front/footerbar.jsp"%>
+		</div>
+	</div>
+	<%@ include file="/front/footerbar.jsp"%>
 
-			<!--  跟navbar js會衝突 所以共用即可 ======-->
-			<%-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<!--  跟navbar js會衝突 所以共用即可 ======-->
+	<%-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script> --%>
-			<!--  跟navbar js會衝突 所以共用即可 ======-->
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
+	<!--  跟navbar js會衝突 所以共用即可 ======-->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.3/sweetalert2.min.js"></script>
 </body>
 
 <!-- 歐歐加的 -->

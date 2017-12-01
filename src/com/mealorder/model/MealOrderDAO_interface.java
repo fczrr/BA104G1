@@ -4,7 +4,7 @@ import java.util.*;
 import com.mealorderdetail.model.*;
 public interface MealOrderDAO_interface {
 	
-	public void insert(MealOrderVO mealOrderVO ,List<MealOrderDetailVO> mealOrderDetailVOList);//OK
+	public String insert(MealOrderVO mealOrderVO ,List<MealOrderDetailVO> mealOrderDetailVOList);//OK
 	 
 	public void updateStatus(String moNo, String moStatus);
 

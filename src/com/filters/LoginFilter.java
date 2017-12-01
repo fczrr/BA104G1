@@ -30,6 +30,8 @@ public class LoginFilter implements Filter {
 		if(memberVO==null){
 			session.setAttribute("location", req.getRequestURI());
 			res.sendRedirect(req.getContextPath()+"/front/Login.jsp");
+		//	res.sendRedirect(req.getContextPath()+"/index.jsp");
+
 			return;
 		}else{
 			chain.doFilter(req, res);

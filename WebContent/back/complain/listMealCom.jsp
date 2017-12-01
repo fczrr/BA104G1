@@ -15,6 +15,7 @@
 	}
 %>
 
+
 <%
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
 	pageContext.setAttribute("sdf",sdf);
@@ -41,8 +42,21 @@
 
 <div class="container">
 <div class="right_col" role="main">
-		<div class="col-md-8">
-			<div class="tab-content ">
+		<div class="col-md-12">
+				<div id="mytitle"
+					style="padding: 10px; color: #FFFFFF; text-align: center;">
+
+
+					<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
+						data-target="#mymodal">
+						<h1>
+							<i class="fa fa-cutlery" aria-hidden="true"></i> 派餐申訴&nbsp;<b>管理頁面</b>
+						</h1>
+
+					</a>
+
+				</div>
+				<div class="tab-content ">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs custom-tab">
 					<li class="tapone"><a href="<%=request.getContextPath()%>/back/complain/listHCCom.jsp"><i class="fa fa-user-md" aria-hidden="true"></i>&nbsp長照申訴</a></li>
@@ -59,9 +73,9 @@
 					<div class="x_title">
 						<ul class="nav navbar-right panel_toolbox">
 							<div class="btn-group">
-								<a href="<%=request.getContextPath()%>/back/mealOrder/listAllMealOrder.jsp" class="btn btn-info" role="button">全部申訴</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=未處理" class="btn btn-danger" role="button">未處理</a>
-								<a href="<%=request.getContextPath()%>/MealOrder.do?action=listOrders_ByStatus&moStatus=已確認" class="btn btn-info" role="button">已完成</a>
+								<a href="<%=request.getContextPath()%>/back/complain/listMealCom.jsp" class="btn btn-info" role="button">全部申訴</a>
+								<a href="<%=request.getContextPath()%>/hccomplain/hccomplain.do?action=Off_Status" class="btn btn-danger" role="button">未處理</a>
+								<a href="<%=request.getContextPath()%>/hccomplain/hccomplain.do?action=On_Status" class="btn btn-info" role="button">已完成</a>
 							</div>
 						</ul>
 						<div class="clearfix"></div>
@@ -236,10 +250,10 @@
                 <label for="complainIntro" id="complainTi"><i class="fa fa-envelope fo-1x" aria-hidden="true"></i> 回覆申訴 : </label>
                 <p id="complainIn" class="compRep"><%-- ${mealComplainVO.complainReply} --%></p>
               </div>
-              <div class="form-group">
-                <label for="complainIntro" id="complainTi"><i class="fa fa-user-o" aria-hidden="true"></i> 員工名字 : </label>
-                <p id="complainIn" class="empIdM"><%-- ${employeeVO.empId} --%></p>
-              </div>
+<!--               <div class="form-group"> -->
+<!--                 <label for="complainIntro" id="complainTi"><i class="fa fa-user-o" aria-hidden="true"></i> 員工名字 : </label> -->
+<%--                 <p id="complainIn" class="empIdM">${employeeVO.empId}</p> --%>
+<!--               </div> -->
               <div class="form-group">
                 <label for="complainIntro" id="complainTi"><i class="fa fa-clock-o" aria-hidden="true"></i> 回覆時間 : </label>
                 <p id="complainIn" class="reptime"><%-- ${sdf.format(mealComplainVO.replyDate)} --%></p>
@@ -269,7 +283,8 @@
     </div>
 </div>
 
-		
+	</div>
+</div>	
 		
     <script src="https://code.jquery.com/jquery.js"></script>
 
@@ -333,18 +348,19 @@ $(document).ready(function () {
 	  		  	var replyNo = $item.parent().find("input.serchNo");
 	  		  console.log('回覆查詢：'+replyNo.val());
 	  		  console.log("item:"+replyNo.val() +"// old:" + $(".repComNo").html());
-	  		  
+	  		  var seachNo = replyNo.val();
+	  		  console.log("查詢號碼:-----------"+replyNo.val());
 			  $.ajax({
 		    		 type:"POST",  //指定http參數傳輸格式為POST 
 		    		 contentType:"application/x-www-form-urlencoded",
-		    		 url:"<%=request.getContextPath()%>/MealComplainServlet?action=getOne_For_Updat_meal&complainNo="+replyNo.val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+		    		 url:"<%=request.getContextPath()%>/mealcomplain/mealcomplain.do?action=getOne_For_Updat_meal&complainNo="+seachNo,   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
 //		    		 data:text,  //要傳給目標的data
 		    		 dataType: "json",
 		    		 
 		    		//Ajax成功後執行的function，response為回傳的值
 		    		 success : function(res){
-			    	     console.log(res);//看JSON物件
-			    	     console.log("No:"+res.complainNo);//看JSON物件
+			    	     console.log("-----------------------"+res);//看JSON物件
+console.log("No:"+res.complainNo);//看JSON物件
 			    	     
 			    	     $(".repComNo").html(res.complainNo);
 			    	     $(".repComTime").html(res.detailDate);
@@ -362,17 +378,9 @@ $(document).ready(function () {
 			    	     }
 			    	     
 		    		 },
-		    		 beforeSend : function(){
-		    			 $(".clickDetail").attr({ disabled: "disabled" });
-		    			 $(".wait").show();
-		    		 },
-		    		 complete : function(){
-		    			 $(".clickDetail").removeAttr("disabled");
-		    			 $(".wait").hide();
-		    		 },
-		    		 
+		    			    		 
 		    		 error : function(xhr, ajaxOptions, thrownError){
-		                 alert(xhr.status+"\n"+thrownError);
+		    			 console.log("error");
 		             }
 		    	 }); 
 		  });
@@ -391,7 +399,7 @@ $(document).ready(function () {
 		    		swal(
 	    				  '尚未完成',
 	    				  '回覆不能為空',
-	    				  'warning'
+						  'warning'
 	    				)
 	    		
 		    	} else if(detail != ""){
@@ -400,7 +408,7 @@ $(document).ready(function () {
 		  		  $.ajax({
 		  	    		 type:"POST",  //指定http參數傳輸格式為POST 
 		  	    		 contentType:"application/x-www-form-urlencoded",
-		  	    		 url:"<%=request.getContextPath()%>/MealComplainServlet?action=update&complainNo="+$item+"&complainReply="+$(".newReplay").val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
+		  	    		 url:"<%=request.getContextPath()%>/MealComplainServlet?action=update&complainNo="+$item+"&complainReply="+ $(".newReplay").val(),   	 //請求目標的url，可在url內加上GET參數，如 www.xxxx.com?xx=yy&xxx=yyy
 //		  	    		 data:text,  //要傳給目標的data
 		  	    		 dataType: "json",
 		  	    		 
@@ -413,21 +421,12 @@ $(document).ready(function () {
 			  		    	   swal({
 			  		    		    title: res.complainNo+': 已成功回覆',
 			  		    		    type:	'success',
-			  		    		    timer: 4500
-			  		    		}).then(
-			  		    		    function () {},
-			  		    		    // handling the promise rejection
-			  		    		    function (dismiss) {
-			  		    		        if (dismiss === 'timer') {
-			  		    		            console.log('I was closed by the timer')
-			  		    		        }
-			  		    		    }
-			  		    		)
-			  		    		if(res.complainNo == showNo){
-			  		    			alert('yaaaa');
-			  		    		}
-			  		    		
-			  		    		
+	
+			  		    		})
+			  		    		setTimeout(function(){ 
+	  		    				    location.reload();
+	  		    				} ,800);
+			  			
 		  	    		 },
 		  	    		 error : function(xhr, ajaxOptions, thrownError){
 		  	                 alert(xhr.status+"\n"+thrownError);

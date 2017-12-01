@@ -60,21 +60,20 @@ pageContext.setAttribute("list", list);
 
 					<div class="container">
 						<div class="btn-group">
-							<a
-								href="<%=request.getContextPath()%>/back/dish/listAllDish.jsp"
-								class="btn btn-info" role="button">全部菜色</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishByRice.jsp"
-								class="btn btn-info" role="button">米食</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishByMain.jsp"
-								class="btn btn-info" role="button">主食</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishBySoup.jsp"
-								class="btn btn-info" role="button">湯品</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishByVegetable.jsp"
-								class="btn btn-info" role="button">蔬食</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishByDessert.jsp"
-								class="btn btn-info" role="button">甜品</a> <a
-								href="<%=request.getContextPath()%>/back/dish/listAllDishByDrink.jsp"
-								class="btn btn-info" role="button">飲品</a>
+							<a href="<%=request.getContextPath()%>/back/dish/listAllDish.jsp"
+								class="btn btn-primary" role="button">全部菜色</a> 
+							<a href="<%=request.getContextPath()%>/back/dish/listAllDishByRice.jsp"
+								class="btn btn-success" role="button">米食</a> 
+							<a href="<%=request.getContextPath()%>/back/dish/listAllDishByMain.jsp"
+								class="btn btn-info" role="button">主食</a>
+						    <a href="<%=request.getContextPath()%>/back/dish/listAllDishBySoup.jsp"
+								class="btn btn-warning" role="button">湯品</a> 
+							<a href="<%=request.getContextPath()%>/back/dish/listAllDishByVegetable.jsp"
+								class="btn btn-danger" role="button">蔬食</a>
+						    <a  href="<%=request.getContextPath()%>/back/dish/listAllDishByDessert.jsp"
+								class="btn btn-info" role="button">甜品</a>
+						    <a  href="<%=request.getContextPath()%>/back/dish/listAllDishByDrink.jsp"
+								class="btn btn-default" role="button">飲品</a>
 						</div>
 					</div>
 					<div class="x_content">

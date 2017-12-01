@@ -133,7 +133,8 @@ public class DishServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("dishVO", dishVO); // 含有輸入格式錯誤的dishVO物件,也存入req
+					req.setAttribute("dishVO", dishVO); 
+					
 					RequestDispatcher failureView = req.getRequestDispatcher("/back/dish/addDish.jsp");
 					failureView.forward(req, res);
 					return;

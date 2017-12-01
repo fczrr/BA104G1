@@ -143,7 +143,7 @@
                 </li>
                 <li><a href="#">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
-                <li><a href="#">商城</a></li>
+                <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
                 <li><a href="#">聯絡我們</a></li>
             </ul>
         
@@ -246,7 +246,7 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A01.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=1&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
@@ -254,14 +254,14 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A02.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=2&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A03.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=3&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
@@ -314,7 +314,7 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A01.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=1&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
@@ -322,14 +322,14 @@
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A02.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=2&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
 										<div class="item">
 											<div class="content">
 												<img
-													src="<%=request.getContextPath()%>/front/image/mealService/mealIntroA/A03.jpg"
+													src="<%=request.getContextPath()%>/DBGifReaderForSetMeal?picNo=3&smNo=10"
 													class="img-responsive">
 											</div>
 										</div>
@@ -546,7 +546,7 @@
 		// carousel function for thumbnail slider
 		thumbnailSlider.owlCarousel({
 		loop:false,
-		center:true, //to display the thumbnail item in center
+		center:false, //to display the thumbnail item in center
 		nav:false,
 		responsive:{
 		0:{

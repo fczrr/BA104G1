@@ -32,10 +32,21 @@ public class HcComplainJDBCDAO implements HcComplainDAO_interface{
 	private static final String GET_ALL_STMT =
 			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN ORDER BY COMPLAINNO";
 	
-	// 申訴單號單一查詢
-	private static final String GET_ONE_STMT = 
-			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINNO=?";
+	// 申訴單一查詢
+	private static final String GET_ON_STMT = 
+			"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINSTATUS='已完成'";
 
+	
+	// 申訴單號單一查詢
+		private static final String GET_OFF_STMT = 
+				"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINSTATUS='未處理'";
+		
+		
+		private static final String GET_ONE_STMT = 
+				"SELECT COMPLAINNO, ORDER_NO, COMPLAINDETAIL, DETAILDATE , COMPLAINREPLY, REPLYDATE, EMP_NO ,COMPLAINSTATUS FROM HCCOMPLAIN WHERE COMPLAINNO=?";
+
+	
+	
 	private static final String DELETE =
 			"DELETE FROM HCCOMPLAIN WHERE COMPLAINNO = ?";
 	
@@ -261,6 +272,127 @@ public class HcComplainJDBCDAO implements HcComplainDAO_interface{
 		return hcComplainVO;
 	}
 	
+	@Override
+	public List<HcComplainVO> getOffAll() {
+		List<HcComplainVO> list = new ArrayList<HcComplainVO>();
+		HcComplainVO hcComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_OFF_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				hcComplainVO = new HcComplainVO();
+				hcComplainVO.setComplainNo(rs.getString("complainno"));
+				hcComplainVO.setOrder_no(rs.getString("order_no"));
+				hcComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				hcComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				hcComplainVO.setComplainReply(rs.getString("complainreply"));
+				hcComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				hcComplainVO.setEmp_no(rs.getString("emp_no"));
+				hcComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(hcComplainVO);
+			}
+			
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+
+	@Override
+	public List<HcComplainVO> getOnAll() {
+		List<HcComplainVO> list = new ArrayList<HcComplainVO>();
+		HcComplainVO hcComplainVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			pstmt = con.prepareStatement(GET_ON_STMT);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				hcComplainVO = new HcComplainVO();
+				hcComplainVO.setComplainNo(rs.getString("complainno"));
+				hcComplainVO.setOrder_no(rs.getString("order_no"));
+				hcComplainVO.setComplainDetail(rs.getString("complaindetail"));
+				hcComplainVO.setDetailDate(rs.getTimestamp("detaildate"));
+				hcComplainVO.setComplainReply(rs.getString("complainreply"));
+				hcComplainVO.setReplyDate(rs.getTimestamp("replydate"));
+				hcComplainVO.setEmp_no(rs.getString("emp_no"));
+				hcComplainVO.setComplainStatus(rs.getString("complainstatus"));
+				list.add(hcComplainVO);
+			}
+			
+			
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+		
+		// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+		
+		// Clean up JDBC resources
+		} finally {
+			if(pstmt !=null){
+				try{
+					pstmt.close();
+				} catch (SQLException se){
+					se.printStackTrace(System.err);
+				}
+			}
+			
+			if(con != null){
+				try {
+					con.close();
+				} catch (Exception e){
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
 	
 	
 	
@@ -378,14 +510,14 @@ public class HcComplainJDBCDAO implements HcComplainDAO_interface{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		// 新增
-		for(int i= 0; i<10 ;i++){
-		HcComplainVO hcComplainVO1 = new HcComplainVO();
-		hcComplainVO1.setOrder_no("20171104-500003");
-		hcComplainVO1.setComplainDetail("tESTTESTETSTETETSTTESte");
-		hcComplainVO1.setComplainStatus("未處理");
-		dao.insert(hcComplainVO1);
-		System.out.println("新增成功");
-	}
+//		for(int i= 0; i<10 ;i++){
+//		HcComplainVO hcComplainVO1 = new HcComplainVO();
+//		hcComplainVO1.setOrder_no("20171104-500003");
+//		hcComplainVO1.setComplainDetail("tESTTESTETSTETETSTTESte");
+//		hcComplainVO1.setComplainStatus("未處理");
+//		dao.insert(hcComplainVO1);
+//		System.out.println("新增成功");
+//	}
 		
 		// 修改
 //		HcComplainVO hcComplainVO2 = new HcComplainVO();
@@ -412,17 +544,19 @@ public class HcComplainJDBCDAO implements HcComplainDAO_interface{
 		
 		
 		// 查全部
-//		List<HcComplainVO> list = dao.getAll();
-//		for(HcComplainVO hcComplainVO : list){
-//			System.out.println("ComplainNo : " + hcComplainVO.getComplainNo());
-//			System.out.println("OrderNO : " + hcComplainVO.getOrder_no());
-//			System.out.println("ComplainDetail : " + hcComplainVO.getComplainDetail());
-//			System.out.println("DetailDate : " + sdf.format(hcComplainVO.getDetailDate()));
-//			System.out.println("ComplainReply : " + hcComplainVO.getComplainReply());
-//			System.out.println("ReplyDate : " + sdf.format(hcComplainVO.getReplyDate()));
-//			System.out.println("EmpNO : " + hcComplainVO.getEmp_no());
-//			System.out.println("Status : " + hcComplainVO.getComplainStatus());
-//			System.out.println();
-//		}
+		List<HcComplainVO> list = dao.getOnAll();
+		for(HcComplainVO hcComplainVO : list){
+			System.out.println("ComplainNo : " + hcComplainVO.getComplainNo());
+			System.out.println("OrderNO : " + hcComplainVO.getOrder_no());
+			System.out.println("ComplainDetail : " + hcComplainVO.getComplainDetail());
+			System.out.println("DetailDate : " + hcComplainVO.getDetailDate());
+			System.out.println("ComplainReply : " + hcComplainVO.getComplainReply());
+			System.out.println("ReplyDate : " + hcComplainVO.getReplyDate());
+			System.out.println("EmpNO : " + hcComplainVO.getEmp_no());
+			System.out.println("Status : " + hcComplainVO.getComplainStatus());
+			System.out.println();
+		}
 	}
+
+	
 }

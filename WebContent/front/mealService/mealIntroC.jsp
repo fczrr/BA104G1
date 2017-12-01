@@ -143,7 +143,7 @@
                 </li>
                 <li><a href="#">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
-                <li><a href="#">商城</a></li>
+                <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
                 <li><a href="#">聯絡我們</a></li>
             </ul>
         
@@ -506,8 +506,8 @@
 			eventClick:function(event){
 				$("#dishImg").attr('src','<%= request.getContextPath()%>/DBGifReaderForDishByName?dishName='+event.title);
 				$("#dishIntro").text(event.description);
-				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"auto", buttons: {
-			          Cancel: function() {
+				$("#eventContent").dialog({ modal: true, title: event.title, height: "auto", width:"25%", buttons: {
+			          Close: function() {
 			            $( this ).dialog( "close" );
 			          }
 			        }});
@@ -539,7 +539,7 @@
 		// carousel function for thumbnail slider
 		thumbnailSlider.owlCarousel({
 		loop:false,
-		center:true, //to display the thumbnail item in center
+		center:false, //to display the thumbnail item in center
 		nav:false,
 		responsive:{
 		0:{

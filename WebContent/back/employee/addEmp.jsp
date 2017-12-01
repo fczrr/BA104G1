@@ -129,8 +129,9 @@ h4 {
 							<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
 								data-target="#mymodal">
 								<h1>
-									<i class="fa fa-spinner fa-spin" id="icone_grande"></i>
-									員工註冊&nbsp;<b>頁面</b>
+									<img alt=""
+										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+										width="70px";>&nbsp; 員工註冊&nbsp;<b>頁面</b>
 								</h1>
 							</a>
 						</div>
@@ -315,7 +316,8 @@ h4 {
 										<div class="col-md-4">
 											<br>
 											<button type="submit" class="btn btn-danger">
-												SUBMIT <div class="glyphicon glyphicon-send"></div>
+												SUBMIT
+												<div class="glyphicon glyphicon-send"></div>
 
 
 											</button>
@@ -331,7 +333,7 @@ h4 {
 
 						</div>
 					</div>
-					
+
 					<button onclick="addEmp()">
 						<div class="col-xs-12 col-sm-6">
 							<div class="btn">

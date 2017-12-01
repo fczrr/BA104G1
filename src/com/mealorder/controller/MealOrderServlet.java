@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -88,6 +89,10 @@ public class MealOrderServlet extends HttpServlet {
 			session.removeAttribute("datesStr");
 			
 			
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+			
+			
 			
 			Integer smNo = new Integer(req.getParameter("smNo"));
 			SetMealService setMealSvc = new SetMealService();
@@ -101,7 +106,24 @@ public class MealOrderServlet extends HttpServlet {
 			Set<String> set=new HashSet<>();
 			
 			String dates=req.getParameter("dates").trim();
+		    if(dates==null||(dates.trim()).length() == 0){
+		    	errorMsgs.add("請至少選擇一餐");
+		    }
+			
+		    if (!errorMsgs.isEmpty()) {
+		    	String errorMsgStr =String.join(",", errorMsgs);
+		    	req.setAttribute("errorMsgStr", errorMsgStr);
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/front/mealService/ChooseMeal.jsp");
+				failureView.forward(req, res);
+				return;//程式中斷
+			}
+			
+			
+			
 			session.setAttribute("datesStr", dates);
+			
+			
 			req.setAttribute("dates", dates);
 	        System.out.println("dates:"+dates);
 	        String[] dates2=dates.split(",");
@@ -157,6 +179,11 @@ public class MealOrderServlet extends HttpServlet {
 			Integer totalPrice = smPrice * totalMeals;
 			req.setAttribute("totalPrice", totalPrice);
 
+			
+			
+			
+			
+			
 			String url = "/front/mealService/FileInAForm.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);
 			successView.forward(req, res);
@@ -164,7 +191,7 @@ public class MealOrderServlet extends HttpServlet {
 		}
 
 		if ("insert".equals(action)) {
-			System.out.println("進來訂單新增");
+		    String moNo=null;
 
 			HttpSession session = req.getSession();
 			session.removeAttribute("datesStr");
@@ -212,8 +239,8 @@ public class MealOrderServlet extends HttpServlet {
 				System.out.println("======="+new Gson().toJson(mealOrderVO));
 				System.out.println(new Gson().toJson(list));
 				MealOrderService mealOrderSvc = new MealOrderService();
-				mealOrderSvc.addMealOrder(mealOrderVO, list);
-
+				moNo=(String)mealOrderSvc.addMealOrder(mealOrderVO, list);
+                req.setAttribute("moNo", moNo);
 				MemberService memberSvc = new MemberService();
 				memberSvc.updatePoint((memberPoint - totalPrice), memberVO.getMemNo());
 				

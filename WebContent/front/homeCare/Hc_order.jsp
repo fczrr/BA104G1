@@ -72,19 +72,13 @@ request.setCharacterEncoding("UTF-8");
             	width:250px;
             	height:200px;
             }
-            #showfinal-emp img,{
+            
+            #showfinal-emp img  {
            		max-width:100%;
 				max-height:100%;
 				margin:auto;
 				display:block;
             }
-
-            
-
-            
-            
-            
-            
             
         </style>
 
@@ -368,8 +362,8 @@ request.setCharacterEncoding("UTF-8");
 	                              
 	                              </div>
 	                              
-	                              ${param.empNo}
-	                              + ${expertService.getAllByEmpNo(param.empNo).size()}
+<%-- 	                              ${param.empNo} --%>
+<%-- 	                              + ${expertService.getAllByEmpNo(param.empNo).size()} --%>
 <%-- 	                              ++ ${expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()} --%>
 <%-- 	                              <span id='price'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br> --%>
 	                            <c:choose>

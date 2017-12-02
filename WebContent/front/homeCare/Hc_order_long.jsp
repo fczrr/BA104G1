@@ -6,6 +6,7 @@
 <jsp:useBean id="crdSvc" scope="page" class="com.thecared.model.ThecaredService"/>
 
 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%-- <link href="<%=request.getContextPath()%>/back/gentelella-master/vendors/iCheck/skins/flat/green.css" rel="stylesheet"> --%>

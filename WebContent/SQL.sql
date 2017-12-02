@@ -1,6 +1,4 @@
 
-
-
 --讀圖片用的
 CREATE OR REPLACE  DIRECTORY MEDIA_DIR AS 'C:/DB_photos1/'; 
 
@@ -13,7 +11,7 @@ BEGIN
     dbms_lob.fileopen(myBFILE,dbms_lob.file_readonly);
     dbms_lob.loadfromfile(myBLOB,myBFILE,dbms_lob.getlength(myBFILE) );
     dbms_lob.fileclose(myBFILE);
-    RETURN myBLOB;
+    RETURN myBLOB; 
 END load_blob;
 /     
 --------DROP 檢舉SEQ-------
@@ -359,97 +357,97 @@ to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '鄭花甲', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '貝可汗', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '鄭花明', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '江西納', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '鄭花亮', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '湊齊莎夏', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '趙萌', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '周子俞', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '夏侯淵', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '林娜蓮', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '華雄', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '平景桃', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '徐和', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李傑克', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '許昌', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '王發發', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '郭嘉', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '侯尼勇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '龐德', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '高法憲', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '華佗', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '簡道乾', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '曹曹', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '傅二岱', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '魏延', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '勞斯基', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '司馬昭', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '高富率', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '司馬炎', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '魯道強', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '袁紹', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '派車人員', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
@@ -482,10 +480,7 @@ INSERT INTO EMPLOYEE
 VALUES ('EMP0000', '自動訂單', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M','careUX@care.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'a00', 'pw0000', '10');
---派車部新增員工的語法(跟原本產生奇怪的衝突)
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張三', '0919123456', 'M','ScottZHolmes@jourrapide.com', '派車', '派車人員', '專員', TO_DATE('2017/02/03 ', 'yyyy/mm/dd '), 'A1234567', 'A1234567','on', '10',CURRENT_TIMESTAMP);
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李四', '0919123123', 'M','JackALong@teleworm.us', '派車', '派車人員', '專員', TO_DATE('2013/05/22 ', 'yyyy/mm/dd '), 'B1234567', 'B1234567','on', '10',CURRENT_TIMESTAMP);
---INSERT INTO EMPLOYEE VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '王五', '0933475532', 'M','JamesGMarsh@jourrapide.com', '派車', '派車人員', '專員', TO_DATE('2014/10/02 ', 'yyyy/mm/dd '), 'C1234567', 'C1234567','on', '10',CURRENT_TIMESTAMP);
+
 
 
 ----------------------------------------------------------------------------------------
@@ -1697,70 +1692,67 @@ INSERT INTO VEHICLE VALUES (vehicle_seq.NEXTVAL,'1003','EMP0039','ABC7003','珍�
 INSERT INTO VEHICLE VALUES (vehicle_seq.NEXTVAL,'1001','EMP0040','ABC7001','躍動紅','2011',50);
 commit;
 --假資料建立:派車訂單-------------------------------------------------------------------
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0001',CURRENT_TIMESTAMP,'未確認');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0002',CURRENT_TIMESTAMP,'未確認');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0003',CURRENT_TIMESTAMP,'未確認');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0004',CURRENT_TIMESTAMP,'服務中');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0005',CURRENT_TIMESTAMP,'已確認');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0006',CURRENT_TIMESTAMP,'未確認');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0007',CURRENT_TIMESTAMP,'服務中');
-INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0008',CURRENT_TIMESTAMP,'服務中');
-
-
-
-INSERT INTO CAR_ORDER　VALUES( '20171026-000001','MEM0001',CURRENT_TIMESTAMP,'已確認');
-INSERT INTO CAR_ORDER　VALUES( '20171102-000010','MEM0002',CURRENT_TIMESTAMP,'已確認');
-INSERT INTO CAR_ORDER　VALUES( '20171102-000012','MEM0003',CURRENT_TIMESTAMP,'已確認');
-INSERT INTO CAR_ORDER　VALUES( '20171021-000011','MEM0001',CURRENT_TIMESTAMP,'已完成');
-INSERT INTO CAR_ORDER　VALUES( '20171021-000101','MEM0002',CURRENT_TIMESTAMP,'已完成'); 
-INSERT INTO CAR_ORDER　VALUES( '20171022-000312','MEM0003',CURRENT_TIMESTAMP,'已完成');
-
-
+--INSERT INTO CAR_ORDER　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),'MEM0001',CURRENT_TIMESTAMP,'未確認');
+INSERT INTO CAR_ORDER　VALUES( '20171101-000001','MEM0001',TO_DATE('2017/11/01','YYYY/MM/DD'),'已確認');
+INSERT INTO CAR_ORDER　VALUES( '20171102-000001','MEM0002',TO_DATE('2017/11/02','YYYY/MM/DD'),'已確認');
+INSERT INTO CAR_ORDER　VALUES( '20171103-000001','MEM0003',TO_DATE('2017/11/03','YYYY/MM/DD'),'已確認');
+INSERT INTO CAR_ORDER　VALUES( '20171104-000001','MEM0001',TO_DATE('2017/11/04','YYYY/MM/DD'),'已完成');
+INSERT INTO CAR_ORDER　VALUES( '20171105-000001','MEM0002',TO_DATE('2017/11/05','YYYY/MM/DD'),'已完成'); 
+INSERT INTO CAR_ORDER　VALUES( '20171106-000001','MEM0003',TO_DATE('2017/11/06','YYYY/MM/DD'),'已完成');
+INSERT INTO CAR_ORDER　VALUES( '20171107-000001','MEM0001',TO_DATE('2017/11/07','YYYY/MM/DD'),'已完成');
+INSERT INTO CAR_ORDER　VALUES( '20171108-000001','MEM0002',TO_DATE('2017/11/08','YYYY/MM/DD'),'已完成'); 
+INSERT INTO CAR_ORDER　VALUES( '20171109-000001','MEM0003',TO_DATE('2017/11/09','YYYY/MM/DD'),'已完成');
+INSERT INTO CAR_ORDER　VALUES( '20171110-000001','MEM0003',TO_DATE('2017/11/10','YYYY/MM/DD'),'已完成');
 commit;
 --假資料建立:派車明細-------------------------------------------------------------------
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'O','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','未出車');
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'M','黃建業',0963117220,'台中市南屯區文心路一段521號','台中市中區柳川東路三段36號','未出車');
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'A','陳宛婷',0963117220,'高雄市三民區建國二路320號','高雄市新興區中山一路14之27號','未出車');
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'O','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','未出車');
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'M','黃建業',0963117220,'台中市南屯區文心路一段521號','台中市中區柳川東路三段36號','未出車');
-INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'A','陳宛婷',0963117220,'高雄市三民區建國二路320號','高雄市新興區中山一路14之27號','未出車');
+--INSERT INTO CAR_DETAIL　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),1001,TO_DATE('2017/12/08','YYYY/MM/DD'),'O','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','未出車');
+INSERT INTO CAR_DETAIL　VALUES('20171101-000001','20171101-000001',1001,TO_DATE('2017/11/01','YYYY/MM/DD'),'N','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171101-000002','20171101-000001',1001,TO_DATE('2017/11/01','YYYY/MM/DD'),'N','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171101-000003','20171101-000001',1001,TO_DATE('2017/11/01','YYYY/MM/DD'),'N','李興隆',0963117220,'桃園市中壢區中大路300號','桃園市平鎮區廣泰路77號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171102-000001','20171102-000001',1002,TO_DATE('2017/11/02','YYYY/MM/DD'),'M','黃建業',0988146745,'台中市南屯區文心路一段521號','台中市中區柳川東路三段36號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171102-000002','20171102-000001',1002,TO_DATE('2017/11/02','YYYY/MM/DD'),'M','黃建業',0988146745,'台中市南屯區文心路一段521號','台中市中區柳川東路三段36號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171102-000003','20171102-000001',1002,TO_DATE('2017/11/02','YYYY/MM/DD'),'M','黃建業',0988146745,'台中市南屯區文心路一段521號','台中市中區柳川東路三段36號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171103-000001','20171103-000001',1003,TO_DATE('2017/11/03','YYYY/MM/DD'),'A','陳宛婷',0972046832,'高雄市三民區建國二路320號','高雄市新興區中山一路14之27號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171103-000002','20171103-000001',1003,TO_DATE('2017/11/03','YYYY/MM/DD'),'A','陳宛婷',0972046832,'高雄市三民區建國二路320號','高雄市新興區中山一路14之27號','完成');
+INSERT INTO CAR_DETAIL　VALUES('20171103-000003','20171103-000001',1003,TO_DATE('2017/11/03','YYYY/MM/DD'),'A','陳宛婷',0972046832,'高雄市三民區建國二路320號','高雄市新興區中山一路14之27號','完成');
 commit;     
 
+
 --假資料建立:派車人員班表-------------------------------------------------------------------
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0028',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0029',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0030',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0031',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0032',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0033',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0034',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0035',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0036',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0037',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0038',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0039',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0040',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0028',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0029',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0030',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0031',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0032',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0033',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0034',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0035',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0036',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0037',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0038',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0039',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0040',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
 commit;
  
  ---------------------------------  自增主鍵 -------------------------------------
@@ -2426,16 +2418,16 @@ INSERT INTO SHOPCOMPLAIN(
   
 INSERT INTO CARCOMPLAIN(
 COMPLAINNO,ORDER_NO,COMPLAINDETAIL,COMPLAINSTATUS)
-VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171021-000011','車子太顛坡阿','未處理');
+VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171101-000001','車子太顛坡阿','未處理');
   
   
  INSERT INTO CARCOMPLAIN(
  COMPLAINNO,ORDER_NO,COMPLAINDETAIL,COMPLAINSTATUS)
- VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171021-000101','請問司機可以更改嗎','未處理');
+ VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171102-000001','請問司機可以更改嗎','未處理');
   
  INSERT INTO CARCOMPLAIN(
  COMPLAINNO,ORDER_NO,COMPLAINDETAIL,COMPLAINREPLY,REPLYDATE, EMP_NO ,COMPLAINSTATUS)
- VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171022-000312','司機好帥,請問單身嗎？','您好,已轉交司機,請司機給你line會再與您聯繫',CURRENT_TIMESTAMP,'EMP0001' ,'已完成');
+ VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171103-000001','司機好帥,請問單身嗎？','您好,已轉交司機,請司機給你line會再與您聯繫',CURRENT_TIMESTAMP,'EMP0001' ,'已完成');
   
   
  --------- 4. 送餐申訴單 
@@ -2454,9 +2446,3 @@ VALUES (to_char('CR'||LPAD(to_char(CARCOM_NO_SEQ.NEXTVAL),6,'0')),'20171021-0000
   
   
 COMMIT;
-  
-
-
-
-
-

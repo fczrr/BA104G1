@@ -332,7 +332,14 @@
 								<label for="smNo"><h3>選擇套餐</h3></label> <select class="form-control"
 									id="smNo" name="smNo">
 									<c:forEach var="setMealVO" items="${setMealSvc.getAll()}">
+									    <c:choose>
+									    <c:when test="${setMealVO.smNo==param.smNo}">
+										<option value="${setMealVO.smNo}" selected>${setMealVO.smName}</option>
+	                                    </c:when>
+	                                    <c:when test="${setMealVO.smNo!=param.smNo}">
 										<option value="${setMealVO.smNo}">${setMealVO.smName}</option>
+	                                    </c:when>
+	                                    </c:choose>								
 									</c:forEach>
 								</select>
 							</div>
@@ -341,7 +348,7 @@
 							<br>
 							<div class="form-group">
 								<label for="orderQty"><h3>每餐數量</h3></label> <input type="number" min="1"
-									max="99" id="orderQty" class="form-control" name="orderQty" value="1">
+									max="99" id="orderQty" class="form-control" name="orderQty" value="${orderQty}">
 							</div>
 
 							<input type="hidden" name="action" value="fill_in_a_form">

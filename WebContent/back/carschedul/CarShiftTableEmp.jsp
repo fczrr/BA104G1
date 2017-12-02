@@ -865,6 +865,7 @@ body {
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			
 			defaultView: 'month',
 			validRange:function(currentDate) { 
 			    return { 

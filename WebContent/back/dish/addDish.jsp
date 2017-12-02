@@ -41,7 +41,6 @@
 					</div>
 					<!------- 新增菜色區 ------------->
 					<div class="x_content">
-						<h1 class="text-center">新增菜色</h1>
 						<%-- 錯誤表列 --%>
 						<c:if test="${not empty errorMsgs}">
 							<font style="color: red">請修正以下錯誤:</font>
@@ -66,7 +65,7 @@
 									</div>
 									<div class="form-group">
 										<img class="preview"
-											style="max-width: 150px; max-height: 150px;">
+											style="max-width: 200px; max-height: 200px;">
 										<div class="size"></div>
 									</div>
 									<div class="form-group">
@@ -85,9 +84,12 @@
 											<option value="飲品" ${(dishVO.dishType)=='飲品' ? 'selected' : ''}>飲品</option>
 										</select>
 									</div>
-									<input type="hidden" name="action" value="insert"> <input
-										type="submit" value="送出新增">
+									<input type="hidden" name="action" value="insert"> 
+									<input type="submit" class="btn btn-warning" value="送出新增">
 								</form>
+                                <br>
+                             
+								<button id="magicBtn" type="button" class="btn btn-default">神奇小按鈕</button>
 							</div>
 						</div>
 
@@ -104,3 +106,40 @@
 
 
 <%@ include file="/back/production/BA104G1_footer.jsp"%>
+<script>
+$("#magicBtn").click(function(){
+	$("#dishName").val("椒鹽鮭魚");
+	$("#dishIntro").val("鮭魚含有極豐富的Omega-3多元不飽和脂肪酸，含量居所有魚類之冠，可幫助孩童腦部發展，特別是提升注意力及記憶力，還可幫助視力發展、減低罹患氣喘的機率、防止心血管疾病等。");
+    $("#dishType").val("主食");
+});
+
+
+$(function (){
+ 
+    function format_float(num, pos)
+    {
+        var size = Math.pow(10, pos);
+        return Math.round(num * size) / size;
+    }
+ 
+    function preview(input) {
+ 
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('.preview').attr('src', e.target.result);
+                var KB = format_float(e.total / 1024, 2);
+                $('.size').text("檔案大小：" + KB + " KB");
+            }
+ 
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+ 
+    $("body").on("change", "#dishPic", function (){
+        preview(this);
+    })
+    
+})
+</script>

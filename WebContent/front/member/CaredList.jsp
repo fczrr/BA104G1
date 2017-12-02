@@ -114,6 +114,7 @@
 							     <input type="submit" value="新增被照顧者" class=" btn-success"> 
 							     <input type="hidden" name="memNo"      value="${memberVO.memNo}">
 							     </FORM>
+							     <a href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp"><button   class="btn-success pull-right">開始使用服務</button></a>
 							</td>
 							</tr>
 					</table>

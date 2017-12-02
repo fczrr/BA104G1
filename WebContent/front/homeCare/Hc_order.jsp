@@ -326,7 +326,7 @@ request.setCharacterEncoding("UTF-8");
 	                              <label class="control-label" for="cared-fianl">服務對象</label>	                              
 									<select size="1" class="form-control" name="caredNo"  id="caredNo-final" aria-describedby="helpBlock2">
 										<option value="" selected>請選擇</option>
-										<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo(memVO.getMemNo())}" > 
+										<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo(memberVO.getMemNo())}" > 
 											<option value="${crdVO.caredNo}">${crdVO.caredName}
 										</c:forEach>   
 									</select>    
@@ -404,8 +404,9 @@ request.setCharacterEncoding("UTF-8");
 <script>
     laydate.render({
         elem: '#servDate' 
-        ,min: '0'
+        ,min: 1
         ,max: '2018-12-31'
+        ,showBottom: false
         ,done: function(value, date, endDate){
             $('#servDate-final').attr('value',value);
             console.log(value); 
@@ -415,8 +416,9 @@ request.setCharacterEncoding("UTF-8");
     
     laydate.render({
         elem: '#servDate-final' 
-        ,min: '0'
+        ,min: 1
         ,max: '2017-12-31'
+        ,showBottom: false
         ,done: function(value, date, endDate){
             $('#servDate').attr('value',value);
             console.log(value); 
@@ -430,6 +432,10 @@ request.setCharacterEncoding("UTF-8");
     	console.log('${param.servTime}'+'!!!');
     	console.log('${param.caredNo}'+'!!!');
     	console.log('${param.empNo}'+'!!!');
+    	if('${param.empNo}' != ''){
+    		$('html,body').animate({ scrollTop: document.body.clientHeight }, 1000);
+    	}
+    	
     	
     	$('#datenloc-check').on('chang', function(){
 			$('#getAllByDateTime').submit();	

@@ -142,7 +142,7 @@ display:block;
 			laydate.render({
 			  elem: '#test-n1'
 			  ,position: 'static'
-			  ,min:'0'
+			  ,min:1
 			  ,showBottom: false
 			});
 			

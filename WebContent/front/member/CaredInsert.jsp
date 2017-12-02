@@ -141,7 +141,7 @@
 			document.getElementById("kinship").value = "伯母";
 			document.getElementById("caredHeight").value = "160";
 			document.getElementById("caredWeight").value = "60";
-			document.getElementById("caredAddress").value = "大觀園";
+			document.getElementById("caredAddress").value = "大觀園市40巷5弄3號";
 			document.getElementById("caredPhone").value = "0900123000";
 			document.getElementById("conStatus").value = "輕度";
 			document.getElementById("bioStatus").value = "重度";

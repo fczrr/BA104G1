@@ -131,7 +131,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 				empVO.setEmpStatus(rs.getString("EMP_STATUS"));
 				empVO.setEmpBranches(rs.getString("EMP_BRANCHES"));
 				empVO.setEmpUpdateTime(rs.getTimestamp("EMP_UPDATE_TIME"));
-				System.out.println("成功查詢一筆員工資料empNo");
+//				System.out.println("成功查詢一筆員工資料empNo");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -288,7 +288,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 //					errorMsgs.add("請輸入時間");
 //				}
 				System.out.println("test yes0"+req.getParameter("servDate")+"  "+req.getParameter("servTime"));
-				if(!req.getParameter("servDate").equals("") || !req.getParameter("servDate").equals("")){
+				if(!(req.getParameter("servDate").equals("")) && !(req.getParameter("servTime").equals(""))){
 				String servDate = map3.get("servDate")[0];
 				String servTime = map3.get("servTime")[0];
 					
@@ -331,7 +331,12 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
-				req.setAttribute("listHcWorks_ByCompositeQuery", listHcWorks_ByCompositeQuery); // 資料庫取出的list物件,存入request
+				
+				if(req.getParameter("successView").equals("/front/homeCare/Hc_show_emps.jsp")){					
+					req.setAttribute("hcWorkShiftsVOList", listHcWorks_ByCompositeQuery); // 資料庫取出的list物件,存入request
+				}else{
+					req.setAttribute("listHcWorks_ByCompositeQuery", listHcWorks_ByCompositeQuery); // 資料庫取出的list物件,存入request
+				}
 				RequestDispatcher successView = req.getRequestDispatcher(req.getParameter("successView")); // 成功轉交listEmps_ByCompositeQuery.jsp
 				successView.forward(req, res);
 				

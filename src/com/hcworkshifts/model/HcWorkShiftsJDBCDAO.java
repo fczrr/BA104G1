@@ -286,7 +286,7 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 					+ "AND EMP_STATUS='ON' "
 					+ jdbcUtil_CompositeQuery_workShift.get_WhereCondition(map)
 					+ "order by  TOTAL_WORK_SHIFTS ";
-			System.out.println(SQL);
+			System.out.println("dao"+SQL);
 			pstmt = con.prepareStatement(SQL);
 					
 								

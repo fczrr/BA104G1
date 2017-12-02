@@ -276,7 +276,7 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		try {
+		try { 
 
 			
 			con = ds.getConnection();

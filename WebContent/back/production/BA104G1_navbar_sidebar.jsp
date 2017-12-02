@@ -70,7 +70,7 @@
 
 					<!-- menu profile quick info       頭像↓ -->
 					<div class="profile clearfix">
-						<div class="profile_pic">
+						<div class="profile_pic"> 
 							<c:choose>
 								<c:when
 									test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">

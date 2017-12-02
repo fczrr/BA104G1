@@ -82,14 +82,17 @@ body {
 
 	#calendar {
 		float: right;
-		width: 900px;
+	}
+	
+	.fc-event.fc-draggable, .fc-event[href], .fc-popover .fc-header .fc-close, a[data-goto] {
+    cursor: pointer;
+    width: 75px;
 	}
 	
 	#deleter{
 	width: 100px;
 	height: 100px;
 	opacity: 0.8;
-	background : url("<%=request.getContextPath()%>/back/images/trashcan.png") no-repeat;
 	-moz-background-size:contain;
     -webkit-background-size:contain;
     -o-background-size:contain;
@@ -637,6 +640,28 @@ body {
 			height: 50px;
 			margin-left: 5px;
 		}
+		/* 月曆上事件圖示 */
+	   .mo {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/mo.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
+       .af {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/af.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
+       .ni {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/ni.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
 		
 </style>
 <title>有我罩你-派車人員排班表</title>
@@ -728,8 +753,9 @@ body {
 			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/fullcalendar.js"></script><!-- -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
 			<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/locale/zh-tw.js"></script>
 		<script>
-		var emp_no="EMP0021";
+		var emp_no="";
 	$(document).ready(function() {
 		//載入頁面初始設定
 		var empNameSelected =  $('.form-control :selected').text()
@@ -775,9 +801,10 @@ body {
 		
 		
 		var day = new Date();
+		var year = day.getFullYear();
 		var month = day.getMonth()+1;
 		console.log("這個月"+month)
-		var toDay = "2017-"+month+"-01";
+		var toDay = year+"-"+month+"-01";
 		var work_hours =0;
 		var empName;
 		var cartype_no = 1001;
@@ -785,6 +812,7 @@ body {
 			$('#reload').click(function(){
 				emp_no=	$('#empSelect').val();
 				console.log(emp_no);
+				$('#calendar').fullCalendar('removeEvents');
 				$('#calendar').fullCalendar( 'refetchEvents' )
 			}); 
 			
@@ -804,6 +832,7 @@ body {
 					
 				emp_no=	$(this).val();
 				console.log("切換器找到的員工編號:"+emp_no);
+				$('#calendar').fullCalendar('removeEvents')
 				$('#calendar').fullCalendar( 'refetchEvents' ) 
 			    
 				
@@ -865,15 +894,16 @@ body {
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			
+			contentHeight:'auto',
 			defaultView: 'month',
 			validRange:function(currentDate) { 
 			    return { 
 			        start: currentDate.clone().subtract(1, 'days'), 
 			    };
 			 },
+			 locale: 'zh-tw',
 			themeSystem: 'jquery-ui',
-			editable: true,
+			editable: false,
 			droppable: true, // this allows things to be dropped onto the calendar
 			drop: function() {
 				// is the "remove after drop" checkbox checked?
@@ -910,29 +940,29 @@ body {
                             var title = ev.title;
                            var evtstart = ev.start;
                             var evtend = ev.end; 
-                            /* console.log(evtstart); */
+                            var classname ="";
+                            if(evtstart.substring(11,13) == "08"){
+                           	  classname ="mo";
+                            };
+                            if(evtstart.substring(11,13) == "13"){
+                              classname ="af";
+                            };
+                            if(evtstart.substring(11,13) == "18"){
+                                classname ="ni";
+                              };
+                            
+                             console.log(classname); 
+                           
                             events.push({
                                 title:title,
+                                //2017-12-01T13:00:00
                                 start:evtstart,
-                                end:evtend 
+                                end:evtend,
+                                className:classname
                             });
                         }
                         
-                       /*  var info2 = j.empScList;
-                        //emp_no = info2[0];
-                        $('.form-control').empty();	
-                        for (var i = 0; i < info2.length; i++) {
-                            var ev = info2[i];
-                            var emp_no = ev.emp_no;
-                           	var work_hours = ev.work_hours;
-                            var empName = ev.empName; 
-                            if(i == 0){
-                            $("#empSelect").append($("<option value='"+emp_no+"' work_hours='"+work_hours+"'>"+empName+"</option>"))
-                            }else{
-                            $("#empSelect").append($("<option value='"+emp_no+"' work_hours='"+work_hours+"'>"+empName+"</option>"))	
-                            } 
-                            
-                        }*/
+                      
                         
                         
                         callback(events);
@@ -959,23 +989,7 @@ body {
 		        	   console.log('eventDrop:', event);
 		           },
 		           
-		           eventDragStop:function(event , jsEvent) {
-		        	   
-		        	   var trashEl = $('#deleter');
-		        	   var ofs = trashEl.offset();
-		        	   
-		        	   var x1 = ofs.left;
-		        	   var x2 = ofs.left + trashEl.outerWidth(true);
-		        	   var y1 = ofs.top;
-		        	   var y2 = ofs.top + trashEl.outerHeight(true);
-		        	   if(jsEvent.pageX >= x1 && jsEvent.pageX <= x2 &&
-		        			   jsEvent.pageY  >= y1 && jsEvent.pageY <= y2) {
-		        		   	
-		        		   $(this).remove();
-		        		   $('#calendar').fullCalendar('removeEvents', event._id);
-		        			 
-		        	   }
-		         },
+		           
 		          
 			
 			

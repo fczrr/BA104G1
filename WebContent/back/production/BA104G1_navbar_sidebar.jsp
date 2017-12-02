@@ -70,12 +70,12 @@
 
 					<!-- menu profile quick info       頭像↓ -->
 					<div class="profile clearfix">
-						<div class="profile_pic">
+						<div class="profile_pic"> 
 							<c:choose>
 								<c:when
-									test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
+									test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
 									<img style="width: 60px; height: 50px"
-										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
 										alt="圖片載入中" class="img-circle profile_img">
 								</c:when>
 								<c:otherwise>
@@ -88,7 +88,7 @@
 						</div>
 						<div class="profile_info">
 							<span>歡迎,</span>
-							<h2>${employeeVO.empName}</h2>
+							<h2>${empVO.empName}</h2>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -269,9 +269,9 @@
 
 									<c:choose>
 										<c:when
-											test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
+											test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
 											<img style="width: 40px; height: 40px"
-												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
 												alt="圖片載入中">
 										</c:when>
 										<c:otherwise>
@@ -279,7 +279,7 @@
 												src="<%=request.getContextPath()%>/noData/noPic.jpg"
 												alt="圖片連線中">
 										</c:otherwise>
-									</c:choose> ${employeeVO.empName} <span class=" fa fa-angle-down"></span>
+									</c:choose> ${empVO.empName} <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right wrap">
 									<li><a

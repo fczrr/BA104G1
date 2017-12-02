@@ -1093,23 +1093,7 @@ body {
 	 }; 
 	 	
 		
-		/* $('#testbtn').click(function(){
-			$('#calendar').fullCalendar('removeEvents')
-			alert('HIHI'); 
-		}); */
 		
-		
-		
-		/* $('.drop').droppable({
-			over: function( event, ui ){
-				$(ui.draggable).remove();
-				 $('#calendar').fullCalendar('removeEvents',Event.id)
-				 $(this).css('border-color', 'red'); 
-			}
-		}); */
-		/* $('.fc-content').draggable(); */
-		
-	
 		
 	});
 	

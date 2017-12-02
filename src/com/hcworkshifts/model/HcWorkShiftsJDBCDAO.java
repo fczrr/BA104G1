@@ -276,12 +276,13 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		try {
+		try { 
 
 			
 			con = ds.getConnection();
-			String SQL = "select * from HC_WORKSHIFTS W JOIN EMPLOYEE E ON"
-					+ " W.EMP_NO = E.EMP_NO AND EMP_DEP='長照' AND EMP_BRANCHES='10' "
+			String SQL = "select * from HC_WORKSHIFTS W JOIN EMPLOYEE E ON  W.EMP_NO = E.EMP_NO "
+					+ " JOIN EXPERT T ON T.EMP_NO = E.EMP_NO "
+					+ " AND EMP_DEP='長照' AND EMP_BRANCHES='10' "
 					+ "AND EMP_STATUS='ON' "
 					+ jdbcUtil_CompositeQuery_workShift.get_WhereCondition(map)
 					+ "order by  TOTAL_WORK_SHIFTS ";
@@ -302,6 +303,7 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 
 			// Handle any driver errors
 		} catch (SQLException se) {
+			se.printStackTrace();
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
 			// Clean up JDBC resources

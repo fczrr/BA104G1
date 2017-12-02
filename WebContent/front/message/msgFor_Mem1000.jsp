@@ -56,7 +56,7 @@
 
 <!-- 中間訊息框  -->
 <div class="chat-box">.
-	<input id="sender" class="text-field" type="text" value="EMP00002" placeholder="User name" style="visibility:hidden;"/>
+	<input id="sender" class="text-field" type="text" value="EMP0002" placeholder="User name" style="visibility:hidden;"/>
 	<div class="chat-box-header">
 	<p class="panel-title"><i class="fa fa-user-o"></i>&nbsp&nbsp有我罩你&nbsp客服中心
 	<span class="chat-box-toggle"><i class="fa fa-window-minimize fa-1x"></i></span>
@@ -154,7 +154,7 @@
 	  
 	  
 	
-   var MyPoint = "/MessageServlet/EMP00002";
+   var MyPoint = "/MessageServlet/EMP0002";
     console.log(MyPoint);
     var host = window.location.host;
     console.log(host);

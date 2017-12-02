@@ -12,19 +12,14 @@
 	class="com.expertlist.model.ExpertlistService" />
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
-<<<<<<< HEAD
 
 
 
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/fczrr/BA104G1.git
+
+
 <!DOCTYPE html>
-<%--
-// 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
-// 	session.setAttribute("employeeVO", employeeVO);
---%>
-=======
+
+
 
 
 
@@ -36,7 +31,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>有我罩你後端平台系統! |</title>
+<title>有我罩你後端平台系統!</title>
 
 <!-- Bootstrap -->
 <link

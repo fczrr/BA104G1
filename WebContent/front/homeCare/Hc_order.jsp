@@ -99,7 +99,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="row">
                 <div class="col-xs-12 col-sm-12">
                     <div class="text-item text-center">
-                        <h1>長照服務</h1>
+                        <h1>前短期照護服務</h1>
 						<p>希望有照護人員輔助生活起居與陪同就醫。或是家庭照顧者想紓解照顧壓力，需要暫時的居家喘息服務嗎?<br>
 						甚至是等待外籍看護交班的空窗期，迫切需要短時間的照顧服務員、看護前來照顧嗎?<br>
 						現在，只要簡單幾步就能輕鬆獲得居家照護服!!</p>
@@ -137,7 +137,7 @@ request.setCharacterEncoding("UTF-8");
                       </div>
                       <div class="panel-body text-center">
 								<p>輕鬆簡單的付款<br>
-								 只要在會員中心儲值點數<br>
+								 只要在會員中心儲值點數，並填寫被照護人<br>
 								 就可以隨時隨地享用我們的服務<br>
 								 <br>
 								</p>

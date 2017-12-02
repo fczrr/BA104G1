@@ -20,6 +20,9 @@
 	int num = 0;
 %>
 
+<head>
+
+<title>短期照護服務</title>
 
 <style>
 #middle {align ="center";
@@ -81,6 +84,7 @@ h4 {
 	vertical-align: middle;
 }
 </style>
+</head>
 
 <div class="right_col" role="main">
 	<div class="">

@@ -283,12 +283,7 @@
                     </tbody>
                 </table>
 				<hr>
-<%-- 					<c:forEach var="WorkShift" items="${WorkShiftslist}">						 --%>
-<!--                         <tr> -->
-<%--                             <td>${WorkShift}----</td> --%>
-            
-<!--                         </tr> -->
-<%--                      </c:forEach>						 --%>
+
 
 
 

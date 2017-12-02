@@ -62,7 +62,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		res.setContentType("text/html ; charset=UTF-8");
 		
-		//印log	
+		                                                                   //印log	
 	Enumeration en = req.getParameterNames();
 	System.out.println("HcWorkshiftsServlet----------------------------");	
 		
@@ -242,7 +242,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 		
 		
 		
-		if ("listHcWorks_ByCompositeQuery".equals(action)) { // 來自select_page.jsp的複合查詢請求
+		if ("listHcWorks_ByCompositeQuery".equals(action)) { // 來自HC_show_emps.jsp的複合查詢請求
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -262,14 +262,16 @@ public class HcWorkshiftsServlet extends HttpServlet {
 					HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
 					HashMap<String, String[]> map2 = new HashMap<String, String[]>();
 						
-//					Set<String> keys = map1.keySet();
-//					for (String key : keys) {
-//						String[] value = map1.get(key);
-//						map2.put(key, value);						
-//					}	
+
 					map2 = (HashMap<String, String[]>)map1.clone();
 					session.setAttribute("map",map2);
-					map3 = map2;
+					
+					Set<String> keys = map1.keySet();
+					for (String key : keys) {
+						String[] value = map1.get(key);
+						map3.put(key, value);						
+					}	
+					
 					map = (HashMap<String, String[]>)req.getParameterMap();
 				} 
 //				Set<String> keys = map.keySet();
@@ -285,12 +287,12 @@ public class HcWorkshiftsServlet extends HttpServlet {
 //				if(map.get("servTime")[0].equals("")){
 //					errorMsgs.add("請輸入時間");
 //				}
-				
-				if(req.getAttribute("servDate") !=null ||req.getAttribute("servTime")!=null){
+				System.out.println("test yes0"+req.getParameter("servDate")+"  "+req.getParameter("servTime"));
+				if(!req.getParameter("servDate").equals("") || !req.getParameter("servDate").equals("")){
 				String servDate = map3.get("servDate")[0];
 				String servTime = map3.get("servTime")[0];
 					
-					System.out.println("test yes0");
+					
 					String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , servTime );
 					String shiftNumber = Number[1] ;
 					String monthOfYear = Number[0];

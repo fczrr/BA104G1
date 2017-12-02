@@ -598,6 +598,10 @@ public class MemberServlet extends HttpServlet {
 				
 			}
 			if(myurl!=null && !myurl.isEmpty()){
+				MemberService memberSvc=new MemberService();
+				session.removeAttribute("memberVO");
+			    session.setAttribute("memberVO", memberSvc.findByPrimaryKey(memNo));
+	
 				RequestDispatcher successView = req.getRequestDispatcher(myurl);
 				System.out.println("success_myurl:"+myurl);
 				successView.forward(req, res);

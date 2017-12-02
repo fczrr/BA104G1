@@ -22,8 +22,8 @@
     <body onload="connect();" onunload="disconnect();">
   
   
-<div class="container">  
-  <div class="row"> 
+<!-- <div class="container">   -->
+<!--   <div class="row">  -->
 <%-- <p>${memVO.memName}</p> --%>
 <!-- 測試用 -->
 
@@ -94,14 +94,14 @@
 
 
 
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
 
 </div>
 
 
 
-<div id="receiver"></div>
+<!-- <div id="receiver"></div> -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

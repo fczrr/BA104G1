@@ -344,9 +344,13 @@ public class CarDetailServlet extends HttpServlet {
 			String[] days = detailDateString.split(",");
 			 for (String orderDay:days) {
 			   System.out.println(orderDay);
-			   //2017-12-01
-			   dateStringList.add(orderDay.substring(8,10));
-			   System.out.println(orderDay.substring(8,10));
+			   
+			   //2017-02-01
+			   
+			   String addZeroString =orderDay.split("-")[0]+"-"+String.format("%02d", Integer.parseInt(orderDay.split("-")[1]))+"-"+String.format("%02d", Integer.parseInt(orderDay.split("-")[2]));
+			   System.out.println(addZeroString);
+			   dateStringList.add(addZeroString.substring(8,10));
+			   System.out.println(addZeroString.substring(8,10));
 			   dateList.add(java.sql.Date.valueOf(orderDay));
 			   howManyDays++;
 			 }
@@ -447,8 +451,6 @@ public class CarDetailServlet extends HttpServlet {
 										
 										
 									//更新現有班表內容
-									
-									
 									if(detail_time.equals("M")){
 										System.out.println(dateNotify+"號早上有空");
 										int index = startIndex-1;
@@ -480,7 +482,6 @@ public class CarDetailServlet extends HttpServlet {
 									String strTemp = "";
 									for(int k = 0;k<attendance.length();k++){
 										strTemp = String.valueOf(attendance.charAt(k));
-										System.out.println("工時檢查:"+strTemp);
 										if(!strTemp.equals("空")){
 											charCount++;
 										}

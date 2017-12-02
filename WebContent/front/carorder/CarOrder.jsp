@@ -439,12 +439,29 @@ tr:nth-child(even) {
 									    		  }); 
 									    	var  cartypename;
 									    	var detailDateSize;
+									    	var detail_time;
 									    	$('.next-step').click(
 													function() {
 														$("#inputmsg1").html($('li.active>a').text());
 														$("#inputmsg2").html($('#chooseDate').val());
+														var detail_timeString;
+														
+														 detail_time = $("input[name='optradio']:checked").attr("text");
+													     
+												    	 if(detail_time == "M"){
+												    		 detail_timeString = "早";
+												    	 }
+												    	 if(detail_time == "A"){
+												    		 detail_timeString = "中";
+												    	 }
+												    	 if(detail_time == "N"){
+												    		 detail_timeString = "晚";
+												    	 }
+														
+														
+														
 														$("input[name='optradio']").change(function(){
-															$("#inputmsg3").html($("input[name='optradio']:checked").attr("text"));
+															$("#inputmsg3").html(detail_timeString);
 														});
 														var adsTxt1 =$('.county').val();
 														var adsTxt2 =$('.district').val();
@@ -466,7 +483,7 @@ tr:nth-child(even) {
 														 var detailDateEntry = detail_date.split(',');
 														 detailDateSize =detailDateEntry.length;
 													     detail_time_no =$("input[name='optradio']:checked").val();
-													     detail_time = $("input[name='optradio']:checked").attr("text");
+													    
 													     county = $('.county').val();
 													     district = $('.district').val();
 													     address = $('#address').val();

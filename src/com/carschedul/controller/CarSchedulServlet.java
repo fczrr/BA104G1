@@ -548,6 +548,22 @@ public class CarSchedulServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				try {
+					JSONObject myObj = new JSONObject("OK");
+					res.setCharacterEncoding("UTF-8");
+					PrintWriter out = res.getWriter();
+					out.write(myObj.toString());
+					System.out.println("回傳的JSON:"+myObj.toString());
+					out.flush();
+					out.close();
+				
+				} catch (JSONException e) {
+	
+					e.printStackTrace();
+				}
+				
+				
 		
 	    }
 	    

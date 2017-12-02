@@ -1134,7 +1134,7 @@ body {
 			 var fullCalendarArray =[];
 			 var eventsList=[];
 			 fullCalendarArray = $('#calendar').fullCalendar('clientEvents');
-			 console.log("排班表array:"+fullCalendarArray);
+			// console.log("排班表array:"+fullCalendarArray);
 		
 		 
 		 for(i = 0;i<fullCalendarArray.length;i++){
@@ -1156,10 +1156,13 @@ body {
 				 dataType: "json",
 				 
 				 success: function (data){
+					
+						 console.log(data);
+						 
+					
 					 sendMessage();
-					 alert("班表更新成功!");
 			     },
-	            error: function(){alert("班表更新!!")
+	            error: function(){
 	            	
 	            	sendMessage();
 	            }

@@ -11,7 +11,7 @@ BEGIN
     dbms_lob.fileopen(myBFILE,dbms_lob.file_readonly);
     dbms_lob.loadfromfile(myBLOB,myBFILE,dbms_lob.getlength(myBFILE) );
     dbms_lob.fileclose(myBFILE);
-    RETURN myBLOB;
+    RETURN myBLOB; 
 END load_blob;
 /     
 --------DROP 檢舉SEQ-------

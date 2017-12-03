@@ -138,7 +138,6 @@ h4 {
 									<br>
 									<!-- Text input-->
 
-
 									<div class="form-group container">
 										<div class="col-xs-12 col-sm-12">
 											<div class="col-xs-12 col-sm-4 col-sm-offset-4">

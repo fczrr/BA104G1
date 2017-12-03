@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @WebServlet("/DBGifReader4")
 public class DBGifReader4 extends HttpServlet {
-
+ 
 	Connection conn;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)

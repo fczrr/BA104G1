@@ -163,7 +163,7 @@ $(document).ready(function() {
 		$('#'+buttonList+'2').remove();
 		for(var i =4 ; i<7;i++){
 			$('#'+buttonList+i).remove();	
-		}
+		} 
 	
 	// 送餐經理	
 	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '經理'){

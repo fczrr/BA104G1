@@ -6,6 +6,7 @@
 <jsp:useBean id="crdSvc" scope="page" class="com.thecared.model.ThecaredService"/>
 
 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%-- <link href="<%=request.getContextPath()%>/back/gentelella-master/vendors/iCheck/skins/flat/green.css" rel="stylesheet"> --%>
@@ -69,7 +70,7 @@ display:block;
   <div class="row">
     <div class="col-lg-6">
       <h1>長期照護服務</h1>
-      <p class="lead">        歡迎使用長期照護服務,</p>
+      <p class="lead">        歡迎使用長期照護服務,請在下方選擇服務日期及服務對象並選擇照護人員</p>
     </div>
   </div>
 </div>
@@ -142,7 +143,7 @@ display:block;
 			laydate.render({
 			  elem: '#test-n1'
 			  ,position: 'static'
-			  ,min:'0'
+			  ,min:1
 			  ,showBottom: false
 			});
 			

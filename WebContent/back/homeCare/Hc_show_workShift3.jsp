@@ -187,6 +187,11 @@
 		float: left;
 		width: 1100px;
 	}
+	
+	
+	#external-events-listing , #external-events-listing2 {
+	 	min-height:200px;
+	}
 
 
 	
@@ -283,12 +288,7 @@
                     </tbody>
                 </table>
 				<hr>
-<%-- 					<c:forEach var="WorkShift" items="${WorkShiftslist}">						 --%>
-<!--                         <tr> -->
-<%--                             <td>${WorkShift}----</td> --%>
-            
-<!--                         </tr> -->
-<%--                      </c:forEach>						 --%>
+
 
 
 

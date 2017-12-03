@@ -212,41 +212,47 @@
 							<h2>訂購人資訊</h2>
 							<div class="form-group">
 								<label>訂購人</label>
-								<p>${memberVO.memName}</p>
+								<p id="memberName">${memberVO.memName}</p>
 							</div>
 							<div class="form-group">
 								<label>訂購人地址</label>
-								<p>${memberVO.address}</p>
+								<p id="memberAdd">${memberVO.address}</p>
 							</div>
 							<div class="form-group">
 								<label>訂購人電話</label>
-								<p>${memberVO.memPhone}</p>
+								<p id="memberPhone">${memberVO.memPhone}</p>
 							</div>
 						</div>
 						<div class="col-sm-12">
-							<h2>收件人資訊</h2>	
+	                       
+	                       <h2>收件人資訊</h2>
+	                       <input id="check1" type="checkbox">
+                           <label for="check1">同訂購人資料</label>					
 							<form action="<%=request.getContextPath()%>/MealOrder.do"
-								method="post">
+								method="post" id="form1">
 								<div class="form-group">
 									<label for="rcptName">收件人</label> <input type="text"
-										name="rcptName" id="rcptName" class="form-control">
+										name="rcptName" id="rcptName" class="form-control" valu="${param.rcptName}">
 								</div>
 								<div class="form-group">
 									<label for="rcptAdd">收件人地址</label> <input type="text"
-										name="rcptAdd" id="rcptAdd" class="form-control">
+										name="rcptAdd" id="rcptAdd" class="form-control" value="${param.rcptAdd}">
 								</div>
 								<div class="form-group">
 									<label for="rcptPhone">收件人電話</label> <input type="text"
-										name="rcptPhone" id="rcptPhone" class="form-control">
+										name="rcptPhone" id="rcptPhone" class="form-control" value="${rcptPhone}">
 								</div>
 								<div class="form-group">
 									<input type="hidden" name="smNo" value="${param.smNo}">
 									<input type="hidden" name="orderQty" value="${param.orderQty}">
 									<input type="hidden" name="totalPrice" value="${totalPrice}">
 									<input type="hidden" name="dates" value="${dates}">
-									<input type="hidden" name="action" value="insert">
-									<a href="<%= request.getContextPath()%>/front/mealService/ChooseMeal.jsp" class="btn btn-primary" role="button">選擇日期</a>
-									<button type="submit" class="btn btn-success pull-right">送出訂單</button>
+<!-- 									<input type="hidden" name="action" value="insert"> -->
+                                    <input type="hidden" name="action">
+<%-- 									<a href="<%= request.getContextPath()%>/front/mealService/ChooseMeal.jsp" class="btn btn-primary" role="button">選擇日期</a> --%>
+									<button id="backBtn" type="button" class="btn btn-primary">選擇日期</button>
+<!-- 									<button type="submit" class="btn btn-success pull-right">送出訂單</button> -->
+                                    <button id="insertBtn" type="button" class="btn btn btn-success pull-right">送出訂單</button>
 								</div>
 								
 								
@@ -275,6 +281,34 @@
 		src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 	<!-- 這裡是JS專區 =========================================================== -->
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+	$("#check1").click(function(){
+		if($(this).is(":checked")){
+			$("#rcptName").val($("#memberName").text());
+			$("#rcptAdd").val($("#memberAdd").text());
+			$("#rcptPhone").val($("#memberPhone").text());
+		}else if($(this).not(":checked") ){
+			$("#rcptName").val("");
+			$("#rcptAdd").val("");
+			$("#rcptPhone").val("");
+		}
+	});
+	
+	$("#backBtn").click(function(){
+		$("input[name=action]").val("backToChooseDates");
+	    $("#form1").submit();	
+	});
+	
+	$("#insertBtn").click(function(){
+	     $("input[name=action]").val("insert");
+		 $("#form1").submit();
+	});
+	
+	
+	
+	
+	
+	</script>
 
 </body>
 

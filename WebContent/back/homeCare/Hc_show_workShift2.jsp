@@ -7,6 +7,7 @@
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
 
 <%
+	
 	Object obj = request.getAttribute("listHcWorks_ByCompositeQuery");
 	List<HcWorkShiftsVO> listHcWorks_ByCompositeQuery = new ArrayList<HcWorkShiftsVO>();
 	if (obj == null) {
@@ -15,11 +16,14 @@
 	} else {
 		listHcWorks_ByCompositeQuery = (List<HcWorkShiftsVO>) obj;
 	}
-	pageContext.setAttribute("listHcWorks_ByCompositeQuery", listHcWorks_ByCompositeQuery);
+	request.setAttribute("listHcWorks_ByCompositeQuery", listHcWorks_ByCompositeQuery);
 
 	int num = 0;
 %>
 
+<head>
+
+<title>短期照護服務</title>
 
 <style>
 #middle {align ="center";
@@ -81,6 +85,7 @@ h4 {
 	vertical-align: middle;
 }
 </style>
+</head>
 
 <div class="right_col" role="main">
 	<div class="">

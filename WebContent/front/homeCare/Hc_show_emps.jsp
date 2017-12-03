@@ -15,10 +15,7 @@
 <!-- 不可快取 -->
 <% response.setDateHeader("Expires",0); %>
 <!-- 放入假的會員 -->
-<% MemberService memSvc = new MemberService();
-   MemberVO memVO = (MemberVO)memSvc.findByPrimaryKey("MEM0002");
-   session.setAttribute("memVO",memVO);
-%>
+
 
 <%@ include file="/front/navbar.jsp" %>
 <!DOCTYPE html>
@@ -217,6 +214,24 @@ a.thumbnail{
 .hc_order .modal-footer{
    border-top:0px;
 }
+
+
+                                 /*置頂用*/
+#gotop {
+    position: fixed;
+    border-radius: 50px;
+    right: 20px;
+    bottom: 10px;
+    padding: 10px 16px;
+    font-size: 25px;
+    background: rgba(228, 211, 211, 0.36);
+    color: #FAFCFD;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+
 		</style>
 	<body>
 
@@ -224,6 +239,8 @@ a.thumbnail{
 
 
 <!-- 各項服務內容 ============================================================================== -->
+<div id="gotop" class="papa" >˄</div>
+
 
 <div class="container">
   <div class="row">
@@ -249,10 +266,11 @@ a.thumbnail{
                           	<label class="sr-only" for="caredNo">照護對象</label>
 							<select size="1" class="form-control" name="caredNo" id="caredNo">
 								<option value="" selected>請選擇照護對象</option>
-								<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo('MEM0002')}" > 
+								<c:forEach var="crdVO" items="${crdSvc.getAllByMemNo(memberVO.getMemNo())}" > 
 									<option value="${crdVO.caredNo}">${crdVO.caredName}
 								</c:forEach>   
 							</select>  
+                        <span id="helpBlock2" class="help-block pull-right">有新的照護對象嗎?<a href="<%=request.getContextPath()%>/front/member/CaredInsert.jsp">新增被照護者</a></span>
                         </div>
                         
                         
@@ -267,6 +285,15 @@ a.thumbnail{
                         <input type="hidden" name="servTime" value="${param.servTime}">
                         <input type="hidden" name="caredNo" value="${param.caredNo}">
                         <input type="hidden" name="empNo" value="${param.empNo}">
+                        <input type="text" name="expNo" value="">
+                        
+<!--                         <select type="hidden" name="expNo" > -->
+<!-- 				            <option value="" selected>服務人員條件(非必選)</option> -->
+<!-- 				          	<option value="101"> 丙級照護員</option> -->
+<!-- 				          	<option value="102"> 乙級照護員</option> -->
+<!-- 				          	<option value="201"> 護士</option> -->
+<!-- 				          	<option value="202"> 護理師</option> -->
+<!-- 				         </select> -->
                     </form>
                     
                     <hr>
@@ -330,9 +357,10 @@ a.thumbnail{
 	        
 	        
 	        <input type="hidden" name="action" value="listHcWorks_ByCompositeQuery">
-	        <input type="hidden" name="shiftNumber" value="00">
+<!-- 	        <input type="hidden" name="shiftNumber" value="00"> -->
 	        <input type="hidden" name="successView" value="/front/homeCare/Hc_show_emps.jsp">
 	        <input type="hidden" name="failureV" value="/front/homeCare/Hc_show_emps.jsp">
+		    <input type="hidden" name="shiftNumber" value="00">
 	
 	         <div class="form-group pull-right">       
 	        <input type="submit" class="btn btn-default" value="重新查詢">
@@ -377,8 +405,21 @@ a.thumbnail{
 			         <span class="label label-danger date"></span>
 			         </div>        
 			  		 <br>
-			        <p class="pull-left">-由我們幫你找最優秀的照護人員<br><br><br>		
-			        </p>		     
+			  		 <p>說明</p>
+			  		 <ul>
+			  		 <li>由我們幫你找最優秀的照護人員</li>
+			  		 </ul>
+			        <span class="pull-left">服務人員太多，不知道該如何選擇嗎?<br>
+					選我就對了!!		
+			        </span><br>
+				          <select  id="pre-expNo" name="pre-expNo" >
+				            <option value="" selected>服務人員條件(非必選)</option>
+				          	<option value="101"> 丙級照護員</option>
+				          	<option value="102"> 乙級照護員</option>
+				          	<option value="201"> 護士</option>
+				          	<option value="202"> 護理師</option>
+				          </select>
+
                      <span class="badge pull-right" style="background-color:#ffd340; font-size:20px;">選擇我</span>
 				    </div>
 			     </div>
@@ -420,8 +461,10 @@ a.thumbnail{
                                         	<li>${expertlistService.getOneEXPLIST(experVO.getExpNo()).getExpName()}</li>
                                         </c:forEach>
                                         </ul>
-                                        <span>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcWorkShiftsVO.getEmpNo()).get(0).getExpNo()).getExpPrice()}元</span>
+                                        <span><b>專長說明:</b> ${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcWorkShiftsVO.getEmpNo()).get(0).getExpNo()).getExpSpec()}</span>
+                                        <br>
                                         <span class="badge pull-right" style="background-color:#ffd340; font-size:20px;">選擇我</span>
+                                        <span class="pull-right"><b> ${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcWorkShiftsVO.getEmpNo()).get(0).getExpNo()).getExpPrice()}元/次&nbsp;</b></span>
 									        
 							      </div>
 							     </div>                                    
@@ -431,6 +474,7 @@ a.thumbnail{
                                 		console.log('${hcWorkShiftsVO.getEmpNo()}');                                		
                                 		$("[name='empNo']").val('${hcWorkShiftsVO.getEmpNo()}');
                                 		$("#empName-final").val('${employeeService.findByPrimaryKey(hcWorkShiftsVO.getEmpNo()).getEmpName()}');
+                                		$('html,body').animate({srollTop:0},900);
                                 	};
                                 </script> 
                             </div>
@@ -552,7 +596,7 @@ a.thumbnail{
 		<script>
 	    laydate.render({
 	        elem: '#servDate' 
-	        ,min: '0'
+	        ,min: 1
 	        ,max: '2018-12-31'
 	        ,done: function(value, date, endDate){
 	            $('#servDate-final').attr('value',value);
@@ -560,6 +604,20 @@ a.thumbnail{
 	            console.log(date); 
 	        }
 	    });
+	    
+	    
+		$("#gotop").click(function(){
+		    jQuery("html,body").animate({
+		        scrollTop:0
+		    },1000);
+		});
+		$(window).scroll(function() {
+		    if ( $(this).scrollTop() > 300){
+		        $('#gotop').fadeIn("fast");
+		    } else {
+		        $('#gotop').stop().fadeOut("fast");
+		    }
+		});
 		
 
 			$(function() { 
@@ -576,8 +634,21 @@ a.thumbnail{
 		    	$("#empNo").val("${param.empNo}");
 		    	$("#expNo").val("${param.expNo}");
 
-				
+		    	$(".badge").click(function(){
+
+         		    jQuery("html,body").animate({
+         		        scrollTop:0
+         		    },1000);
+		    	}); 
+		    	
+		    	$("#pre-expNo").change(function(event){
+		    		console.log(event.target.value);
+		    		$('[name="expNo"]').val(event.target.value);
+		    	});
 			});
+			
+			
+
 			
 			
 			

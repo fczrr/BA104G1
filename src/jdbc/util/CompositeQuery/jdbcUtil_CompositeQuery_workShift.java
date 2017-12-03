@@ -28,11 +28,9 @@ public class jdbcUtil_CompositeQuery_workShift {
 			aCondition = columnName + " between "+totals[0]+" and "+totals[1];
 		}else if("shift_Number".equals(columnName)){
 			aCondition = "Substr(WORK_SHIFT_STATUS,"+value+",1)='空'";
-		}
-		
-		
-		else
+		}else{
 			return " ";
+		}
 		
 
 
@@ -47,13 +45,14 @@ public class jdbcUtil_CompositeQuery_workShift {
 			String value = map.get(key)[0];
 			if (value != null && value.trim().length() != 0	&& !"action".equals(key) 
 					&& !"successView".equals(key) && !"failureView".equals(key)) {
-				count++;
+				
 				String aCondition = get_aCondition_For_Oracle(key, value.trim());
 
 				if  (aCondition.equals(" ")) {
 					continue; 
 				}
 				else{
+					count++;
 					whereCondition.append(" and " + aCondition);
 				}
 				System.out.println("有送出查詢資料的欄位數count = " + count);
@@ -72,7 +71,7 @@ public class jdbcUtil_CompositeQuery_workShift {
 		map.put("totalWorkShifts", new String[] {"0-50"});
 		map.put("shiftNumber", new String[] {"00"});
 		map.put("EMP_NAME", new String[] {"關羽"});
-		map.put("expNo", new String[] {"101"});
+		map.put("expNo", new String[] {"201"});
 		map.put("maps", new String[] {"77777"});
 		map.put("maps", new String[] {"77777"});
 		map.put("maps", new String[] {"77777"});

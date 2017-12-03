@@ -18,6 +18,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/front/css/mealService/mealIndex.css">
 </head>
+
 <body>
    <div class="container" style="margin-bottom:4em">
 	<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
@@ -34,7 +35,7 @@
         
         
   <!--  開始放鏈結區 ======================================================================== -->
-            <ul class="nav navbar-nav navnavnav">
+             <ul class="nav navbar-nav navnavnav">
                 <li><a href="#">關於我們</a></li>
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">最新消息 <b class="caret"></b></a>
@@ -52,7 +53,7 @@
                         <li><a href="#">Q&A</a></li>
                     </ul>
                 </li>
-                <li><a href="#">派車服務</a></li>
+                <li><a href="<%= request.getContextPath()%>/front/carorder/CarOrder.jsp">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
                 <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
                 <li><a href="#">聯絡我們</a></li>
@@ -85,7 +86,7 @@
                         <li><a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-                        <li><a href="#">我的最愛</a></li>
+                        
                     </ul>
                 </li>
             </ul>
@@ -218,7 +219,6 @@
 				</div>
 			</div>
 		</div>
-  
 		<!-- 是footer bar 不要亂刪 感謝～～ ==================================================================== -->
 		<footer>
               <div class="newnavbart">

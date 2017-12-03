@@ -44,7 +44,7 @@ body {
 	}
 		
 	#wrap {
-		width: 1100px;
+		width: 1250px;
 		margin: 0 auto;
 	}
 		
@@ -54,9 +54,14 @@ body {
 	    padding: 10px 10px;
 	    border: 1px solid #ccc0;
 	    background: #eee0;
+	    margin-left: 70px;
 	    text-align: left;
 
 	} 
+	
+	.fc .fc-toolbar>*>:first-child {
+    	margin-right: 40px;
+	}
 		
 	#external-eventsbox h4 {
 		font-size: 16px;
@@ -82,14 +87,20 @@ body {
 
 	#calendar {
 		float: right;
-		width: 900px;
+		width: 980px;
+		margin-right: 50px;
+	}
+	
+	.fc-event.fc-draggable, .fc-event[href], .fc-popover .fc-header .fc-close, a[data-goto] {
+    cursor: pointer;
+    width: 75px;
 	}
 	
 	#deleter{
 	width: 100px;
 	height: 100px;
 	opacity: 0.8;
-	background : url("<%=request.getContextPath()%>/back/images/trashcan.png") no-repeat;
+	
 	-moz-background-size:contain;
     -webkit-background-size:contain;
     -o-background-size:contain;
@@ -115,6 +126,10 @@ body {
     bx-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
     
+    .fc-icon, .fc-toolbar .fc-center {
+    display: inline-block;
+    margin-right: 120px;
+	}
 	
 	.fc-event, .fc-event-dot {
     background-color: #5bc0de;
@@ -257,7 +272,7 @@ body {
 	.media-heading {
     display: block;
     position: absolute;
-    margin-left: 186px;
+    margin-left: 225px;
     top: 8px;
 	}
 	.media, .media-body {
@@ -637,6 +652,28 @@ body {
 			height: 50px;
 			margin-left: 5px;
 		}
+		/* 月曆上事件圖示 */
+	   .mo {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/mo.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
+       .af {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/af.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
+       .ni {
+       padding-left: 20px;
+       background-image: url('<%=request.getContextPath() %>/back/image/car/ni.png');  
+       background-size: 17px 17px;
+       background-repeat: no-repeat;
+       background-position: 2px 50%;
+       }
 		
 </style>
 <title>有我罩你-派車人員排班表</title>
@@ -649,11 +686,11 @@ body {
      <div class="right_col" role="main">
           <div class="">
 
-            <div class="page-title">
+           <!--  <div class="page-title">
               <div class="title_left" style="background-color:#337ab7;height:100px;width:100%">
 			      <h1 class="text-center" style="color:white;margin-top:30px">派車班表管理</h1>
 			</div>
-              </div>
+              </div> -->
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -745,7 +782,7 @@ body {
                 <span class="label label-default phone">電話</span>
                 <span class="label label-default email">Email</span>
                 <span class="label label-info cartype">四人座</span>
-                <span class="label label-default workhours">服務時數:150小時</span>
+                <span class="label label-default workhours">服務時數:小時</span>
             </div>
         </div>
 
@@ -843,9 +880,10 @@ body {
 			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/lib/jquery-ui.min.js"></script>
 			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/fullcalendar.js"></script><!-- -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
-			<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+			<script src='https://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/locale/zh-tw.js"></script>
 		<script>
-		var emp_no="EMP0021";
+		var emp_no="";
 	$(document).ready(function() {
 		//載入頁面初始設定
 		var empNameSelected =  $('.form-control :selected').text()
@@ -892,14 +930,24 @@ body {
 		var day = new Date();
 		var month = day.getMonth()+1;
 		console.log("這個月"+month)
-		var toDay = "2017-"+month+"-01";
-		var work_hours =0;
+		var year = day.getFullYear();
+		console.log("這年"+year)
+		var toDay = year+"-"+month+"-01";
+		var work_hours;
 		var empName;
-		var cartype_no = 1001;
+		var cartype_no;
 		
 			$('#reload').click(function(){
-				emp_no=	$('#empSelect').val();
+				//emp_no=	$('#empSelect').val();
 				console.log(emp_no);
+				
+				$("#empSelect option[value="+emp_no+"]").attr('selected', 'selected');
+				 console.log('(reload)將選項已選改為'+emp_no);
+				 selectInfo(cartype_no,toDay);	
+				//切換工時
+				empWorkHoursSelected = "本月服務時數:"+$('.form-control :selected').attr('work_hours')+"小時";
+				$('.workhours').text(empWorkHoursSelected);
+				$('#calendar').fullCalendar('removeEvents')
 				$('#calendar').fullCalendar( 'refetchEvents' )
 			}); 
 			
@@ -920,6 +968,7 @@ body {
 				emp_no=	$(this).val();
 				newEmpNo = $(this).val();
 				console.log("切換器找到的員工編號:"+newEmpNo);
+				$('#calendar').fullCalendar('removeEvents')
 				$('#calendar').fullCalendar( 'refetchEvents' ) 
 				//斷開連線
 				disconnect ();
@@ -982,8 +1031,11 @@ body {
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: ''
 			},
+			locale: 'zh-tw',
+			dragRevertDuration:0,
+			contentHeight:'auto',
 			defaultView: 'month',
 			validRange:function(currentDate) { 
 			    return { 
@@ -1026,32 +1078,29 @@ body {
                         for (var i = 0; i < info.length; i++) {
                             var ev = info[i];
                             var title = ev.title;
-                           var evtstart = ev.start;
-                            var evtend = ev.end; 
-                            /* console.log(evtstart); */
+                           	var evtstart = ev.start;
+                            var evtend = ev.end;
+                            var classname ="";
+                            if(evtstart.substring(11,13) == "08"){
+                           	  classname ="mo";
+                            };
+                            if(evtstart.substring(11,13) == "13"){
+                              classname ="af";
+                            };
+                            if(evtstart.substring(11,13) == "18"){
+                                classname ="ni";
+                              };
+                            
+                            
+                           
                             events.push({
                                 title:title,
+                                //2017-12-01T13:00:00
                                 start:evtstart,
-                                end:evtend 
+                                end:evtend,
+                                className:classname
                             });
                         }
-                        
-                       /*  var info2 = j.empScList;
-                        //emp_no = info2[0];
-                        $('.form-control').empty();	
-                        for (var i = 0; i < info2.length; i++) {
-                            var ev = info2[i];
-                            var emp_no = ev.emp_no;
-                           	var work_hours = ev.work_hours;
-                            var empName = ev.empName; 
-                            if(i == 0){
-                            $("#empSelect").append($("<option value='"+emp_no+"' work_hours='"+work_hours+"'>"+empName+"</option>"))
-                            }else{
-                            $("#empSelect").append($("<option value='"+emp_no+"' work_hours='"+work_hours+"'>"+empName+"</option>"))	
-                            } 
-                            
-                        }*/
-                        
                         
                         callback(events);
                     },
@@ -1134,7 +1183,7 @@ body {
 			 var fullCalendarArray =[];
 			 var eventsList=[];
 			 fullCalendarArray = $('#calendar').fullCalendar('clientEvents');
-			 console.log("排班表array:"+fullCalendarArray);
+			// console.log("排班表array:"+fullCalendarArray);
 		
 		 
 		 for(i = 0;i<fullCalendarArray.length;i++){
@@ -1156,10 +1205,13 @@ body {
 				 dataType: "json",
 				 
 				 success: function (data){
+					
+						 console.log(data);
+						 
+					
 					 sendMessage();
-					 alert("班表更新成功!");
 			     },
-	            error: function(){alert("班表更新!!")
+	            error: function(){
 	            	
 	            	sendMessage();
 	            }
@@ -1195,7 +1247,7 @@ body {
                  for (var i = 0; i < info.length; i++) {
                      var ev = info[i];
                      var emp_no = ev.emp_no;
-                    	var work_hours = ev.work_hours;
+                     var work_hours = ev.work_hours;
                      var empName = ev.empName; 
                      var car_type_name = ev.carTypeName;
                      var empCarLoc = ev.empCarLoc;
@@ -1210,26 +1262,7 @@ body {
        })
 	 }; 
 	 	
-		
-		/* $('#testbtn').click(function(){
-			$('#calendar').fullCalendar('removeEvents')
-			alert('HIHI'); 
-		}); */
-		
-		
-		
-		/* $('.drop').droppable({
-			over: function( event, ui ){
-				$(ui.draggable).remove();
-				 $('#calendar').fullCalendar('removeEvents',Event.id)
-				 $(this).css('border-color', 'red'); 
-			}
-		}); */
-		/* $('.fc-content').draggable(); */
-		
-		
-	 	
-		
+
 	});
 	
 	//推播  (主管)
@@ -1256,11 +1289,7 @@ body {
 		};
 
 		webSocket.onmessage = function(event) {
-			/* var messagesArea = document.getElementById("messagesArea");
-	        var jsonObj = JSON.parse(event.data);
-	        var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";
-	        messagesArea.value = messagesArea.value + message;
-	        messagesArea.scrollTop = messagesArea.scrollHeight; */
+		
 		};
 
 		webSocket.onclose = function(event) {

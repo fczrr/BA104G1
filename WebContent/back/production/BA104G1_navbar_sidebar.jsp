@@ -12,19 +12,14 @@
 	class="com.expertlist.model.ExpertlistService" />
 <jsp:useBean id="employeeSvc" scope="page"
 	class="com.employee.model.EmployeeService" />
-<<<<<<< HEAD
 
 
 
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/fczrr/BA104G1.git
+
+
 <!DOCTYPE html>
-<%--
-// 	EmployeeVO employeeVO = employeeSvc.findByPrimaryKey("EMP0002");
-// 	session.setAttribute("employeeVO", employeeVO);
---%>
-=======
+
+
 
 
 
@@ -36,7 +31,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>有我罩你後端平台系統! |</title>
+<title>有我罩你後端平台系統!</title>
 
 <!-- Bootstrap -->
 <link
@@ -68,19 +63,20 @@
 					<div class="navbar nav_title" style="border: 0;">
 						<a
 							href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp"
-							class="site_title"><i class="fa fa-home"></i> <span>有我罩你</span></a>
+							class="site_title"><img src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+											width="30px"> <span>有我罩你</span></a>
 					</div>
 
 					<div class="clearfix"></div>
 
 					<!-- menu profile quick info       頭像↓ -->
 					<div class="profile clearfix">
-						<div class="profile_pic">
+						<div class="profile_pic"> 
 							<c:choose>
 								<c:when
-									test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
+									test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
 									<img style="width: 60px; height: 50px"
-										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
 										alt="圖片載入中" class="img-circle profile_img">
 								</c:when>
 								<c:otherwise>
@@ -93,7 +89,7 @@
 						</div>
 						<div class="profile_info">
 							<span>歡迎,</span>
-							<h2>${employeeVO.empName}</h2>
+							<h2>${empVO.empName}</h2>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -274,9 +270,9 @@
 
 									<c:choose>
 										<c:when
-											test="${empPhSvc.getAllByEMPNO(employeeVO.empNo).size()!= 0}">
+											test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
 											<img style="width: 40px; height: 40px"
-												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(employeeVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
 												alt="圖片載入中">
 										</c:when>
 										<c:otherwise>
@@ -284,7 +280,7 @@
 												src="<%=request.getContextPath()%>/noData/noPic.jpg"
 												alt="圖片連線中">
 										</c:otherwise>
-									</c:choose> ${employeeVO.empName} <span class=" fa fa-angle-down"></span>
+									</c:choose> ${empVO.empName} <span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right wrap">
 									<li><a

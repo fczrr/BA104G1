@@ -506,7 +506,7 @@ public class CarSchedulServlet extends HttpServlet {
 								c++;
 							}
 							
-					
+					 
 							//判斷解析字串為早、中、晚班，並寫入新班表，同時增加工時
 							if(objString.indexOf("T08")!= -1){
 								System.out.println(objString.substring(18,20)+"號早上有班");
@@ -548,6 +548,22 @@ public class CarSchedulServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				try {
+					JSONObject myObj = new JSONObject("OK");
+					res.setCharacterEncoding("UTF-8");
+					PrintWriter out = res.getWriter();
+					out.write(myObj.toString());
+					System.out.println("回傳的JSON:"+myObj.toString());
+					out.flush();
+					out.close();
+				
+				} catch (JSONException e) {
+	
+					e.printStackTrace();
+				}
+				
+				
 		
 	    }
 	    

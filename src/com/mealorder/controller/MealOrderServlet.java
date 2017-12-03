@@ -76,7 +76,15 @@ public class MealOrderServlet extends HttpServlet {
 			successView.forward(req, res);
 			
 		}
-		
+		if("backToChooseDates".equals(action)){
+			Integer smNo = new Integer(req.getParameter("smNo"));
+			req.setAttribute("smNo", smNo);
+			Integer orderQty = new Integer(req.getParameter("orderQty"));
+			req.setAttribute("orderQty", orderQty);
+			String url = "/front/mealService/ChooseMeal.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url);
+			successView.forward(req, res);	
+		}
 		
 		
 		

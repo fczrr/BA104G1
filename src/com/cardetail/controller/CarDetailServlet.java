@@ -394,7 +394,7 @@ public class CarDetailServlet extends HttpServlet {
 			try {
 				myObj.put("dayStatusList", dayStatusSet);
 			} catch (JSONException e) {
-				
+				 
 				e.printStackTrace();
 			}
 

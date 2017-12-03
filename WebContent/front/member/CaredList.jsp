@@ -8,11 +8,14 @@
 
 <%@ include file="/front/navbar.jsp"%>
 
-<% ThecaredService thecaredSvc = new ThecaredService();
+<%
+	ThecaredService thecaredSvc = new ThecaredService();
 %>
 
-<jsp:useBean id="memberSvc" scope="page" class="com.member.model.MemberService" />
-<jsp:useBean id="theCaredSvc" scope="page" class="com.thecared.model.ThecaredService" />
+<jsp:useBean id="memberSvc" scope="page"
+	class="com.member.model.MemberService" />
+<jsp:useBean id="theCaredSvc" scope="page"
+	class="com.thecared.model.ThecaredService" />
 
 
 <!DOCTYPE html>
@@ -24,108 +27,132 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Title Page</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css" media="screen">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/front/css/navbar/bootstrap.css"
+	media="screen">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/front/css/navbar/usebootstrap.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/front/css/navbar/newstyle_footer.css">
 <style type="text/css">
+.hover:hover {
+	background-color: #CCC;
+}
 </style>
 </head>
 
 <body>
-			<div class="container-fluid">
-<!-- ----------------------下方會員區麵包屑 ------------------------->	
-			<hr>
-			<img alt=""
-				src="<%=request.getContextPath()%>/img/member/longterm8.jpg">
+	<div class="container-fluid">
+		<!-- ----------------------下方會員區麵包屑 ------------------------->
+		<hr>
+		<img alt=""
+			src="<%=request.getContextPath()%>/img/member/longterm8.jpg">
 
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><a
-					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-			</ol>
-<!-- ----------------------上方會員區麵包屑 ------------------------->
-<!-- ----------------------下方訂單管理區選項------------------------->					
-					<ul class="nav nav-tabs" id="navList">
-						<li data-name="loginLogTab" >
-						<a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">
-						<i class="fa fa-briefcase"></i>會員基本資料管理 
-						</a></li>
-						<li data-name="receiveLogTab"}>
-						<a href="<%=request.getContextPath()%>/front/member/CaredList.jsp">
-						<i class="fa fa-briefcase active"></i>被照顧者資料管理
-						</a></li>				
-					</ul>
-<!-- ----------------------上方訂單管理區選項------------------------->								
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a
+				href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+			<li class="breadcrumb-item"><a
+				href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+			<li class="breadcrumb-item"><a
+				href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+			<li class="breadcrumb-item active" aria-current="page"><a
+				href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+		</ol>
+		<!-- ----------------------上方會員區麵包屑 ------------------------->
+		<!-- ----------------------下方訂單管理區選項------------------------->
+		<ul class="nav nav-tabs" id="navList">
+			<li data-name="loginLogTab"><a
+				href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">
+					<i class="fa fa-briefcase"></i>會員基本資料管理
+			</a></li>
+			<li data-name="receiveLogTab"}><a
+				href="<%=request.getContextPath()%>/front/member/CaredList.jsp">
+					<i class="fa fa-briefcase active"></i>被照顧者資料管理
+			</a></li>
+		</ul>
+		<!-- ----------------------上方訂單管理區選項------------------------->
 
-					
-							<div class="row">	
-					<table class="table table-hover">
-							<tr>
-								<th>被照顧者編號</th>
-								<th>被照顧者姓名</th>
-								<th>被照顧者性別</th>
-								<th>會員對其稱呼</th>
-								<th>被照顧者身高</th>
-								<th>被照顧者體重</th>
-								<th>被照顧者地址</th>
-								<th>被照顧者電話</th>
-								<th>認知功能狀態</th>
-								<th>生理功能狀態</th>
-								<th></th>
-								<th></th>
-							</tr>
-							
-						<c:forEach var="thecaredVO"  items='${theCaredSvc.getAllByMemNo(memberVO.memNo)}' >
-					
-							<tr>		
-								<td>${thecaredVO.caredNo}</td>	
-								<td>${thecaredVO.caredName}</td>
-								<td>${thecaredVO.caredGender}</td>
-								<td>${thecaredVO.kinship}</td>
-								<td>${thecaredVO.caredHeight}</td>
-								<td>${thecaredVO.caredWeight}</td>
-								<td>${thecaredVO.caredAddress}</td>
-								<td>${thecaredVO.caredPhone}</td>
-								<td>${thecaredVO.conStatus}</td>
-								<td>${thecaredVO.bioStatus}</td>
-								<td>			  
-									<FORM METHOD="post" 
-									ACTION="<%=request.getContextPath()%>/front/member/CaredUpdate.jsp" >
-								     <input type="submit" value="修改"  class=" btn-warning"> 
-								     <input type="hidden" name="caredNo"      value="${thecaredVO.caredNo}">
-								     
-								     </FORM>
-			     				</td>
-							   
-								<td>
 
-								</td>
-							</tr>
-						</c:forEach>
-							<tr>
-							<td>
-								<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front/member/CaredInsert.jsp" >
-							     <input type="submit" value="新增被照顧者" class=" btn-success"> 
-							     <input type="hidden" name="memNo"      value="${memberVO.memNo}">
-							     </FORM>
-							     <a href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp"><button   class="btn-success pull-right">開始使用服務</button></a>
-							</td>
-							</tr>
-					</table>
-				</div>
-			</div>
-	</body>		
+		<div class="row">
+			<table class="table table-hover">
+				<tr>
+					<th>被照顧者編號</th>
+					<th>被照顧者姓名</th>
+					<th>被照顧者性別</th>
+					<th>會員對其稱呼</th>
+					<th>被照顧者身高</th>
+					<th>被照顧者體重</th>
+					<th>被照顧者地址</th>
+					<th>被照顧者電話</th>
+					<th>認知功能狀態</th>
+					<th>生理功能狀態</th>
+					<th></th>
+					<th></th>
+				</tr>
+
+				<c:forEach var="thecaredVO"
+					items='${theCaredSvc.getAllByMemNo(memberVO.memNo)}'>
+
+					<tr id="hover">
+						<td>${thecaredVO.caredNo}</td>
+						<td>${thecaredVO.caredName}</td>
+						<td>${thecaredVO.caredGender}</td>
+						<td>${thecaredVO.kinship}</td>
+						<td>${thecaredVO.caredHeight}</td>
+						<td>${thecaredVO.caredWeight}</td>
+						<td>${thecaredVO.caredAddress}</td>
+						<td>${thecaredVO.caredPhone}</td>
+						<td>${thecaredVO.conStatus}</td>
+						<td>${thecaredVO.bioStatus}</td>
+						<td>
+							<FORM METHOD="post"
+								ACTION="<%=request.getContextPath()%>/front/member/CaredUpdate.jsp">
+								<input type="submit" value="修改" class=" btn btn-warning"> <input
+									type="hidden" name="caredNo" value="${thecaredVO.caredNo}">
+
+							</FORM>
+						</td>
+
+						<td></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<table >
+				<tr>
+					<td >
+						<div >
+							<FORM METHOD="post"
+								ACTION="<%=request.getContextPath()%>/front/member/CaredInsert.jsp">
+								<input type="submit" value="新增被照顧者"
+									class=" btn btn-success pull-left"     style="margin-bottom: 20px;"
+									> <input
+									type="hidden" name="memNo" value="${memberVO.memNo}"     
+									>
+							</FORM>
+						</div>
+					</td>
+
+				</tr>
+				<tr>
+					<td >
+						<div >
+							<a
+								href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp"><button
+									class="btn btn-danger pull-left">開始使用服務</button></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
 <%@ include file="/front/footerbar.jsp"%>
 
-			<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-			<script
-				src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
-			<script
-				src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/front/js/navbar/usebootstrap.js"></script>
 </html>

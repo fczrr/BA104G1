@@ -140,7 +140,7 @@ public class HcOrderController extends HttpServlet {
 //					empNo = hcWorkShiftsVO.getEmpNo();
 //					System.out.println("自動選人empNo  "+empNo);
 //					}
-//				}
+//				} 
 				
 				if(empNo.equals("EMP0000")){
 					HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();

@@ -388,10 +388,14 @@ System.out.println("come in");
 				byte[] img = new byte[in.available()];
 				in.read(img);
 				EmpPhotosVO empPhotosVO = new EmpPhotosVO();
-				empPhotosVO.setEmpNo(empNo);
-				empPhotosVO.setEmpPhoto(img);
+				empPhotosVO.setEmpNo(empNo);//員工編號
+				empPhotosVO.setEmpPhoto(img);//圖
+				
+				System.out.println("1203_u");
 				EmpPhotosService empPhotoSvc = new EmpPhotosService();
-				empPhotoSvc.addEmpPhoto(empPhotosVO);
+			//	empPhotoSvc.addEmpPhoto(empPhotosVO);
+				empPhotoSvc.updateEmpPhoto(empPhotosVO);
+
 			}
 			// ===========================================================================
 			EmployeeVO empVOupdate = empSvc.findByPrimaryKey(empNo);
@@ -399,7 +403,7 @@ System.out.println("come in");
 			
 			RequestDispatcher successView = req.getRequestDispatcher(url);
 			successView.forward(req, res);
-			System.out.println("更新員工自己資料成功");
+			System.out.println("更新員工自己資料成功1");
 		}
 		
 		

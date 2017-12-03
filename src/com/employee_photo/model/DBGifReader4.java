@@ -33,7 +33,8 @@ public class DBGifReader4 extends HttpServlet {
 //			ResultSet rs = stmt.executeQuery(
 //				"SELECT PICTURE FROM emp_photo WHERE EMPNO ='"+ "漂亮"+"'");
 			ResultSet rs = stmt.executeQuery(
-					"SELECT EMP_PHOTO FROM emp_photos WHERE EMP_PHOTO_NO ='"+emp_photo_no+"'");
+				//	"SELECT EMP_PHOTO FROM emp_photos WHERE EMP_PHOTO_NO ='"+emp_photo_no+"'");
+			"SELECT EMP_PHOTO FROM emp_photos WHERE EMP_PHOTO_NO ='EPH0002'");
 
 			if (rs.next()) {
 				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("EMP_PHOTO"));

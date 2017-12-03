@@ -11,7 +11,7 @@ public class EmpPhotosService {
 	private EmpPhotosDAO_interface dao = null;
 	
 	public EmpPhotosService(){
-		dao = new EmpPhotosDAO();
+		dao = new EmpPhotosJDBCDAO();
 	}
 	public EmpPhotosVO addEmpPhoto(String empPhtoNo ,String empNo,byte[] empPhoto) {
 		EmpPhotosVO empPhotosVO = new EmpPhotosVO();
@@ -27,20 +27,21 @@ public class EmpPhotosService {
 		dao.insert(empPhotosVO);
 	}
 	
-	public EmpPhotosVO updateEmpPhoto (String empPhotoNo ,String empNo,byte[] empPhoto) {
-		EmpPhotosVO empPhotosVO = new EmpPhotosVO();
-		empPhotosVO.setEmpPhtoNo(empPhotoNo);
-		empPhotosVO.setEmpNo( empNo);
-		empPhotosVO.setEmpPhoto(empPhoto);
+//	public EmpPhotosVO updateEmpPhoto (String empPhotoNo ,String empNo,byte[] empPhoto) {
+	public EmpPhotosVO updateEmpPhoto (EmpPhotosVO empPhotosVO) {
+//		EmpPhotosVO empPhotosVO = new EmpPhotosVO();
+//		empPhotosVO.setEmpPhtoNo(empPhotoNo);
+		empPhotosVO.getEmpNo();
+		empPhotosVO.getEmpPhoto();
 		dao.update(empPhotosVO);
 		
 		return empPhotosVO;
-
 	}
 	
-	public void updateEmpPhoto(EmpPhotosVO empPhotosVO){
-		dao.insert(empPhotosVO);
-	}
+	
+//	public void updateEmpPhoto(EmpPhotosVO empPhotosVO){
+//		dao.insert(empPhotosVO);
+//	}
 	
 	public void delete(String empPhotoNo){
 		dao.delete(empPhotoNo);

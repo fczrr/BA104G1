@@ -352,7 +352,7 @@ public class CarDetailServlet extends HttpServlet {
 						System.out.println("起始index:" + (detail_time_no) + "," + "結束index:" + (detail_time_no + endIndex));
 	
 						
-						System.out.println("當日該時段狀態:" + dayStatus);
+						System.out.println("當日該時段狀態:" + dayStatus); 
 						if(dayStatus.equals("空")){
 							for(Integer s:dayStatusSet){
 								if(s == i){

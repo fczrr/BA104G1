@@ -744,7 +744,7 @@ body {
           </div>
         </div> 
         <!-- /page content -->
-	<input type="hidden" name="empNo" 	id="empNo" value="${empVO.empNo}" >
+	<%-- <input type="hidden" name="empNo" 	id="empNo" value="${empVO.empNo}" > --%>
 	 <%@ include file="/back/production/BA104G1_footer.jsp" %>
 	 
 	 		<script src="<%=request.getContextPath()%>/back/js/carschedul/moment.min.js"></script><!-- -->
@@ -762,7 +762,7 @@ body {
 		$('.fc-event').attr('c' , empNameSelected);
 		$('.media-heading').text(empNameSelected);
 		$('.media-heading').text(empNameSelected);
-		emp_no =$('#empNo').val();
+		emp_no = "${empVO.empNo}";
 		console.log('目前員工編號:'+emp_no);
 		//事件選單
 		
@@ -1112,7 +1112,7 @@ body {
 	});
 	
 	//推播 接收端(員工)
- 	var MyPoint = "/SchedulEchoServer/shift/"+emp_no;
+ 	var MyPoint = "/SchedulEchoServer/shift/${empVO.empNo}";
     var host = window.location.host;
     var path = window.location.pathname;
     var webCtx = path.substring(0, path.indexOf('/', 1));

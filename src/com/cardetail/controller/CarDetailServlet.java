@@ -21,6 +21,7 @@ import com.cartype.model.CarTypeVO;
 import com.google.gson.Gson;
 import com.member.model.MemberService;
 import com.member.model.MemberVO;
+import com.vehicle.model.VehicleService;
 import com.vehicle.model.VehicleVO;
 import com.cardetail.model.*;
 import com.carorder.model.CarOrderService;
@@ -353,6 +354,8 @@ public class CarDetailServlet extends HttpServlet {
 						
 						System.out.println("當日該時段狀態:" + dayStatus);
 						if(dayStatus.equals("空")){
+							for(Integer s:dayStatusSet){
+								if(s == i){
 							break;
 						}
 						if (!dayStatus.equals("空")) {
@@ -441,6 +444,7 @@ public class CarDetailServlet extends HttpServlet {
 			
 			//找出符合條件(車型、月份)的車輛，優先將工時低的車輛(司機)找出來
 			CarSchedulService carSchedulSv = new CarSchedulService();
+			VehicleService vSv = new VehicleService();
 			List<VehicleVO> vehicleVO = carSchedulSv.getVehicleInfo(cartypeno, sysdate);
 			List<CarSchedulVO> carSchedulVO = carSchedulSv.getMonthInfo(cartypeno, sysdate);
 			List<Integer> vehicleList = new ArrayList<Integer>();
@@ -511,12 +515,20 @@ public class CarDetailServlet extends HttpServlet {
 						}	
 						//取得服務日期有空的車輛(司機)
 						try{
-						for(int i = 0;i < howManyDays; i++){
+						//for(int i = 0;i < howManyDays; i++){
+					    //從符合條件的車裡
+							int i=0;
 						Integer vehicleNO = vehicleVO.get(i).getVehicle_no();
-						String schedul = carSchedulVO.get(i).getAttendance();
-						Integer serial_no =carSchedulVO.get(i).getSerial_no();
+						String empNo = vSv.getOneVehicle(vehicleNO).getEmp_no();
+						//找到該車所屬司機的班表
+						String schedul = carSchedulSv.findByEmpNo(empNo, sysdate).getAttendance();
+						//取得班表的編號
+						Integer serial_no = carSchedulSv.findByEmpNo(empNo, sysdate).getSerial_no();
+						//String schedul = carSchedulVO.get(i).getAttendance();
+						//Integer serial_no =carSchedulVO.get(i).getSerial_no();
 								int dtIndex = startIndex -(detailTimeStatus);	
 								char workTimeChar = schedul.charAt(dtIndex);
+								//開始檢查班表於當日該時段是否為空
 								if(workTimeChar == '空'){
 									System.out.println("當日:"+detail_time+"時段為"+workTimeChar);
 									vehicleList.add(vehicleNO);
@@ -576,9 +588,9 @@ public class CarDetailServlet extends HttpServlet {
 									carSchedulVO2.setWork_hours(work_hours);
 									
 									carSchedulVOList.add(carSchedulVO2);
-									
+									i++;
 								}
-							}
+							//}
 						
 						} catch (IndexOutOfBoundsException iobe) {
 							System.out.println("只有名司機符合條件!!");

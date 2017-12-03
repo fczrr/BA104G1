@@ -254,8 +254,20 @@
 
 <%@ include file="/back/production/BA104G1_footer.jsp" %>
 
+<script src="<%=request.getContextPath()%>/front/css/homeCare/laydate/laydate.js"></script>
+
 
 <script>
+laydate.render({
+    elem: '#orderDate' 
+    ,showBottom: false
+    ,done: function(value, date, endDate){
+        $('#servDate-final').attr('value',value);
+        console.log(value); 
+        console.log(date); 
+    }
+});
+
 $(document).ready(function (){
 // 	alert('love you chrome');
 

@@ -187,6 +187,11 @@
 		float: left;
 		width: 1100px;
 	}
+	
+	
+	#external-events-listing , #external-events-listing2 {
+	 	min-height:200px;
+	}
 
 
 	

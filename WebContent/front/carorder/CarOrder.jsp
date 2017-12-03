@@ -110,6 +110,14 @@ tr:nth-child(even) {
     width: 500px;
 }
 
+.glyphicon-ok:before {
+    content: "\270f";
+    position: relative;
+    top: 18px;
+    background-color: white;
+    width: 500px;
+}
+
 
 
 .caricon {
@@ -436,23 +444,24 @@ tr:nth-child(even) {
 													function() {
 														$("#inputmsg1").html($('li.active>a').text());
 														$("#inputmsg2").html($('#chooseDate').val());
-														var detail_timeString;
 														
-														 detail_time = $("input[name='optradio']:checked").attr("text");
-													     
-												    	 if(detail_time == "M"){
-												    		 detail_timeString = "早";
-												    	 }
-												    	 if(detail_time == "A"){
-												    		 detail_timeString = "中";
-												    	 }
-												    	 if(detail_time == "N"){
-												    		 detail_timeString = "晚";
-												    	 }
 														
 														
 														
 														$("input[name='optradio']").change(function(){
+															var detail_timeString;
+															
+															 detail_time = $("input[name='optradio']:checked").attr("text");
+														     
+													    	 if(detail_time == "M"){
+													    		 detail_timeString = "早";
+													    	 }
+													    	 if(detail_time == "A"){
+													    		 detail_timeString = "中";
+													    	 }
+													    	 if(detail_time == "N"){
+													    		 detail_timeString = "晚";
+													    	 }
 															$("#inputmsg3").html(detail_timeString);
 														});
 														var adsTxt1 =$('.county').val();

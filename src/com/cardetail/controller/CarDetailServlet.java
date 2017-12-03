@@ -333,9 +333,10 @@ public class CarDetailServlet extends HttpServlet {
 			int detail_time_no = new Integer(req.getParameter("detail_time_no").trim());
 			System.out.println("預約時段數字:" + detail_time_no);
 
-			Set<Integer> dayStatusSet = new TreeSet<Integer>();
+			Set<String> dayStatusSet = new TreeSet<String>();
+			Set<String> dayEmpty = new TreeSet<String>();
 			int i;
-			//List dayEmpty = new ArrayList();
+			
 			
 			for (i = 1; i < 32; i++) {
 				System.out.println("本月" + i + "號");
@@ -351,23 +352,44 @@ public class CarDetailServlet extends HttpServlet {
 						String dayStatus = schedul.substring((detail_time_no), (detail_time_no + endIndex));
 						System.out.println("起始index:" + (detail_time_no) + "," + "結束index:" + (detail_time_no + endIndex));
 	
-						
-						System.out.println("當日該時段狀態:" + dayStatus); 
+						String emptyIndex = String.valueOf(i);
+						System.out.println("當日該時段狀態:" + dayStatus);
+						//判定為空的日期就放進空日期專用Set
 						if(dayStatus.equals("空")){
-							for(Integer s:dayStatusSet){
-								if(s == i){
+							dayStatusSet.remove(emptyIndex);	
 							break;
 						}
+						//判定不為空的日期就放進封鎖日期專用Set
 						if (!dayStatus.equals("空")) {
-							dayStatusSet.add(i);
-							System.out.println("將" + i + "號放進Set.");
+							dayStatusSet.add(emptyIndex);
+							System.out.println("將" + emptyIndex + "號放進Set.");
 						}
 						 driver++;
 				};
 				detail_time_no = detail_time_no + 3;
 				endIndex = detail_time_no + 3;
 			};
-			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			/*System.out.println("有空的日期:"+dayEmpty);
+			System.out.println("沒空的日期:"+dayStatusSet);
+			//將dayStatusSet內有空的日期，從封鎖日期用陣列內移除.
+			List<String> list = new LinkedList<String>();
+			//將為空的日期取出放進list內
+		        for (String str : dayEmpty) {                
+		            if (!list.contains(str)) {
+		                list.add(str);
+		            }
+		        }
+		        System.out.println("加入有空的日期:"+list);
+		      //比對list內加入的有空日期，如有相同就去除
+		        for (String str : dayStatusSet) {      
+		            if(list.contains(str)){
+		                list.remove(str);
+		            }
+		        }
+		        System.out.println("去除有空的日期:"+list);*/
+		         
+		         
+			
 			JSONObject myObj = new JSONObject();
 			try {
 				myObj.put("dayStatusList", dayStatusSet);

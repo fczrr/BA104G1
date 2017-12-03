@@ -12,7 +12,7 @@
 
 <head>
 </head>
-<body>
+<body> 
 	<div class="container">
 						<img alt=""
 						src="<%=request.getContextPath()%>/img/member/register.jpg">

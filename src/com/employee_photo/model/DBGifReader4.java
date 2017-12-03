@@ -28,7 +28,7 @@ public class DBGifReader4 extends HttpServlet {
 			String emp_photo_no = req.getParameter("emp_photo_no");
 			emp_photo_no = new String(emp_photo_no.getBytes("ISO-8859-1"),"UTF-8");
 //			System.out.println("pic!!!!");
-			
+			 
 			Statement stmt = conn.createStatement();
 //			ResultSet rs = stmt.executeQuery(
 //				"SELECT PICTURE FROM emp_photo WHERE EMPNO ='"+ "漂亮"+"'");

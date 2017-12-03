@@ -1325,7 +1325,7 @@ body {
 	                
 	              }
 		          
-		          console.log('明細td字串2:'+tableStringAll); 
+		          console.log('明細td字串2:'+tableStringAll);  
 		          
 		          
 		          swal({

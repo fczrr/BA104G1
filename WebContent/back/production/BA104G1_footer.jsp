@@ -17,7 +17,7 @@
 
 
     <!-- jQuery -->
-    <script src="<%=request.getContextPath()%>/back/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
+<%--     <script src="<%=request.getContextPath()%>/back/gentelella-master/vendors/jquery/dist/jquery.min.js"></script> --%>
     <!-- Bootstrap -->
     <script src="<%=request.getContextPath()%>/back/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

@@ -85,32 +85,32 @@
                   
                   
 <div class="container">
-     <div class="col-md-4">
+     <div class="col-md-4" id="auth1">
         <a class="btn btn-block btn-lg btn-success btn-size" href="<%=request.getContextPath()%>/back/employee/listAllEmployee.jsp">
             <i class="fa fa-users" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i> 員工管理</span></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4"  id="auth2">
         <a class="btn btn-block btn-lg btn-danger btn-size" href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">
             <i class="fa fa-user" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>送餐管理</span></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" id="auth3">
         <a class="btn btn-block btn-lg btn-primary btn-size" data-toggle="modal" data-target="#mymodal">
             <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>派車管理</span></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" id="auth4">
         <a class="btn btn-block btn-lg btn-warning btn-size" href="<%=request.getContextPath()%>/back/setMeal/listAllSetMeal.jsp">
             <i class="fa fa-automobile" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>送餐管理</span></a>
       </div> 
-      <div class="col-md-4">
+      <div class="col-md-4" id="auth5">
         <a class="btn btn-block btn-lg btn-default mybtn btn-size" href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">
             <i class="fa fa-home" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>長照管理</span></a>
       </div> 
-      <div class="col-md-4">
+      <div class="col-md-4" id="auth6">
         <a class="btn btn-block btn-lg btn-info btn-size" href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopMaster.jsp">
             <i class="fa fa-automobile" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>商城管理</span></a>
@@ -131,3 +131,85 @@
 
 
 <%@ include file="/back/production/BA104G1_footer.jsp" %>
+
+
+      
+<script >
+
+$(document).ready(function() {
+	var buttonList = 'auth';
+
+	// 將離職狀態的全部功能隱藏
+	
+	// 最高權限都看得到
+
+	// 總部專員	
+	if('${empVO.empDep}' == '總部' && '${empVO.empTitle}' == '專員'){
+		for(var i =2 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	// 派車經理	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '經理'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		
+	// 派車專員	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '專員'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	// 送餐經理	
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		$('#'+buttonList+'6').remove();
+		$('#'+buttonList+'7').remove();
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		$('#'+buttonList+'6').remove();
+		$('#'+buttonList+'7').remove();
+		
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<6;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =7 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	};
+
+		
+});
+
+
+</script >

@@ -280,13 +280,23 @@ public class HcWorkshiftsServlet extends HttpServlet {
 //					System.out.println("--"+key+"--"+value[0]);
 //				}	 
 				
+				if(req.getParameter("shiftNumber").equals("00")){
+					if(map.get("servDate")[0].equals("")){
+						errorMsgs.add("請輸入日期");
+					}
+					if(map.get("servTime")[0].equals("")){
+						errorMsgs.add("請輸入時間");
+					}
+					
+				}
 				
-//				if(map.get("servDate")[0].equals("")){
-//					errorMsgs.add("請輸入日期");
-//				}
-//				if(map.get("servTime")[0].equals("")){
-//					errorMsgs.add("請輸入時間");
-//				}
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher(failureV);
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
+				
 				System.out.println("test yes0"+req.getParameter("servDate")+"  "+req.getParameter("servTime"));
 				if(!(req.getParameter("servDate").equals("")) && !(req.getParameter("servTime").equals(""))){
 				String servDate = map3.get("servDate")[0];
@@ -303,16 +313,6 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				}
 				
 				System.out.println("test yes1");
-				
-				
-				if (!errorMsgs.isEmpty()) {
-					RequestDispatcher failureView = req
-							.getRequestDispatcher(failureV);
-					failureView.forward(req, res);
-					return;//程式中斷
-				}
-
-				
 				/***************************2.開始複合查詢***************************************/
 				HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
 				List<HcWorkShiftsVO> listHcWorks_ByCompositeQuery  = hcWorkShiftsService.getAll(map);

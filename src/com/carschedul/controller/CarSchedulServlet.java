@@ -506,7 +506,7 @@ public class CarSchedulServlet extends HttpServlet {
 								c++;
 							}
 							
-					
+					 
 							//判斷解析字串為早、中、晚班，並寫入新班表，同時增加工時
 							if(objString.indexOf("T08")!= -1){
 								System.out.println(objString.substring(18,20)+"號早上有班");

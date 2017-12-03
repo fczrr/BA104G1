@@ -15,10 +15,7 @@
 <!-- 不可快取 -->
 <% response.setDateHeader("Expires",0); %>
 <!-- 放入假的會員 -->
-<% MemberService memSvc = new MemberService();
-   MemberVO memVO = (MemberVO)memSvc.findByPrimaryKey("MEM0002");
-   session.setAttribute("memVO",memVO);
-%>
+
 
 <%@ include file="/front/navbar.jsp" %>
 <!DOCTYPE html>
@@ -288,6 +285,15 @@ a.thumbnail{
                         <input type="hidden" name="servTime" value="${param.servTime}">
                         <input type="hidden" name="caredNo" value="${param.caredNo}">
                         <input type="hidden" name="empNo" value="${param.empNo}">
+                        <input type="text" name="expNo" value="">
+                        
+<!--                         <select type="hidden" name="expNo" > -->
+<!-- 				            <option value="" selected>服務人員條件(非必選)</option> -->
+<!-- 				          	<option value="101"> 丙級照護員</option> -->
+<!-- 				          	<option value="102"> 乙級照護員</option> -->
+<!-- 				          	<option value="201"> 護士</option> -->
+<!-- 				          	<option value="202"> 護理師</option> -->
+<!-- 				         </select> -->
                     </form>
                     
                     <hr>
@@ -354,6 +360,7 @@ a.thumbnail{
 <!-- 	        <input type="hidden" name="shiftNumber" value="00"> -->
 	        <input type="hidden" name="successView" value="/front/homeCare/Hc_show_emps.jsp">
 	        <input type="hidden" name="failureV" value="/front/homeCare/Hc_show_emps.jsp">
+		    <input type="hidden" name="shiftNumber" value="00">
 	
 	         <div class="form-group pull-right">       
 	        <input type="submit" class="btn btn-default" value="重新查詢">
@@ -404,9 +411,15 @@ a.thumbnail{
 			  		 </ul>
 			        <span class="pull-left">服務人員太多，不知道該如何選擇嗎?<br>
 					選我就對了!!		
-			        </span>
-	     			<br>
-			        <br>		     
+			        </span><br>
+				          <select  id="pre-expNo" name="pre-expNo" >
+				            <option value="" selected>服務人員條件(非必選)</option>
+				          	<option value="101"> 丙級照護員</option>
+				          	<option value="102"> 乙級照護員</option>
+				          	<option value="201"> 護士</option>
+				          	<option value="202"> 護理師</option>
+				          </select>
+
                      <span class="badge pull-right" style="background-color:#ffd340; font-size:20px;">選擇我</span>
 				    </div>
 			     </div>
@@ -585,7 +598,6 @@ a.thumbnail{
 	        elem: '#servDate' 
 	        ,min: 1
 	        ,max: '2018-12-31'
-	        ,showBottom: false
 	        ,done: function(value, date, endDate){
 	            $('#servDate-final').attr('value',value);
 	            console.log(value); 
@@ -628,6 +640,11 @@ a.thumbnail{
          		        scrollTop:0
          		    },1000);
 		    	}); 
+		    	
+		    	$("#pre-expNo").change(function(event){
+		    		console.log(event.target.value);
+		    		$('[name="expNo"]').val(event.target.value);
+		    	});
 			});
 			
 			

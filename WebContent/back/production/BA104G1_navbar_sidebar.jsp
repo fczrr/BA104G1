@@ -63,7 +63,8 @@
 					<div class="navbar nav_title" style="border: 0;">
 						<a
 							href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp"
-							class="site_title"><i class="fa fa-home"></i> <span>有我罩你</span></a>
+							class="site_title"><img src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+											width="30px"> <span>有我罩你</span></a>
 					</div>
 
 					<div class="clearfix"></div>

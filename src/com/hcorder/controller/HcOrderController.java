@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -78,7 +79,7 @@ public class HcOrderController extends HttpServlet {
 				String caredNo = req.getParameter("caredNo");
 				String empNo = req.getParameter("empNo");
 				String memNo = req.getParameter("memNo");
-				if(req.getSession().getAttribute("memVO") == null){
+				if(req.getSession().getAttribute("memberVO") == null){
 					errorMsgs.add("請登入");
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front/homeCare/Hc_order.jsp");
@@ -131,12 +132,37 @@ public class HcOrderController extends HttpServlet {
 
 				
 				/***************************2.開始新增資料*****************************************/
+//				if(empNo.equals("EMP0000")){
+//					HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
+//					//分派當天有空  工作時數最少員工
+//					HcWorkShiftsVO hcWorkShiftsVO = hcWorkShiftsService.getOneByDateTime(servDate, serviceTime);
+//					if(hcWorkShiftsVO != null){
+//					empNo = hcWorkShiftsVO.getEmpNo();
+//					System.out.println("自動選人empNo  "+empNo);
+//					}
+//				}  
+				
 				if(empNo.equals("EMP0000")){
 					HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
-					//分派當天有空  工作時數最少員工
-					HcWorkShiftsVO hcWorkShiftsVO = hcWorkShiftsService.getOneByDateTime(servDate, serviceTime);
-					empNo = hcWorkShiftsVO.getEmpNo();
-					System.out.println("empNo  "+empNo);
+					HashMap map = (HashMap) req.getParameterMap();
+					HashMap map2 = new HashMap<String, String[]>();
+					Set<String> keys = map.keySet();
+					for (String key : keys) {
+//						String[] value = map.get(key);
+//						map.put(key, value);						
+					}	
+					map2.remove("empNo");
+					String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , serviceTime);
+					String shiftNumber = Number[1] ;
+					String monthOfYear = Number[0];
+					map2.put("shiftNumber", new String[] {shiftNumber});	
+					map2.put("monthOfYear", new String[] {monthOfYear});
+					//分派當天有空  工作時數最少員工					
+					List<HcWorkShiftsVO> hcWorkShiftsVOList = hcWorkShiftsService.getAll(map2);
+					if(hcWorkShiftsVOList.size() != 0){
+					empNo = hcWorkShiftsVOList.get(0).getEmpNo();
+					System.out.println("自動選人empNo  "+empNo);
+					}
 				}				
 				
 				HcOrderMasterService hcOrderSvc = new HcOrderMasterService();
@@ -235,7 +261,7 @@ public class HcOrderController extends HttpServlet {
 					hcOrderDetailList.add(hcOrderDetail);
 				}
 				
-				if(req.getSession().getAttribute("memVO") == null){
+				if(req.getSession().getAttribute("memberVO") == null){
 					errorMsgs.add("請登入");
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front/homeCare/Hc_order.jsp");

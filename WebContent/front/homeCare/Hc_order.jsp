@@ -99,7 +99,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="row">
                 <div class="col-xs-12 col-sm-12">
                     <div class="text-item text-center">
-                        <h1>前短期照護服務</h1>
+                        <h1>照護服務</h1>
 						<p>希望有照護人員輔助生活起居與陪同就醫。或是家庭照顧者想紓解照顧壓力，需要暫時的居家喘息服務嗎?<br>
 						甚至是等待外籍看護交班的空窗期，迫切需要短時間的照顧服務員、看護前來照顧嗎?<br>
 						現在，只要簡單幾步就能輕鬆獲得居家照護服!!</p>
@@ -156,7 +156,7 @@ request.setCharacterEncoding("UTF-8");
                 <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                     <div class="panel panel-success text-item">
                       <div class="panel-heading">
-                        <h3 class="panel-title">選擇服務日期&時段</h3>
+                        <h3 class="panel-title">選擇長期服務</h3>
                       </div>
                       <div class="panel-body text-center">
                         <div class="row">
@@ -184,7 +184,7 @@ request.setCharacterEncoding("UTF-8");
                 <div class="col-xs-12 col-sm-6">
                     <div class="panel panel-success text-item">
                       <div class="panel-heading">
-                        <h3 class="panel-title">選擇照護人員&被照護者</h3>
+                        <h3 class="panel-title">選擇長期服務</h3>
                       </div>
                       <div class="panel-body text-center">
                         <div class="row">
@@ -194,7 +194,8 @@ request.setCharacterEncoding("UTF-8");
 								您可以自由選擇信賴的照護員 <br>
 								<br>
 								P.S.長期服務將由平台自動幫你安排</p><br>
-                                <a href='#modal-step2' data-toggle="modal" class="btn btn-primary">選擇照護人員</a>
+<!--                                 <a href='#modal-step2' data-toggle="modal" class="btn btn-primary">選擇照護人員</a> -->
+                                <a href='<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp' data-toggle="modal" class="btn btn-primary">長期服務</a>
                                 
                             </div>
                         </div>
@@ -268,7 +269,6 @@ request.setCharacterEncoding("UTF-8");
 	                        <input type="hidden" name="successView" value="/front/homeCare/Hc_show_emps.jsp">
         					<input type="hidden" name="failureV" value="/front/homeCare/Hc_order.jsp">
 	                        
-	                        <a href='<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp' data-toggle="modal" class="btn btn-primary">長期服務</a>
 	                    </div>
 	                    <div class="modal-footer">                      
 	<!--                         <input type="submit" class="btn btn-primary" data-dismiss="modal" id="datenloc-check" value="確認"> -->
@@ -362,18 +362,22 @@ request.setCharacterEncoding("UTF-8");
 <%-- 	                              ${param.empNo} --%>
 <%-- 	                              + ${expertService.getAllByEmpNo(param.empNo).size()} --%>
 <%-- 	                              ++ ${expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()} --%>
-<%-- 	                              <span id='price'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br> --%>
-<%-- 	                            <c:choose> --%>
-<%-- 	                               <c:when test='expertService.getAllByEmpNo(param.empNo).size() != 0)'> --%>
-<%-- 	                              <span id='price'>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()).getExpPrice()}</span> --%>
-<%-- 	                               </c:when> --%>
-<%-- 	                               <c:otherwise> --%>
-<!-- 	                              <span id='price'>下定後結算</span>	                                -->
-<%-- 	                               </c:otherwise> --%>
-<%-- 	                            </c:choose> --%>
+	                              <span id='price'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br>
+	                            <c:choose>
+	                               <c:when test='expertService.getAllByEmpNo(param.empNo).size() != 0)'>
+	                              <span id='price'>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()).getExpPrice()}元</span>
+	                               </c:when>
+	                               <c:when test='${not empty param.expNo}'>
+	                              <span id='price'>${expertlistService.getOneEXPLIST(param.expNo).getExpPrice()}元</span>
+	                               </c:when>
+	                               <c:otherwise>
+	                               		未指定專長
+	                               </c:otherwise>
+	                            </c:choose>
 	                              <input type="hidden" class="form-control" id="empNo-final" name="empNo" value="${param.empNo}" aria-describedby="helpBlock2">
-	                              <input type="hidden" class="form-control" name="memNo" value="${memVO.memNo}" aria-describedby="helpBlock2">
+	                              <input type="hidden" class="form-control" name="memNo" value="${memberVO.memNo}" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="action" value="add_hc_order" aria-describedby="helpBlock2">
+	                              <input type="hidden" class="form-control" name="expNo" value="${param.expNo}" aria-describedby="helpBlock2">	                              
 	                              <input type="hidden" class="form-control" name="forwardURL" value="<%=request.getServletPath()%>" aria-describedby="helpBlock2">
 		                         </div>	                        
 	                    </div>
@@ -432,6 +436,8 @@ request.setCharacterEncoding("UTF-8");
     	console.log('${param.servTime}'+'!!!');
     	console.log('${param.caredNo}'+'!!!');
     	console.log('${param.empNo}'+'!!!');
+    	console.log('${param.expNo}'+'!!!');
+
     	if('${param.empNo}' != ''){
     		$('html,body').animate({ scrollTop: document.body.clientHeight }, 1000);
     	}

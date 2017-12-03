@@ -11,7 +11,7 @@ public class EmpPhotosService {
 	private EmpPhotosDAO_interface dao = null;
 	
 	public EmpPhotosService(){
-		dao = new EmpPhotosJDBCDAO();
+		dao = new EmpPhotosDAO();
 	}
 	public EmpPhotosVO addEmpPhoto(String empPhtoNo ,String empNo,byte[] empPhoto) {
 		EmpPhotosVO empPhotosVO = new EmpPhotosVO();

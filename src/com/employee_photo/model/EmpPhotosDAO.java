@@ -95,7 +95,7 @@ public class EmpPhotosDAO implements EmpPhotosDAO_interface {
 			// pstmt.setString(3, EmpPhotos.getEmpPhtoNo());
 
 			// "update emp_photos set EMP_PHOTO = ? where EMP_NO = ?";
-
+ 
 			int i = pstmt.executeUpdate();
 			System.out.println("修改" + i + "一筆");
 

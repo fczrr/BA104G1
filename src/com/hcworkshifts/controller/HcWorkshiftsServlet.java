@@ -274,20 +274,18 @@ public class HcWorkshiftsServlet extends HttpServlet {
 					
 					map = (HashMap<String, String[]>)req.getParameterMap();
 				} 
-//				Set<String> keys = map.keySet();
-//				for (String key : keys) {
-//					String[] value = map.get(key);
-//					System.out.println("--"+key+"--"+value[0]);
-//				}	 
-				
-				if(req.getParameter("shiftNumber").equals("00")){
-					if(map.get("servDate")[0].equals("")){
-						errorMsgs.add("請輸入日期");
+
+
+				if(req.getParameter("shiftNumber")!= null){
+					if(req.getParameter("shiftNumber").equals("00")){
+						if(map.get("servDate")[0].equals("")){
+							errorMsgs.add("請輸入日期");
+						}
+						if(map.get("servTime")[0].equals("")){
+							errorMsgs.add("請輸入時間");
+						}
+						
 					}
-					if(map.get("servTime")[0].equals("")){
-						errorMsgs.add("請輸入時間");
-					}
-					
 				}
 				
 				if (!errorMsgs.isEmpty()) {
@@ -297,19 +295,30 @@ public class HcWorkshiftsServlet extends HttpServlet {
 					return;//程式中斷
 				}
 				
-				System.out.println("test yes0"+req.getParameter("servDate")+"  "+req.getParameter("servTime"));
-				if(!(req.getParameter("servDate").equals("")) && !(req.getParameter("servTime").equals(""))){
-				String servDate = map3.get("servDate")[0];
-				String servTime = map3.get("servTime")[0];
+//				System.out.println("test yes0"+req.getParameter("servDate")+"  "+req.getParameter("servTime"));
+				if(req.getParameter("servDate")!=null && req.getParameter("servTime")!=null){
+					if(!(req.getParameter("servDate").equals("")) && !(req.getParameter("servTime").equals(""))){
+					String servDate = map3.get("servDate")[0];
+					String servTime = map3.get("servTime")[0];
+						
+						
+						String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , servTime );
+						String shiftNumber = Number[1] ;
+						String monthOfYear = Number[0];
+						map3.put("shiftNumber", new String[] {shiftNumber});	
+						map3.put("monthOfYear", new String[] {monthOfYear});
+						map = map3;
+	
+					}
+				}
+				
+				if(req.getParameter("monthOfYear")!=null){//轉換2017到106  因為前端轉不掉逼不得已
 					
-					
-					String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , servTime );
-					String shiftNumber = Number[1] ;
-					String monthOfYear = Number[0];
-					map3.put("shiftNumber", new String[] {shiftNumber});	
-					map3.put("monthOfYear", new String[] {monthOfYear});
-					map = map3;
-
+					if(req.getParameter("monthOfYear").length()>=6){
+						String monthOfYear = (Integer.valueOf(req.getParameter("monthOfYear").substring(0, 4))-1911)+req.getParameter("monthOfYear").substring(4, 6);
+						map3.put("monthOfYear", new String[] {monthOfYear});
+						map = map3;
+					}
 				}
 				
 				System.out.println("test yes1");

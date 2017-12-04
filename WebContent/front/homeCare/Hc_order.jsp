@@ -77,6 +77,21 @@ request.setCharacterEncoding("UTF-8");
 				display:block;
             }
             
+            
+			                                             /*置頂用*/
+			#gotop {
+			    position: fixed;
+			    border-radius: 50px;
+			    right: 20px;
+			    bottom: 10px;
+			    padding: 10px 16px;
+			    font-size: 25px;
+			    background: rgba(228, 211, 211, 0.36);
+			    color: #FAFCFD;
+			    cursor: pointer;
+			    z-index: 1000;
+			}
+            
         </style>
 
 	</head>
@@ -85,6 +100,7 @@ request.setCharacterEncoding("UTF-8");
 
 <!-- 內容 ============================================================================== -->
 <!--         <div class="container" style="height:55px"> </div> -->
+<div id="gotop" class="papa" >˄</div>
 <div class="container">
   <div class="page-header" id="banner" style="margin-bottom:0px">
   <img src="<%=request.getContextPath()%>/img/index/bannar/senior-asian-couple-walking-fix.jpg" style=" max-width:-webkit-fill-available;">
@@ -156,7 +172,7 @@ request.setCharacterEncoding("UTF-8");
                 <div class="col-xs-12 col-sm-6 col-sm-pull-6">
                     <div class="panel panel-success text-item">
                       <div class="panel-heading">
-                        <h3 class="panel-title">選擇長期服務</h3>
+                        <h3 class="panel-title">選擇短期服務</h3>
                       </div>
                       <div class="panel-body text-center">
                         <div class="row">
@@ -168,7 +184,7 @@ request.setCharacterEncoding("UTF-8");
 
                                 
                             </div>
-                            <a href='#modal-step1' data-toggle="modal" class="btn btn-primary">選擇日期</a>
+                            <a href='#modal-step1' data-toggle="modal" class="btn btn-primary">短期服務</a>
                             
                         </div>
                       </div>
@@ -193,7 +209,7 @@ request.setCharacterEncoding("UTF-8");
 								各個都是經過專業訓練並且有合格證照的 <br>
 								您可以自由選擇信賴的照護員 <br>
 								<br>
-								P.S.長期服務將由平台自動幫你安排</p><br>
+								P.S.長期服務將由平台自動幫你安排服務人員!</p><br>
 <!--                                 <a href='#modal-step2' data-toggle="modal" class="btn btn-primary">選擇照護人員</a> -->
                                 <a href='<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp' data-toggle="modal" class="btn btn-primary">長期服務</a>
                                 
@@ -362,16 +378,15 @@ request.setCharacterEncoding("UTF-8");
 <%-- 	                              ${param.empNo} --%>
 <%-- 	                              + ${expertService.getAllByEmpNo(param.empNo).size()} --%>
 <%-- 	                              ++ ${expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()} --%>
-	                              <span id='price'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br>
+	                              <span id='empName'>${employeeService.findByPrimaryKey(param.empNo).getEmpName()}</span><br>
 	                            <c:choose>
-	                               <c:when test='expertService.getAllByEmpNo(param.empNo).size() != 0)'>
+	                               <c:when test='${expertService.getAllByEmpNo(param.empNo).size() != 0}'>
 	                              <span id='price'>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(param.empNo).get(0).getExpNo()).getExpPrice()}元</span>
 	                               </c:when>
 	                               <c:when test='${not empty param.expNo}'>
 	                              <span id='price'>${expertlistService.getOneEXPLIST(param.expNo).getExpPrice()}元</span>
 	                               </c:when>
 	                               <c:otherwise>
-	                               		未指定專長
 	                               </c:otherwise>
 	                            </c:choose>
 	                              <input type="hidden" class="form-control" id="empNo-final" name="empNo" value="${param.empNo}" aria-describedby="helpBlock2">
@@ -388,7 +403,7 @@ request.setCharacterEncoding("UTF-8");
                     </form>
                 </div>
             </div>
-                    </div> 
+                    </div>  
                 </div> 
                 <div class="col-xs-12 col-sm-2"></div>
             </div>
@@ -430,6 +445,19 @@ request.setCharacterEncoding("UTF-8");
         }
     });
     
+    //置頂用的
+	$("#gotop").click(function(){
+	    jQuery("html,body").animate({
+	        scrollTop:0
+	    },1000);
+	});
+	$(window).scroll(function() {
+	    if ( $(this).scrollTop() > 300){
+	        $('#gotop').fadeIn("fast");
+	    } else {
+	        $('#gotop').stop().fadeOut("fast");
+	    }
+	});
            
     $(function() { 
     	console.log('${param.servDate}'+'!!!');

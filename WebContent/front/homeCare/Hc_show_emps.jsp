@@ -241,6 +241,18 @@ a.thumbnail{
 <!-- 各項服務內容 ============================================================================== -->
 <div id="gotop" class="papa" >˄</div>
 
+<div class="container">
+  <div class="page-header" id="banner" style="margin-bottom:0px">
+    <img src="<%=request.getContextPath()%>/img/index/bannar/senior-asian-couple-walking-fix.jpg" style=" max-width:-webkit-fill-available;">
+  
+  <div class="row">
+    <div class="col-lg-6">
+      <h1>短期照護服務</h1>
+      <p class="lead">請在下方選擇服務日期及服務對象</p>
+    </div>
+  </div>
+</div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -285,7 +297,7 @@ a.thumbnail{
                         <input type="hidden" name="servTime" value="${param.servTime}">
                         <input type="hidden" name="caredNo" value="${param.caredNo}">
                         <input type="hidden" name="empNo" value="${param.empNo}">
-                        <input type="text" name="expNo" value="">
+                        <input type="hidden" name="expNo" value="">
                         
 <!--                         <select type="hidden" name="expNo" > -->
 <!-- 				            <option value="" selected>服務人員條件(非必選)</option> -->
@@ -605,7 +617,7 @@ a.thumbnail{
 	        }
 	    });
 	    
-	    
+	    //置頂用的
 		$("#gotop").click(function(){
 		    jQuery("html,body").animate({
 		        scrollTop:0

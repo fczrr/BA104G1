@@ -140,7 +140,7 @@
 						<div >
 							<a
 								href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp"><button
-									class="btn btn-danger pull-left">開始使用服務</button></a>
+									class="btn btn-danger pull-right">開始使用服務</button></a>
 						</div>
 					</td>
 				</tr>
@@ -149,7 +149,6 @@
 	</div>
 </body>
 <%@ include file="/front/footerbar.jsp"%>
-
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>

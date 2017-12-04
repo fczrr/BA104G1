@@ -781,7 +781,6 @@ body {
                 <hr style="margin:8px auto ;width:400px">
 
                 <span class="label label-default phone">電話</span>
-                <span class="label label-default email">Email</span>
                 <span class="label label-info cartype">四人座</span>
                 <span class="label label-default workhours">服務時數:小時</span>
             </div>
@@ -1009,7 +1008,9 @@ body {
 				empCarLoc = $('.form-control :selected').attr('empCarLoc');
 				$('.loc').text(empCarLoc);
 				
-				
+				//切換電話
+				empPhone = "電話:0"+$('.form-control :selected').attr('phone');
+				$('.phone').text(empPhone);
 				
 				
 				//把時段事件替換成該員工的
@@ -1274,9 +1275,10 @@ body {
                      var empName = ev.empName; 
                      var car_type_name = ev.carTypeName;
                      var empCarLoc = ev.empCarLoc;
+                     var phone = ev.phone;
                     
                      $("#empSelect").append($("<option value='"+emp_no+"' work_hours='"+work_hours+"'car_type_name='"+car_type_name+
-                    		 "'empCarLoc='"+empCarLoc+"'>"+empName+"</option>"))
+                    		 "'empCarLoc='"+empCarLoc+"'phone='"+phone+"'>"+empName+"</option>"))
                      
                  }
                  

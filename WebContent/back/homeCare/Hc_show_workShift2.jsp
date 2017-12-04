@@ -119,29 +119,89 @@ h4 {
 							<div class="clearfix"></div>
 						</div>
 						<div class="x_content">
-<!-- 							<div class="col-xs-12 col-sm-3 "> -->
-<!-- 								<form -->
-<%-- 									action="<%=request.getContextPath()%>/employee/employee.do?action=getOne_For_Display" --%>
-<!-- 									method="post"> -->
-<!-- 									<div class="form-group form-inline input-group"> -->
-<!-- 										<input type="text" class="form-control" name="empNo" -->
-<!-- 											placeholder="依員工編號查詢" /> <span class="input-group-btn"> -->
-<!-- 											<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;查詢</button> -->
-<!-- 										</span> -->
-<!-- 									</div> -->
-<!-- 								</form> -->
-<!-- 							</div> -->
-							<div class="col-xs-12 col-sm-3">
-								<c:if test="${not empty errorMsgs}">
-									<font color='red'>請修正以下錯誤:
-										<ul>
-											<c:forEach var="message" items="${errorMsgs}">
-												<li>${message}</li>
-											</c:forEach>
-										</ul>
-									</font>
-								</c:if>
-							</div>
+	<div class="row">
+<!-- 	   <hr>	 -->
+	   <div class="col-xs-12 col-sm-12">
+	     <h4 style="color:#428fdc">查詢:</h4>
+	   <form class="form-inline"  id='listHcWorks_ByCompositeQuery' action = "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do" method="post">
+        <div class="myform-row">
+         
+	         <div class="form-group ">
+	          <label class="control-label" for="monthOfYear">請點選月份</label>
+	           <input type="text" value="${param.monthOfYear}" class="form-control" id="monthOfYear" name="monthOfYear" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
+	         </div>        
+
+        	 <div class="form-group ">
+	          <label class="control-label" for="empName">搜尋服務人員姓名</label>
+	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入姓名" style="border-radius:5px;">
+	         </div>
+        	                        
+	         <div class="form-group ">
+	          <label class="control-label" for="expNo">請選擇服務人員</label>
+	          <select class="form-control" id="expNo" name="expNo" aria-describedby="helpBlock2" style="border-radius:5px;" >
+	            <option value="" selected>請選擇服務人員專長</option>
+	          	<option value="101"> 丙級照護員</option>
+	          	<option value="102"> 乙級照護員</option>
+	          	<option value="201"> 護士</option>
+	          	<option value="202"> 護理師</option>
+	          </select>
+	        </div>
+	         
+	         <div class="form-group ">
+	          <label class="control-label" for="empName">搜尋服務人員姓名</label>
+	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入姓名" style="border-radius:5px;">
+	         </div>
+	         
+	         <div class="form-group pull-right">       
+	        <input type="submit" class="btn btn-success" value="查詢" style="border-radius:5px;">
+	         </div>
+	        
+       </div>
+        
+       <div class="myform-row">
+	        <h4 style="color:#428fdc">查詢當日有空的人:</h4>
+<!-- 	       	 <div class="form-group "> -->
+<!-- 	          <label class="control-label" for="empName">搜尋服務人員姓名</label> -->
+<!-- 	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入關鍵字(非必要)" style="border-radius:5px;"> -->
+<!-- 	         </div> -->
+
+	         <div class="form-group ">
+	          <label class="control-label" for="servDate">請點選日期</label>
+	           <input type="text" value="${param.servDate}" class="form-control" id="servDate" name="servDate" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
+	         </div>        
+	         <div class="form-group ">
+	          <label class="control-label" for="servTime">請點選服務時段</label>
+	          <select class="form-control" id="servTime" name="servTime" aria-describedby="helpBlock2" style="border-radius:5px;">
+	            <option value="" selected>請選擇服務時段</option>
+	          	<option value="早"> 上午(08:00~12:00)</option>
+	          	<option value="中"> 下午 (13:30~17:30)</option>
+	          	<option value="晚"> 晚上 (18:00~22:00)</option>
+	          </select>
+	        </div>
+	        
+	        
+	        <input type="hidden" name="action" value="listHcWorks_ByCompositeQuery">
+<!-- 	        <input type="hidden" name="shiftNumber" value="00"> -->
+	        <input type="hidden" name="successView" value="/back/homeCare/Hc_show_workShift2.jsp">
+	        <input type="hidden" name="failureV" value="/back/homeCare/Hc_show_workShift2.jsp">
+	
+
+       </div>
+       <hr>
+
+              
+      </form>    
+<!--       錯誤訊息 -->
+			<c:if test="${not empty errorMsgs}">
+				<ul>
+					<c:forEach var="message" items="${errorMsgs}">
+						<li style="color:red">${message}</li>
+					</c:forEach>
+				</ul>
+			</c:if>
+	   </div>
+	</div>
+
 
 								<div class="col-xs-1 pull-right">
 									<a
@@ -173,7 +233,7 @@ h4 {
 						                            <td>${hcWorkShiftsVO.totalWorkShifts}</td>
 												<td>
 													<div class="btn-group">
-														<a href='<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift3.jsp?monthOfyear=10612&empNo=${hcWorkShiftsVO.empNo}' data-toggle="modal"
+														<a href='<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift3.jsp?monthOfyear=${hcWorkShiftsVO.monthOfYear}&empNo=${hcWorkShiftsVO.empNo}' data-toggle="modal"
 															class="btn btn-primary" role="button"> <span
 															class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;修改
 														</a>
@@ -215,3 +275,21 @@ h4 {
 <!-- 	</div> -->
 <!-- 	</div> -->
 <!-- </div> -->
+
+		<script src="<%=request.getContextPath()%>/front/homeCare/laydate/laydate.js"></script> 
+		
+		<script>
+	    laydate.render({
+	        elem: '#monthOfYear' 
+	        ,format: 'yyyyMM'
+	        ,type: 'month'
+
+	    });
+	    
+	    $(function(){
+	    	$(document).on('change',$('#monthOfYear'),function(){
+	    		console.log($('#monthOfYear').attr('value').substring(0,4)*1-1911+$('#monthOfYear').attr('value').substring(4,6));
+
+	    	});
+	    });
+	    </script>

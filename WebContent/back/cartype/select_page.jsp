@@ -25,6 +25,15 @@ h4 {
 	color: blue;
 	display: inline;
 }
+
+.addbtn {
+    background: url(/BA104G1/back/image/car/addcar.png);
+    width: 200px;
+    height: 180px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 </style>
 
 </head>
@@ -50,30 +59,11 @@ h4 {
 		<br></li>
 
 
-		<li>
-			<FORM METHOD="post"
-				ACTION="<%=request.getContextPath()%>/cartype/cartype.do">
-				<b>輸入車型編號 (如1001):</b> <input type="text" name="cartypeno">
-				<input type="hidden" name="action" value="getOne_For_Display">
-				<input type="submit" value="送出">
-			</FORM>
-		</li>
 
 		<jsp:useBean id="cartypeSvc" scope="page"
 			class="com.cartype.model.CarTypeService" />
 
-		<li>
-			<FORM METHOD="post"
-				ACTION="<%=request.getContextPath()%>/cartype/cartype.do">
-
-				<b>選擇車型編號:</b> <select size="1" name="cartypeno">
-					<c:forEach var="cartypeVO" items="${cartypeSvc.all}">
-						<option value="${cartypeVO.cartypeno}">${cartypeVO.cartypeno}
-					</c:forEach>
-				</select> <input type="hidden" name="action" value="getOne_For_Display">
-				<input type="submit" value="送出">
-			</FORM>
-		</li>
+		
 
 		<li>
 			<FORM METHOD="post"
@@ -90,10 +80,13 @@ h4 {
 
 
 	<h3>車型管理</h3>
+		<div class="addbtn" style="cursor:pointer;" onclick="location.href=
+'addCarType.jsp';"> </div>
+	
+		<!-- <li><a href='addCarType.jsp'>新增</a>一筆新車型</li> -->
+		
+		
 
-	<ul>
-		<li><a href='addCarType.jsp'>新增</a>一筆新車型</li>
-	</ul>
 
 </body>
 </html>

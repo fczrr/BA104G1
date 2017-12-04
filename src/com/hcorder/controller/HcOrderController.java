@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.expert.model.ExpertService;
 import com.expertlist.model.ExpertlistService;
 import com.expertlist.model.ExpertlistVO;
 import com.hcorder.modal.HcOrderDetailVO;
@@ -69,7 +70,7 @@ public class HcOrderController extends HttpServlet {
 		
 		
 		
-		if ("add_hc_order".equals(action)) { // 來自select_page.jsp的請求
+		if ("add_hc_order".equals(action)) { // 來自HC_order.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -132,8 +133,15 @@ public class HcOrderController extends HttpServlet {
 				Integer point = memberVO.getPoint();
 				
 				ExpertlistService expertlistService = new ExpertlistService();
-				ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expNo);
-				Integer cost =expertlistVO.getExpPrice();
+				Integer cost=0;
+				if(empNo.equals("EMP0000")){
+					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expNo);
+					cost =expertlistVO.getExpPrice();
+				}else{
+					ExpertService expertService = new ExpertService();					
+					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(empNo).get(0).getExpNo());
+					cost =expertlistVO.getExpPrice();
+				}
 				
 				if(cost>point){
 					errorMsgs.add("抱歉! 餘額不足喔! 目前餘額"+point+", 請至會員中心儲值");
@@ -261,7 +269,7 @@ public class HcOrderController extends HttpServlet {
 					String servTime = 	servDates[i].substring(servDates[i].length()-1, servDates[i].length());
 			System.out.println(servTime);
 					
-					//錯誤驗證
+					//錯誤驗證  
 					Date serviceDate = null;				
 					try {
 						serviceDate = java.sql.Date.valueOf(servDate);
@@ -299,6 +307,26 @@ public class HcOrderController extends HttpServlet {
 					failureView.forward(req, res);
 					
 				}
+				
+				//檢查錢包 
+				MemberService memberService  = new MemberService();
+				MemberVO  memberVO = memberService.findByPrimaryKey(memNo);
+				Integer point = memberVO.getPoint();
+				
+//				ExpertlistService expertlistService = new ExpertlistService();
+//				Integer cost=0;
+//				if(empNo.equals("EMP0000")){
+//					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expNo);
+//					cost =expertlistVO.getExpPrice();
+//				}else{
+//					ExpertService expertService = new ExpertService();					
+//					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(empNo).get(0).getExpNo());
+//					cost =expertlistVO.getExpPrice();
+//				}
+//				
+//				if(cost>point){
+//					errorMsgs.add("抱歉! 餘額不足喔! 目前餘額"+point+", 請至會員中心儲值");
+//				}
 				
 
 				if (!errorMsgs.isEmpty()) {

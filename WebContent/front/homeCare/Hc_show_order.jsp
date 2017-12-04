@@ -117,6 +117,13 @@
 
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+			  <a href='<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp' data-toggle="modal" class="btn btn-primary pull-left">我的訂單</a>
+			  <a href='<%=request.getContextPath()%>/index.jsp' data-toggle="modal" class="btn btn-primary pull-right">回首頁</a>
+			
+			</div>
+		</div>
 	</div>
 	</div>
 

@@ -269,7 +269,7 @@ public class HcOrderController extends HttpServlet {
 					String servTime = 	servDates[i].substring(servDates[i].length()-1, servDates[i].length());
 			System.out.println(servTime);
 					
-					//錯誤驗證
+					//錯誤驗證 
 					Date serviceDate = null;				
 					try {
 						serviceDate = java.sql.Date.valueOf(servDate);

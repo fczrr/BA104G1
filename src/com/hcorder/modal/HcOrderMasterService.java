@@ -40,10 +40,17 @@ public class HcOrderMasterService {
 		HcOrderDetailVO hcOrderDetail = new HcOrderDetailVO();
 		hcOrderDetail.setServiceDate(serviceDate);
 		hcOrderDetail.setServiceTime(serviceTime);
-		hcOrderDetail.setEmpNo(empNo);
 		hcOrderDetail.setOrderDetailStataus("未服務");
+		if(empNo.substring(0, 7).equals("EMP0000")){
+			System.out.println(empNo.substring(0, 7));
+			System.out.println(empNo.substring(7));
+			hcOrderDetail.setEmpNo(empNo.substring(0, 7));
+			hcOrderDetail.setPrice(Integer.valueOf(empNo.substring(7)));
+		}else{
+		hcOrderDetail.setEmpNo(empNo);
+		}
 		hcOrderDetailList.add(hcOrderDetail);
-	System.out.println("svc bf "+empNo);	
+	System.out.println("svc bf "+hcOrderDetail.getEmpNo());	
 		String orderNo =  dao.insert(hcOrderMaster , hcOrderDetailList);
 	System.out.println("svc af "+orderNo);
 		hcOrderMaster.setOrderNo(orderNo);

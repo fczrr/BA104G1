@@ -22,11 +22,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.expertlist.model.ExpertlistService;
+import com.expertlist.model.ExpertlistVO;
 import com.hcorder.modal.HcOrderDetailVO;
 import com.hcorder.modal.HcOrderMasterService;
 import com.hcorder.modal.HcOrderMasterVO;
 import com.hcworkshifts.model.HcWorkShiftsService;
 import com.hcworkshifts.model.HcWorkShiftsVO;
+import com.member.model.MemberService;
+import com.member.model.MemberVO;
 
 
 
@@ -79,6 +83,7 @@ public class HcOrderController extends HttpServlet {
 				String caredNo = req.getParameter("caredNo");
 				String empNo = req.getParameter("empNo");
 				String memNo = req.getParameter("memNo");
+				String expNo = req.getParameter("expNo");
 				if(req.getSession().getAttribute("memberVO") == null){
 					errorMsgs.add("請登入");
 					RequestDispatcher failureView = req
@@ -120,6 +125,20 @@ public class HcOrderController extends HttpServlet {
 				} catch (Exception e) {
 					errorMsgs.add("服務日期格式不正確");
 				}
+				
+				//檢查錢包 
+				MemberService memberService  = new MemberService();
+				MemberVO  memberVO = memberService.findByPrimaryKey(memNo);
+				Integer point = memberVO.getPoint();
+				
+				ExpertlistService expertlistService = new ExpertlistService();
+				ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expNo);
+				Integer cost =expertlistVO.getExpPrice();
+				
+				if(cost>point){
+					errorMsgs.add("抱歉! 餘額不足喔! 目前餘額"+point+", 請至會員中心儲值");
+				}
+				
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
@@ -128,7 +147,7 @@ public class HcOrderController extends HttpServlet {
 					return;//程式中斷
 				}
 				
-			//檢查該天是否已經下定
+			//檢查該天是否已經下定  (先不用)
 
 				
 				/***************************2.開始新增資料*****************************************/
@@ -144,24 +163,29 @@ public class HcOrderController extends HttpServlet {
 				
 				if(empNo.equals("EMP0000")){
 					HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
-					HashMap map = (HashMap) req.getParameterMap();
-					HashMap map2 = new HashMap<String, String[]>();
+					//map 轉為可增減
+					HashMap<String, String[]> map = (HashMap<String, String[]>) req.getParameterMap();
+					HashMap<String, String[]> map2 = new HashMap<String, String[]>();
 					Set<String> keys = map.keySet();
 					for (String key : keys) {
-//						String[] value = map.get(key);
-//						map.put(key, value);						
+						String[] value = map.get(key);
+						map2.put(key, value);						
 					}	
+					//移除員工0000 以免查詢錯誤
 					map2.remove("empNo");
 					String [] Number =HcWorkShiftsService.convertDateToNumber(servDate , serviceTime);
 					String shiftNumber = Number[1] ;
 					String monthOfYear = Number[0];
 					map2.put("shiftNumber", new String[] {shiftNumber});	
 					map2.put("monthOfYear", new String[] {monthOfYear});
-					//分派當天有空  工作時數最少員工					
+					//以map2條件做查詢  分派當天有空  工作時數最少員工					
 					List<HcWorkShiftsVO> hcWorkShiftsVOList = hcWorkShiftsService.getAll(map2);
+					//如果查出來目前有員工  則改變員工編號  否則維持0000代表排不到人
 					if(hcWorkShiftsVOList.size() != 0){
 					empNo = hcWorkShiftsVOList.get(0).getEmpNo();
 					System.out.println("自動選人empNo  "+empNo);
+					}else{
+						empNo = "EMP0000"+String.valueOf(cost);
 					}
 				}				
 				
@@ -169,6 +193,13 @@ public class HcOrderController extends HttpServlet {
 				HcOrderMasterVO hcOrderMasterVO = hcOrderSvc.addHcOrderMaster(memNo, caredNo, "未確認",serviceDate,serviceTime,empNo);
 			System.out.println("取回來的VO"+hcOrderMasterVO.getOrderNo());
 				
+				
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/front/homeCare/Hc_order.jsp");
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
 				
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)*************/

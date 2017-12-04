@@ -40,6 +40,7 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 	
 	
 	private static final String UPDATE_POINT ="UPDATE MEMBER SET POINT=((select POINT from MEMBER WHERE mem_no=?)-(select exp_price from EXPERT T JOIN EXPERT_LIST L  on T.EXP_NO = L.EXP_NO WHERE EMP_no=?)) WHERE mem_no =?";
+	private static final String UPDATE_POINT_0000 ="UPDATE MEMBER SET POINT=((select POINT from MEMBER WHERE mem_no=?)-?) WHERE mem_no =?";
 	
 	
 	private static final String GET_ALL_STMT = 
@@ -56,13 +57,7 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 			"UPDATE HC_ORDER_MASTER SET  ORDER_STATUS=? where ORDER_NO = ?";
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	private static final String GET_BY_MEM_NO = "SELECT * FROM HC_ORDER_MASTER WHERE MEM_NO = ?";
@@ -112,6 +107,17 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 				int j = pstmt.executeUpdate();
 				pstmt.clearParameters();
 		System.out.println("update detail "+j+"  row");
+				//如果訂單是排不到人  直接扣錢就好
+				if(hcOrderDetailVO.getEmpNo().equals("EMP0000")){
+					pstmt2 = con.prepareStatement(UPDATE_POINT_0000,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+					pstmt2.setString(1, hcOrderMasterVO.getMemNo());
+					pstmt2.setInt(2, hcOrderDetailVO.getPrice());
+					pstmt2.setString(3, hcOrderMasterVO.getMemNo());
+					pstmt2.executeUpdate();
+					continue;
+				}
+		
+		
 				//新增班表
 				pstmt2 = con.prepareStatement(SELECT_WORKSHIFTS_STATUS,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 				
@@ -142,6 +148,9 @@ public class HcOrderJDBCDAO implements HcOrderMasterDAO_interface {
 //				pstmt2.setString(2, sevDatas[0]);
 //				pstmt2.setString(3, hcOrderDetailVO.getEmpNo());
 //				pstmt2.executeUpdate();
+				
+				
+					
 				
 				pstmt2 = con.prepareStatement(UPDATE_POINT,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 				pstmt2.setString(1, hcOrderMasterVO.getMemNo());

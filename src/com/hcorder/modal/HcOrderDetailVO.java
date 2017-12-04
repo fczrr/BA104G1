@@ -10,7 +10,18 @@ public class HcOrderDetailVO implements java.io.Serializable{
 		private String serviceTime;
 		private String empNo ;
 		private String orderDetailStataus;
+		private Integer price;
 		
+		public Integer getPrice() {
+			return price;
+		}
+
+
+		public void setPrice(Integer price) {
+			this.price = price;
+		}
+
+
 		public HcOrderDetailVO() {
 			super();
 			

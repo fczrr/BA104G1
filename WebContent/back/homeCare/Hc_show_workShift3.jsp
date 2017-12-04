@@ -429,12 +429,12 @@
 							scrollTime: '00:00',
 							droppable : true,
 							dragRevertDuration:0,
-// 							validRange:function(currentDate) { 
-// 							    return { 
-// 							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
-// 							        end: myDate.getFullYear()+"-"+((myDate.getMonth() + 2)%12 !=0 ? (myDate.getMonth()+2):12)+"-01"
-// 							    };
-// 							 },
+							validRange:function(currentDate) { 
+							    return { 
+							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
+							        end: (((myDate.getMonth() + 2)>=13) ? myDate.getFullYear()+1:myDate.getFullYear())+"-"+(myDate.getMonth() + 2)%12+"-01"
+							    };
+							 },
 							slotEventOverlap : false,
 // 							eventLimit : true,
 							header: {

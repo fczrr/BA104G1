@@ -61,9 +61,9 @@ body {
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">照護服務 <b class="caret"></b></a>
                     <ul class="dropdown-menu dropdownNew">
-                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">短期照護服務</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp">短期照護服務</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp">長期照護服務</a></li>
-                        <li><a href="#">Q&A</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">照護服務說明</a></li>
                     </ul>
                 </li>
                 <li><a href="<%= request.getContextPath()%>/front/carorder/CarOrder.jsp">派車服務</a></li>

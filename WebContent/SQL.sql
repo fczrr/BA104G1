@@ -333,7 +333,7 @@ to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李大壬', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李大任', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
 'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
@@ -1890,37 +1890,37 @@ commit;
 --假資料建立:派車人員班表-------------------------------------------------------------------
 INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/11','YYYY/MM'),'空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空',0);
 INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2017/12','YYYY/MM'),'空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空空',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0028',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0029',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0030',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0031',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0032',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0033',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0034',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0035',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0036',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0037',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0038',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
-INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0039',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',0);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0021',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空空早中晚空空空空空空早中空空中空空中晚',156);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚空中晚空空空空空空早中空空中空空中晚',156);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中空空空空空空空早中空空中空空中晚',156);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0022',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0023',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0024',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/11','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/11','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0025',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0026',TO_DATE('2018/01','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0027',TO_DATE('2018/01','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0028',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0029',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0030',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0031',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0032',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0033',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0034',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚空中晚空空空空空空早中晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0035',TO_DATE('2017/12','YYYY/MM'),'空中晚空空空空空空早中晚早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0036',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0037',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0038',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
+INSERT INTO CAR_SCHEDUL　VALUES(carschedul_seq.NEXTVAL,'EMP0039',TO_DATE('2017/12','YYYY/MM'),'早空晚早空空空中晚空空晚早中空空中晚空空空空中晚空空空空空空早空空早空晚早空空空中晚空空晚早中空空中晚空空空早中晚空空空空空空早中空早中空空中晚空空晚早中晚空空空空空空早中空空中空空中晚',160);
 commit;
  
  ---------------------------------  自增主鍵 -------------------------------------

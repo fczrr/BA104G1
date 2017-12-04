@@ -38,7 +38,7 @@ public class CarOrderDAO implements CarOrder_interface {
 	private static final String INSERT_STMT = "INSERT INTO CAR_ORDER (ORDER_NO,MEM_NO,ORDER_DATE,ORDER_STATUS) VALUES (to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),?,CURRENT_TIMESTAMP,?)";
 	private static final String INSERT_DETAIL_STMT = "INSERT INTO CAR_DETAIL (DETAIL_NO,ORDER_NO,VEHICLE_NO,DETAIL_DATE,DETAIL_TIME,PASSENGER_NAME,PASSENGER_PHONE,GETINTO_ADDRESS,ARRIVAL_ADDRESS,SENDCAR_STATUS)"
 			+" VALUES (to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),?,?,?,?,?,?,?,?,?)";	
-	private static final String GET_ALL_STMT = "SELECT * FROM CAR_ORDER order by ORDER_NO";
+	private static final String GET_ALL_STMT = "SELECT * FROM CAR_ORDER ORDER BY ORDER_DATE DESC";
 	private static final String GET_ONE_STMT = "SELECT ORDER_NO,MEM_NO,ORDER_DATE,ORDER_STATUS FROM CAR_ORDER WHERE ORDER_NO = ?";
 	private static final String DELETE = "DELETE FROM CAR_ORDER WHERE ORDER_NO = ?";
 	private static final String UPDATE = "UPDATE CAR_ORDER SET ORDER_STATUS = ? WHERE ORDER_NO = ?";

@@ -34,10 +34,10 @@
 			box-shadow:4px 4px #979B9C;
 		}
 
-		.tab-content{
-			 overflow-y:scroll;
-			 width:100%;
-			 height:590px;
+		.tab-content {
+		    overflow-y: scroll;
+		    width: 100%;
+		    height: 460px;
 		}
 		
 
@@ -75,9 +75,7 @@
           <div class="">
 
             <div class="page-title">
-              <div class="title_left">
-                <h3>首頁</h3>
-              </div>
+             
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -98,7 +96,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                    <h2>車型管理</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -148,12 +146,7 @@
 					        <li role="presentation" class="active">
 					            <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">派車管理</a>
 					        </li>
-					        <li role="presentation">
-					            <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">流程說明</a>
-					        </li>
-					        <li role="presentation">
-					            <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Q&A</a>
-					        </li>
+					       
 					    </ul>
 					
 					    <!-- 標籤面板：內容區 -->

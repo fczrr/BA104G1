@@ -308,7 +308,7 @@ public class CarDetailServlet extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
-
+		//得到不可選封鎖的日期
 		if ("getDisableDates".equals(action)) {
 
 			Integer cartypeno = null;
@@ -335,8 +335,9 @@ public class CarDetailServlet extends HttpServlet {
 
 			Set<String> dayStatusSet = new TreeSet<String>();
 			Set<String> dayEmpty = new TreeSet<String>();
-			int i;
 			
+			//日期
+			int i;
 			
 			for (i = 1; i < 32; i++) {
 				System.out.println("本月" + i + "號");
@@ -369,6 +370,8 @@ public class CarDetailServlet extends HttpServlet {
 				detail_time_no = detail_time_no + 3;
 				endIndex = detail_time_no + 3;
 			};
+			
+			//原來錯的寫法，如無封鎖日期，回傳的陣列反而會全部封鎖。
 			/*System.out.println("有空的日期:"+dayEmpty);
 			System.out.println("沒空的日期:"+dayStatusSet);
 			//將dayStatusSet內有空的日期，從封鎖日期用陣列內移除.
@@ -405,7 +408,7 @@ public class CarDetailServlet extends HttpServlet {
 			out.flush();
 			out.close();
 		}
-
+		//新增訂單、明細、修改班表
 		if ("insert".equals(action)) { // 來自addEmp.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -427,7 +430,7 @@ public class CarDetailServlet extends HttpServlet {
 			String inputCarTypeName = req.getParameter("cartypename").trim();
 			CarTypeService cartypeSv = new CarTypeService();
 			List<CarTypeVO> cartypeVO = cartypeSv.getAll();
-
+			//得到車型編號
 			for (CarTypeVO cartypeAll : cartypeVO) {
 
 				if (cartypeAll.getCartypename().equals(inputCarTypeName)) {
@@ -602,8 +605,10 @@ public class CarDetailServlet extends HttpServlet {
 											charCount++;
 										}
 									}
+									//一個時段4小時
 									work_hours = charCount*4;
 									System.out.println("更新後的工時:"+work_hours);
+									
 									CarSchedulVO carSchedulVO2 = new CarSchedulVO();
 									carSchedulVO2.setSerial_no(serial_no);
 									carSchedulVO2.setAttendance(attendance);

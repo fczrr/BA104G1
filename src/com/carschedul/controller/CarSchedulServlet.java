@@ -235,6 +235,7 @@ public class CarSchedulServlet extends HttpServlet {
 					String carTypeName = carTypeSvc.getOneCarType(cartype_no).getCartypename();
 					Integer work_hours2 = carSchedulVO2.getWork_hours();
 					String empName2 = empSvc.findByPrimaryKey(emp_no2).getEmpName();
+					String phone = empSvc.findByPrimaryKey(emp_no2).getEmpPhone();
 					String empCarLoc = vehicleSvc.getOneByEmpNo(emp_no2).getEmp_branches();
 					if(empCarLoc.equals("10")){
 						empCarLoc = "台北中心";
@@ -251,7 +252,7 @@ public class CarSchedulServlet extends HttpServlet {
 					if(empCarLoc.equals("50")){
 						empCarLoc = "高雄中心";
 					}
-					String empSc = "{emp_no:"+emp_no2+",work_hours:"+work_hours2+",empName:"+empName2+",carTypeName:"+carTypeName+",empCarLoc:"+empCarLoc+"}";
+					String empSc = "{emp_no:"+emp_no2+",work_hours:"+work_hours2+",empName:"+empName2+",carTypeName:"+carTypeName+",empCarLoc:"+empCarLoc+",phone:"+phone+"}";
 					empScList.add(empSc);
 				}
 				    String fcSource = "{empScList:"+empScList+"}";

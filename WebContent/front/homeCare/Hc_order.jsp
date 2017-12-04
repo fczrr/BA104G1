@@ -143,7 +143,7 @@ request.setCharacterEncoding("UTF-8");
 								</p>
 
                         <a href='<%=request.getContextPath()%>/front/member/MemberRegister.jsp' data-toggle="modal" class="btn btn-primary">還沒註冊嗎?</a>
-                      </div>
+                      </div> 
                     </div>
                 </div>
             </div>

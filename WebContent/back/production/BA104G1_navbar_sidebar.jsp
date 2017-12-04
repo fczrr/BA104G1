@@ -63,18 +63,18 @@
 					<div class="navbar nav_title" style="border: 0;">
 						<a
 							href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp"
-							class="site_title"><img src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
-											width="30px"> <span>有我罩你</span></a>
+							class="site_title"><img
+							src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+							width="30px"> <span>有我罩你</span></a>
 					</div>
 
 					<div class="clearfix"></div>
 
 					<!-- menu profile quick info       頭像↓ -->
 					<div class="profile clearfix">
-						<div class="profile_pic"> 
+						<div class="profile_pic">
 							<c:choose>
-								<c:when
-									test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
+								<c:when test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
 									<img style="width: 60px; height: 50px"
 										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
 										alt="圖片載入中" class="img-circle profile_img">
@@ -115,7 +115,7 @@
 								<!-- 										<li><a href="#">個人班表</a></li> -->
 								<!-- 									</ul></li> -->
 
-								<li><a><i class="fa fa-home"></i>員工管理 <span
+								<li id="auth1"><a><i class="fa fa-home"></i>員工管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -125,30 +125,31 @@
 										<li><a
 											href="<%=request.getContextPath()%>/back/employee/listAllExpertlist.jsp">員工專長管理</a></li>
 									</ul></li>
-								<li><a><i class="fa fa-home"></i>會員管理 <span
+								<li id="auth2"><a><i class="fa fa-home"></i>會員管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-automobile"></i> 派車管理 <span
+								<li id="auth3"><a><i class="fa fa-automobile"></i> 派車管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-									<li><a href="<%=request.getContextPath()%>/back/carorder/listAllCarOrder.jsp">訂單管理</a></li>
-									<li>
-										<a href="#">派車班表<span class="fa fa-chevron-down"></span></a>
+										<li id="auth3_1"><a
+											href="<%=request.getContextPath()%>/back/carorder/listAllCarOrder.jsp">訂單管理</a></li>
+										<li><a href="#">派車班表<span class="fa fa-chevron-down"></span></a>
 											<ul class="nav child_menu">
-												<li><a href="<%=request.getContextPath()%>/back/carschedul/CarShiftTableEmp.jsp">查看班表</a></li>
-												<li><a href="<%=request.getContextPath()%>/back/carschedul/CarShiftTable.jsp">班表管理</a></li>
-											</ul>
-									</li>
-										
-										<li><a href="<%=request.getContextPath()%>/back/cartype/main.jsp">車型管理</a></li>
-									</ul>
-								</li>  
+												<li id="auth3_2"><a
+													href="<%=request.getContextPath()%>/back/carschedul/CarShiftTableEmp.jsp">查看班表</a></li>
+												<li id="auth3_3"><a
+													href="<%=request.getContextPath()%>/back/carschedul/CarShiftTable.jsp">班表管理</a></li>
+											</ul></li>
 
-								<li><a><i class="fa fa-cutlery"></i> 送餐管理 <span
+										<li id="auth3_4"><a
+											href="<%=request.getContextPath()%>/back/cartype/main.jsp">車型管理</a></li>
+									</ul></li>
+
+								<li id="auth4"><a><i class="fa fa-cutlery"></i> 送餐管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -165,15 +166,16 @@
 										</li>
 									</ul></li>
 
-								<li><a><i class="fa fa-users"></i> 長照管理 <span
+								<li id="auth5"><a><i class="fa fa-users"></i> 長照管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
-										<li><a href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">班表管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">班表管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
+								<li id="auth6"><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -192,9 +194,9 @@
 
 
 						<div class="menu_section">
-							<h3>其他功能</h3>
+							<h3 id="auth7">其他功能</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-bug"></i> 申訴管理 <span
+								<li id="auth8"><a><i class="fa fa-bug"></i> 申訴管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -207,14 +209,14 @@
 											href="<%=request.getContextPath()%>/back/complain/listShopCom.jsp">商城申訴管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-cc-visa"></i> 點數管理 <span
+								<li id="auth9"><a><i class="fa fa-cc-visa"></i> 點數管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/member/listAllBalance.jsp">加值列表</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-columns"></i> 佈告欄管理 <span
+								<li id="auth10"><a><i class="fa fa-columns"></i> 佈告欄管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -223,11 +225,13 @@
 											href="<%=request.getContextPath()%>/back/healthnewsdetail/AllNews.jsp">保健資訊管理</a></li>
 									</ul></li>
 
-								<li><a href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i class="fa fa-quote-right"></i> 線上客服管理
-								<span class="label label-danger" id="notifly" style="display:none">0</span> <span
-										class="fa fa-chevron-down"></span></a>
+								<li id="auth11"><a
+									href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i
+										class="fa fa-quote-right"></i> 線上客服管理 <span
+										class="label label-danger" id="notifly" style="display: none">0</span>
+										<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-									
+
 									</ul></li>
 
 							</ul>
@@ -285,7 +289,7 @@
 								<ul class="dropdown-menu dropdown-usermenu pull-right wrap">
 									<li><a
 										href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">
-											個人基本資料</a></li>
+											個人基本資料<span class="fa fa-database pull-right"></a></li>
 									<!--                     <li> -->
 									<!--                       <a href="javascript:;"> -->
 									<!--                         <span class="badge bg-red pull-right">50%</span> -->
@@ -293,21 +297,14 @@
 									<!--                       </a> -->
 									<!--                     </li> -->
 									<!--                     <li><a href="javascript:;">Help</a></li> -->
-									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i>登入</a></li>
-									<!-- 									<i class="fa fa-sign-out pull-right"> -->
+									<!-- 									<li><a href="login.html" class="pull-right"><i -->
+									<!-- 											class="fa fa-sign-out pull-right"></i>登入</a></li> -->
 									<li>
-										<form
-											action="<%=request.getContextPath()%>/employee/employee.do"
-											method="post">
-
-											<input type="hidden" name="action" value="logout">
-											<button>
-												員工登出<span class="fa fa-sign-out pull-right"></span>
-											</button>
-
-
-										</form>
+									<a class="pull-right"
+										href="<%=request.getContextPath()%>/employee/employee.do?action=logout">
+											員工登出<span class="fa fa-sign-out pull-right"></span></a></li>
+									
+<!-- 										
 									</li>
 								</ul></li>
 
@@ -372,7 +369,7 @@
 						</ul>
 					</nav>
 				</div>
-			</div>   
+			</div>
 			<!-- /top navigation -->
 
 			<!-- page content -->
@@ -381,6 +378,95 @@
 			<!-- /page content -->
 
 
+<script src="https://code.jquery.com/jquery.js"></script>
+      
+<script >
+
+$(document).ready(function() {
+	var buttonList = 'auth';
+
+	// 將離職狀態的全部功能隱藏
+	
+	// 最高權限都看得到
+
+	// 總部專員	
+	if('${empVO.empDep}' == '總部' && '${empVO.empTitle}' == '專員'){
+		for(var i =3 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	// 派車經理	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '經理'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		
+	// 派車專員	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '專員'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		$('#'+buttonList+'3_1').remove();
+		$('#'+buttonList+'3_3').remove();
+		$('#'+buttonList+'3_4').remove();
+		
+	// 送餐經理	
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =6 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =6 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<6;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =7 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<6;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =7 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+};
+
+		
+});
+
+
+</script >
 
 
 

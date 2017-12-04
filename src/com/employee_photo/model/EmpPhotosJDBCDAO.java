@@ -14,49 +14,43 @@ import java.util.List;
 
 public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "BA104G1";
-	String passwd = "123456";
-	
-	private static final String INSERT_STMT = 
-		"insert into emp_photos (EMP_PHOTO_NO,EMP_NO,EMP_PHOTO) "
-		+ "VALUES (to_char('EPHMEM'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),?,?)";
-	private static final String GET_ALL_STMT =
-			"select * from emp_photos";
-	private static final String GET_ALL_BY_EMPNO = 
-			"select * from emp_photos where EMP_NO=?";
-	private static final String GET_ONE_STMT = 
-		"select * from emp_photos where EMP_PHOTO_NO = ?";
-	private static final String UPDATE = 
-		"update emp_photos set  EMP_NO=?, EMP_PHOTO = ? where EMP_PHOTO_NO = ?";
-	
-	private static final String DELETE = 
-			"DELETE from emp_photos where EMP_PHOTO_NO = ?";
+	String url = "jdbc:oracle:thin:@13.124.90.221:1521:XE";
+	String userid = "BA104G1DB";
+	String passwd = "BA104G1DB";
 
+	private static final String INSERT_STMT = "insert into emp_photos (EMP_PHOTO_NO,EMP_NO,EMP_PHOTO) "
+			+ "VALUES (to_char('EPHMEM'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),?,?)";
+	private static final String GET_ALL_STMT = "select * from emp_photos";
+	private static final String GET_ALL_BY_EMPNO = "select * from emp_photos where EMP_NO=?";
+	private static final String GET_PHOTONO_BY_EMPNO = "select EMP_PHOTO_NO  from emp_photos where EMP_NO=?";
+
+	private static final String GET_ONE_STMT = "select * from emp_photos where EMP_PHOTO_NO = ?";
+	private static final String UPDATE = "update emp_photos set  EMP_NO=?, EMP_PHOTO = ? where EMP_PHOTO_NO = ?";
+
+	private static final String UPDATE_BY_EMPNO = "update emp_photos set  EMP_PHOTO = ? where EMP_NO = ?";
+
+	private static final String DELETE = "DELETE from emp_photos where EMP_PHOTO_NO = ?";
 
 	@Override
 	public void insert(EmpPhotosVO EmpPhotos) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
-		
+
 		try {
 			Class.forName(driver);
-			con = DriverManager.getConnection(url,userid,passwd);
+			con = DriverManager.getConnection(url, userid, passwd);
 			pstmt = con.prepareStatement(INSERT_STMT);
 			pstmt.setString(1, EmpPhotos.getEmpNo());
 			pstmt.setBytes(2, EmpPhotos.getEmpPhoto());
 
-			int i =pstmt.executeUpdate();
-			System.out.println("新增"+i+"一筆");
-			
+			int i = pstmt.executeUpdate();
+			System.out.println("新增" + i + "一筆");
+
 		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
+			throw new RuntimeException("Couldn't load database driver. " + e.getMessage());
 			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
@@ -74,54 +68,60 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 				}
 			}
 		}
-		
-	}
 
+	}
 
 	@Override
-	public void update(EmpPhotosVO EmpPhotos) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		
-		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url,userid,passwd);
-			pstmt = con.prepareStatement(UPDATE);
-			pstmt.setString(1, EmpPhotos.getEmpNo());
-			pstmt.setBytes(2, EmpPhotos.getEmpPhoto());
-			pstmt.setString(3, EmpPhotos.getEmpPhtoNo());
+	 public void update(EmpPhotosVO EmpPhotos) {
+//	public void update(String empNo, byte[] empPhoto) {
 
-			int i =pstmt.executeUpdate();
-			System.out.println("修改"+i+"一筆");
-			
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
+	Connection con = null;
+	PreparedStatement pstmt = null;
+
+	try
+	{
+		Class.forName(driver);
+		con = DriverManager.getConnection(url, userid, passwd);
+		// pstmt = con.prepareStatement(UPDATE);
+		pstmt = con.prepareStatement(UPDATE_BY_EMPNO);
+		pstmt.setBytes(1, EmpPhotos.getEmpPhoto());
+		pstmt.setString(2, EmpPhotos.getEmpNo());
+		// pstmt.setString(3, EmpPhotos.getEmpPhtoNo());
+
+		//"update emp_photos set  EMP_PHOTO = ? where EMP_NO = ?";
+
+		int i = pstmt.executeUpdate();
+		System.out.println("修改" + i + "一筆");
+
+	}catch(
+	ClassNotFoundException e)
+	{
+		throw new RuntimeException("Couldn't load database driver. " + e.getMessage());
+		// Handle any SQL errors
+	}catch(
+	SQLException se)
+	{
+		throw new RuntimeException("A database error occured. " + se.getMessage());
+		// Clean up JDBC resources
+	}finally
+	{
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException se) {
+				se.printStackTrace(System.err);
 			}
 		}
-
+		if (con != null) {
+			try {
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace(System.err);
+			}
+		}
 	}
 
+	}
 
 	@Override
 	public void delete(String empPhotoNo) {
@@ -166,7 +166,6 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 		
 		
 	}
-
 
 	@Override
 	public EmpPhotosVO findByPK(String empPhotoNo) {
@@ -225,7 +224,6 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 		
 		return empPhotosVO;
 	}
-
 
 	@Override
 	public List<EmpPhotosVO> getAllByEMPNO(String empNo) {
@@ -286,7 +284,6 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 		return list;
 	}
 
-
 	@Override
 	public List<EmpPhotosVO> getAll() {
 		Connection con = null;
@@ -344,38 +341,39 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 		
 		return list;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		EmpPhotosJDBCDAO dao = new EmpPhotosJDBCDAO();
-		
-//		EmpPhotosVO empPhotosVO = new EmpPhotosVO();
-//		empPhotosVO.setEmpPhtoNo("EPHMEM0001");
-//		empPhotosVO.setEmpNo("EMP0003");
-//		empPhotosVO.setEmpPhoto(getPictureByteArray("D:\\BA104_webApp\\worksapce_for_BA104G1\\BA104G1-1\\WebContent\\front-end\\image\\a001.jpg"));
-//		
-//		dao.insert(empPhotosVO);
-//		dao.update(empPhotosVO);
-//		dao.delete("EPHMEM0021");
-		
-//		EmpPhotosVO empPhotosVO2 = dao.findByPK("EPHMEM0024");
-//		System.out.println(empPhotosVO2.getEmpNo());
-//		System.out.println(empPhotosVO2.getEmpPhtoNo());
-//		System.out.println(empPhotosVO2.getEmpPhoto());
-		
-		List<EmpPhotosVO> list = dao.getAll();
-		for(EmpPhotosVO empPhotosVO1 : list){
-			System.out.println("-------------------------------");
-			System.out.println(empPhotosVO1.getEmpNo());
-			System.out.println(empPhotosVO1.getEmpPhtoNo());
-			System.out.println(empPhotosVO1.getEmpPhoto());
-		}
-		
-		
-		
+
+		// EmpPhotosVO empPhotosVO = new EmpPhotosVO();
+		// empPhotosVO.setEmpPhtoNo("EPHMEM0001");
+		// empPhotosVO.setEmpNo("EMP0003");
+		// empPhotosVO.setEmpPhoto(getPictureByteArray("D:\\BA104_webApp\\worksapce_for_BA104G1\\BA104G1-1\\WebContent\\front-end\\image\\a001.jpg"));
+		//
+		// dao.insert(empPhotosVO);
+		// dao.update(empPhotosVO);
+		// dao.delete("EPHMEM0021");
+
+		// EmpPhotosVO empPhotosVO2 = dao.findByPK("EPHMEM0024");
+		// System.out.println(empPhotosVO2.getEmpNo());
+		// System.out.println(empPhotosVO2.getEmpPhtoNo());
+		// System.out.println(empPhotosVO2.getEmpPhoto());
+
+		 EmpPhotosVO empPhotosVO2 = (EmpPhotosVO) dao.getAllByEMPNO("EMP0002");
+		 System.out.println(empPhotosVO2.getEmpNo());
+		 System.out.println(empPhotosVO2.getEmpPhtoNo());
+		 
+//		List<EmpPhotosVO> list = dao.getAll();
+//		for (EmpPhotosVO empPhotosVO1 : list) {
+//			System.out.println("-------------------------------");
+//			System.out.println(empPhotosVO1.getEmpNo());
+//			System.out.println(empPhotosVO1.getEmpPhtoNo());
+//			System.out.println(empPhotosVO1.getEmpPhoto());
+//		}
 
 	}
-	
+
 	public static byte[] getPictureByteArray(String path) throws IOException {
 		FileInputStream fis = new FileInputStream(new File(path));
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -389,7 +387,5 @@ public class EmpPhotosJDBCDAO implements EmpPhotosDAO_interface {
 
 		return baos.toByteArray();
 	}
-	
-	
 
 }

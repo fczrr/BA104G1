@@ -40,86 +40,110 @@
 
 	<div class="container-fluid">
 		<div class="container">
-			<hr>
-			<img alt=""
-				src="<%=request.getContextPath()%>/img/member/longterm6.jpg">
+			<div class="row">
+				<hr>
+				<img alt=""
+					src="<%=request.getContextPath()%>/img/member/longterm6.jpg">
 
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><a
-					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-			</ol>
-			<div>
-				Hello,${memberVO.memName}<br>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a
+						href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+				</ol>
+				<div>
+					Hello,${memberVO.memName}<br>
 
+					帳戶名：${memberVO.memId}，(帳戶狀態：${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus})
+					，最近登入時間${memberSvc.findByPrimaryKey(memberVO.memNo).memLoginTime}
+					<form onload="verify()"
+						action="<%=request.getContextPath()%>/member/member.do"
+						method="post" id="contact_form" title="申請驗證後可享有更多特權">
+						<input type="hidden" name="action" value="memVerity"> <input
+							type="hidden" name="memNo" value=${memberVO.memNo} > <input
+							id="verify" type="submit" class=" btn-info" value="前往驗證">
+					</form>
 
-				帳戶名：${memberVO.memId}，(帳戶狀態：${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus})
-				，最近登入時間${memberSvc.findByPrimaryKey(memberVO.memNo).memLoginTime}
-				<form action="<%=request.getContextPath()%>/member/member.do"
-					method="post" id="contact_form" title="申請驗證後可享有更多特權">
-					<input type="hidden" name="action" value="memVerity"> <input
-						type="hidden" name="memNo" value=${memberVO.memNo} > <input
-						type="submit" class=" btn-info" value="前往驗證">
-				</form>
+					<br>
+				</div>
+				<div></div>
+				<div></div>
 
-				<br>
+				<div></div>
+				<hr>
+				<div>
+					帳戶點數餘額：${memberSvc.findByPrimaryKey(memberVO.memNo).point}<br>
+					<br>
+				</div>
+
+				<div>
+					<form method="post"
+						action="<%=request.getContextPath()%>/member/member.do">
+						<input type="submit" value="信用卡加值" class=" btn-success"> <input
+							type="hidden" name="memNo" value="${memberVO.memNo}"> <input
+							type="hidden" name="myurl" value="<%=request.getServletPath()%>">
+						<input type="hidden" name="action" value="tranfer">
+
+					</form>
+				</div>
+				<hr>
+
 			</div>
-			<div></div>
-			<div></div>
 
-			<div></div>
-			<hr>
-			<div>
-				帳戶點數餘額：${memberSvc.findByPrimaryKey(memberVO.memNo).point}<br>
-				<br>
-			</div>
-
-			<div>
-				<form method="post"
-					action="<%=request.getContextPath()%>/member/member.do">
-					<input type="submit" value="信用卡加值" class=" btn-success"> <input
-						type="hidden" name="memNo" value="${memberVO.memNo}"> <input
-						type="hidden" name="myurl" value="<%=request.getServletPath()%>">
-					<input type="hidden" name="action" value="tranfer">
-
-				</form>
-			</div>
-			<hr>
-
-		</div>
-
-		<div class="row">
-			<table class="table table-hover">
-				<tr>
-					<th>儲值明細編號</th>
-					<th>儲值金額</th>
-					<th>日期時間</th>
-					<th>付款方式</th>
-
-				</tr>
-				<c:forEach var="balanceVO"
-					items='${balanceSvc.getBalanceByMemNo(memberVO.memNo)}'>
+			<div class="row">
+				<table class="table table-hover">
 					<tr>
-						<td>${balanceVO.topupNo}</td>
-						<td>${balanceVO.topupValue}</td>
-						<td>${balanceVO.topupTime}</td>
-						<td>${balanceVO.topupWay}</td>
+						<th>儲值明細編號</th>
+						<th>儲值金額</th>
+						<th>日期時間</th>
+						<th>付款方式</th>
+
 					</tr>
-				</c:forEach>
-				<tr>
-					<td></td>
-				</tr>
-			</table>
+					<c:forEach var="balanceVO"
+						items='${balanceSvc.getBalanceByMemNo(memberVO.memNo)}'>
+						<tr>
+							<td>${balanceVO.topupNo}</td>
+							<td>${balanceVO.topupValue}</td>
+							<td>${balanceVO.topupTime}</td>
+							<td>${balanceVO.topupWay}</td>
+						</tr>
+					</c:forEach>
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
+	<!-- 	<button id="xx" onclick="this.style.display='none';"> -->
+	<!-- 		<div class="col-xs-12 col-sm-6"> -->
+	<!-- 			<div class="btn"> -->
+	<!-- 				<span>magic</span> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</button> -->
 </body>
 <%@ include file="/front/footerbar.jsp"%>
 
+
+<script>
+	var yy =
+<%=memberVO.getMemSratus()%>
+	;
+
+	window.onload = verify;
+	function verify() {
+		if (yy = "已驗證") {
+
+			document.getElementById('verify').style.display = "none";
+
+		}
+	}
+</script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>

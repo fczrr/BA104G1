@@ -674,6 +674,7 @@ body {
        background-repeat: no-repeat;
        background-position: 2px 50%;
        }
+       
 		
 </style>
 <title>有我罩你-派車人員排班表</title>
@@ -872,8 +873,14 @@ body {
           </div>
         </div> 
         <!-- /page content -->
-	
-	 <%@ include file="/back/production/BA104G1_footer.jsp" %>
+		
+			
+			 
+                  
+		
+		
+		
+			<%@ include file="/back/production/BA104G1_footer.jsp" %>
 	 
 	 		<script src="<%=request.getContextPath()%>/back/js/carschedul/moment.min.js"></script><!-- -->
 			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/lib/jquery.min.js"></script>
@@ -882,6 +889,7 @@ body {
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
 			<script src='https://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
 			<script src="<%=request.getContextPath()%>/back/carschedul/fullcalendar-3.7.0/locale/zh-tw.js"></script>
+			
 		<script>
 		var emp_no="";
 	$(document).ready(function() {
@@ -936,6 +944,8 @@ body {
 		var work_hours;
 		var empName;
 		var cartype_no;
+		var vehicle_No;
+		
 		
 			$('#reload').click(function(){
 				//emp_no=	$('#empSelect').val();
@@ -1075,6 +1085,9 @@ body {
                         var events = [];
                         console.log(j);
                         var info = j.eventinfo;
+                        //偷渡車輛編號回來^_^
+                        vehicle_No = j.vehicle_No;
+                        console.log("取回來的vehicle_No:"+vehicle_No);
                         for (var i = 0; i < info.length; i++) {
                             var ev = info[i];
                             var title = ev.title;
@@ -1089,7 +1102,7 @@ body {
                             };
                             if(evtstart.substring(11,13) == "18"){
                                 classname ="ni";
-                              };
+                            };
                             
                             
                            
@@ -1147,14 +1160,24 @@ body {
 			
 			
 			eventClick: function(calEvent, jsEvent, view) { 
-		        alert('Event: ' + calEvent.title); 
-		        alert('Id: ' + calEvent.id); 
+		      /*   alert('Event: ' + calEvent.title); 
+		        alert('start: ' + calEvent.start.format("YYYY-MM-DD"));
+		        
 		        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY); 
-		        alert('View: ' + view.name); 
-		        $('#calendar').fullCalendar('removeEvents',calEvent.id)
+		        alert('View: ' + view.name);  */
+		        //$('#calendar').fullCalendar('removeEvents',calEvent.id)
 		        // change the border color just for fun 
-		        $(this).css('border-color', 'red'); 
-		 
+		        //$(this).css('border-color', 'red'); 
+		     	 //查找明細
+		   	 	
+		         var vno = vehicle_No;
+		   		 var detail_date = calEvent.start.format("YYYY-MM-DD");
+		   		 
+		   	 		console.log("點擊事件:"+vehicle_No+","+detail_date)
+		   	 		 findList(vno,detail_date);
+		   	 	var tsa = tableStringAll;
+		   	 	
+				
 		    },
 		    
 		 	 
@@ -1261,8 +1284,91 @@ body {
             error: function(){alert("撈選單資料失敗!!請再重新選擇車型")}
        })
 	 }; 
-	 	
+	 
+	
+	 
+	 
+	
+	//找訂單明細的ajax
+		function findList(vehicle_no,detail_date){
+			 var SendString = {"action":"get_BY_CAR_For_Display","vehicle_no":vehicle_no,"detail_date":detail_date};
+			 console.log('取明細送出資料，車輛編號:'+vehicle_no+",明細時間:"+detail_date);
+			 console.log("送出資料檢查:"+SendString);
+			 $.ajax({
+				 type: "POST",
+				 url: "<%=request.getContextPath()%>/cardetail/cardetail.do",
+				 data: SendString,
+				 dataType: "json",
+				 
+				 success: function (data){
+					 var orderStatus = data.cardetailList;
+		          console.log("取回來的訂單明細:"+orderStatus);
+		          //$(".dttbody").empty();
+		         
+		          var tableStringAll;
+		          for (var i = 0; i < orderStatus.length; i++) {
+	                  var cd = orderStatus[i];
+	                  var detail_no = cd.detail_no;
+	                  console.log("取回來的明細編號:"+detail_no);
+	                  var detail_date = cd.detail_date;
+	                  var detail_time = cd.detail_time; 
+	                  var passenger_name = cd.passenger_name;
+	                  var passenger_phone = cd.passenger_phone;
+	                  var getinto_address = cd.getinto_address; 
+	                  var arrival_address = cd.arrival_address;
+	                  var vehicle_no = cd.vehicle_no;
+	                  var sendcar_status = cd.sendcar_status;
+	                  var tableString = "<tr><td>"+detail_no+"</td><td>"+detail_date+"</td><td>"+detail_time+"</td><td>"+passenger_name+"</td><td>0"
+	                		  +passenger_phone+"</td><td>"+getinto_address+"</td><td>"+arrival_address+"</td><td>"+vehicle_no+"</td><td>"+sendcar_status+"</td></tr>+"
+	                		  console.log("明細td字串1:"+tableString);  	  
+	                tableStringAll =tableStringAll + tableString;
+	                
+	              }
+		          
+		          console.log('明細td字串2:'+tableStringAll);  
+		          
+		          
+		          swal({
+					  title: '訂單明細',
+					  type: 'info',
+					  width: 'auto',
+					  html:
+						  '<table class="table table-striped text-center">'+
+	              	'<thead>'+
+				         '<tr>'+
+				           	  '<th class="text-center"> 明細編號</th>'+
+				              '<th class="text-center"> 明細日期 </th>'+
+				              '<th class="text-center"> 明細時段 </th>'+
+				              '<th class="text-center"> 乘客姓名 </th>'+
+				              '<th class="text-center"> 乘客電話 </th>'+
+				              '<th class="text-center"> 上車地點 </th>'+
+				              '<th class="text-center"> 目的地 </th>'+
+				              '<th class="text-center"> 搭乘車號 </th>'+
+				              '<th class="text-center"> 派車狀態 </th>'+
+				          '</tr>'+ 
+				         '</thead>'+
+				         '<tbody class="dttbody">'+
+				         	
+				         
+				         tableStringAll+
+				         
+				         
+				         '</tbody>'+
+	           
+	              	'</table>',
+					  showCloseButton: true,
+					 
+					
+					})
+		         },
 
+		       error: function(){alert("訂單明細不存在!!")}
+		  })
+		}; 
+		
+	 
+	 
+	 
 	});
 	
 	//推播  (主管)

@@ -367,7 +367,13 @@ public class CarSchedulServlet extends HttpServlet {
 //						empScList.add(empSc);
 //					}
 //  				    String fcSource = "{eventinfo:"+jsonStringList+",empScList:"+empScList+"}";
-  				  String fcSource = "{eventinfo:"+jsonStringList+"}";
+			
+			
+				VehicleService vSv = new VehicleService();
+				Integer vehicle_No = vSv.getOneByEmpNo(emp_no).getVehicle_no();
+				
+				
+  				  String fcSource = "{eventinfo:"+jsonStringList+",vehicle_No:"+vehicle_No+"}";
 					System.out.println(fcSource);
 					
 			

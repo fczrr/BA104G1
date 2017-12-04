@@ -21,6 +21,7 @@ import com.cartype.model.CarTypeVO;
 import com.google.gson.Gson;
 import com.member.model.MemberService;
 import com.member.model.MemberVO;
+import com.vehicle.model.VehicleService;
 import com.vehicle.model.VehicleVO;
 import com.cardetail.model.*;
 import com.carorder.model.CarOrderService;
@@ -94,15 +95,7 @@ public class CarDetailServlet extends HttpServlet {
 
 				
 				
-//				for(CarSchedulVO carSchedulVO2 : carSchedulSvc.getMonthInfo(cartype_no , year_month)){
-//					String emp_no2 = carSchedulVO2.getEmp_no();
-//					Integer work_hours2 = carSchedulVO2.getWork_hours();
-//					String empName2 = empSvc.findByPrimaryKey(emp_no2).getEmpName();
-//					String empSc = "{emp_no:"+emp_no2+",work_hours:"+work_hours2+",empName:"+empName2+"}";
-//					empScList.add(empSc);
-//				}
-//				    String fcSource = "{empScList:"+empScList+"}";
-//				System.out.println("偷渡的資料回傳:"+fcSource);
+
 
 				/*************************** 其他可能的錯誤處理 *************************************/
 			} catch (Exception e) {
@@ -111,6 +104,92 @@ public class CarDetailServlet extends HttpServlet {
 				failureView.forward(req, res);
 			}
 		}
+		
+		if ("get_BY_CAR_For_Display".equals(action)) { // 來自select_page.jsp的請求
+			System.out.println("我來拿資料了!");
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			try {
+				/***************************
+				 * 1.接收請求參數 - 輸入格式的錯誤處理
+				 **********************/
+				Integer vehicle_no = new Integer(req.getParameter("vehicle_no").trim());
+				
+				java.sql.Date detail_date = null;
+				try {
+					detail_date = java.sql.Date.valueOf(req.getParameter("detail_date").trim());
+				} catch (IllegalArgumentException e) {
+					detail_date = new java.sql.Date(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
+				/*************************** 2.開始查詢資料 *****************************************/
+				CarDetailService cardetailSvc = new CarDetailService();
+				List<CarDetailVO> cardetailVOList = cardetailSvc.findByCar(vehicle_no,detail_date);
+				if (cardetailVOList == null) {
+					errorMsgs.add("查無資料");
+				}
+				
+
+				/***************************
+				 * 3.查詢完成,準備轉交(Send the Success view)
+				 *************/
+				
+				List cardetailList = new ArrayList();
+				for(CarDetailVO cardetailVO:cardetailVOList){
+					String detail_no =cardetailVO.getDetail_no();
+					//String detail_date = cardetailVO.getDetail_date().toString();
+					String detail_time = cardetailVO.getDetail_time();
+					String passenger_name =cardetailVO.getPassenger_name();
+					String passenger_phone =cardetailVO.getPassenger_phone();
+					String getinto_address =cardetailVO.getGetinto_address();
+					String arrival_address =cardetailVO.getArrival_address();
+					//Integer vehicle_no = cardetailVO.getVehicle_no();
+					String sendcar_status =cardetailVO.getSendcar_status();
+					String one_detail = "{detail_no:"+detail_no+",detail_date:"+detail_date+",detail_time:"+detail_time+",passenger_name:"+passenger_name+",passenger_phone:"
+					+passenger_phone+",getinto_address:"+getinto_address+",arrival_address:"+arrival_address+",vehicle_no:"+vehicle_no+",sendcar_status:"+sendcar_status+"}";
+					cardetailList.add(one_detail);
+				}
+				
+					String cdSource = "{cardetailList:"+cardetailList+"}";
+				try {
+					JSONObject myObj = new JSONObject(cdSource);
+					res.setCharacterEncoding("UTF-8");
+					PrintWriter out = res.getWriter();
+					out.write(myObj.toString());
+					System.out.println(myObj.toString());
+					System.out.println("送資料回去囉");
+					out.flush();
+					out.close();
+				} catch (JSONException e) {
+
+					e.printStackTrace();
+				}
+
+				
+				
+
+
+				/*************************** 其他可能的錯誤處理 *************************************/
+			} catch (Exception e) {
+				errorMsgs.add("無法取得資料:" + e.getMessage());
+				RequestDispatcher failureView = req.getRequestDispatcher("/select_page.jsp");
+				failureView.forward(req, res);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp 或
 													// /dept/listEmps_ByDeptno.jsp
@@ -254,9 +333,11 @@ public class CarDetailServlet extends HttpServlet {
 			int detail_time_no = new Integer(req.getParameter("detail_time_no").trim());
 			System.out.println("預約時段數字:" + detail_time_no);
 
-			Set<Integer> dayStatusSet = new TreeSet<Integer>();
+			Set<String> dayStatusSet = new TreeSet<String>();
+			Set<String> dayEmpty = new TreeSet<String>();
 			int i;
-
+			
+			
 			for (i = 1; i < 32; i++) {
 				System.out.println("本月" + i + "號");
 				System.out.println("符合條件(車型)(當前月份)的司機有幾位?:"+carSchedulVO.size());
@@ -271,23 +352,49 @@ public class CarDetailServlet extends HttpServlet {
 						String dayStatus = schedul.substring((detail_time_no), (detail_time_no + endIndex));
 						System.out.println("起始index:" + (detail_time_no) + "," + "結束index:" + (detail_time_no + endIndex));
 	
-						
+						String emptyIndex = String.valueOf(i);
 						System.out.println("當日該時段狀態:" + dayStatus);
+						//判定為空的日期就放進空日期專用Set
+						if(dayStatus.equals("空")){
+							dayStatusSet.remove(emptyIndex);	
+							break;
+						}
+						//判定不為空的日期就放進封鎖日期專用Set
 						if (!dayStatus.equals("空")) {
-							dayStatusSet.add(i);
-							System.out.println("將" + i + "號放進Set.");
+							dayStatusSet.add(emptyIndex);
+							System.out.println("將" + emptyIndex + "號放進Set.");
 						}
 						 driver++;
 				};
 				detail_time_no = detail_time_no + 3;
 				endIndex = detail_time_no + 3;
 			};
-			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			/*System.out.println("有空的日期:"+dayEmpty);
+			System.out.println("沒空的日期:"+dayStatusSet);
+			//將dayStatusSet內有空的日期，從封鎖日期用陣列內移除.
+			List<String> list = new LinkedList<String>();
+			//將為空的日期取出放進list內
+		        for (String str : dayEmpty) {                
+		            if (!list.contains(str)) {
+		                list.add(str);
+		            }
+		        }
+		        System.out.println("加入有空的日期:"+list);
+		      //比對list內加入的有空日期，如有相同就去除
+		        for (String str : dayStatusSet) {      
+		            if(list.contains(str)){
+		                list.remove(str);
+		            }
+		        }
+		        System.out.println("去除有空的日期:"+list);*/
+		         
+		         
+			
 			JSONObject myObj = new JSONObject();
 			try {
 				myObj.put("dayStatusList", dayStatusSet);
 			} catch (JSONException e) {
-				
+				 
 				e.printStackTrace();
 			}
 
@@ -359,6 +466,7 @@ public class CarDetailServlet extends HttpServlet {
 			
 			//找出符合條件(車型、月份)的車輛，優先將工時低的車輛(司機)找出來
 			CarSchedulService carSchedulSv = new CarSchedulService();
+			VehicleService vSv = new VehicleService();
 			List<VehicleVO> vehicleVO = carSchedulSv.getVehicleInfo(cartypeno, sysdate);
 			List<CarSchedulVO> carSchedulVO = carSchedulSv.getMonthInfo(cartypeno, sysdate);
 			List<Integer> vehicleList = new ArrayList<Integer>();
@@ -429,12 +537,20 @@ public class CarDetailServlet extends HttpServlet {
 						}	
 						//取得服務日期有空的車輛(司機)
 						try{
-						for(int i = 0;i < howManyDays; i++){
+						//for(int i = 0;i < howManyDays; i++){
+					    //從符合條件的車裡
+							int i=0;
 						Integer vehicleNO = vehicleVO.get(i).getVehicle_no();
-						String schedul = carSchedulVO.get(i).getAttendance();
-						Integer serial_no =carSchedulVO.get(i).getSerial_no();
+						String empNo = vSv.getOneVehicle(vehicleNO).getEmp_no();
+						//找到該車所屬司機的班表
+						String schedul = carSchedulSv.findByEmpNo(empNo, sysdate).getAttendance();
+						//取得班表的編號
+						Integer serial_no = carSchedulSv.findByEmpNo(empNo, sysdate).getSerial_no();
+						//String schedul = carSchedulVO.get(i).getAttendance();
+						//Integer serial_no =carSchedulVO.get(i).getSerial_no();
 								int dtIndex = startIndex -(detailTimeStatus);	
 								char workTimeChar = schedul.charAt(dtIndex);
+								//開始檢查班表於當日該時段是否為空
 								if(workTimeChar == '空'){
 									System.out.println("當日:"+detail_time+"時段為"+workTimeChar);
 									vehicleList.add(vehicleNO);
@@ -494,9 +610,9 @@ public class CarDetailServlet extends HttpServlet {
 									carSchedulVO2.setWork_hours(work_hours);
 									
 									carSchedulVOList.add(carSchedulVO2);
-									
+									i++;
 								}
-							}
+							//}
 						
 						} catch (IndexOutOfBoundsException iobe) {
 							System.out.println("只有名司機符合條件!!");

@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @WebServlet("/DBGifReader4")
 public class DBGifReader4 extends HttpServlet {
-
+ 
 	Connection conn;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
@@ -28,12 +28,13 @@ public class DBGifReader4 extends HttpServlet {
 			String emp_photo_no = req.getParameter("emp_photo_no");
 			emp_photo_no = new String(emp_photo_no.getBytes("ISO-8859-1"),"UTF-8");
 //			System.out.println("pic!!!!");
-			
+			 
 			Statement stmt = conn.createStatement();
 //			ResultSet rs = stmt.executeQuery(
 //				"SELECT PICTURE FROM emp_photo WHERE EMPNO ='"+ "漂亮"+"'");
 			ResultSet rs = stmt.executeQuery(
 					"SELECT EMP_PHOTO FROM emp_photos WHERE EMP_PHOTO_NO ='"+emp_photo_no+"'");
+		//	"SELECT EMP_PHOTO FROM emp_photos WHERE EMP_PHOTO_NO ='EPH0002'");
 
 			if (rs.next()) {
 				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("EMP_PHOTO"));

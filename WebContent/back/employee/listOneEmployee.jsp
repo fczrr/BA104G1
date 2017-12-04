@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.employee.model.*"%>
+<%@ page import="com.employee_photo.model.*"%>
 
 <%@ include file="/back/production/BA104G1_navbar_sidebar.jsp"%>
 
@@ -98,6 +99,8 @@ h4 {
 									<img alt=""
 										src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
 										width="70px";>&nbsp;個人資料維護&nbsp;<b>頁面</b>
+										
+
 								</h1>
 
 							</a>
@@ -135,12 +138,16 @@ h4 {
 									<br>
 									<!-- Text input-->
 
-
 									<div class="form-group container">
 										<div class="col-xs-12 col-sm-12">
 											<div class="col-xs-12 col-sm-4 col-sm-offset-4">
 												<img
-													src="<%=request.getContextPath() %>//DBGifReader4?action=getPhotoByEmpNO&empNo=${empVO.empNo}"
+													src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+																												
+												
+<%-- 												${memberSvc.findByPrimaryKey(memberVO.memNo).memLoginTime} --%>
+<%-- 													src="<%=request.getContextPath() %>/DBGifReader4?emp_photo_no='EPH0002'" --%>
+<%-- 													src="<%=request.getContextPath() %>/DBGifReader4?action=getPhotoByEmpNO&empNo=${empVO.empNo}" --%>
 													class="img-responsive">
 											</div>
 										</div>
@@ -297,7 +304,7 @@ h4 {
 	</div>
 </div>
 
-
+ 
 
 
 <div class="modal fade" id="modal-id">

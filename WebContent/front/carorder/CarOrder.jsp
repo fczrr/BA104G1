@@ -110,6 +110,14 @@ tr:nth-child(even) {
     width: 500px;
 }
 
+.glyphicon-ok:before {
+    content: "\270f";
+    position: relative;
+    top: 18px;
+    background-color: white;
+    width: 500px;
+}
+
 
 
 .caricon {
@@ -373,20 +381,12 @@ tr:nth-child(even) {
 									
 									
 									<form role="form" action="<%=request.getContextPath()%>/cardetail/cardetail.do" method="post">
-											<!-- <input type="hidden" name="action" value="insert">
-											<input type="hidden" name="cartypename" id="cartypename">
-										    <input type="hidden" name="detail_date" id="detail_date" 	>
-										    <input type="hidden" name="detail_time" id="detail_time" >
-										    <input type="hidden" name="detail_time_no" id="detail_time_no" >
-										    <input type="hidden" name="county" 		id="countyfor" 	>
-										    <input type="hidden" name="district" 	id="districtfor">
-										    <input type="hidden" name="address" 	id="addressfor" >
-										    <input type="hidden" name="arrival_address" 	id="arrival_address" > -->
+											
 										    <input type="hidden" name="passenger_name" 	id="passenger_name" value="${memberVO.memName}">  
 										    <input type="hidden" name="passenger_phone" 	id="passenger_phone"  value="${memberVO.memPhone}">
 										    <input type="hidden" name="memNO" 	id="memNO"  value="${memberVO.memNo}">
 										    <input type="hidden" name="sendcar_status" 	id="sendcar_status" value="A" >
-										   <%--  <input type="hidden" name="formCheck" 	id="formCheck" value="${formCheck}"> --%>
+							
 										   
 										   
 										  
@@ -411,7 +411,7 @@ tr:nth-child(even) {
 						
 						    <!-- =================================表單資料轉送區=================================== -->
 						    <%@ include file="/front/footerbar.jsp" %> 
-	<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+	 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> 
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="<%=request.getContextPath()%>/front/carorder/MDP/jquery-ui.multidatespicker.js"></script><!-- 複數日期選擇器 -->
 		<%-- <script src="<%=request.getContextPath()%>/front/jquery-twzipcode-master/jquery.twzipcode.js"></script> <!-- 台灣地址選擇器 --> --%>
@@ -444,23 +444,24 @@ tr:nth-child(even) {
 													function() {
 														$("#inputmsg1").html($('li.active>a').text());
 														$("#inputmsg2").html($('#chooseDate').val());
-														var detail_timeString;
 														
-														 detail_time = $("input[name='optradio']:checked").attr("text");
-													     
-												    	 if(detail_time == "M"){
-												    		 detail_timeString = "早";
-												    	 }
-												    	 if(detail_time == "A"){
-												    		 detail_timeString = "中";
-												    	 }
-												    	 if(detail_time == "N"){
-												    		 detail_timeString = "晚";
-												    	 }
 														
 														
 														
 														$("input[name='optradio']").change(function(){
+															var detail_timeString;
+															
+															 detail_time = $("input[name='optradio']:checked").attr("text");
+														     
+													    	 if(detail_time == "M"){
+													    		 detail_timeString = "早";
+													    	 }
+													    	 if(detail_time == "A"){
+													    		 detail_timeString = "中";
+													    	 }
+													    	 if(detail_time == "N"){
+													    		 detail_timeString = "晚";
+													    	 }
 															$("#inputmsg3").html(detail_timeString);
 														});
 														var adsTxt1 =$('.county').val();
@@ -608,8 +609,14 @@ tr:nth-child(even) {
 												    	 for(i=0;i<datelist.length;i++){
 												    		 datelist2[i] = date.setDate(datelist[i]);
 												    	 } 
-												    	
+												    	 console.log("轉換過的鎖定日期陣列:"+datelist2)
+												    	if(datelist2.length !== 0){
+												    		console.log("鎖定日期成功")
 												    	 return  datelist2;
+												    	}else{
+												    		console.log("找不到鎖定日期")
+												    		datelist2 = 0;
+												    	}
 											    	 	};
 													/* function dateList2Clear(){
 														datelist2 =[];

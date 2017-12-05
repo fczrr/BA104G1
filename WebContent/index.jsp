@@ -450,7 +450,7 @@ img.logoImgNav {
                     <ul>
                         <li> <a href="#" class="aboutUs"> 意見回饋 </a> </li>
                     </ul>
-                </div>
+                </div> 
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                     <h3 id="footer_img"><img src="<%=request.getContextPath()%>/img/index/logo/QR.png"></h3>
                 </div>

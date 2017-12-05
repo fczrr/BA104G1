@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.android.hcOrderDetail.model.HcOrderDetailVO;
 
 public class HcOrderMasterVO implements Serializable{
@@ -14,7 +13,18 @@ public class HcOrderMasterVO implements Serializable{
 	private Timestamp orderDate;                                                     
 	private String orderStatus;
 	private List<HcOrderDetailVO> detailList = new ArrayList();
+	private com.thecared.model.ThecaredVO ThecaredVO;
 	
+	
+	
+	public com.thecared.model.ThecaredVO getThecaredVO() {
+		return ThecaredVO;
+	}
+
+	public void setThecaredVO(com.thecared.model.ThecaredVO thecaredVO2) {
+		ThecaredVO = thecaredVO2;
+	}
+
 	public HcOrderMasterVO(){}
 	
 	public HcOrderMasterVO(String orderNo, String memNo, String caredNo, Timestamp orderDate, String orderStatus,

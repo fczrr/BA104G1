@@ -13,5 +13,5 @@ public interface CarOrderDAO_interface {
 	public List<CarOrderVO> getAll();
 	public List<CarOrderVO> findByMemNo(String memNo);
 	public List<CarDetailVO> getEmpOrder(String empNo);
-	public void addCarOrder(CarOrderVO carOrderVO,CarSchedulVO carSchedulVO,MemberVO memberVO);
+	public void addCarOrder(CarOrderVO carOrderVO,MemberVO memberVO);
 }

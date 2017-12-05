@@ -46,7 +46,7 @@ public class MealOrderController extends HttpServlet {
 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'").create();
 		
-		if("".equals(action)){
+		if("addOrder".equals(action)){
 			
 			MealOrderVO orderVO = gson.fromJson(sb.toString(),MealOrderVO.class);
 			
@@ -70,7 +70,7 @@ public class MealOrderController extends HttpServlet {
 			}else{
 				status.addProperty("status", "fail");
 			}
-			out.println(status.toString());
+			out.write(status.toString());
 			out.flush();
 		}
 		
@@ -79,6 +79,7 @@ public class MealOrderController extends HttpServlet {
 			MemberVO memberVO = gson.fromJson(sb.toString(), MemberVO.class);
 			System.out.println(memberVO.getMemNo());
 			List<MealOrderVO> list = new MealOrderService().findByMemNo(memberVO.getMemNo());
+			System.out.println("送餐訂單長度"+list.size());
 			System.out.println(gson.toJson(list));
 			out.write(gson.toJson(list));
 			out.flush();
@@ -86,7 +87,7 @@ public class MealOrderController extends HttpServlet {
 		}
 		if("queryByEmp".equals(action)){
 			System.out.println("123");
-			List<MealOrderVO> list = new MealOrderService().getAll();
+			List<MealOrderDetailVO> list = new MealOrderService().getAll();
 			System.out.println(gson.toJson(list));
 			out.write(gson.toJson(list));
 			out.flush();

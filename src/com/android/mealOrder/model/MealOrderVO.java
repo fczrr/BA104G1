@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.mealOrderDetail.model.MealOrderDetailVO;
+import com.android.setMeal.model.SetMealVO;
 
 public class MealOrderVO implements Serializable{
 	private String moNo;
@@ -17,6 +18,18 @@ public class MealOrderVO implements Serializable{
 	private String rcptName;
 	private String rcptAdd;
 	private String rcptPhone;
+	
+	private SetMealVO setMealVO;
+	
+	
+	public SetMealVO getSetMealVO() {
+		return setMealVO;
+	}
+
+
+	public void setSetMealVO(SetMealVO setMealVO) {
+		this.setMealVO = setMealVO;
+	}
 	private List<MealOrderDetailVO> detailList = new ArrayList<>();
 	public MealOrderVO(){
 		

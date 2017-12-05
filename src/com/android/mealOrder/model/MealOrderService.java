@@ -16,7 +16,7 @@ public class MealOrderService {
 	public List<MealOrderVO> findByMemNo(String memNo){
 		return dao.findByMemNo(memNo);
 	}
-	public List<MealOrderVO> getAll(){
+	public List<MealOrderDetailVO> getAll(){
 		return dao.getAll();
 	}
 }

@@ -24,17 +24,17 @@ public class EmpServiceDetailDAO implements EmpServiceDetailDAO_interface{
 	
 	
 	
-	private static final String INSERT = "INSERT INTO EMPSERVICEDETAIL(EMPSEVNO,EMP_NO,MEM_NO,EMPSEVDATE,EMPSEVSTATUS) VALUES('ES0005',?,?,SYSTIMESTAMP,'處理中')";
+	private static final String INSERT = "INSERT INTO EMPSERVICEDETAIL(EMPSEVNO,EMP_NO,MEM_NO,EMPSEVDATE,EMPSEVSTATUS) VALUES(SEQ_EMPSERVICEDETAIL.NEXTVAL,?,?,SYSTIMESTAMP,'處理中')";
 	@Override
-	public void insert(EmpServiceDetailVO empServiceDetailVO) {
+	public void insert(String empNo,String memNo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT);
-			pstmt.setString(1, empServiceDetailVO.getEmpNo());
-			pstmt.setString(2, empServiceDetailVO.getMemNo());
+			pstmt.setString(1, empNo);
+			pstmt.setString(2, memNo);
 			int i  = pstmt.executeUpdate();
 			System.out.println("新增"+i+"筆聊天記錄");
 		} catch (SQLException e) {

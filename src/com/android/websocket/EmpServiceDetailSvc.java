@@ -9,8 +9,8 @@ public class EmpServiceDetailSvc {
 		dao = new EmpServiceDetailDAO();
 	}
 	
-	public void insert(EmpServiceDetailVO empServiceDetailVO){
-		dao.insert(empServiceDetailVO);
+	public void insert(String empNo,String memNo){
+		dao.insert(empNo,memNo);
 	}
 	public List<EmpServiceDetailVO> getByMemNo(String memNo){
 		return dao.getByMemNo(memNo);

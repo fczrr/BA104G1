@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.android.emp.model.HcEmpDAO;
 import com.android.emp.model.HcEmpVO;
 import com.android.hcOrderDetail.model.HcOrderDetailDAO;
 import com.android.hcOrderDetail.model.HcOrderDetailVO;
+import com.android.hcOrderMaster.model.HcOrderMasterDAO;
 import com.android.hcOrderMaster.model.HcOrderMasterService;
 import com.android.hcOrderMaster.model.HcOrderMasterVO;
+import com.android.member.model.MemberService;
 import com.android.member.model.MemberVO;
 import com.employee.model.EmployeeVO;
 import com.google.gson.Gson;
@@ -43,7 +46,6 @@ public class HcOrderMasterController extends HttpServlet {
 		while ((str = br.readLine()) != null) {
 			sb.append(str);
 		}
-		System.out.println("1");
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'").create();
 		String action = req.getParameter("action");
 		
@@ -65,9 +67,30 @@ public class HcOrderMasterController extends HttpServlet {
 			out.flush();
 			return;
 		}
+		if("addOrder".equals(action)){
+			HcOrderMasterVO hcOrderMasterVO = gson.fromJson(sb.toString(), HcOrderMasterVO.class);
+			Integer price = (new HcEmpDAO().getPrice(hcOrderMasterVO.getDetailList().get(0).getEmpNo()))*hcOrderMasterVO.getDetailList().size();
+			
+			MemberService memSvc = new MemberService();
+			
+			MemberVO memberVO =memSvc.getOneMemByNo(hcOrderMasterVO.getMemNo());
+			
+			JsonObject status = new JsonObject();
+			if(memberVO.getPoint()<price){
+				status.addProperty("status", "error");
+			}else{
+				memberVO.setPoint(memberVO.getPoint()-price);
+			}
+			HcOrderMasterDAO HcOrderMasterDAO = new HcOrderMasterDAO();
+			HcOrderMasterDAO.transaction(hcOrderMasterVO, memberVO);
+			
+			status.addProperty("status", "success");
+			System.out.println("派車訂單新增成功"+status.get("status").getAsString());
+			out.write(status.toString());
+			out.flush();
+			
+		}
 		
-		
-
 	}
 
 }

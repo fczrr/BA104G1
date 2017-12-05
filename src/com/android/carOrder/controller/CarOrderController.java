@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.android.carDetailVO.model.CarDetailVO;
 import com.android.carOrder.model.CarOrderService;
 import com.android.carOrder.model.CarOrderVO;
 import com.android.carSchedul.model.CarSchedulService;
@@ -19,11 +20,13 @@ import com.android.carSchedul.model.CarSchedulVO;
 import com.android.carType.model.CarTypeService;
 import com.android.emp.model.HcEmpVO;
 import com.android.hcOrderDetail.model.HcOrderDetailDAO;
+import com.android.member.model.MemberService;
 import com.android.member.model.MemberVO;
 import com.android.vehicle.model.VehicleVO;
 import com.employee.model.EmployeeVO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 
 public class CarOrderController extends HttpServlet {
@@ -48,23 +51,47 @@ public class CarOrderController extends HttpServlet {
 		Gson gson =  new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'").create();
 		String action = req.getParameter("action");		
 		
-		if(action.equals("addCarOrder")){
+		if(action.equals("addOrder")){
 			CarOrderVO carOrder = (CarOrderVO) gson.fromJson(sb.toString(), CarOrderVO.class);
+			System.out.println("派車訂單"+gson.toJson(carOrder));
 			CarTypeService carTypeSvc = new CarTypeService();
-			CarSchedulService carSchedulSvc = new CarSchedulService();
+			CarOrderService carOrderService = new CarOrderService();
 			
-			Map<String,List<CarSchedulVO>> empCarSchedulMap = new HashMap();
-			List<VehicleVO> vehicleList = carTypeSvc.getVehicleVObyCarTypeNo(carOrder.getCarTypeNo());
-			for(VehicleVO vechicleVO:vehicleList){
-				carSchedulSvc.getByEmpNo(vechicleVO.getEmpNo(),"");
+			MemberService memSvc = new MemberService();
+			MemberVO memberVO = memSvc.getOneMemByNo(carOrder.getMemNo());
+			Integer carPrice = (carTypeSvc.getOne(carOrder.getCarTypeNo()).getRentalRates())*(carOrder.getDetailList().size());
+			
+			JsonObject status = new JsonObject();
+			if(memberVO.getPoint()<carPrice){
+				status.addProperty("status", "error");
+			}else{
+				memberVO.setPoint(memberVO.getPoint()-carPrice);
 			}
 			
+			List<VehicleVO> vehicleList = carTypeSvc.getVehicleVObyCarTypeNo(carOrder.getCarTypeNo());
+			int vehicleSize = vehicleList.size();
+			System.out.println(new Gson().toJson(vehicleList)+"========");
+			VehicleVO vehicleVO  = vehicleList.get((int)(Math.random()*vehicleSize));
+			System.out.println("選中車輛"+gson.toJson(vehicleVO));
+			for(CarDetailVO detail : carOrder.getDetailList()){
+				detail.setVehicleNo(vehicleVO.getVehicleNo());
+			}
+			for(CarDetailVO detail : carOrder.getDetailList()){
+				System.out.println("==="+detail.getVehicleNo());
+			}
+			carOrderService.addCarOrder(carOrder, memberVO);
+			status.addProperty("status", "success");
+			System.out.println("派車訂單新增成功"+status.get("status").getAsString());
+			out.write(status.toString());
+			out.flush();
 		}
 		if(action.equals("queryAllCarOrder")){
 			MemberVO memberVO = (MemberVO) gson.fromJson(sb.toString(), MemberVO.class);
 			CarOrderService carOrderService = new CarOrderService();
 			List<CarOrderVO> carOrdList = carOrderService.findByMemNo(memberVO.getMemNo());
+			System.out.println("會員查出派車訂單"+carOrdList.size()+"筆");
 			System.out.println(gson.toJson(carOrdList));
+		
 			out.write(gson.toJson(carOrdList));
 			out.flush();
 			return;

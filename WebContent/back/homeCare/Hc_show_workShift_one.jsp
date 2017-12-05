@@ -428,7 +428,7 @@
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
 
-		$('#calendar')
+		$('#calendar') 
 				.fullCalendar(
 						{
 							schedulerLicenseKey : 'CC-Attribution-NonCommercial-NoDerivatives',

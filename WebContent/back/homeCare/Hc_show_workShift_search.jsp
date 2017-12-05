@@ -122,54 +122,65 @@ h4 {
 	<div class="row">
 <!-- 	   <hr>	 -->
 	   <div class="col-xs-12 col-sm-12">
-	     <h4 style="color:#428fdc">查詢:</h4>
+<!-- 	     <h4 style="color:#428fdc">查詢:</h4> -->
+
 	   <form class="form-inline"  id='listHcWorks_ByCompositeQuery' action = "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do" method="post">
+        
         <div class="myform-row">
-         
+
 	         <div class="form-group ">
 	          <label class="control-label" for="monthOfYear">請點選月份</label>
 	           <input type="text" value="${param.monthOfYear}" class="form-control" id="monthOfYear" name="monthOfYear" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
 	         </div>        
+	     <a class="btn btn-info" id="addCondition">加入查詢條件</a>
 
-        	 <div class="form-group ">
-	          <label class="control-label" for="empName">搜尋服務人員姓名</label>
-	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入姓名" style="border-radius:5px;">
+        	 <div class="form-group form-group1" style="display:none;">
+	          <label class="control-label" for="empNo">以編號搜尋</label>
+	           <input type="text" value="${param.empNo}" class="form-control" id="empNo" name="empNo" aria-describedby="helpBlock2" placeholder="輸入編號" style="border-radius:5px;">
+	         </div>
+	         
+	         <div class="form-group form-group2" style="display:none;">
+	          <label class="control-label" for="empName">以姓名搜尋</label>
+	           <input type="text" value="${param.empName}" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入姓名" style="border-radius:5px;">
 	         </div>
         	                        
-	         <div class="form-group ">
-	          <label class="control-label" for="expNo">請選擇服務人員</label>
+	         <div class="form-group form-group3" style="display:none;">
+	          <label class="control-label" for="expNo">以專長搜尋</label>
 	          <select class="form-control" id="expNo" name="expNo" aria-describedby="helpBlock2" style="border-radius:5px;" >
-	            <option value="" selected>請選擇服務人員專長</option>
+	            <option value="" selected>請選擇專長</option>
 	          	<option value="101"> 丙級照護員</option>
 	          	<option value="102"> 乙級照護員</option>
 	          	<option value="201"> 護士</option>
 	          	<option value="202"> 護理師</option>
 	          </select>
-	        </div>
-	         
-	         <div class="form-group ">
-	          <label class="control-label" for="empName">搜尋服務人員姓名</label>
-	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入姓名" style="border-radius:5px;">
-	         </div>
-	         
-	         <div class="form-group pull-right">       
-	        <input type="submit" class="btn btn-success" value="查詢" style="border-radius:5px;">
-	         </div>
+	        </div>        
+
+		    <div class="form-group form-group4" style="display:none;">
+		    	 <label class="control-label" for="totalWorkShifts">以工作時段搜尋</label>		    	         
+			   <select class="form-control" size="1" name="totalWorkShifts" id="totalWorkShifts" aria-describedby="helpBlock2" style="border-radius:5px;">
+		          <option value="" selected>請選擇</option>
+		          <option value="0-10">0~10</option>
+		          <option value="10-20">10~20</option>
+		          <option value="20-30">20~30</option>
+		          <option value="30-40">30~40</option>
+		          <option value="40-50">40~50</option>
+		          <option value="50-93">50-93</option> 
+		       </select>
+	       </div>
+		         
+
 	        
        </div>
-        
+        <br>
        <div class="myform-row">
-	        <h4 style="color:#428fdc">查詢當日有空的人:</h4>
-<!-- 	       	 <div class="form-group "> -->
-<!-- 	          <label class="control-label" for="empName">搜尋服務人員姓名</label> -->
-<!-- 	           <input type="text" value="" class="form-control" id="empName" name="empName" aria-describedby="helpBlock2" placeholder="輸入關鍵字(非必要)" style="border-radius:5px;"> -->
-<!-- 	         </div> -->
+       	     <a class="btn btn-warning" id="addCondition2">特定日期查詢</a>       
+<!-- 	        <h4 style="color:#428fdc">查詢當日有空的人:</h4> -->
 
-	         <div class="form-group ">
+	         <div class="form-group form-group5" style="display:none;">
 	          <label class="control-label" for="servDate">請點選日期</label>
 	           <input type="text" value="${param.servDate}" class="form-control" id="servDate" name="servDate" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
 	         </div>        
-	         <div class="form-group ">
+	         <div class="form-group form-group6" style="display:none;">
 	          <label class="control-label" for="servTime">請點選服務時段</label>
 	          <select class="form-control" id="servTime" name="servTime" aria-describedby="helpBlock2" style="border-radius:5px;">
 	            <option value="" selected>請選擇服務時段</option>
@@ -178,12 +189,14 @@ h4 {
 	          	<option value="晚"> 晚上 (18:00~22:00)</option>
 	          </select>
 	        </div>
-	        
+	         <div class="form-group pull-right">       
+	        <input type="submit" class="btn btn-success" value="查詢" style="border-radius:5px;">
+	         </div>
 	        
 	        <input type="hidden" name="action" value="listHcWorks_ByCompositeQuery">
 <!-- 	        <input type="hidden" name="shiftNumber" value="00"> -->
-	        <input type="hidden" name="successView" value="/back/homeCare/Hc_show_workShift2.jsp">
-	        <input type="hidden" name="failureV" value="/back/homeCare/Hc_show_workShift2.jsp">
+	        <input type="hidden" name="successView" value="/back/homeCare/Hc_show_workShift_search.jsp">
+	        <input type="hidden" name="failureV" value="/back/homeCare/Hc_show_workShift_search.jsp">
 	
 
        </div>
@@ -233,7 +246,7 @@ h4 {
 						                            <td>${hcWorkShiftsVO.totalWorkShifts}</td>
 												<td>
 													<div class="btn-group">
-														<a href='<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift3.jsp?monthOfyear=${hcWorkShiftsVO.monthOfYear}&empNo=${hcWorkShiftsVO.empNo}' data-toggle="modal"
+														<a href='<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift_one.jsp?monthOfyear=${hcWorkShiftsVO.monthOfYear}&empNo=${hcWorkShiftsVO.empNo}' data-toggle="modal"
 															class="btn btn-primary" role="button"> <span
 															class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;修改
 														</a>
@@ -286,10 +299,22 @@ h4 {
 
 	    });
 	    
-	    $(function(){
-	    	$(document).on('change',$('#monthOfYear'),function(){
-	    		console.log($('#monthOfYear').attr('value').substring(0,4)*1-1911+$('#monthOfYear').attr('value').substring(4,6));
 
-	    	});
-	    });
+		
+		$(function(){
+			$('#addCondition').click(function(){
+				$('.form-group1').toggle();
+				$('.form-group2').toggle();
+				$('.form-group3').toggle();
+				$('.form-group4').toggle();
+			});
+			
+			$('#addCondition2').click(function(){
+				$('.form-group5').toggle();
+				$('.form-group6').toggle();
+
+			});			
+
+		});
+
 	    </script>

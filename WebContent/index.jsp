@@ -33,6 +33,11 @@
 	background: url(<%=request.getContextPath()%>/img/index/BigImg/bannerAbout.jpg) no-repeat center center scroll;
 
 }
+img.logoImgNav {
+    margin-left: 40px;
+    margin-top: 7px;
+}
+
 </style>
 <%@ include file="/front/css/navbar/navCss.file" %>
 
@@ -447,7 +452,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                    <h3 id="footer_img"><img src="https://api.fnkr.net/testimg/150x150/00CED1/FFF/?text=img+placeholder"></h3>
+                    <h3 id="footer_img"><img src="<%=request.getContextPath()%>/img/index/logo/QR.png"></h3>
                 </div>
             
             </div>

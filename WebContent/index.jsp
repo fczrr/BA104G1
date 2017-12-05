@@ -33,7 +33,7 @@
 	background: url(<%=request.getContextPath()%>/img/index/BigImg/bannerAbout.jpg) no-repeat center center scroll;
 
 }
-img.logoImgNav {
+img.logoImgNav { 
     margin-left: 40px;
     margin-top: 7px;
 }

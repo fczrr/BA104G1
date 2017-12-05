@@ -162,6 +162,95 @@ public class HcWorkshiftsServlet extends HttpServlet {
 		
 		
 		
+		if ("insterHC_work".equals(action)) { // 來自Hc_order.jsp的請求
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+			String failureV = req.getParameter("failureV");
+			
+
+			try {
+				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+				String monthOfYear = req.getParameter("monthOfYear");
+				
+
+				
+				String empNo = req.getParameter("empNo");
+				
+				if (monthOfYear == null || (monthOfYear.trim()).length() == 0) {
+					errorMsgs.add("請輸入份月");
+				}
+				
+				if (empNo == null || (empNo.trim()).length() == 0) {
+					errorMsgs.add("請輸入員工編號");
+				}
+				
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher(failureV);
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
+				
+
+				if(req.getParameter("monthOfYear")!=null){//轉換2017到106  因為前端轉不掉逼不得已
+					
+					if(req.getParameter("monthOfYear").length()>=6){
+						monthOfYear = (Integer.valueOf(req.getParameter("monthOfYear").substring(0, 4))-1911)+req.getParameter("monthOfYear").substring(4, 6);
+					}
+				}
+				
+				//產生字串
+				int yyyy = Integer.valueOf(monthOfYear.substring(0, 3))+1911;
+				int mm = Integer.valueOf(monthOfYear.substring(3, 5));
+				Calendar cal = Calendar.getInstance();
+//				cal.set(yyyy, mm-1, 1);
+				int maxDate = cal.getActualMaximum(Calendar.DATE);
+				System.out.println(cal.getActualMaximum(Calendar.DATE));
+				System.out.println(cal.getTime());
+				cal.getTime();
+				StringBuilder compositionShift =  new StringBuilder();
+				for(int i=0;i < maxDate*3;i++){
+					compositionShift.append("空");
+				}
+				
+				if(maxDate<31){
+					for(int i=0;i < 93-maxDate*3;i++){
+						compositionShift.append("無");
+					}
+				}
+				
+		System.out.println(compositionShift);
+
+				/***************************2.開始查詢資料*****************************************/
+				HcWorkShiftsService  hcwshiftSvc = new HcWorkShiftsService(); 
+
+				HcWorkShiftsVO hcWorkShiftsVO = hcwshiftSvc.addHcWorkShifts(monthOfYear, empNo, compositionShift.toString(), new Integer(0));
+				
+
+
+				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
+				req.getSession().setAttribute("hcWorkShiftsVO", hcWorkShiftsVO); 
+						
+						res.sendRedirect("/BA104G1/back/homeCare/Hc_show_workShift_one.jsp?monthOfyear="+hcWorkShiftsVO.getMonthOfYear()+"&empNo="+hcWorkShiftsVO.getEmpNo()+"");
+			//考慮放哪個scope  上一頁的問題
+//				String url = req.getParameter("successView");
+//				RequestDispatcher successView = req.getRequestDispatcher(url); 
+//				successView.forward(req, res);
+						return;
+
+				/***************************其他可能的錯誤處理*************************************/
+			} catch (Exception e) {
+				errorMsgs.add("無法取得資料:" + e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher(failureV);
+				failureView.forward(req, res);
+			}
+		}
+		
+		
+		
 		
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
@@ -444,14 +533,14 @@ public class HcWorkshiftsServlet extends HttpServlet {
 //						order.substring(3);
 						java.sql.Date sqldate = java.sql.Date.valueOf(date);
 						HcOrderDetailVO hcOrderDetailVO = hcOrderDetailService.getAllBySreviceTimeInPerson(date, time, empNo);
-						if( (sqldate.getTime() < cal.getTime().getTime()) 
-								&& !(hcOrderDetailVO.getServiceDate().getTime() == sqldate.getTime()) 
-								|| !time.equals(hcOrderDetailVO.getServiceTime())){
+//						if( (sqldate.getTime() < cal.getTime().getTime()) 
+//								&& !(hcOrderDetailVO.getServiceDate().getTime() == sqldate.getTime()) 
+//								|| !time.equals(hcOrderDetailVO.getServiceTime())){
 							hcOrderDetailVO.setEmpNo(empNo);
 							hcOrderDetailVO.setServiceDate(sqldate);
 							hcOrderDetailVO.setServiceTime(time);;
 							changList.add(hcOrderDetailVO);
-						}
+//						}
 					}
 					compositionShift.replace(shiftNumber, shiftNumber+1, time);
 				}
@@ -491,8 +580,8 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 				JsonObject jjj = new JsonObject();
 				
-				String aass =  "516516161";				
-				jjj.addProperty("xxx", aass);;
+				String msg =  "更新成功!!";				
+				jjj.addProperty("xxx", msg);;
 				
 				res.getWriter().println(jjj.toString());
 				

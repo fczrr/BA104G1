@@ -59,13 +59,23 @@
 
 
 <%  HcWorkShiftsService hcWorkShiftsSrv =  new HcWorkShiftsService();
-	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne(request.getParameter("monthOfyear"),request.getParameter("empNo"));      //<!--       寫死的要改質         -->
+	HcWorkShiftsVO  hcWorkShiftsVO  = hcWorkShiftsSrv.getOne(request.getParameter("monthOfyear"),request.getParameter("empNo"));      //取值的地方
 	pageContext.setAttribute("hcWorkShiftsVO", hcWorkShiftsVO);
 	List mylist = convertNumberToDate(hcWorkShiftsVO.getMonthOfYear(),hcWorkShiftsVO.getWorkShiftStatus());
 	List<String> WorkShiftslist = (ArrayList<String>)mylist.get(0);
 	List<String> restShiftslist = (ArrayList<String>)mylist.get(1);
 	pageContext.setAttribute("WorkShiftslist", WorkShiftslist);
 	pageContext.setAttribute("restShiftslist", restShiftslist);	
+	
+	//決定班表的年月
+	String year = request.getParameter("monthOfyear").substring(0, 3);
+	String month = request.getParameter("monthOfyear").substring(3, 5);
+	
+	Integer myYear =  Integer.valueOf(year)+1911;
+	Integer myMonth = Integer.valueOf(month);
+	
+	
+	//印LOG
 	for(String aaa :WorkShiftslist){
 		System.out.println("wjsp++"+aaa);
 	}
@@ -280,8 +290,7 @@
                             <td>${hcWorkShiftsVO11.empNo}</td>
                             <td>${hcWorkShiftsVO11.empNo}</td>
                             <td>${hcWorkShiftsVO11.totalWorkShifts}</td>
-                            <td>${hcWorkShiftsVO11.workShiftStatus}</td>
-                                     
+                            <td>${hcWorkShiftsVO11.workShiftStatus}</td>                                     
                         </tr>
                      </c:forEach>						
 
@@ -291,8 +300,10 @@
 
 
 
-
-        
+<%-- 		<% //Calenddar myDate = new Date(); %> --%>
+<%--         <c:if test="${hcWorkShiftsVO.monthOfYear}" var="isDrogable" scope="page"> --%>
+   
+<%-- 		</c:if> --%>
 	<div id='wrap col-md-12 col-sm-12 col-xs-12'>
 		<div id='external-events2'>
 		<div id='external-events-listing2'>
@@ -424,6 +435,8 @@
 
 // 							locale : 'zh-tw',
 // 							themeSystem:'bootstrap3',
+<%-- 							defaultDate: '<%= myYear%>-<%= myMonth%>-01' , --%>
+							defaultDate: '2018-01-01',
 							editable : true,
 							aspectRatio : 1.8,
 							scrollTime: '00:00',
@@ -431,8 +444,8 @@
 							dragRevertDuration:0,
 							validRange:function(currentDate) { 
 							    return { 
-							        start: myDate.getFullYear()+"-"+(myDate.getMonth() + 1)+"-01",
-							        end: (((myDate.getMonth() + 2)>=13) ? myDate.getFullYear()+1:myDate.getFullYear())+"-"+(myDate.getMonth() + 2)%12+"-01"
+							        start: <%= myYear.toString()%>+"-"+<%= myMonth.toString()%>+"-01",
+							        end: (((<%= myMonth.toString()%>+ 1)>=13) ? <%= myYear.toString()%>+1:<%= myYear.toString()%>)+"-"+<%= myMonth.toString()%>+"-01"
 							    };
 							 },
 							slotEventOverlap : false,
@@ -659,7 +672,7 @@
 					 dataType: "json",
 					 success: function (data){
 						 console.log(data.xxx);
-						 alert("success")
+						 alert(data.xxx)
 						
 				     },
 		            error: function(e){alert(e+'777')}

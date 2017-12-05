@@ -215,11 +215,12 @@ h4 {
 	   </div>
 	</div>
 
-
+								<a href='#modal-id' data-toggle="modal" class="btn btn-primary">跳出視窗</a>
+								
 								<div class="col-xs-1 pull-right">
 									<a
-										href="<%=request.getContextPath()%>/back/employee/addEmp.jsp"
-										id="modifyBtn" class="btn btn-danger btn-default"
+										href="#modal-id" data-toggle="modal"
+										id="insterbtn" class="btn btn-danger btn-default"
 										role="button"><span class="glyphicon glyphicon-save"></span>&nbsp;新增班表</a>
 								</div>
 							<div class="col-sm-12">
@@ -269,31 +270,59 @@ h4 {
 	
 
 	<%@ include file="/back/production/BA104G1_footer.jsp"%>
-<!-- <div class="modal fade  container" id="modal-id" > -->
-<!-- 	<div class="col-xs-12 col-sm-12"> -->
-<!-- 	<div class="modal-dialog" style="width:1000px"> -->
-<!-- 		<div class="modal-content"> -->
-<!-- 			<div class="modal-header"> -->
-<!-- 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
-<!-- 				<h4 class="modal-title">標題</h4> -->
-<!-- 			</div> -->
-<!-- 			<div class="modal-body"> -->
-<%-- 					<%@ include file="/back/homeCare/Hc_show_workShift4.jsp"%> --%>
-<!-- 			</div> -->
-<!-- 			<div class="modal-footer"> -->
-<!-- 				<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button> -->
-<!-- 				<button type="button" class="btn btn-primary">Save changes</button> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
+	
+	
+<div class="modal fade  container" id="modal-id" >
+	<div class="col-xs-12 col-sm-12">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">新增班表</h4>
+			</div>
+                    <form id='getAllByDateTime' action = "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do" method="post">
+                    
+	                    <div class="modal-body">
+     
+	                        <div class="form-group has-primary">
+	                          <label class="control-label" for="monthOfYear">請點選月份</label>
+	                          <input type="text" value="${param.monthOfYear}" class="form-control" id="monthOfYear2" name="monthOfYear" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
+	                         </div>
+	                        <div class="form-group has-primary">
+	                          <label class="control-label" for="empNo">輸入員工編號</label>
+	                          <input type="text" value="" class="form-control" id="empNo" name="empNo" aria-describedby="helpBlock2" style="border-radius:5px;">
+	                         </div>
+	                        
+
+	        <input type="hidden" name="action" value="insterHC_work">
+	        <input type="hidden" name="successView" value="/back/homeCare/Hc_show_workShift_search.jsp">
+	        <input type="hidden" name="failureV" value="/back/homeCare/Hc_show_workShift_search.jsp">
+	                        
+	                    </div>
+	                    <div class="modal-footer">                      
+	<!--                         <input type="submit" class="btn btn-primary" data-dismiss="modal" id="datenloc-check" value="確認"> -->
+	                        <input type="submit" class="btn btn-primary"  id="datenloc-check" value="確認">
+	                        
+	                        
+	                    </div>
+                    </form
+		</div>
+	</div>
+	</div>
+</div>
 
 		<script src="<%=request.getContextPath()%>/front/homeCare/laydate/laydate.js"></script> 
 		
 		<script>
 	    laydate.render({
 	        elem: '#monthOfYear' 
+	        ,format: 'yyyyMM'
+	        ,type: 'month'
+
+	    });
+	    
+	    laydate.render({
+	        elem: '#monthOfYear2' 
 	        ,format: 'yyyyMM'
 	        ,type: 'month'
 

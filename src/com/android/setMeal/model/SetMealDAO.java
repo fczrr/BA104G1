@@ -136,6 +136,7 @@ public class SetMealDAO implements SetMealDAO_interface {
 			pstmt.setInt(1, smNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				System.out.println("查套餐");
 				setMealVO = new SetMealVO();
 				setMealVO.setSmNo(smNo);
 				setMealVO.setSmName(rs.getString("SM_NAME"));
@@ -143,7 +144,6 @@ public class SetMealDAO implements SetMealDAO_interface {
 				setMealVO.setSupply(rs.getInt("SUPPLY"));
 				setMealVO.setSmIntro(rs.getString("SM_INTRO"));
 			}
-			return setMealVO;
 		}catch (SQLException e) {
 			
 			e.printStackTrace();

@@ -7,7 +7,7 @@ public class HcEmpVO implements Serializable{
 	private String empNo;
 	private String empName;
 	private String empDep;
-	
+	private Integer price;
 	private List<ExpertVO> expertList;
 	
 	private byte[] empPhoto;
@@ -16,6 +16,16 @@ public class HcEmpVO implements Serializable{
 	
 	public HcEmpVO() {
 		super();
+	}
+
+
+	public Integer getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 

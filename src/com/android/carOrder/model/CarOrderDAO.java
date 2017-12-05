@@ -10,19 +10,21 @@ import javax.sql.DataSource;
 
 import com.android.carDetailVO.model.CarDetailVO;
 import com.android.carSchedul.model.CarSchedulVO;
+import com.android.carType.model.CarTypeService;
 import com.android.member.model.MemberVO;
+import com.employee.model.EmployeeService;
 
 public class CarOrderDAO implements CarOrderDAO_interface{
 	private static DataSource ds;
 	
 	
-	private static final String INSERT_CAR_ORDER="INSERT INTO CAR_ORDER(ORDER_NO,MEM_NO,ORDER_DATE,ORDER_STATUS)　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),?,CURRENT_TIMESTAMP,?);";
-	private static final String INSERT_CAR_DETAIL="INSERT INTO CAR_DETAIL(DETAIL_NO,ORDER_NO,VEHICLE_NO,DETAIL_DATE,DETAIL_TIME,PASSENGER_NAME,PASSENGER_PHONE,GETINTO_ADDRESS,ARRIVAL_ADDRESS,SENDER_STATUS)　"
-			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),?,?,?,?,?,?,?,?,?);";
+	private static final String INSERT_CAR_ORDER="INSERT INTO CAR_ORDER(ORDER_NO,MEM_NO,ORDER_DATE,ORDER_STATUS)　VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(CARORDER_SEQ.Nextval),6,'0'),?,?,?)";
+	private static final String INSERT_CAR_DETAIL="INSERT INTO CAR_DETAIL(DETAIL_NO,ORDER_NO,VEHICLE_NO,DETAIL_DATE,DETAIL_TIME,PASSENGER_NAME,PASSENGER_PHONE,GETINTO_ADDRESS,ARRIVAL_ADDRESS,SENDCAR_STATUS)　"
+			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(cardetail_seq.Nextval),6,'0'),?,?,?,?,?,?,?,?,?)";
 	private static final String UPDATE_CAR_SCHEDUL = "UPDATE CAR_SCHEDUL SET ATTENDANCE = ? WHERE SERIAL_NO=?";
 	private static final String UPDATE_MEMBER_POINT = "UPDATE MEMBER SET POINT = ? WHERE MEM_NO=?";
 	private static final String FIND_MEMNO_ORDER = "SELECT * FROM CAR_ORDER WHERE MEM_NO=?";
-	private static final String GET_DETAIL_BY_ORDERNO = "SELECT * FROM CAR_DETAIL WHERE ORDER_NO=?";
+	private static final String GET_DETAIL_BY_ORDERNO = "SELECT * FROM CAR_DETAIL JOIN VEHICLE ON VEHICLE.VEHICLE_NO = CAR_DETAIL.VEHICLE_NO WHERE ORDER_NO=?";
 	
 	private static final String GET_EMP = "SELECT * FROM CAR_DETAIL JOIN VEHICLE ON (CAR_DETAIL.VEHICLE_NO=VEHICLE.VEHICLE_NO) JOIN EMPLOYEE ON (EMPLOYEE.EMP_NO=VEHICLE.EMP_NO) JOIN CAR_ORDER"
 			+ " ON (CAR_ORDER.ORDER_NO=CAR_DETAIL.ORDER_NO) WHERE VEHICLE.EMP_NO=?";
@@ -38,7 +40,7 @@ public class CarOrderDAO implements CarOrderDAO_interface{
 	}
 
 	@Override
-	public void addCarOrder(CarOrderVO carOrderVO,CarSchedulVO carSchedulVO,MemberVO memberVO) {
+	public void addCarOrder(CarOrderVO carOrderVO,MemberVO memberVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -56,7 +58,8 @@ public class CarOrderDAO implements CarOrderDAO_interface{
 			//=======================
 			
 			pstmt.setString(1, carOrderVO.getMemNo());
-			pstmt.setString(2, carOrderVO.getOrderStatus());
+			pstmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+			pstmt.setString(3, carOrderVO.getOrderStatus());
 			int i  = pstmt.executeUpdate();   //1.
 			System.out.println("新增"+i+"筆派車訂單");
 			
@@ -82,13 +85,6 @@ public class CarOrderDAO implements CarOrderDAO_interface{
 				pstmt.executeUpdate();   //2.
 				System.out.println("新增一筆派車明細");
 			}
-			//===========班表============
-			pstmt = con.prepareStatement(UPDATE_CAR_SCHEDUL);
-			pstmt.setString(1, carSchedulVO.getAttendance());
-			pstmt.setInt(2,carSchedulVO.getSerialNo());
-			pstmt.executeUpdate();
-			System.out.println("成功更新一筆派車班表");
-			//=======================
 			
 			//=========儲值============
 			pstmt = con.prepareStatement(UPDATE_MEMBER_POINT);
@@ -138,7 +134,6 @@ public class CarOrderDAO implements CarOrderDAO_interface{
 				carOrderVO.setMemNo(rs.getString("MEM_NO"));
 				carOrderVO.setOrderDate(rs.getTimestamp("ORDER_DATE"));
 				carOrderVO.setOrderStatus(rs.getString("ORDER_STATUS"));
-				orderList.add(carOrderVO);
 				System.out.println("抓出一筆會員派車定單");
 				
 				pstmt2 = con.prepareStatement(GET_DETAIL_BY_ORDERNO);
@@ -148,7 +143,10 @@ public class CarOrderDAO implements CarOrderDAO_interface{
 	
 				while(rs2.next()){
 					CarDetailVO carDetailVO = new CarDetailVO();
+					carDetailVO.setCarTypeVO(new CarTypeService().getByVehicleNo(rs2.getInt("VEHICLE_NO")));
 					carDetailVO.setDetialNo(rs2.getString("DETAIL_NO"));
+					carDetailVO.setEmpNo(rs2.getString("EMP_NO"));
+					carDetailVO.setEmployeeVO(new EmployeeService().findByPrimaryKey(rs2.getString("EMP_NO")));
 					carDetailVO.setDetailTime(rs2.getString("DETAIL_TIME"));
 					carDetailVO.setPassengerName(rs2.getString("PASSENGER_NAME"));
 					carDetailVO.setPassengerPhone(rs2.getInt("PASSENGER_PHONE"));

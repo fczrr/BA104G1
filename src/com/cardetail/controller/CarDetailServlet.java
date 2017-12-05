@@ -540,10 +540,12 @@ public class CarDetailServlet extends HttpServlet {
 						}	
 						//取得服務日期有空的車輛(司機)
 						try{
-						//for(int i = 0;i < howManyDays; i++){
+						for(int i = 0;i < vehicleVO.size(); i++){
 					    //從符合條件的車裡
-							int i=0;
+							//int i=0;
 						Integer vehicleNO = vehicleVO.get(i).getVehicle_no();
+						System.out.println("該月該車型的司機(車)有"+vehicleVO.size()+"人");
+						System.out.println("檢察車輛編號vehicle_no:"+vehicleNO+"於當日有沒有空");
 						String empNo = vSv.getOneVehicle(vehicleNO).getEmp_no();
 						//找到該車所屬司機的班表
 						String schedul = carSchedulSv.findByEmpNo(empNo, sysdate).getAttendance();
@@ -555,14 +557,16 @@ public class CarDetailServlet extends HttpServlet {
 								char workTimeChar = schedul.charAt(dtIndex);
 								//開始檢查班表於當日該時段是否為空
 								if(workTimeChar == '空'){
-									System.out.println("當日:"+detail_time+"時段為"+workTimeChar);
+									System.out.println("車號為:"+vehicleNO+"的司機當日於"+detail_time+"時段為"+workTimeChar);
 									vehicleList.add(vehicleNO);
+									System.out.println("vehicleList:"+vehicleList);
 //									schedulList.add(schedul);
 //									SerialNoList.add(serial_no);
 									
 									System.out.println("車輛編號vehicle_no:"+vehicleNO+"於當日有空,編號:"+serial_no+"將更新班表");
 									
 									System.out.println("原本的班表:" + schedul);
+									
 									
 									if(schedul2 == null){
 									schedul2 =  new StringBuffer(schedul);
@@ -615,9 +619,9 @@ public class CarDetailServlet extends HttpServlet {
 									carSchedulVO2.setWork_hours(work_hours);
 									
 									carSchedulVOList.add(carSchedulVO2);
-									i++;
+									break;
 								}
-							//}
+							}
 						
 						} catch (IndexOutOfBoundsException iobe) {
 							System.out.println("只有名司機符合條件!!");

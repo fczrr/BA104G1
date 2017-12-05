@@ -157,12 +157,20 @@ th, td {
 												+ escape(file.name) + '"/>';
 										$('#imgLead').append(str);
 									};
-								})(file);
+								})(file); 
 
 								//利用DataURL的方式讀取圖片
 								reader.readAsDataURL(file);
 							}
 						});
+				
+						$('#magicbtn').click(function(){
+				    		
+					    	 $('#cartypename').val('藍寶堅尼 LP570');
+					    	 $('#description').val('這台Squadra Corse強悍、華麗最能彰顯您的尊貴');
+					    	 $('#rentalrates').val(1000000);
+					    	 
+				    	 });
 
 			});
 </script>
@@ -200,7 +208,7 @@ th, td {
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                    <h2>新增車型</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -277,20 +285,21 @@ th, td {
 								<table>
 									<tr>
 										<td>車型名稱:</td>
-										<td><input type="TEXT" name="cartypename" size="45"
-											value="<%=(cartypeVO == null) ? "飛天車" : cartypeVO.getCartypename()%>" /></td>
+										<td><input type="TEXT" name="cartypename" id="cartypename" size="45"
+											value="<%=(cartypeVO == null) ? "" : cartypeVO.getCartypename()%>" /></td>
 									</tr>
 									<tr>
 										<td>描述:</td>
-										<td><input type="TEXT" name="description" size="45"
-											value="<%=(cartypeVO == null) ? "會飛的TOYOTA" : cartypeVO.getDescription()%>" /></td>
+										<td><input type="TEXT" name="description" id="description" size="45"
+											value="<%=(cartypeVO == null) ? "" : cartypeVO.getDescription()%>" /></td>
 									</tr>
 									<tr>
 										<td>租賃價格:</td>
-										<td><input type="number" name="rentalrates" size="45"
-											value="<%=(cartypeVO == null) ? "10000" : cartypeVO.getRentalrates()%>" /></td>
+										<td><input type="number" name="rentalrates" id="rentalrates" size="45"
+											value="<%=(cartypeVO == null) ? "" : cartypeVO.getRentalrates()%>" /></td>
+										<td><input type="button" id="magicbtn"></input></td>
 									</tr>
-
+									
 									<tr>
 										<td>上傳圖片:</td>
 										<td><input id="imgInput" type="file" name="carpic"
@@ -352,23 +361,7 @@ th, td {
 							quaerat voluptatum. Quae, assumenda, doloremque! Natus iste
 							expedita at doloribus esse earum alias fugit debitis qui dolore
 							magni eaque quia voluptatibus maxime harum vero accusamus, unde
-							recusandae quaerat velit quae placeat voluptatum! Fugiat quaerat
-							molestias ea animi voluptatibus, expedita repellat. Nostrum,
-							adipisci, architecto. Est, eos, voluptates. Voluptates dicta unde
-							adipisci. Doloremque distinctio architecto, numquam dolores.
-							Rerum velit, distinctio aspernatur? Ea eum voluptatum possimus
-							nulla est repellendus et, reprehenderit ipsam laborum officiis
-							facere voluptatem nesciunt. Nobis sint sequi voluptatem quo
-							quaerat laborum impedit excepturi, iusto maxime, temporibus
-							commodi dicta accusantium ut sapiente qui dolor dolores at nihil
-							error perferendis fuga quasi? Minima eius modi soluta ullam
-							animi, sapiente similique provident qui harum culpa ducimus
-							laboriosam ea esse possimus! Officia debitis dolorum ullam, a
-							iste, vitae ad ea, qui nam in sunt repudiandae temporibus. Amet
-							laudantium itaque tempore possimus minima recusandae esse, quo
-							illum ipsam beatae architecto nihil magni necessitatibus
-							consequuntur voluptate blanditiis molestiae impedit. Cum, quasi
-							nemo temporibus, earum ab id illo pariatur, fugit ex natus atque
+							recusandae
 							
 						<p>
 					</div>

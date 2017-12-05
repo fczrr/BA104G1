@@ -16,8 +16,8 @@ public class CarOrderService {
 		return dao.findByMemNo(memNo);
 	}
 	
-	public void addCarOrder(CarOrderVO carOrderVO,CarSchedulVO carSchedulVO,MemberVO memberVO){
-		dao.addCarOrder(carOrderVO, carSchedulVO, memberVO);
+	public void addCarOrder(CarOrderVO carOrderVO,MemberVO memberVO){
+		dao.addCarOrder(carOrderVO, memberVO);
 	}
 	public List<CarDetailVO> getEmpOrder(String empNo){
 		return dao.getEmpOrder(empNo);

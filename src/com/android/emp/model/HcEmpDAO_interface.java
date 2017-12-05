@@ -7,4 +7,5 @@ public interface HcEmpDAO_interface {
 	public byte[] getImgByEmpNo(String empNo);
 	public HcWorkShiftsVO getShifts(String empNo,String monthOfYear);
 	public List<HcWorkShiftsVO> getAllShifts(String empNo);
+	public Integer getPrice(String empNo);
 }

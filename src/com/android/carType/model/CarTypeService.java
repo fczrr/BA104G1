@@ -18,4 +18,15 @@ public class CarTypeService {
 	public List<VehicleVO> getVehicleVObyCarTypeNo(Integer carTypeNo){
 		return dao.getVehicleVObyCarTypeNo(carTypeNo);
 	}
+	public CarTypeVO getByVehicleNo(Integer vehicleNo){
+		return dao.getByVehicleNo(vehicleNo);
+	}
+	
+	public byte[] getByCarEmpNo(String empNo) {
+		return dao.getByCarEmpNo(empNo);
+	}
+	public CarTypeVO getOne(Integer carTypeNo) {
+		return dao.getOne(carTypeNo);
+	}
+	
 }

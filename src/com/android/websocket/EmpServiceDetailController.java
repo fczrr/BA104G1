@@ -70,7 +70,7 @@ public class EmpServiceDetailController extends HttpServlet {
 		if("updateInfo".equals(action)){
 			EmpServiceDetailVO empServiceDetailVO = gson.fromJson(sb.toString(), EmpServiceDetailVO.class);
 			EmpServiceDetailSvc empSvc = new EmpServiceDetailSvc();
-			System.out.println("更新聊天記錄成功");
+			System.out.println("更新聊天記錄成功"+new Gson().toJson(empServiceDetailVO));
 			empSvc.update(empServiceDetailVO);
 			return;
 		}

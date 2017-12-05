@@ -13,6 +13,16 @@ public class HcOrderDetailVO {
 	private String orderDetailStatus;
 	private TheCaredVO theCaredVO;
 	private String memNo;
+	private Integer ExpPrice;
+	
+	public Integer getExpPrice() {
+		return ExpPrice;
+	}
+
+	public void setExpPrice(Integer expPrice) {
+		ExpPrice = expPrice;
+	}
+
 	public String getMemNo() {
 		return memNo;
 	}

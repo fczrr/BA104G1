@@ -17,6 +17,4 @@ public class HcEmpService {
 		return dao.getShifts(empNo, monthOfYear);
 	}
 	
-	
-	
 }

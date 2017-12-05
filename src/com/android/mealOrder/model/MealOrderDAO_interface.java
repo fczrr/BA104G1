@@ -11,5 +11,5 @@ public interface MealOrderDAO_interface {
 	
 	public void addMealOrder(MealOrderVO mealOrderVO,MemberVO memberVO);
 	
-	public List<MealOrderVO> getAll();
+	public List<MealOrderDetailVO> getAll();
 }	

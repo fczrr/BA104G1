@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import com.android.mealOrder.model.*;
 import com.android.mealOrderDetail.model.MealOrderDetailVO;
 import com.android.member.model.MemberVO;
+import com.android.setMeal.model.SetMealService;
 
 public class MealOrderDAO implements MealOrderDAO_interface {
 	private static DataSource ds;
@@ -18,13 +19,13 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 
 	private static final String INSERT_MEAL_ORDER = "INSERT INTO MEAL_ORDER(MO_NO,MEM_NO,MO_DATE,MO_STATUS,RCPT_NAME,RCPT_ADD,RCPT_PHONE)"
 			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrder_seq.NEXTVAL),6,'0'),?,?,?,?,?,?)";
-	private static final String INSERT_MEAL_DETAIL = "INSERT INTO MEAL_ORDER_DETAIL(MO_DETAIL_NO,MO_NO,DELIVER_DATE,DELIVER_TIME,SM_NO,ORDER_QTY)"
+	private static final String INSERT_MEAL_DETAIL = "INSERT INTO MEAL_ORDER_DETAIL(MO_DETAIL_NO,MO_NO,DELIVER_DATE,MEALTIME,SM_NO,ORDER_QTY)"
 			+ "VALUES(to_char(sysdate,'yyyymmdd')||'-'||LPAD(to_char(mealOrderDetail_seq.NEXTVAL),6,'0'),?,?,?,?,?)";
 	private static final String UPDATE_MEMBER_POINT = "UPDATE MEMBER SET POINT = ? WHERE MEM_NO=?";
 
 	private static final String GET_DETAIL_BY_ORDERNO = "SELECT * FROM MEAL_ORDER_DETAIL WHERE MO_NO = ?";
 
-	private static final String GET_ALL_STMT = "SELECT * FROM MEAL_ORDER";
+	private static final String GET_ALL_STMT = "SELECT * FROM MEAL_ORDER_DETAIL WHERE DELIVER_DATE=to_date('2017-12-08', 'yyyy-mm-dd')";
 	static {
 		try {
 			Context ctx = new javax.naming.InitialContext();
@@ -85,7 +86,7 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 			// =======================
 
 			con.commit();
-
+			con.setAutoCommit(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
@@ -127,7 +128,6 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				mealOrderVO.setRcptName(rs.getString("RCPT_NAME"));
 				mealOrderVO.setRcptAdd(rs.getString("RCPT_ADD"));
 				mealOrderVO.setRcptPhone(rs.getString("RCPT_PHONE"));
-				orderList.add(mealOrderVO);
 				System.out.println("抓出一筆會員訂餐定單");
 
 				pstmt2 = con.prepareStatement(GET_DETAIL_BY_ORDERNO);
@@ -140,6 +140,7 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 					mealOrderDetailVO.setDeliverDate(rs2.getDate("DELIVER_DATE"));
 					mealOrderDetailVO.setMealTime(rs2.getString("MEALTIME"));
 					mealOrderDetailVO.setSmNo(rs2.getInt("SM_NO"));
+					mealOrderVO.setSetMealVO((new SetMealService()).getOneByNo(rs2.getInt("SM_NO")));
 					mealOrderDetailVO.setOrderQty(rs2.getInt("ORDER_QTY"));
 					System.out.println("抓出一筆會員訂餐明細");
 					list.add(mealOrderDetailVO);
@@ -162,47 +163,27 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 	}
 
 	@Override
-	public List<MealOrderVO> getAll() {
-		List<MealOrderVO> list = new ArrayList<MealOrderVO>();
+	public List<MealOrderDetailVO> getAll() {
+		List<MealOrderDetailVO> detail = new ArrayList<MealOrderDetailVO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
-		ResultSet rs2 = null;
 
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
-				MealOrderVO mealOrderVO = new MealOrderVO();
-				mealOrderVO.setMoNo(rs.getString("MO_NO"));
-				mealOrderVO.setMemNo(rs.getString("MEM_NO"));
-				mealOrderVO.setMoDate(rs.getTimestamp("MO_DATE"));
-				mealOrderVO.setMoStatus(rs.getString("MO_STATUS"));
-				mealOrderVO.setRcptName(rs.getString("RCPT_NAME"));
-				mealOrderVO.setRcptAdd(rs.getString("RCPT_ADD"));
-				mealOrderVO.setRcptPhone(rs.getString("RCPT_PHONE"));
-				list.add(mealOrderVO);
-				System.out.println("抓出一筆會員訂餐定單");
-				
-				pstmt2 = con.prepareStatement(GET_DETAIL_BY_ORDERNO);
-				pstmt2.setString(1, mealOrderVO.getMoNo());
-				rs2 = pstmt2.executeQuery();
-				List<MealOrderDetailVO> detail = mealOrderVO.getDetailList();
-				while(rs2.next()){
-					MealOrderDetailVO mealOrderDetailVO = new MealOrderDetailVO();
-					mealOrderDetailVO.setMoDetailNo(rs2.getString("MO_DETAIL_NO"));
-					mealOrderDetailVO.setDeliverDate(rs2.getDate("DELIVER_DATE"));
-					mealOrderDetailVO.setMealTime(rs2.getString("DELIVER_TIME"));
-					mealOrderDetailVO.setSmNo(rs2.getInt("SM_NO"));
-					mealOrderDetailVO.setOrderQty(rs2.getInt("ORDER_QTY"));
-					System.out.println("抓出一筆會員訂餐明細");
-					detail.add(mealOrderDetailVO);
-				}
-				list.add(mealOrderVO);
+			while (rs.next()) {
+				MealOrderDetailVO mealOrderDetailVO = new MealOrderDetailVO();
+				mealOrderDetailVO.setMoDetailNo(rs.getString("MO_DETAIL_NO"));
+				mealOrderDetailVO.setDeliverDate(rs.getDate("DELIVER_DATE"));
+				mealOrderDetailVO.setMealTime(rs.getString("MEALTIME"));
+				mealOrderDetailVO.setSmNo(rs.getInt("SM_NO"));
+				mealOrderDetailVO.setOrderQty(rs.getInt("ORDER_QTY"));
+				System.out.println("抓出一筆會員訂餐明細");
+				detail.add(mealOrderDetailVO);
 			}
-		}catch (SQLException se) {
+		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
 			if (con != null) {
@@ -213,13 +194,6 @@ public class MealOrderDAO implements MealOrderDAO_interface {
 				}
 			}
 		}
-		return list;
+		return detail;
 	}
 }
-	
-	
-	
-	
-	
-	
-

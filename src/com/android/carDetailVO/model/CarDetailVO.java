@@ -2,6 +2,9 @@ package com.android.carDetailVO.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+
+import com.android.carType.model.CarTypeVO;
+import com.employee.model.EmployeeVO;
   
 public class CarDetailVO implements Serializable{
 	private String detialNo;
@@ -14,6 +17,31 @@ public class CarDetailVO implements Serializable{
 	private String getintoAddress;
 	private String arrivalAddress;
 	private String sendCarStatus;
+	private String empNo;
+	private EmployeeVO employeeVO;
+	
+	public EmployeeVO getEmployeeVO() {
+		return employeeVO;
+	}
+	public void setEmployeeVO(EmployeeVO employeeVO) {
+		this.employeeVO = employeeVO;
+	}
+	public String getEmpNo() {
+		return empNo;
+	}
+	public void setEmpNo(String empNo) {
+		this.empNo = empNo;
+	}
+
+	private CarTypeVO carTypeVO;
+	
+	
+	public CarTypeVO getCarTypeVO() {
+		return carTypeVO;
+	}
+	public void setCarTypeVO(CarTypeVO carTypeVO) {
+		this.carTypeVO = carTypeVO;
+	}
 	
 	private String memNo;
 	

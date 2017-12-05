@@ -14,6 +14,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.android.hcOrderDetail.model.HcOrderDetailVO;
+import com.android.member.model.MemberVO;
+import com.thecared.model.ThecaredService;
 
 public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 	private static DataSource ds = null;
@@ -26,7 +28,7 @@ public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 	private static final String UPDATE = "UPDATE HC_ORDER_MASTER SET MEM_NO=?,CARED_NO=?,ORDER_DATE=?,ORDER_STATUS=? WHERE ORDER_NO=?";
 
 	private static final String GET_BY_MEMNO = "SELECT * FROM HC_ORDER_MASTER WHERE MEM_NO=?";
-	private static final String GET_BY_MEMNO_DETAIL = "SELECT * FROM HC_ORDER_DETAIL WHERE ORDER_NO=?";
+	private static final String GET_BY_MEMNO_DETAIL = "SELECT * FROM HC_ORDER_DETAIL JOIN EXPERT ON EXPERT.EMP_NO=HC_ORDER_DETAIL.EMP_NO JOIN EXPERT_LIST ON EXPERT_LIST.EXP_NO=EXPERT.EXP_NO WHERE ORDER_NO=?";
 	static {
 		try {
 			Context ctx = new javax.naming.InitialContext();
@@ -194,26 +196,80 @@ public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 		}
 		return hcOrderList;
 	}
-///////////////////////////////////交易////////////////////////////////////////
+
+	/////////////////////////////////// 交易////////////////////////////////////////
+	private static final String INSERTDETAIL = "INSERT  INTO HC_ORDER_DETAIL (ORDER_DETAIL_NO,ORDER_NO,SERVICE_DATE,SERVICE_TIME,EMP_NO,ORDER_DEDIAL_STATUS) VALUES('20171202'||'-'||LPAD(HC_ORDER_DETAIL_NO_SEQ.NEXTVAL,6,'0'),?,?,?,?,?)";
+	private static final String UPDATE_MEMBER_POINT = "UPDATE MEMBER SET POINT = ? WHERE MEM_NO=?";
 	@Override
-	public void transaction(HcOrderMasterVO hcOrderMasterVO, List<HcOrderDetailVO> detailList) {
+	public void transaction(HcOrderMasterVO hcOrderMasterVO, MemberVO memberVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		try {
 			con = ds.getConnection();
+
 			con.setAutoCommit(false);
 
-			pstmt = con.prepareStatement(INSERT_STMT);
+			String[] cols = { "ORDER_NO" };
 
+			pstmt = con.prepareStatement(INSERT_STMT, cols);
+			pstmt.setString(1, hcOrderMasterVO.getMemNo());
+			pstmt.setString(2, hcOrderMasterVO.getCaredNo());
+			pstmt.setTimestamp(3, hcOrderMasterVO.getOrderDate());
+			pstmt.setString(4, "未確認");
+
+			int i = pstmt.executeUpdate();
+			System.out.println("新增一筆長照訂單");
+
+			String ORDER_NO = null;
+			rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				ORDER_NO = rs.getString(1);
+				System.out.println("訂單綁定自增主鍵" + ORDER_NO);
+			}
+			for (HcOrderDetailVO HcOrderDetailVO : hcOrderMasterVO.getDetailList()) {
+				HcOrderDetailVO.setOrderNo(ORDER_NO);
+				pstmt = con.prepareStatement(INSERTDETAIL);
+				pstmt.setString(1, HcOrderDetailVO.getOrderNo());
+				pstmt.setDate(2, HcOrderDetailVO.getServiceDate());
+				pstmt.setString(3, HcOrderDetailVO.getServiceTime());
+				pstmt.setString(4, HcOrderDetailVO.getEmpNo());
+				pstmt.setString(5, "未服務");
+				int ii = pstmt.executeUpdate();
+				System.out.println("成功" + ii + "筆長照明細");
+			}
+
+			pstmt = con.prepareStatement(UPDATE_MEMBER_POINT);
+			pstmt.setInt(1, memberVO.getPoint());
+			pstmt.setString(2, memberVO.getMemNo());
+			pstmt.executeUpdate();
+			System.out.println("成功更新會員點數");
+
+			con.commit();
+			System.out.println("大成功");
+			con.setAutoCommit(true);
 		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}
-///////////////////////////////////交易////////////////////////////////////////
-	
-///////////////////////////////////查訂單+明細////////////////////////////////////////	
+	/////////////////////////////////// 交易////////////////////////////////////////
+
+	/////////////////////////////////// 查訂單+明細////////////////////////////////////////
 	@Override
 	public List<HcOrderMasterVO> getByMemNo(String memNo) {
 		Connection con = null;
@@ -233,10 +289,13 @@ public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 				hcOrderMasterVO.setOrderNo(rs.getString("ORDER_NO"));
 				hcOrderMasterVO.setMemNo(rs.getString("MEM_NO"));
 				hcOrderMasterVO.setCaredNo(rs.getString("CARED_NO"));
+
+				hcOrderMasterVO.setThecaredVO(new ThecaredService().getOneTHECARED(rs.getString("CARED_NO")));
+
 				hcOrderMasterVO.setOrderDate(rs.getTimestamp("ORDER_DATE"));
 				hcOrderMasterVO.setOrderStatus(rs.getString("ORDER_STATUS"));
 				System.out.println("get 1 ");
-				
+
 				pstmt2 = con.prepareStatement(GET_BY_MEMNO_DETAIL);
 				System.out.println(hcOrderMasterVO.getOrderNo());
 				pstmt2.setString(1, hcOrderMasterVO.getOrderNo());
@@ -249,6 +308,8 @@ public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 					hcOrderDetailVO.setServiceDate(rs2.getDate("SERVICE_DATE"));
 					hcOrderDetailVO.setServiceTime(rs2.getString("SERVICE_TIME"));
 					hcOrderDetailVO.setEmpNo(rs2.getString("EMP_NO"));
+
+					hcOrderDetailVO.setExpPrice(rs2.getInt("EXP_PRICE"));
 					hcOrderDetailVO.setOrderDetailStatus(rs2.getString("ORDER_DEDIAL_STATUS"));
 					detailList.add(hcOrderDetailVO);
 					System.out.println("get 2");

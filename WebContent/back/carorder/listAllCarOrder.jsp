@@ -535,14 +535,27 @@ $(document).ready(function(){
                   var detail_no = cd.detail_no;
                   console.log("取回來的明細編號:"+detail_no);
                   var detail_date = cd.detail_date;
-                  var detail_time = cd.detail_time; 
+                  var detail_time = cd.detail_time;
+                  var detail_timeString;
+                  if(detail_time == "M"){
+			    		 detail_timeString = "早";
+			    	 }
+			    	 if(detail_time == "A"){
+			    		 detail_timeString = "中";
+			    	 }
+			    	 if(detail_time == "N"){
+			    		 detail_timeString = "晚";
+			    	 }
+                  
+                  
+                  
                   var passenger_name = cd.passenger_name;
                   var passenger_phone = cd.passenger_phone;
                   var getinto_address = cd.getinto_address; 
                   var arrival_address = cd.arrival_address;
                   var vehicle_no = cd.vehicle_no;
                   var sendcar_status = cd.sendcar_status;
-                  $(".dttbody").append($("<tr><td>"+detail_no+"</td><td>"+detail_date+"</td><td>"+detail_time+"</td><td>"+passenger_name+"</td><td>"
+                  $(".dttbody").append($("<tr><td>"+detail_no+"</td><td>"+detail_date+"</td><td>"+detail_timeString+"</td><td>"+passenger_name+"</td><td>"
                 		  +passenger_phone+"</td><td>"+getinto_address+"</td><td>"+arrival_address+"</td><td>"+vehicle_no+"</td><td>"+sendcar_status+"</td></tr>"))
                   
               }

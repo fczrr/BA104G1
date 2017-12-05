@@ -66,6 +66,7 @@ public class HcEmpController extends HttpServlet {
 			
 		}
 		
+		
 		if("login".equals(action)){
 			EmployeeVO empVO = gson.fromJson(sb.toString(), EmployeeVO.class);
 			String empId = empVO.getEmpId();
@@ -84,6 +85,14 @@ public class HcEmpController extends HttpServlet {
 			System.out.println(gson1.toJson(empVO.getOnBoardDate()));
 			writeToClient(res,gson1.toJson(empVO));
 			
+		}
+		
+		if("getOneByEmpNo".equals(action)){
+			Gson gson1 = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'").create();
+			String empNo = json.get("empNo").getAsString();
+			EmployeeService employeeSvc = new EmployeeService();			
+			EmployeeVO empVO = employeeSvc.findByPrimaryKey(empNo);
+			writeToClient(res,gson1.toJson(empVO));
 		}
 		
 	}

@@ -1638,7 +1638,7 @@ VALUES ('20171103-000003',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('20
 INSERT INTO MEAL_ORDER_DETAIL
 VALUES ('20171103-000004',to_char(sysdate,'yyyymmdd')||'-'||'000002',to_date('2017-11-22', 'yyyy-mm-dd'),'晚餐',20,1);
 
-
+ 
 --新增菜單表--
 INSERT INTO MENU
 VALUES(menu_seq.NEXTVAL,10,to_date('2017-12-01', 'yyyy-mm-dd'),'早餐','南瓜飯');

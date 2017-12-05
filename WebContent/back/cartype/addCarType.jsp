@@ -166,7 +166,7 @@ th, td {
 				
 						$('#magicbtn').click(function(){
 				    		
-					    	 $('#cartypename').val('藍寶堅尼 LP570');
+					    	 $('#cartypename').val('藍寶堅尼LP570');
 					    	 $('#description').val('這台Squadra Corse強悍、華麗最能彰顯您的尊貴');
 					    	 $('#rentalrates').val(1000000);
 					    	 
@@ -184,10 +184,7 @@ th, td {
         <div class="right_col" role="main">
           <div class="">
 
-            <div class="page-title">
-              <div class="title_left">
-                <h3>首頁</h3>
-              </div>
+          
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -254,10 +251,7 @@ th, td {
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#tab1"
 						aria-controls="tab1" role="tab" data-toggle="tab">派車管理</a></li>
-					<li role="presentation"><a href="#tab2" aria-controls="tab2"
-						role="tab" data-toggle="tab">流程說明</a></li>
-					<li role="presentation"><a href="#tab3" aria-controls="tab3"
-						role="tab" data-toggle="tab">Q&A</a></li>
+					
 				</ul>
 
 				<!-- 標籤面板：內容區 -->

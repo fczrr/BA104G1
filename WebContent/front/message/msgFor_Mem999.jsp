@@ -249,7 +249,7 @@ console.log('訊息:'+messagesArea);
 		   				 msg=
 		   				'<div>'+
 		   				'<div class="picmem-left">'+
-		   				'<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" class="img-circle img-sm">'+
+		   				'<img src="<%=request.getContextPath()%>/front/image/share/013.png" class="img-circle img-sm" style="width:70px;height:70px">'+
 		   				'<p class="nametext">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>'+
 		   				'<p class="speeh-text">'+jsonObj.message+'</p>'+
 		   				'</div>'+
@@ -263,7 +263,7 @@ console.log('訊息:'+messagesArea);
 		   				 msg=
 		   				'<div>'+
 		   				'<div class="picmem-left">'+
-		   				'<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" class="img-circle img-sm">'+
+		   				'<img src="<%=request.getContextPath()%>/front/image/share/013.png" class="img-circle img-sm " style="width:70px;height:70px">'+
 		   				'<p class="nametext">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>'+
 		   				'<p class="speeh-text">'+'<img id="img" class="imgup" src="'+ jsonObj.src +'" style="max-width: 100%;">'+'</p>'+
 		   				'</div>'+
@@ -332,7 +332,7 @@ console.log('message：'+message);
 	   				msg=
 	   					'<div>'+
 	   					'<div class="picmem-right">'+
-	   					'<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" class="img-circle img-sm img-right">'+
+	   					'<img src="<%=request.getContextPath()%>/front/image/share/09.png" class="img-circle img-sm img-right" style="width:70px;height:70px">'+
 	   					'<p class="nametext-right">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>'+
 	   					'<p class="speeh-text-right">'+jsonObj.message+'</p>'+
 	   					'</div>'+
@@ -346,7 +346,7 @@ console.log('message：'+message);
 	   				msg=
 	   				'<div>'+
 	   				'<div class="picmem-right">'+
-	   				'<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" class="img-circle img-sm img-right">'+
+	   				'<img src="<%=request.getContextPath()%>/front/image/share/09.png" class="img-circle img-sm img-right" style="width:70px;height:70px">'+
 	   				'<p class="nametext-right">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>'+
 	   				'<p class="speeh-text-right">'+'<img id="img" class="imgup" src="'+src+'" style="max-width: 100%;">'+'</p>'+
 	   				'</div>'+

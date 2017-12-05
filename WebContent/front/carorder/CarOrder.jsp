@@ -313,10 +313,10 @@ tr:nth-child(even) {
 										    <div class="my-selector-c">
 										    	<b>出發點</b>
 												  <div>
-												    <select class="county"></select>
+												    <select class="county" id ="county"></select>
 												  </div>
 												  <div>
-												    <select class="district"></select>
+												    <select class="district" id ="district"></select>
 												  </div>
 							                      <div>
 							                      	<input type="text" name="address" id="address">
@@ -337,6 +337,7 @@ tr:nth-child(even) {
 							                      	<input type="text" name="address2" id="address2">
 							                      </div>		
 												</div>
+												<input type="button" id="magicbtn"></input>
 										</div>
 									</div>
 										<div class="col-md-6">
@@ -365,7 +366,7 @@ tr:nth-child(even) {
 								<h3 style="color:#D68B00">恭喜!</h3>
 								<p>您已經完成了訂車流程，請確認下方訂單資訊無誤後送出訂單，</p>
 									<p>如有任何疑問請撥打以下客服專線。</p>
-									<h2>0979-498988</h2>
+									<h2>0988-168168</h2>
 									
 									
 									
@@ -668,6 +669,16 @@ tr:nth-child(even) {
 										    	console.log("loctionString :"+ loctionString);
 										    	console.log("loctionNo:"+ loctionNo);
 										    	
+									    	 });
+									    	 
+									    	 //神奇小按鈕
+									    	 $('#magicbtn').click(function(){
+									    		 $('#county option[value=桃園市]').attr('selected', 'selected');
+									    		 $('#county2 option[value=桃園市]').attr('selected', 'selected');
+									    		 $('#district option[value=平鎮區]').attr('selected', 'selected');
+									    		 $('#district2 option[value=龜山區]').attr('selected', 'selected');
+										    	 $('#address').val('平鎮區中大路300號');
+										    	 $('#address2').val('龜山區復興街5號');
 									    	 });
 									    	});
 									    </script>

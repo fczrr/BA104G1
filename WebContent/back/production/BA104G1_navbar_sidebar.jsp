@@ -172,7 +172,7 @@
 										<li><a
 											href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
 										<li><a
-											href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift2.jsp&failureV=/back/homeCare/Hc_show_workShift2.jsp">班表管理</a></li>
+											href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift_search.jsp&failureV=/back/homeCare/Hc_show_workShift_search.jsp">班表管理</a></li>
 									</ul></li>
 
 								<li id="auth6"><a><i class="fa fa-shopping-cart"></i> 商城管理 <span

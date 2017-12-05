@@ -17,10 +17,12 @@ public class jdbcUtil_CompositeQuery_workShift {
 				.replaceAll("B", "_B");
 
 
-		if ("emp_No".equals(columnName) || "month_Of_Year".equals(columnName)|| "exp_No".equals(columnName)) 
-			aCondition = columnName + " = " +"'"+ value+"'";
-		
-		else if ("emp_Name".equals(columnName)) 
+		if ("month_Of_Year".equals(columnName)|| "exp_No".equals(columnName)){ 
+			aCondition = columnName + " = " +"'"+ value+"'";			
+		}else if("emp_No".equals(columnName) ){
+			aCondition = "W."+columnName + " = " +"'"+ value+"'";		
+
+		}else if ("emp_Name".equals(columnName)) 
 			aCondition = columnName + " like" +"'%"+value+"%'";
 			
 		else if ("total_Work_Shifts".equals(columnName)) {
@@ -31,9 +33,6 @@ public class jdbcUtil_CompositeQuery_workShift {
 		}else{
 			return " ";
 		}
-		
-
-
 		return aCondition + " ";
 	}
 

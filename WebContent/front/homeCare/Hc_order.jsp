@@ -164,7 +164,7 @@ request.setCharacterEncoding("UTF-8");
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <div class="col-xs-12 col-sm-6 col-sm-push-6"> 
                     <div class="imgblock text-center">
                         <img src="<%=request.getContextPath()%>/front/homeCare/image/a001.jpg">
                     </div>

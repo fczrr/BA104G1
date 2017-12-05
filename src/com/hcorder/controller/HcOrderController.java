@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import com.expert.model.ExpertService;
 import com.expertlist.model.ExpertlistService;
 import com.expertlist.model.ExpertlistVO;
+import com.hcorder.modal.HcOrderDetailService;
 import com.hcorder.modal.HcOrderDetailVO;
 import com.hcorder.modal.HcOrderMasterService;
 import com.hcorder.modal.HcOrderMasterVO;
@@ -479,7 +480,7 @@ public class HcOrderController extends HttpServlet {
 		
 		
 		
-		if ("updateOrderStatus".equals(action)) { // 來自select_page.jsp的複合查詢請求
+		if ("updateOrderStatus".equals(action)) { // 來自.jsp的請求
 			System.out.println("YA I am  IN");
 
 			String orderStatus = req.getParameter("orderStatus");
@@ -496,12 +497,38 @@ public class HcOrderController extends HttpServlet {
 				hcOrderMasterService.updateOrderStatus(orderNo,orderStatus);
 				
 				/***************************3.查詢完成,準備轉交()************/
-				res.getWriter().println("改動成功");
+				res.getWriter().println("訂單狀態改動成功");
 				
 				/***************************其他可能的錯誤處理**********************************/
 			} catch (Exception e) {
-				res.getWriter().println("改動失敗");
+				res.getWriter().println("訂單狀態改動失敗");
 
+			}
+		}
+		
+		if ("updateOrderDetailStataus".equals(action)) { // 來自.jsp的請求
+			System.out.println("YA I am  IN");
+			
+			String orderDetailStataus = req.getParameter("orderDetailStataus");
+			String orderDetailNo = req.getParameter("orderDetailNo");
+			try {
+				
+				/***************************1.**********************************/ 
+//				if(orderStatus.equals("orderStatus")){
+//					return;
+//				}
+				
+				/***************************2.開始***************************************/
+				HcOrderDetailService hcOrderDetailService = new HcOrderDetailService();
+				hcOrderDetailService.updateStatus(orderDetailNo,orderDetailStataus);
+				
+				/***************************3.查詢完成,準備轉交()************/
+				res.getWriter().println("明細狀態改動成功");
+				
+				/***************************其他可能的錯誤處理**********************************/
+			} catch (Exception e) {
+				res.getWriter().println("明細狀態改動失敗");
+				
 			}
 		}
 				

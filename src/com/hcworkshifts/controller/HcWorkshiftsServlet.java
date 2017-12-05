@@ -224,7 +224,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("hcWorkShiftsVO", hcWorkShiftsVO); // 資料庫取出的empVO物件,存入req
-				String url = "/back/homeCare/Hc_show_workShift2.jsp";
+				String url = "/back/homeCare/Hc_show_workShift_search.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 				successView.forward(req, res);
 

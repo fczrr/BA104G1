@@ -220,7 +220,7 @@
 																		<td>${detail.serviceDate}</td>
 																		<td>${detail.serviceTime}</td>
 																		<td>${empSvc.findByPrimaryKey(detail.empNo).empName}</td>
-																		<td>${detail.orderDetailStataus}</td>
+																		<td><span class="btn btn-info btn-tochange2" id="${detail.orderDetailNo}">${detail.orderDetailStataus}</span></td>
 																	</tr>
 																</c:forEach>
 															</tbody>
@@ -269,11 +269,9 @@ laydate.render({
 });
 
 $(document).ready(function (){
-// 	alert('love you chrome');
 
 // 	$('.list-memNo').click(function(){
 <%-- 		window.location = '<%=request.getContextPath()%>'/;//會員資料 --%>
-
 // 	});
 	$('.list-memNo').click(function(){
 		window.location = 'http://blog.webgolds.com/';//會員資料
@@ -298,17 +296,16 @@ $(document).ready(function (){
 		.find('.elem-tochange').html('<div class="input-group mb-2 mb-sm-0"><select class="form-control mb-2 mb-sm-0 goto"  id="'+this.id+'" name="orderStatus" style="border-radius:5px;"><option value="">請選擇訂單狀態</option><option value="未確認">未確認</option><option value="已確認">已確認</option><option value="服務中">服務中</option><option value="已完成">已完成</option><option value="已取消">已取消</option></select></div>');
 	});
 	
- 	 	
- 	 	
- 	 	
- 	 	
+	$( document ).on('click','.btn-tochange2',function(){
+		$(event.target).closest('td').html('<select class="mb-2 goto2"  id="'+this.id+'" name="orderDetailStataus" style="border-radius:5px;"><option value="">請選擇訂單狀態</option><option value="未服務">未服務</option><option value="已服務">已服務</option><option value="已取消">已取消</option></select>');
+	});
 	
 });
 		$( document ).on( "change", ".goto", function(event) {
 			console.log('step1'+this.id);
 			var orderNo = this.id;
 			var orderStatus = $(this).val();
-		    var url ="<%=request.getContextPath()%>/HcOrder/HcOrderController.do";// the script where you handle the form input.
+		    var url ="<%=request.getContextPath()%>/HcOrder/HcOrderController.do"; // the script where you handle the form input.
 
 		    if($(this).val()==""){
 		    	return;
@@ -324,7 +321,7 @@ $(document).ready(function (){
                    },
 		           success:function(data){
 		               alert(data);// show response from the php script.
-		               if(date=='改動失敗'){
+		               if(date=='訂單狀態改動失敗'){
 		            	   return false;
 		               }
 		           }
@@ -332,6 +329,39 @@ $(document).ready(function (){
 		    
 		    $(event.target).closest('.row')
 			.find('.elem-tochange').html('<span class=list-orderStatus>'+orderStatus+'</span>');
+		    
+
+		    return false;// avoid to execute the actual submit of the form.  
+			});
+		
+		
+		$( document ).on( "change", ".goto2", function(event) {
+			console.log('step1'+this.id);
+			var orderDetailNo = this.id;
+			var orderDetailStataus = $(this).val();
+		    var url ="<%=request.getContextPath()%>/HcOrder/HcOrderController.do"; 
+
+		    if($(this).val()==""){
+		    	return;
+		    }
+		    
+		    $.ajax({
+		           type:"POST",
+		           url: url,
+		           data: { 
+		        	   orderDetailStataus : $(this).val(),
+		        	   orderDetailNo :orderDetailNo,
+		        	   action:'updateOrderDetailStataus',
+                   },
+		           success:function(data){
+		               alert(data);
+		               if(date=='明細狀態改動失敗'){
+		            	   return false;
+		               }
+		           }
+		         });
+		    
+		    $(event.target).closest('td').html('<span class="btn btn-info btn-tochange2" id="'+orderDetailNo+'">'+orderDetailStataus+'</span>');
 		    
 
 		    return false;// avoid to execute the actual submit of the form.  

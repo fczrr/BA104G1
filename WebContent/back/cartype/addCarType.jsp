@@ -157,7 +157,7 @@ th, td {
 												+ escape(file.name) + '"/>';
 										$('#imgLead').append(str);
 									};
-								})(file);
+								})(file); 
 
 								//利用DataURL的方式讀取圖片
 								reader.readAsDataURL(file);

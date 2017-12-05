@@ -71,9 +71,7 @@
           <div class="">
 
             <div class="page-title">
-              <div class="title_left">
-                <h3>首頁</h3>
-              </div>
+             
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -122,7 +120,7 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-3">
 				</div>
-				<div class="col-xs-12 col-sm-3 ">
+				<div class="col-xs-12 col-sm-3 pull-left ">
 					
 						<img src="<%= request.getContextPath() %>/back/image/car/cleardriver2.png" class="top">
 				</div>
@@ -140,7 +138,7 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-3">
 				</div>
-				<div class="col-xs-12 col-sm-3">
+				<div class="col-xs-12 col-sm-3 pull-left">
 					<div role="tabpanel" class="tabox">
 					    <!-- 標籤面板：標籤區 -->
 					    <ul class="nav nav-tabs" role="tablist">
@@ -168,7 +166,7 @@
 
 			<div class="row">
 				<div class="col-xs-12 col-sm-3"></div>
-				<div class="col-xs-12 col-sm-3"><img src="<%= request.getContextPath() %>/back/images/foot.PNG" class="footer"></div>
+				<div class="col-xs-12 col-sm-3 pull-left"><img src="<%= request.getContextPath() %>/back/images/foot.PNG" class="footer"></div>
 				<div class="col-xs-12 col-sm-3"></div>
 			</div>
         

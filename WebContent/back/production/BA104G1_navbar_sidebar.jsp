@@ -124,7 +124,7 @@
 											href="<%=request.getContextPath()%>/back/employee/listAllBranches.jsp">員工據點管理</a></li>
 										<li><a
 											href="<%=request.getContextPath()%>/back/employee/listAllExpertlist.jsp">員工專長管理</a></li>
-									</ul></li>
+									</ul></li> 
 								<li id="auth2"><a><i class="fa fa-home"></i>會員管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">

@@ -330,7 +330,7 @@ tr:nth-child(even) {
 							                      <div>
 												    <select class="county2" id ="county2"></select>
 												  </div>
-												  <div>
+												  <div> 
 												    <select class="district2" id = "district2"></select>
 												  </div>
 							                      <div>

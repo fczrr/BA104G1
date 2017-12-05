@@ -130,7 +130,17 @@
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
+											<li><a
+											href="<%=request.getContextPath()%>/back/member/listAllBalance.jsp">加值列表</a></li>
+											
+											
 									</ul></li>
+
+
+
+		
+
+
 
 								<li id="auth3"><a><i class="fa fa-automobile"></i> 派車管理 <span
 										class="fa fa-chevron-down"></span></a>
@@ -209,12 +219,7 @@
 											href="<%=request.getContextPath()%>/back/complain/listShopCom.jsp">商城申訴管理</a></li>
 									</ul></li>
 
-								<li id="auth9"><a><i class="fa fa-cc-visa"></i> 點數管理 <span
-										class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a
-											href="<%=request.getContextPath()%>/back/member/listAllBalance.jsp">加值列表</a></li>
-									</ul></li>
+
 
 								<li id="auth10"><a><i class="fa fa-columns"></i> 佈告欄管理 <span
 										class="fa fa-chevron-down"></span></a>

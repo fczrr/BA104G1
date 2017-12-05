@@ -11,6 +11,7 @@
 	class="com.member.model.MemberService" />
 <jsp:useBean id="balanceSvc" scope="page"
 	class="com.balance.model.BalanceService" />
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -20,6 +21,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <title>Title Page</title>
+
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -51,6 +54,7 @@
 				<li class="breadcrumb-item active" aria-current="page"><a
 					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
 			</ol>
+
 			<div class="container-fluid">
 
 				<!-- ----------------------下方訂單管理區選項------------------------->
@@ -89,7 +93,7 @@
 						</tr>
 						<c:forEach var="balanceVO"
 							items='${balanceSvc.getBalanceByMemNo(memberVO.memNo)}'>
-							<tr>
+							<tr class="hover">
 								<td>${balanceVO.topupNo}</td>
 								<td>${balanceVO.topupValue}</td>
 								<td>${balanceVO.topupTime}</td>
@@ -110,10 +114,12 @@
 			</div>
 		</div>
 	</div>
+
+
 </body>
+
 <%@ include file="/front/footerbar.jsp"%>
 
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>
 <script

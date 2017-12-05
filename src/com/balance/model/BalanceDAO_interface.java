@@ -10,6 +10,8 @@ public interface BalanceDAO_interface {
 
     public void delete(String topupNo);
     public BalanceVO findByPrimaryKey(String memNo);
+    
+    public void insert_Bonus(BalanceVO balanceVO);
 
     public BalanceVO findByTopupNo(String topupNo);
     public List<BalanceVO> getAll();

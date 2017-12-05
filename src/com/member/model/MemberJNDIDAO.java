@@ -21,7 +21,7 @@ public class MemberJNDIDAO implements MemberDAO_interface{
 	private static final String INSERT_STMT = "INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS,POINT,MEM_ID,MEM_PWD,MEM_SRATUS,CHK_IP,MEM_LOGINTIME)"
 			+ "VALUES(to_char('MEM'||LPAD(to_char(SEQ_MEMBER.NEXTVAL),4,'0')),?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM MEMBER";
-	private static final String GET_ONE_STMT = "SELECT * FROM MEMBER WHERE MEM_NO=?";
+	private static final String GET_ONE_STMT = "SELECT MEM_NO,MEM_NAME,MEM_PHONE,MEM_GENDER,MEM_EMAIL,ADDRESS,POINT,MEM_ID,MEM_PWD,MEM_SRATUS,CHK_IP,to_char(MEM_LOGINTIME,'yyyy/MM/dd hh:mm:SS') MEM_LOGINTIME2 FROM MEMBER WHERE MEM_NO=?";
 	private static final String GET_ONE_BYMEMID = "SELECT * FROM MEMBER WHERE MEM_ID=?";
 	private static final String DELETE = "DELETE FROM MEMBER WHERE MEM_NO = ?";
 	private static final String UPDATE = "UPDATE MEMBER SET MEM_NAME=? ,MEM_PHONE=?,MEM_GENDER=?,MEM_EMAIL=?,ADDRESS=?,POINT=?,MEM_ID=?,MEM_PWD=?,MEM_SRATUS=?,CHK_IP=?,MEM_LOGINTIME=? WHERE MEM_NO=?";
@@ -168,7 +168,7 @@ public class MemberJNDIDAO implements MemberDAO_interface{
 				memberVO.setMemPwd(rs.getString("MEM_PWD"));
 				memberVO.setMemSratus(rs.getString("MEM_SRATUS"));
 				memberVO.setChkIp(rs.getString("CHK_IP"));
-				memberVO.setMemLoginTime(rs.getTimestamp("MEM_LOGINTIME"));
+				memberVO.setMemLoginTime2(rs.getString("MEM_LOGINTIME2"));
 			}
 //		} catch (ClassNotFoundException e) {
 //			throw new RuntimeException("Couldn't load database driver. "

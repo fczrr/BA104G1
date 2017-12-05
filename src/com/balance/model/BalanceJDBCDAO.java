@@ -52,7 +52,81 @@ public class BalanceJDBCDAO implements BalanceDAO_interface {
 	private static final String GET_ALL_STMT =  
 			"SELECT TOPUP_NO, MEM_NO,TOPUP_VALUE,STATUS,TOPUP_WAY,to_char"
 			+ "(TOPUP_TIME,'yyyy-mm-dd hh:mm:ss') TOPUP_TIME FROM BALANCE";
+	
+	private static final String INSERT_STMT_BONUS =
+			"INSERT INTO BALANCE (TOPUP_NO, MEM_NO,TOPUP_VALUE,TOPUP_WAY) VALUES "
+			+ "(to_char('TPP'||to_char(sysdate,'yymm')||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),3,'0')),?,100,?)";
+	
+	
+	
+	@Override
+	public void insert_Bonus(BalanceVO balanceVO)  {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(INSERT_STMT_BONUS);
+
+			pstmt.setString(1, balanceVO.getMemNo());
 		
+			int i =pstmt.executeUpdate();
+			System.out.println(i+"++++++");
+			pstmt.close();
+			
+//			pstmt = con.prepareStatement("update member  set point = (select point from member where mem_no = ?)+? where mem_no = ? ");
+//			System.out.println(i+"++++++2");
+//
+//			pstmt.setString(1, balanceVO.getMemNo());
+//			pstmt.setString(2, balanceVO.getMemNo());
+//			System.out.println(i+"++++++3");
+//
+//			pstmt.executeUpdate();
+			
+			con.commit();
+			System.out.println("YY");
+
+			// Handle any driver errors
+//		} catch (ClassNotFoundException e) {
+//			throw new RuntimeException("Couldn't load database driver. "
+//					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+
+	}
+	
 	@Override
 	public void insert(BalanceVO balanceVO)  {
 

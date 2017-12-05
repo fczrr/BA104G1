@@ -211,7 +211,7 @@ CREATE TABLE EMPLOYEE(
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '諸葛亮', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M','careU@care.com', '總部', '管理員', '經理', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '總部', '管理員', '經理', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'admin00', 'pw0000', '10');
 
 
@@ -219,268 +219,267 @@ VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '諸葛亮', 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '孫尚香', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '貂蟬', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '小喬', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '關銀屏', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '大喬', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '周瑜', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '龐統', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '黃忠', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '趙雲', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '關羽', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '呂布', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '馬超', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張遼', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '關羽', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張角', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '袁紹', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '典韋', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '孔融', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '孫皓', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('a'||LPAD(to_char(SEQ_EMPPEMP_HCID.NEXTVAL),3,'0')), 'pw0000', '10');
 --------------派車部(EMP0022~41)------------------
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
-VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李大任', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李大壬', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李民浩', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '孔張', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '凜凍旭', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '貝可汗', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '江西納', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '湊齊莎夏', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '周子俞', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '林娜蓮', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '平景桃', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '李傑克', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '王發發', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '侯尼勇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '高法憲', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '簡道乾', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '傅二岱', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '勞斯基', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '高富率', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '魯道強', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '派車經理', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '派車', '派車人員', '經理', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '派車', '派車人員', '經理', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 to_char('b'||LPAD(to_char(SEQ_EMPPEMP_CARID.NEXTVAL),3,'0')), 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '舒淇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '送餐', '送餐人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '送餐', '送餐人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'c01', 'pw0000', '10');
  
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '張艾嘉', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '商城', '商城人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '商城', '商城人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'd01', 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '文淇', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '客服', '客服人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '客服', '客服人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'e01', 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES (to_char('EMP'||LPAD(to_char(SEQ_EMPLOYEE.NEXTVAL),4,'0')), '惠英紅', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M',to_char('care'||LPAD(to_char(SEQ_EMPPEMP_MAIL.NEXTVAL),3,'0')||'@care.com'), '總部', '總部人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '總部', '總部人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'f01', 'pw0000', '10');
 
 INSERT INTO EMPLOYEE 
 (EMP_NO, EMP_NAME, EMP_PHONE, EMP_GENDER, EMP_EMAIL, EMP_DEP, AUTHORITY_NO, EMP_TITLE, ON_BOARD_DATE, EMP_ID, EMP_PWD, EMP_BRANCHES)  
 VALUES ('EMP0000', '自動訂單', to_char('0912345'||LPAD(to_char(SEQ_EMPPEMP_PHONE.NEXTVAL),3,'0')),
-'M','careUX@care.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
+'M','BA10401JAVA@gmail.com', '長照', '長照人員', '專員', TO_DATE('2003/05/03 ', 'yyyy/mm/dd '), 
 'a00', 'pw0000', '10');
-
 
 
 ----------------------------------------------------------------------------------------

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@ page import="java.util.*"%>
 <%@ page import="com.employee.model.*"%>
 <%@ page import="com.employee_photo.model.*"%>
@@ -275,7 +277,9 @@ h4 {
 
 										<div class="col-md-4 inputGroupContainer">
 											<div class="input-group">
-												<span class="input-group-addon"><b>${empVO.empUpdateTime}</b></span>
+												<span class="input-group-addon"><b><fmt:formatDate
+														value="${empVO.empUpdateTime}"
+														pattern="yyyy-MM-dd HH:mm:ss" /></b></span>
 											</div>
 
 										</div>

@@ -485,15 +485,21 @@ public class MemberServlet extends HttpServlet {
 		}
 		// ==================================================忘記密碼=============================================================
 		if ("forgetPwd".equals(action)) {
-			String memNo = req.getParameter("memNo");
+			String memId = req.getParameter("memId");
 			MemberService memSvc = new MemberService();
-			MemberVO memVO = memSvc.getOneMemByNo(memNo);
+			MemberVO memVO = memSvc.getOneMemById(memId);
+			
+			
 			sendRegisterMail(memVO.getMemEmail(), memVO.getMemName(), memVO.getMemPwd());
-			RequestDispatcher successView = req.getRequestDispatcher("/back/employee/listOneEmployee.jsp");
+			RequestDispatcher successView = req.getRequestDispatcher("/front/Login.jsp");
 			successView.forward(req, res);
 		}
 		// ======================================================================================================================
 		if ("cared_update".equals(action)) {
+			
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+			
 			String memNo = req.getParameter("memNo");
 			String caredName = req.getParameter("caredName");
 			String caredNo = req.getParameter("caredNo");
@@ -504,6 +510,43 @@ public class MemberServlet extends HttpServlet {
 			String caredPhone = req.getParameter("caredPhone");
 			String conStatus = req.getParameter("conStatus");
 			String bioStatus = req.getParameter("bioStatus");
+			
+			if(memNo==null || memNo.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredName==null || caredName.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredNo==null || caredNo.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredGender==null || caredGender.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(kinship==null || kinship.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredWeight==null || caredWeight.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredAddress==null || caredAddress.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredPhone==null || caredPhone.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(conStatus==null || conStatus.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(bioStatus==null || bioStatus.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			
+			if (!errorMsgs.isEmpty()) {
+				RequestDispatcher failureView = req.getRequestDispatcher("/front/member/CaredUpdate.jsp");
+				failureView.forward(req, res);
+				return;
+			}
 
 			ThecaredVO thecaredVO = new ThecaredVO();
 			thecaredVO.setCaredNo(caredNo);
@@ -525,6 +568,11 @@ public class MemberServlet extends HttpServlet {
 
 		// ======================================================================================================================
 		if ("cared_insert".equals(action)) {
+			
+
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+			
 			String memNo = req.getParameter("memNo");
 			String caredName = req.getParameter("caredName");
 			String caredGender = req.getParameter("caredGender");
@@ -535,6 +583,42 @@ public class MemberServlet extends HttpServlet {
 			String caredPhone = req.getParameter("caredPhone");
 			String conStatus = req.getParameter("conStatus");
 			String bioStatus = req.getParameter("bioStatus");
+			
+			if(memNo==null || memNo.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredName==null || caredName.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+
+			if(caredGender==null || caredGender.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(kinship==null || kinship.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredWeight==null || caredWeight.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredAddress==null || caredAddress.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(caredPhone==null || caredPhone.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(conStatus==null || conStatus.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			if(bioStatus==null || bioStatus.equals("")){
+				errorMsgs.add("請勿空白");
+			}
+			
+			if (!errorMsgs.isEmpty()) {
+				RequestDispatcher failureView = req.getRequestDispatcher("/front/member/CaredUpdate.jsp");
+				failureView.forward(req, res);
+				return;
+			}
+			
 			Timestamp modifyTime = new Timestamp(System.currentTimeMillis());
 
 			ThecaredVO thecaredVO = new ThecaredVO();
@@ -699,6 +783,24 @@ public class MemberServlet extends HttpServlet {
 			memSvc.updateMember(memberVO);
 			System.out.println("Input驗證碼" + memCodeInput);
 			req.setAttribute("memberVO", memberVO);
+			
+			// ================================================================
+			// addBonus 100元
+			System.out.println("here is balance_insertXXXX:");
+			String topupValue = "100";
+			String topupWay = "SYSTEM";
+			String status = "auto";
+			
+			BalanceVO balanceVO = new BalanceVO();
+			balanceVO.setMemNo(memNo);
+			balanceVO.setTopupValue(Integer.valueOf(topupValue));
+			balanceVO.setTopupWay(topupWay);
+
+			BalanceService balanceSvc = new BalanceService();
+			balanceVO = balanceSvc.addTopup(balanceVO);
+			// ================================================================
+			
+			
 			RequestDispatcher successView = req.getRequestDispatcher("/front/member/MemberInfo.jsp");
 			successView.forward(req, res);
 		}

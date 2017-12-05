@@ -38,7 +38,11 @@ body {
 	</c:if>
 	<div class="container">
 		<div class="row">
-			<br> <br> <br> <br> <br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<div class="col-xs-12 col-sm-8">
 
 				<div id="login-overlay" class="modal-dialog">
@@ -50,8 +54,7 @@ body {
 							<h4 class="modal-title" id="myModalLabel">
 								<h1 class="title">
 									<img alt="" width="70px"
-										src="<%=request.getContextPath()%>/img/index/logo/logo.png">有我罩你
-									會員登入
+										src="<%=request.getContextPath()%>/img/index/logo/logo.png">有我罩你 幫您找回密碼
 								</h1>
 							</h4>
 						</div>
@@ -62,42 +65,31 @@ body {
 
 										<form action="<%=request.getContextPath()%>/member/member.do"
 											method="post" id="loginForm" novalidate="novalidate">
-											<input type="hidden" name="action" value="login">
+											<input type="hidden" name="action" value="forgetPwd">
 
 
 											<div class="form-group">
-												<label for="Username" class="control-label">會員帳號</label> <input
+												<label for="Username" class="control-label">請輸入會員帳號</label> <input
 													type="text" class="form-control" id="Username" name="memId"
 													value="" /> <span class="help-block"></span>
 											</div>
-											<div class="form-group">
-												<label for="Password" class="control-label">會員密碼</label> <input
-													type="password" class="form-control" id="Password"
-													name="memPwd" value="" /> <span class="help-block"></span>
-											</div>
+
 											<div id="loginErrorMsg" class="alert alert-error hide">Wrong
 												username og password</div>
-											<div class="checkbox">
-												<label> <input type="checkbox" name="remember"
-													id="remember"> 記住帳密
-												</label>
 
-											</div>
 
 											<button type="submit" value="Submit"
 												class="btn btn-warning btn-block">
-												<span>會員登入</span>
+												<span>找回密碼</span>
 											</button>
-
 
 
 
 										</form>
 										<br> <a
-											href='<%=request.getContextPath()%>/front/FindPassword.jsp'
-											class="btn btn-success btn-block" role="button"
-											onclick="showMessage()">忘記密碼?</a>
-
+											href='<%=request.getContextPath()%>/front/Login.jsp'
+											class="btn btn-success " role="button"
+											onclick="showMessage()">返回登入頁面</a>
 									</div>
 								</div>
 								<div class="col-xs-6">

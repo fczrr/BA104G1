@@ -27,6 +27,21 @@ public class BalanceService {
 //
 //	}
 	
+	public BalanceVO addBonus(BalanceVO balanceVO) {
+		dao.insert_Bonus(balanceVO);
+
+		return balanceVO;
+	}
+	public BalanceVO addBonus(String memNo) {
+
+		BalanceVO balanceVO = new BalanceVO();
+		balanceVO.setMemNo(memNo);
+		dao.insert_Bonus(balanceVO);
+
+		return balanceVO;
+	}
+	
+	
 	public List<BalanceVO> getAllByMemNo2(String memNo){
 		
 		BalanceVO balanceVO = new BalanceVO();

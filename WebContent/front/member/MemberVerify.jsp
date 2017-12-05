@@ -37,46 +37,62 @@
 <body>
 	<div class="container-fluid">
 		<div class="container">
-			<hr>
-			<img alt=""
-				src="<%=request.getContextPath()%>/img/member/longterm6.jpg">
+			<div class="row">
+				<hr>
+				<img alt=""
+					src="<%=request.getContextPath()%>/img/member/longterm6.jpg">
 
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
-				<li class="breadcrumb-item"><a
-					href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><a
-					href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-			</ol>
-			<div>Hello,${memberVO.memName}，帳戶名：${memberVO.memId}，(帳戶狀態：${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus})
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/index.jsp">首頁</a></li>
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
+					<li class="breadcrumb-item"><a
+						href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a
+						href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
+				</ol>
+				<div>
+					<h1>${memberVO.memName}，您好</h1>
+					帳戶名：${memberVO.memId}，(帳戶狀態：${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus})
+				</div>
+				<div id="verify">
+					<div>請前往您的信箱，收取認證信，並在下方輸入信件中的認證碼</div>
+					<div>
+						<form METHOD="post"
+							ACTION="<%=request.getContextPath()%>/member/member.do">
+							<input type="hidden" name="action" value="confirmCode"> <input
+								type="hidden" name="memNo" value="${memberVO.memNo}"> <input
+								type="text" name="memCodeInput" placeholder="請輸入驗證碼" value="">
+							<input type="submit" value="確認驗證碼"
+								class=" btn btn-lg btn-success">
+						</form>
+					</div>
+				</div>
 			</div>
-			<div>請前往您的信箱，收取認證信，並在下方輸入信件中的認證碼</div>
 
-			<div></div>
-			<div></div>
-		</div>
 
-		<div>
-			<FORM METHOD="post"
-				ACTION="<%=request.getContextPath()%>/member/member.do">
-				<input type="hidden" name="action" value="confirmCode"> <input
-					type="hidden" name="memNo" value="${memberVO.memNo}"> <input
-					type="text" name="memCodeInput" placeholder="請輸入驗證碼" value="">
-				<input type="submit" value="確認驗證碼" class=" btn-success">
-			</FORM>
+			<hr>
+
 		</div>
-		<hr>
 
 	</div>
 
-
-	</div>
 </body>
 <%@ include file="/front/footerbar.jsp"%>
+<script>
+	var yy = '${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus}';
 
+	window.onload = verify;
+	function verify() {
+		console.log('${memberSvc.findByPrimaryKey(memberVO.memNo).memSratus}');
+		if (yy == "已驗證") {
+
+			document.getElementById('verify').style.display = "none";
+
+		}
+	}
+</script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/front/js/navbar/bootstrap.min.js"></script>

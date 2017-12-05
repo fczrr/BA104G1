@@ -277,6 +277,18 @@ public class EmployeeServlet extends HttpServlet {
 			
 //			RequestDispatcher successView = req.getRequestDispatcher(url);
 //			successView.forward(req, res);
+			
+
+			EmployeeVO empVO2 = empSvc.findByEmpId(empId);
+			String empNo = empVO2.getEmpNo();
+
+			EmpPhotosVO empPhotosVO = new EmpPhotosVO();
+			empPhotosVO.setEmpNo(empNo);// ?∪極蝺刻?
+
+			System.out.println("create new photo no");
+			EmpPhotosService empPhotoSvc = new EmpPhotosService();
+			empPhotoSvc.addEmpPhoto(empPhotosVO);
+			
 			res.sendRedirect(req.getContextPath() + "/back/employee/listAllEmployee.jsp");
 			return;
 		}
@@ -417,7 +429,20 @@ System.out.println("come in");
 			successView.forward(req, res);
 		}
 		// =======================================================================================================================================			
-				if("expertlist_insert".equals(action)){
+		if ("forgetPwdId".equals(action)) {
+			String empId = req.getParameter("empId");
+			EmployeeService empSvc = new EmployeeService();
+
+			EmployeeVO empVO = empSvc.findByEmpId(empId);
+			sendRegisterMail(empVO.getEmpEmail(), empVO.getEmpName(), empVO.getEmpPwd());
+			RequestDispatcher successView = req.getRequestDispatcher("/back/Login.jsp");
+			successView.forward(req, res);
+		}
+		
+		// =======================================================================================================================================			
+				
+		
+		if("expertlist_insert".equals(action)){
 					String expNo = req.getParameter("expNo");
 					String expName = req.getParameter("expName");
 					String expSpec = req.getParameter("expSpec");

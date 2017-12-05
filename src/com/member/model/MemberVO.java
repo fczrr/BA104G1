@@ -17,7 +17,16 @@ public class MemberVO implements Serializable{
 	private String memSratus;
 	private String chkIp;
 	private Timestamp memLoginTime;
+	private String memLoginTime2;
 	
+	public String getMemLoginTime2() {
+		return memLoginTime2;
+	}
+
+
+	public void setMemLoginTime2(String memLoginTime2) {
+		this.memLoginTime2 = memLoginTime2;
+	}
 	public MemberVO(){}
 	
 

@@ -6,13 +6,15 @@
 <head>
 <meta charset="utf-8">
 <title>Title Page</title>
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/front/css/member/login.css">
 <script src="https://code.jquery.com/jquery.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/front/js/member/login.js"></script>
 <style type="text/css">
 body {
@@ -125,9 +127,9 @@ body {
 					method="post">
 					<h1 class="form-signin-heading text-muted">
 						<img alt="" width="50px"
-							src="<%=request.getContextPath()%>/img/index/logo/logo_white.png">員工系統
+							src="<%=request.getContextPath()%>/img/index/logo/logo_white.png">有我罩你
 					</h1>
-					<input type="hidden" name="action" value="login">
+					<br> <input type="hidden" name="action" value="forgetPwdId">
 					<div class="input-container">
 						<label for="Username"></label> <input type="text" id="Username"
 							name="empId" required="required" class="form-control"
@@ -135,20 +137,17 @@ body {
 
 						<div class="bar"></div>
 					</div>
-					<div class="input-container">
-						<label for="Password"></label> <input type="password"
-							id="Password" name="empPwd" class="form-control"
-							placeholder="員工密碼" required="required" />
-						<div class="bar"></div>
-					</div>
+					<br>
 					<button type="submit" value="Submit" onclick="showMessage()"
 						class="btn btn-lg btn-primary btn-block">
-						<span id="login">登入</span>
+						<span id="forgetPwd">找回密碼</span>
+
 					</button>
 					<br>
+					<div style="background-color: #E0E0E0;" id="sentPassword"></div>
 					<div class="footer">
-						<a href='<%=request.getContextPath()%>/back/ForgetPassword.jsp'
-							class="btn btn-danger" role="button" onclick="showMessage()">忘記密碼?</a>
+						<a href='<%=request.getContextPath()%>/back/Login.jsp'
+							class="btn btn-danger" role="button" onclick="showMessage()">回註冊頁面</a>
 					</div>
 				</form>
 
@@ -197,7 +196,8 @@ body {
 			document.getElementById("Password").value = "pw0000";
 		}
 		function showMessage() {
-			document.getElementById("login").innerHTML = '資料庫連線中...';
+			document.getElementById("forgetPwd").innerHTML = '傳送中...';
+			document.getElementById("sentPassword").innerHTML = '密碼已發送至註冊信箱，請前往信箱查收密碼<i style="font-size:16px;color:red;" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>';
 
 		}
 	</script>

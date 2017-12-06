@@ -474,7 +474,7 @@
 											 url: "<%=request.getContextPath()%>/HcOrder/HcOrderController.do?action=ajax_findPK",
 											 data: {
 												 orderDetailNo:	calEvent.title.substring(3,18)					 
-											 },
+											 }, 
 											
 											 
 											 dataType: "json",

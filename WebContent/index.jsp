@@ -33,6 +33,38 @@
 	background: url(<%=request.getContextPath()%>/img/index/BigImg/bannerAbout.jpg) no-repeat center center scroll;
 
 }
+img.logoImgNav { 
+    margin-left: 40px;
+    margin-top: 7px;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: 40px;
+}
+#prodet_img {
+    margin: 50px -350px 20px 53px;
+}
+.aboutUs_img {
+    background: url(/BA104G1/img/index/BigImg/bannerAbout.jpg) no-repeat center center scroll;
+    margin-left: -100px;
+}
+div#cont {
+    margin-left: 95px;
+}
+
+#footer_tit {
+    margin-bottom: 30px;
+    margin-left: 180px;
+}
+
+.cbp-ig-grid {
+    list-style: none;
+    padding: 0 0 50px 0;
+    margin: 0;
+    margin-left: 80px;
+}
 </style>
 <%@ include file="/front/css/navbar/navCss.file" %>
 
@@ -375,7 +407,7 @@
 
 <a id="con"></a>
 <div class="container">
-    <div class="row">
+    <div class="row" id="cont">
         <div class="col-xs-12 col-sm-5">
             <img src="<%=request.getContextPath()%>/img/index/BigImg/custom.png" id="count_img">
         </div>
@@ -445,9 +477,9 @@
                     <ul>
                         <li> <a href="#" class="aboutUs"> 意見回饋 </a> </li>
                     </ul>
-                </div>
+                </div> 
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                    <h3 id="footer_img"><img src="https://api.fnkr.net/testimg/150x150/00CED1/FFF/?text=img+placeholder"></h3>
+                    <h3 id="footer_img"><img src="<%=request.getContextPath()%>/img/index/logo/QR.png"></h3>
                 </div>
             
             </div>

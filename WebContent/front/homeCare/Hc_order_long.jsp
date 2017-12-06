@@ -87,6 +87,9 @@ display:block;
 </div>
 </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
+
 								<c:if test="${not empty errorMsgs}">	
 										<c:forEach var="message" items="${errorMsgs}">
 											<script>										

@@ -311,8 +311,8 @@
 			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
 			</c:forEach>
 			<p>
-				<input type='checkbox' id='drop-remove2' />
-				<label for='drop-remove2'>remove after drop</label>
+				<input type='checkbox' id='drop-remove2' style="display:none"/>
+<!-- 				<label for='drop-remove2'>remove after drop</label> -->
 			</p>
 		</div>
 		</div>
@@ -324,11 +324,11 @@
 			<div class='fc-event'>休假(中)</div>
 			<div class='fc-event'>休假(晚)</div>
 			<p>
-				<input type='checkbox' id='drop-remove'/>
-				<label for='drop-remove'>remove after drop</label>
+				<input type='checkbox' id='drop-remove' style="display:none" checked />
+<!-- 				<label for='drop-remove'>remove after drop</label> -->
 			</p>
 		</div >
-		<div><button class="btn mybtn">確認修改</button></div>
+		<div><button class="btn mybtn btn-info">確認修改</button></div>
 		</div>
 
 		
@@ -369,7 +369,15 @@
 	src="<%=request.getContextPath()%>/back/fullcalendar-scheduler/js/scheduler.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/back/fullcalendar-scheduler/js/zh-tw.js"></script>
+	
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
+	
+	
 <script>
+
+
+
 	var myDate= new Date();
 	var dDate = '<%= myYear.toString()%>-<%= myMonth.toString()%>-01';
 	
@@ -459,7 +467,27 @@
 							],
 							eventClick: function(calEvent, jsEvent, view) {
 								 
-						        alert('Event: ' + calEvent.title);
+						        if(calEvent.title.substring(0,2)=="訂單"){
+								      $.ajax({
+											 type: "post",
+											 
+											 url: "<%=request.getContextPath()%>/HcOrder/HcOrderController.do?action=ajax_findPK",
+											 data: {
+												 orderDetailNo:	calEvent.title.substring(3,18)					 
+											 },
+											
+											 
+											 dataType: "json",
+											 success: function (data){
+												 console.log(data);
+// 												 alert("訂單編號"+data.orderDetailNo+"\n\r"+"服務日期"+data.serviceDate);
+												 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務時段 :"+data.orderDetailStataus);
+										     },
+								            error: function(e){alert(e+'訂單查尋失敗')}
+								        });
+						        	
+						        }
+						        
 // 						        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 // 						        alert('View: ' + view.name);
 						 
@@ -514,9 +542,9 @@
 						    	
 							drop : function(date, jsEvent, ui, resourceId,resourceId) {
 						
-								console.log( $(this).closest("div").attr('class') );
+								console.log( $(this).data('event').title.substring(0,2) );
 								// is the "remove after drop" checkbox checked?
-								if ($('#drop-remove').is(':checked')) {
+								if ($('#drop-remove').is(':checked') && $(this).data('event').title.substring(0,2)!='休假' ) {
 									// if so, remove the element from the "Draggable Events" list
 									$(this).remove();
 								}
@@ -598,7 +626,7 @@
 // 									console.log( event.title);
 // 									console.log( moment(event.start).format('YYYY-MM-DD'));
 							}
-						}); 
+						});  
 
 		var isEventOverDiv = function(x, y) {
 

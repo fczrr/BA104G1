@@ -750,7 +750,7 @@ public class HcOrderDetailJDBCDAO implements HcOrderDetailDAO_interface {
 		ResultSet rs = null;
 
 		try {
-			System.out.println("DATE:" + date);
+			System.out.println("wdao DATE:" + date);
 			Date SreviceDate = Date.valueOf(date);
 
 			con = ds.getConnection();

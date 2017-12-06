@@ -11,6 +11,11 @@ public class HcOrderDetailService {
 		dao = new HcOrderDetailJDBCDAO();
 	}
 	
+	public HcOrderDetailVO findByPrimaryKey(String orderDetailNo){
+		return dao.findByPrimaryKey(orderDetailNo);
+	}
+	
+	
 	public void updateAll(List<HcOrderDetailVO> hcOrderDetailVOList, HcWorkShiftsVO hcWorkShiftsVO){
 		dao.updateAll(hcOrderDetailVOList,hcWorkShiftsVO);
 	}

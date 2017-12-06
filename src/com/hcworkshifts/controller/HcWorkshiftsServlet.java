@@ -532,7 +532,9 @@ public class HcWorkshiftsServlet extends HttpServlet {
 					if(order.substring(0, 2).equals("訂單")){
 //						order.substring(3);
 						java.sql.Date sqldate = java.sql.Date.valueOf(date);
-						HcOrderDetailVO hcOrderDetailVO = hcOrderDetailService.getAllBySreviceTimeInPerson(date, time, empNo);
+						HcOrderDetailVO hcOrderDetailVO = hcOrderDetailService.findByPrimaryKey(order.substring(3, 18));
+						
+						
 //						if( (sqldate.getTime() < cal.getTime().getTime()) 
 //								&& !(hcOrderDetailVO.getServiceDate().getTime() == sqldate.getTime()) 
 //								|| !time.equals(hcOrderDetailVO.getServiceTime())){
@@ -595,7 +597,7 @@ public class HcWorkshiftsServlet extends HttpServlet {
 				res.setStatus(200);
 				
 				JsonObject jjj = new JsonObject();				
-				String aass =  "更新有誤  請重試";				
+				String aass =  "更新有誤  請刷新後重試";				
 				jjj.addProperty("xxx", aass);;
 				res.getWriter().println(jjj.toString());
 

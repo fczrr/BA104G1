@@ -341,7 +341,7 @@ tr:nth-child(even) {
 										</div>
 									</div>
 										<div class="col-md-6">
-										    <img class="loctionPic" height="583" src = "<%=request.getContextPath()%>/front/image/carorder/news_map_North.jpg">
+										    <img class="loctionPic" height="583" src = "<%=request.getContextPath()%>/front/image/carorder/news_map_West.jpg">
 										</div>
 									</div>
 									    

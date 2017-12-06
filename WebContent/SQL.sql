@@ -533,7 +533,7 @@ INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVA
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR008.jpg'),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR009.jpg'),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR010.jpg'),'T');
-
+  
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR011.jpg'),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR012.jpg'),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR013.jpg'),'T');

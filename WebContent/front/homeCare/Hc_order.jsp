@@ -440,7 +440,7 @@ request.setCharacterEncoding("UTF-8");
             console.log(date); 
         }
     });
-    
+     
     laydate.render({
         elem: '#servDate-final' 
         ,min: 1

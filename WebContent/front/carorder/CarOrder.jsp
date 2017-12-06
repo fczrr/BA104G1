@@ -265,9 +265,9 @@ tr:nth-child(even) {
 										<div class="radio daypart">
 										  <label><input type="radio" name="optradio" value="2" text="N">晚上(6~10)</label>
 										</div>
-										<div class="radio daypart">
+										<!-- <div class="radio daypart">
 										  <label><input type="radio" name="optradio" value="3" text="O">全天</label>
-										</div> 
+										</div> --> 
 										
 										<br><br>
 										選擇服務日期:
@@ -341,7 +341,7 @@ tr:nth-child(even) {
 										</div>
 									</div>
 										<div class="col-md-6">
-										    <img class="loctionPic" height="583" src = "<%=request.getContextPath()%>/front/image/carorder/news_map_North.jpg">
+										    <img class="loctionPic" height="583" src = "<%=request.getContextPath()%>/front/image/carorder/news_map_West.jpg">
 										</div>
 									</div>
 									    

@@ -1307,7 +1307,7 @@ body {
 		          console.log("取回來的訂單明細:"+orderStatus);
 		          //$(".dttbody").empty();
 		         
-		          var tableStringAll;
+		          var tableStringAll ="";
 		          for (var i = 0; i < orderStatus.length; i++) {
 	                  var cd = orderStatus[i];
 	                  var detail_no = cd.detail_no;
@@ -1333,7 +1333,7 @@ body {
 	                  var vehicle_no = cd.vehicle_no;
 	                  var sendcar_status = cd.sendcar_status;
 	                  var tableString = "<tr><td><a href='<%=request.getContextPath()%>/back/carorder/listAllCarOrder.jsp'>"+detail_no+"</a></td><td>"+detail_date+"</td><td>"+detail_timeString+"</td><td>"+passenger_name+"</td><td>0"
-	                		  +passenger_phone+"</td><td>"+getinto_address+"</td><td>"+arrival_address+"</td><td>"+vehicle_no+"</td><td>"+sendcar_status+"</td></tr>+"
+	                		  +passenger_phone+"</td><td>"+getinto_address+"</td><td>"+arrival_address+"</td><td>"+vehicle_no+"</td><td>"+sendcar_status+"</td></tr>"
 	                		  console.log("明細td字串1:"+tableString);  	  
 	                tableStringAll =tableStringAll + tableString;
 	                
@@ -1346,8 +1346,7 @@ body {
 					  title: '訂單明細',
 					  type: 'info',
 					  width: 'auto',
-					  html:
-						  '<table class="table table-striped text-center">'+
+					  html:'<table class="table table-striped text-center">'+
 	              	'<thead>'+
 				         '<tr>'+
 				           	  '<th class="text-center"> 明細編號</th>'+

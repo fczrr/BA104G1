@@ -380,9 +380,6 @@ console.log("========="+msg);
 		document.getElementById('sendMessage').disabled = true;
 	}
 
-	function updateStatus(newStatus) {
-		statusOutput.innerHTML = newStatus;
-	}
 	
 	/* 圖片區 */
 	$("#uploadImage").change(function(){

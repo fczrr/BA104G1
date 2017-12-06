@@ -119,22 +119,35 @@ font-size:20px;
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-home"></i>
-							<span>有我罩你!</span></a>
+						<a
+							href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp"
+							class="site_title"><img
+							src="<%=request.getContextPath()%>/img/index/logo/logo_white.png"
+							width="30px"> <span>有我罩你</span></a>
 					</div>
 
 					<div class="clearfix"></div>
 
-					<!-- menu profile quick info -->
+					<!-- menu profile quick info       頭像↓ -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img
-								src="<%=request.getContextPath()%>/back/gentelella-master/build/images/rammu.jpg"
-								alt="圖片仔入中" class="img-circle profile_img">
+							<c:choose>
+								<c:when test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
+									<img style="width: 60px; height: 50px"
+										src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+										alt="圖片載入中" class="img-circle profile_img">
+								</c:when>
+								<c:otherwise>
+									<img style="width: 60px; height: 50px"
+										src="<%=request.getContextPath()%>/noData/noPic.jpg"
+										alt="圖片連線中" class="img-circle profile_img">
+								</c:otherwise>
+							</c:choose>
+
 						</div>
 						<div class="profile_info">
 							<span>歡迎,</span>
-							<h2>總經理好</h2>
+							<h2>${empVO.empName}</h2>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -146,42 +159,65 @@ font-size:20px;
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>General</h3>
+							<h3>主要功能</h3>
 							<ul class="nav side-menu">
 
 
-								<li><a><i class="fa fa-home"></i> 首頁 <span
-										class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="#">Dashboard</a></li>
-										<li><a href="#">Dashboard2</a></li>
-										<li><a href="#">Dashboard3</a></li>
-									</ul></li>
+								<!-- 								<li><a><i class="fa fa-home"></i> 首頁 </a> -->
+								<!-- 									<ul class="nav child_menu"> -->
+								<!-- 										<li><a -->
+								<%-- 											href="<%=request.getContextPath()%>/back/production/BA104G1_index.jsp">首頁</a></li> --%>
+								<!-- 										<li><a -->
+								<%-- 											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料</a></li> --%>
 
-								<li><a><i class="fa fa-home"></i> 員工管理 <span
+								<!-- 										<li><a href="#">個人班表</a></li> -->
+								<!-- 									</ul></li> -->
+
+								<li id="auth1"><a><i class="fa fa-home"></i>員工管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a
-											href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">個人資料維護</a></li>
 										<li><a
 											href="<%=request.getContextPath()%>/back/employee/listAllEmployee.jsp">員工資料管理</a></li>
-									</ul></li>
-								<li><a><i class="fa fa-home"></i>會員管理 <span
+										<li><a
+											href="<%=request.getContextPath()%>/back/employee/listAllBranches.jsp">員工據點管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/employee/listAllExpertlist.jsp">員工專長管理</a></li>
+									</ul></li>  
+								<li id="auth2"><a><i class="fa fa-home"></i>會員管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
 											href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">會員資料管理</a></li>
-										<li><a href="#">點數管理</a></li>
+											<li><a
+											href="<%=request.getContextPath()%>/back/member/listAllBalance.jsp">加值列表</a></li>
+											
+											
 									</ul></li>
-								<li><a><i class="fa fa-home"></i> 派車管理 <span
+
+
+
+		
+
+
+
+								<li id="auth3"><a><i class="fa fa-automobile"></i> 派車管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">Dashboard</a></li>
-										<li><a href="#">Dashboard2</a></li>
-										<li><a href="#">Dashboard3</a></li>
+										<li id="auth3_1"><a
+											href="<%=request.getContextPath()%>/back/carorder/listAllCarOrder.jsp">訂單管理</a></li>
+										<li><a href="#">派車班表<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+												<li id="auth3_2"><a
+													href="<%=request.getContextPath()%>/back/carschedul/CarShiftTableEmp.jsp">查看班表</a></li>
+												<li id="auth3_3"><a
+													href="<%=request.getContextPath()%>/back/carschedul/CarShiftTable.jsp">班表管理</a></li>
+											</ul></li>
+
+										<li id="auth3_4"><a
+											href="<%=request.getContextPath()%>/back/cartype/main.jsp">車型管理</a></li>
 									</ul></li>
-								<!--  送餐管理   start -->
-								<li><a><i class="fa fa-home"></i> 送餐管理 <span
+
+								<li id="auth4"><a><i class="fa fa-cutlery"></i> 送餐管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a
@@ -193,29 +229,31 @@ font-size:20px;
 												<li><a
 													href="<%=request.getContextPath()%>/back/dish/addDish.jsp">新增菜色</a></li>
 											</ul></li>
-										<li><a href="#">套餐管裡<span class="fa fa-chevron-down"></span></a>
-											<ul class="nav child_menu">
-												<li><a
-													href="<%=request.getContextPath()%>/back/setMeal/listAllSetMeal.jsp">查詢/修改套餐</a></li>
-												<li><a
-													href="<%=request.getContextPath()%>/back/SetMeal/addSetMeal2.jsp">新增套餐</a></li>
-											</ul></li>
-									</ul></li>
-								<!--  送餐管理   end  -->
-								<li><a><i class="fa fa-home"></i> 長照管理 <span
-										class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="#">Dashboard</a></li>
-										<li><a href="#">Dashboard2</a></li>
-										<li><a href="#">Dashboard3</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/setMeal/listAllSetMeal.jsp">套餐管裡</a>
+										</li>
 									</ul></li>
 
-								<li><a><i class="fa fa-home"></i> 商城管理 <span
+								<li id="auth5"><a><i class="fa fa-users"></i> 長照管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="#">Dashboard</a></li>
-										<li><a href="#">Dashboard2</a></li>
-										<li><a href="#">Dashboard3</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift_search.jsp&failureV=/back/homeCare/Hc_show_workShift_search.jsp">班表管理</a></li>
+									</ul></li>
+
+								<li id="auth6"><a><i class="fa fa-shopping-cart"></i> 商城管理 <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a
+											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopMaster.jsp">訂單管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopADD.jsp">新增商品</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopSearch.jsp">瀏覽商品</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopProSearch.jsp">促銷商品</a></li>
 									</ul></li>
 
 							</ul>
@@ -224,46 +262,39 @@ font-size:20px;
 
 
 						<div class="menu_section">
-							<h3>Live On</h3>
+							<h3 id="auth7">其他功能</h3>
 							<ul class="nav side-menu">
-								<li><a><i class="fa fa-bug"></i> 申訴管理 <span
+								<li id="auth8"><a><i class="fa fa-bug"></i> 申訴管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/complain/listHCCom.jsp">長照申訴管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/complain/listCarCom.jsp">派車申訴管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/complain/listMealCom.jsp">送餐申訴管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/complain/listShopCom.jsp">商城申訴管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-bug"></i> 點數管理 <span
+
+
+								<li id="auth10"><a><i class="fa fa-columns"></i> 佈告欄管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/newsdetail/AllNews.jsp">最新消息管理</a></li>
+										<li><a
+											href="<%=request.getContextPath()%>/back/healthnewsdetail/AllNews.jsp">保健資訊管理</a></li>
 									</ul></li>
 
-								<li><a><i class="fa fa-bug"></i> 佈告欄管理 <span
-										class="fa fa-chevron-down"></span></a>
+								<li id="auth11"><a
+									href="<%=request.getContextPath()%>/front/message/msgFor_Mem1000.jsp"><i
+										class="fa fa-quote-right"></i> 線上客服管理 <span
+										class="label label-danger" id="notifly" style="display: none">0</span>
+										<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
-									</ul></li>
 
-								<li><a><i class="fa fa-bug"></i> 線上客服管理 <span
-										class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="e_commerce.html">E-commerce</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li><a href="project_detail.html">Project Detail</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="profile.html">Profile</a></li>
 									</ul></li>
 
 							</ul>
@@ -302,58 +333,102 @@ font-size:20px;
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img src="images/img.jpg" alt="">John
-									Doe <span class=" fa fa-angle-down"></span>
-							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
-									<li><a href="javascript:;"> <span
-											class="badge bg-red pull-right">50%</span> <span>Settings</span>
-									</a></li>
-									<li><a href="javascript:;">Help</a></li>
-									<li><a href="login.html"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-								</ul></li>
+								aria-expanded="false"> <%--                     <img src="<%=request.getContextPath() %>/back/production/images/img.jpg" alt="">John Doe --%>
 
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> <i
-									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span>
+									<c:choose>
+										<c:when
+											test="${empPhSvc.getAllByEMPNO(empVO.empNo).size()!= 0}">
+											<img style="width: 40px; height: 40px"
+												src="<%=request.getContextPath()%>/DBGifReader4?emp_photo_no=${empPhSvc.getAllByEMPNO(empVO.getEmpNo()).get(0).getEmpPhtoNo()}"
+												alt="圖片載入中">
+										</c:when>
+										<c:otherwise>
+											<img style="width: 40px; height: 40px"
+												src="<%=request.getContextPath()%>/noData/noPic.jpg"
+												alt="圖片連線中">
+										</c:otherwise>
+									</c:choose> ${empVO.empName} <span class=" fa fa-angle-down"></span>
 							</a>
-								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-									role="menu">
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
-									<li><a> <span class="image"><img
-												src="images/img.jpg" alt="Profile Image" /></span> <span> <span>John
-													Smith</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Film festivals used to be
-												do-or-die moments for movie makers. They were where... </span>
-									</a></li>
+								<ul class="dropdown-menu dropdown-usermenu pull-right wrap">
+									<li><a
+										href="<%=request.getContextPath()%>/back/employee/listOneEmployee.jsp">
+											個人基本資料<span class="fa fa-database pull-right"></a></li>
+									<!--                     <li> -->
+									<!--                       <a href="javascript:;"> -->
+									<!--                         <span class="badge bg-red pull-right">50%</span> -->
+									<!--                         <span>Settings</span> -->
+									<!--                       </a> -->
+									<!--                     </li> -->
+									<!--                     <li><a href="javascript:;">Help</a></li> -->
+									<!-- 									<li><a href="login.html" class="pull-right"><i -->
+									<!-- 											class="fa fa-sign-out pull-right"></i>登入</a></li> -->
 									<li>
-										<div class="text-center">
-											<a> <strong>See All Alerts</strong> <i
-												class="fa fa-angle-right"></i>
-											</a>
-										</div>
+									<a class="pull-right"
+										href="<%=request.getContextPath()%>/employee/employee.do?action=logout">
+											員工登出<span class="fa fa-sign-out pull-right"></span></a></li>
+									
+<!-- 										
 									</li>
 								</ul></li>
+
+							<!-- 							<li role="presentation" class="dropdown"><a -->
+							<!-- 								href="javascript:;" class="dropdown-toggle info-number" -->
+							<!-- 								data-toggle="dropdown" aria-expanded="false"> <i -->
+							<!-- 									class="fa fa-envelope-o"></i> <span class="badge bg-green">6</span> -->
+							<!-- 							</a> -->
+							<!-- 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" -->
+							<!-- 									role="menu"> -->
+							<!-- 									<li><a> <span class="image"><img -->
+							<%-- 												src="<%=request.getContextPath()%>/back/production/images/img.jpg" --%>
+							<!-- 												alt="Profile Image" /></span> <span> <span>John -->
+							<!-- 													Smith</span> <span class="time">3 mins ago</span> -->
+							<!-- 										</span> <span class="message"> Film festivals used to be -->
+							<!-- 												do-or-die moments for movie makers. They were where... </span> -->
+							<!-- 									</a></li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!--                     <li> -->
+							<!--                       <a> -->
+							<!--                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+							<!--                         <span> -->
+							<!--                           <span>John Smith</span> -->
+							<!--                           <span class="time">3 mins ago</span> -->
+							<!--                         </span> -->
+							<!--                         <span class="message"> -->
+							<!--                           Film festivals used to be do-or-die moments for movie makers. They were where... -->
+							<!--                         </span> -->
+							<!--                       </a> -->
+							<!--                     </li> -->
+							<!-- 									<li> -->
+							<!-- 										<div class="text-center"> -->
+							<!-- 											<a> <strong>See All Alerts</strong> <i -->
+							<!-- 												class="fa fa-angle-right"></i> -->
+							<!-- 											</a> -->
+							<!-- 										</div> -->
+							<!-- 									</li> -->
+							<!-- 								</ul></li> -->
 						</ul>
 					</nav>
 				</div>
@@ -774,5 +849,93 @@ font-size:20px;
 	});
 	
 </script>
+<script >
+
+$(document).ready(function() {
+	var buttonList = 'auth';
+
+	// 將離職狀態的全部功能隱藏
+	
+	// 最高權限都看得到
+
+	// 總部專員	
+	if('${empVO.empDep}' == '總部' && '${empVO.empTitle}' == '專員'){
+		for(var i =3 ; i<7;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	// 派車經理	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '經理'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		
+	// 派車專員	
+	}else if('${empVO.empDep}' == '派車'&& '${empVO.empTitle}' == '專員'){
+		$('#'+buttonList+'1').remove();
+		$('#'+buttonList+'2').remove();
+		for(var i =4 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		$('#'+buttonList+'3_1').remove();
+		$('#'+buttonList+'3_3').remove();
+		$('#'+buttonList+'3_4').remove();
+		
+	// 送餐經理	
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '送餐' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<4;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =5 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	
+	
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =6 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<5;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =6 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '經理'){
+		for(var i =1 ; i<6;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =7 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '專員'){
+		for(var i =1 ; i<6;i++){
+			$('#'+buttonList+i).remove();	
+		}
+		for(var i =7 ; i<12;i++){
+			$('#'+buttonList+i).remove();	
+		}
+};
+
+		
+});
+
+
+</script >
+
 </body>
 </html>

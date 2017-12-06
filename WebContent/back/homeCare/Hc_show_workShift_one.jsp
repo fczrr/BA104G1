@@ -465,7 +465,7 @@
 							slotLabelFormat : [ 'HH:mm',
 							//top level of text
 							],
-							eventClick: function(calEvent, jsEvent, view) {
+							eventClick: function(calEvent, jsEvent, view) { 
 								 
 						        if(calEvent.title.substring(0,2)=="訂單"){
 								      $.ajax({

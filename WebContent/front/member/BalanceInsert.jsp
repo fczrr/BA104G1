@@ -223,12 +223,12 @@ input {
 	<script
 		src="<%=request.getContextPath()%>/front/js/member/jquery.card.js"></script>
 	<script type="text/JavaScript">
-		function myFunction() {
-			document.getElementById("topupValue").value = "606000";
-			document.getElementById("creditCard1").value = "35891324123";
-			document.getElementById("yymm").value = "12";
-			document.getElementById("namecard").value = "BEI LI";
-		}
+	function myFunction() {
+		document.getElementById("topupValue").value = "606000";
+		document.getElementById("creditCard1").value = "35891324123233";
+		document.getElementById("yymm").value = "1222";
+		document.getElementById("namecard").value = "BEI LI";
+	}
 
 		var UNI = document.getElementById("showUNI");
 

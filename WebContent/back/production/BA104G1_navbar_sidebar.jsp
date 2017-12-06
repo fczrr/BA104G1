@@ -179,12 +179,12 @@
 								<li id="auth5"><a><i class="fa fa-users"></i> 長照管理 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a
+										<li id="auth5_1"><a
 											href="<%=request.getContextPath()%>/back/homeCare/Hc_order_shearch.jsp">訂單管理</a></li>
-										<li><a
+										<li id="auth5_2"><a
 											href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift_search.jsp&failureV=/back/homeCare/Hc_show_workShift_search.jsp">班表管理</a></li>
 																				
-										<li><a
+										<li id="auth5_3"><a
 											href="<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift_search_self.jsp">個人班表查詢</a></li>											
 									</ul></li>
 
@@ -441,11 +441,13 @@ $(document).ready(function() {
 	
 	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '經理'){
 		for(var i =1 ; i<5;i++){
-			$('#'+buttonList+i).remove();	
+			$('#'+buttonList+i).remove();
 		}
 		for(var i =6 ; i<12;i++){
 			$('#'+buttonList+i).remove();	
 		}
+		$('#'+buttonList+'5_3').remove();
+		
 	}else if('${empVO.empDep}' == '長照' && '${empVO.empTitle}' == '專員'){
 		for(var i =1 ; i<5;i++){
 			$('#'+buttonList+i).remove();	
@@ -453,6 +455,7 @@ $(document).ready(function() {
 		for(var i =6 ; i<12;i++){
 			$('#'+buttonList+i).remove();	
 		}
+		$('#'+buttonList+'5_2').remove();
 		
 	}else if('${empVO.empDep}' == '商城' && '${empVO.empTitle}' == '經理'){
 		for(var i =1 ; i<6;i++){
@@ -468,9 +471,7 @@ $(document).ready(function() {
 		for(var i =7 ; i<12;i++){
 			$('#'+buttonList+i).remove();	
 		}
-};
-
-		
+	};
 });
 
 

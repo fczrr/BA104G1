@@ -133,7 +133,7 @@ public class HcOrderController extends HttpServlet {
 				MemberService memberService  = new MemberService();
 				MemberVO  memberVO = memberService.findByPrimaryKey(memNo);
 				Integer point = memberVO.getPoint();
-				
+				//取得金額
 				ExpertlistService expertlistService = new ExpertlistService();
 				Integer cost=0;
 				if(empNo.equals("EMP0000")){
@@ -211,6 +211,9 @@ public class HcOrderController extends HttpServlet {
 					return;//程式中斷
 				}
 				
+//				MemberService memberService = new MemberService();
+				MemberVO memberVO2 = memberService.findByPrimaryKey(memNo);
+				req.getSession().setAttribute("memberVO", memberVO2);
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("hcOrderMasterVO", hcOrderMasterVO);
@@ -265,6 +268,11 @@ public class HcOrderController extends HttpServlet {
 				
 				HcWorkShiftsService hcWorkShiftsService = new HcWorkShiftsService();
 				List<HcOrderDetailVO> hcOrderDetailList =  new ArrayList<HcOrderDetailVO>();
+				ExpertlistService expertlistService = new ExpertlistService();
+				ExpertService expertService = new ExpertService();
+				Integer cost=0;
+
+
 				for(int i =0;i<servDates.length;i++){
 					String servDate = 	servDates[i].substring(0, servDates[i].lastIndexOf("-"));
 			System.out.println(servDate);
@@ -288,10 +296,11 @@ public class HcOrderController extends HttpServlet {
 					
 					//分派當天有空  工作時數最少員工
 					HcWorkShiftsVO hcWorkShiftsVO = hcWorkShiftsService.getOneByDateTime(servDate, servTime);
-					 String empno = hcWorkShiftsVO.getEmpNo();
-					 
-					 if(empno.equals("")){
-						 
+					String empNo;
+					 if(hcWorkShiftsVO == null){
+						empNo = "EMP0000";
+					 }else{
+					 empNo = hcWorkShiftsVO.getEmpNo();
 					 }
 					
 					HcOrderDetailVO hcOrderDetail = new HcOrderDetailVO();					
@@ -300,6 +309,15 @@ public class HcOrderController extends HttpServlet {
 					hcOrderDetail.setEmpNo(hcWorkShiftsVO.getEmpNo());
 					hcOrderDetail.setOrderDetailStataus("未服務");
 					hcOrderDetailList.add(hcOrderDetail);
+					
+					if(empNo.equals("EMP0000")){
+					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST("101");      //寫死
+					cost =expertlistVO.getExpPrice();
+				}else{
+										
+					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(empNo).get(0).getExpNo());
+					cost =cost+expertlistVO.getExpPrice();
+				}
 				}
 				
 				if(req.getSession().getAttribute("memberVO") == null){
@@ -315,20 +333,10 @@ public class HcOrderController extends HttpServlet {
 				MemberVO  memberVO = memberService.findByPrimaryKey(memNo);
 				Integer point = memberVO.getPoint();
 				
-//				ExpertlistService expertlistService = new ExpertlistService();
-//				Integer cost=0;
-//				if(empNo.equals("EMP0000")){
-//					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expNo);
-//					cost =expertlistVO.getExpPrice();
-//				}else{
-//					ExpertService expertService = new ExpertService();					
-//					ExpertlistVO expertlistVO = expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(empNo).get(0).getExpNo());
-//					cost =expertlistVO.getExpPrice();
-//				}
-//				
-//				if(cost>point){
-//					errorMsgs.add("抱歉! 餘額不足喔! 目前餘額"+point+", 請至會員中心儲值");
-//				}
+				
+				if(cost>point){
+					errorMsgs.add("抱歉! 餘額不足喔! 本次購買金額"+cost+"，  目前餘額"+point+", 請至會員中心儲值");
+				}
 				
 
 				if (!errorMsgs.isEmpty()) {
@@ -351,6 +359,10 @@ public class HcOrderController extends HttpServlet {
 			System.out.println("取回來的VO"+hcOrderMasterVO.getOrderNo());
 				
 				
+	//			MemberService memberService = new MemberService();
+				MemberVO memberVO2 = memberService.findByPrimaryKey(memNo);
+				req.getSession().setAttribute("memberVO", memberVO2);
+			
 				/***************************3.新增完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("hcOrderMasterVO", hcOrderMasterVO);
 				String url = "/front/homeCare/Hc_show_order.jsp";

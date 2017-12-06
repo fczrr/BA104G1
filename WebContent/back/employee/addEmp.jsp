@@ -356,7 +356,7 @@ h4 {
 	function addEmp() {
 		document.getElementById("empName").value = "王小明";
 		document.getElementById("empId").value = "ming.w";
-		document.getElementById("empMail").value = "seekastyle@gmail.com";
+		document.getElementById("empMail").value = "BA10401JAVA@gmail.com";
 		document.getElementById("empPhone").value = "0912000123";
 	}
 </script>

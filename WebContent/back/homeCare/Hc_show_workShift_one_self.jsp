@@ -476,8 +476,8 @@
 								resourceId:'<%= date %>',
 								start:'<%=date+WorkShiftslist.get(i).substring(11, 21)%>',
 								title:'<%= "訂單:"+hcOrderDetailVO.getOrderDetailNo() %>', 
-							 	editable:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未服務")) ? "true" : "false"%>,
-							 	color:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未服務")) ? "'#428fdc'" : "'#ccc'"%>,
+							 	editable:false,
+							 	color:'#428fdc',
 							 	allDay:false,
 							 	},
 								<%	};%>
@@ -489,7 +489,7 @@
 								resourceId:'<%= date %>',
 								start:'<%=date+restShiftslist.get(i).substring(11, 21)%>',
 								title:'<%= (restShiftslist.get(i).substring(12, 14).equals("08")) ? "休假(早)":(restShiftslist.get(i).substring(12, 14).equals("13")) ? "休假(中)":"休假(晚)"%>', 
-							 	editable:true,
+							 	editable:false,
 							 	allDay:false
 							 	},
 								<%	};%>

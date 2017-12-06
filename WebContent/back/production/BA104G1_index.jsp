@@ -87,32 +87,32 @@
 <div class="container">
      <div class="col-md-4" id="auth1">
         <a class="btn btn-block btn-lg btn-success btn-size" href="<%=request.getContextPath()%>/back/employee/listAllEmployee.jsp">
-            <i class="fa fa-users" id="icone_grande"></i> <br><br>
+            <i class="fa fa-home" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i> 員工管理</span></a>
       </div>
       <div class="col-md-4"  id="auth2">
         <a class="btn btn-block btn-lg btn-danger btn-size" href="<%=request.getContextPath()%>/back/member/listAllMember1.jsp">
             <i class="fa fa-user" id="icone_grande"></i> <br><br>
-            <span class="texto_grande"><i class="fa fa-edit"></i>送餐管理</span></a>
+            <span class="texto_grande"><i class="fa fa-edit"></i>會員管理</span></a>
       </div>
       <div class="col-md-4" id="auth3">
         <a class="btn btn-block btn-lg btn-primary btn-size" data-toggle="modal" data-target="#mymodal">
-            <i class="fa fa-cog fa-spin" id="icone_grande"></i> <br><br>
+            <i class="fa fa-automobile" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>派車管理</span></a>
       </div>
       <div class="col-md-4" id="auth4">
         <a class="btn btn-block btn-lg btn-warning btn-size" href="<%=request.getContextPath()%>/back/setMeal/listAllSetMeal.jsp">
-            <i class="fa fa-automobile" id="icone_grande"></i> <br><br>
+            <i class="fa fa-cutlery" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>送餐管理</span></a>
       </div> 
       <div class="col-md-4" id="auth5">
         <a class="btn btn-block btn-lg btn-default mybtn btn-size" href="<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do?action=listHcWorks_ByCompositeQuery&successView=/back/homeCare/Hc_show_workShift_search.jsp&failureV=/back/homeCare/Hc_show_workShift_search.jsp">
-            <i class="fa fa-home" id="icone_grande"></i> <br><br>
+            <i class="fa fa-users" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>長照管理</span></a>
       </div> 
       <div class="col-md-4" id="auth6">
         <a class="btn btn-block btn-lg btn-info btn-size" href="<%=request.getContextPath()%>/back/production/BA104G1_back_ShopMaster.jsp">
-            <i class="fa fa-automobile" id="icone_grande"></i> <br><br>
+            <i class="fa fa-shopping-cart" id="icone_grande"></i> <br><br>
             <span class="texto_grande"><i class="fa fa-edit"></i>商城管理</span></a>
       </div> 
 </div>

@@ -40,7 +40,7 @@ public class HcOrderMasterService {
 		HcOrderDetailVO hcOrderDetail = new HcOrderDetailVO();
 		hcOrderDetail.setServiceDate(serviceDate);
 		hcOrderDetail.setServiceTime(serviceTime);
-		hcOrderDetail.setOrderDetailStataus("未服務");
+		hcOrderDetail.setOrderDetailStataus("未完成");
 		if(empNo.substring(0, 7).equals("EMP0000")){
 			System.out.println(empNo.substring(0, 7));
 			System.out.println(empNo.substring(7));

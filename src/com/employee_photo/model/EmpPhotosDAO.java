@@ -29,7 +29,7 @@ public class EmpPhotosDAO implements EmpPhotosDAO_interface {
 	}
 
 	private static final String INSERT_STMT = "insert into emp_photos (EMP_PHOTO_NO,EMP_NO,EMP_PHOTO) "
-			+ "VALUES (to_char('EPHMEM'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),?,?)";
+			+ "VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),?,?)";
 	private static final String GET_ALL_STMT = "select * from emp_photos";
 	private static final String GET_ALL_BY_EMPNO = "select * from emp_photos where EMP_NO=?";
 	private static final String GET_ONE_STMT = "select * from emp_photos where EMP_PHOTO_NO = ?";

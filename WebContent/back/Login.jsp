@@ -160,6 +160,8 @@ body {
 			<button class="btn" onclick="myFunction3()">派車部</button>
 			<button class="btn" onclick="myFunction5()">送餐部</button>
 			<button class="btn" onclick="myFunction6()">商城部</button>
+			<button class="btn" onclick="myFunction7()">派車經理</button>
+			
 			<button class="btn" onclick="myFunction4()">新人</button>
 
 		</div>
@@ -196,6 +198,13 @@ body {
 			document.getElementById("Username").value = "d01";
 			document.getElementById("Password").value = "pw0000";
 		}
+		
+		function myFunction7() {
+			document.getElementById("Username").value = "b20";
+			document.getElementById("Password").value = "pw0000";
+		}
+		
+		
 		function showMessage() {
 			document.getElementById("login").innerHTML = '資料庫連線中...';
 

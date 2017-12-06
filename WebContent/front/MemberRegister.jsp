@@ -12,10 +12,10 @@
 
 <head>
 </head>
-<body> 
+<body>
 	<div class="container">
-						<img alt=""
-						src="<%=request.getContextPath()%>/img/member/register.jpg">
+		<img alt=""
+			src="<%=request.getContextPath()%>/img/member/register.jpg">
 		<div class="row">
 			<div class="container-fluid">
 				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -27,8 +27,8 @@
 						<fieldset>
 							<!-- Form Name -->
 							<legend>
-								<center> 
-									<h2> 
+								<center>
+									<h2>
 										<b>有我罩你會員註冊</b>
 									</h2>
 								</center>
@@ -137,7 +137,7 @@
 								<div class="col-md-4">
 									<button type="submit" class="btn btn-warning"
 										onclick="showMessage()">
-										SUBMIT <span class="glyphicon glyphicon-send"></span>
+										提交 <span class="glyphicon glyphicon-send"></span>
 									</button>
 								</div>
 							</div>
@@ -152,12 +152,10 @@
 			</div>
 			<!-- ------------------------------------------------神奇小按鈕----------------------------------------------------------------------- -->
 			<div>
-				<button onclick="myFunction1()">
-					<div class="col-xs-12 col-sm-6">
-						<div class="btn">
-							<span>magic</span>
-						</div>
-					</div>
+				<button class="btn" onclick="myFunction2()">
+
+					<span>magic</span>
+
 				</button>
 			</div>
 			<!-- ----------------------------------------------------------------------------------------------------------------------- -->
@@ -168,12 +166,21 @@
 	</div>
 	<script type="text/JavaScript">
 		function myFunction1() {
-			document.getElementById("Username").value = "張懸";
+			document.getElementById("Username").value = "庫拉皮卡";
 			document.getElementById("Userid").value = "green";
 			document.getElementById("Userpassword1").value = "0000";
 			document.getElementById("Userpassword2").value = "0000";
 			document.getElementById("Userphone").value = "0987000123";
-			document.getElementById("Useremail").value = "seekastyle@gmail.com";
+			document.getElementById("Useremail").value = "BA10401JAVA@gmail.com";
+			document.getElementById("Useraddress").value = "桃園市中壢區中大路300號";
+		}
+		function myFunction2() {
+			document.getElementById("Username").value = "庫拉皮卡";
+			document.getElementById("Userid").value = "green";
+			document.getElementById("Userpassword1").value = "0000";
+			document.getElementById("Userpassword2").value = "0000";
+			document.getElementById("Userphone").value = "0987000123";
+			document.getElementById("Useremail").value = "BA10401JAVA@gmail.com";
 			document.getElementById("Useraddress").value = "桃園市中壢區中大路300號";
 		}
 		function showMessage() {

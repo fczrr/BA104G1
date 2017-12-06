@@ -135,17 +135,17 @@
 	<br>
 	<br>
 	<script type="text/JavaScript">
-		function myFunction() {
-			document.getElementById("caredName").value = "劉姥姥";
-			document.getElementById("caredGender").value = "F";
-			document.getElementById("kinship").value = "伯母";
-			document.getElementById("caredHeight").value = "160";
-			document.getElementById("caredWeight").value = "60";
-			document.getElementById("caredAddress").value = "大觀園市40巷5弄3號";
-			document.getElementById("caredPhone").value = "0900123000";
-			document.getElementById("conStatus").value = "輕度";
-			document.getElementById("bioStatus").value = "重度";
-		}
+	function myFunction() {
+		document.getElementById("caredName").value = "劉姥姥";
+		document.getElementById("caredGender").value = "F";
+		document.getElementById("kinship").value = "母親";
+		document.getElementById("caredHeight").value = "160";
+		document.getElementById("caredWeight").value = "60";
+		document.getElementById("caredAddress").value = "大觀園市40巷5弄3號";
+		document.getElementById("caredPhone").value = "0900123000";
+		document.getElementById("conStatus").value = "輕度(健忘)";
+		document.getElementById("bioStatus").value = "輕度依賴";
+	}
 	</script>
 </body>
 <%@ include file="/front/footerbar.jsp"%>

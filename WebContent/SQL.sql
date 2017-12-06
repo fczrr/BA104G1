@@ -545,6 +545,11 @@ INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVA
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR019.jpg'),'T');
 INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR020.jpg'),'T');
 
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR041.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR017.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR018.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),to_char('EMP'||LPAD(to_char(SEQ_EMPPEMPNO.NEXTVAL),4,'0')),load_blob('CAR019.jpg'),'T');
+INSERT INTO EMP_PHOTOS VALUES (to_char('EPH'||LPAD(to_char(SEQ_EMPPHOTONO.NEXTVAL),4,'0')),'EMP0000',load_blob('CAR020.jpg'),'T');
 --------------------------------------------------------------------------------------
 
 CREATE TABLE EXPERT_LIST(

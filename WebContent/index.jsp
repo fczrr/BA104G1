@@ -181,7 +181,7 @@ div#cont {
                     <h1 class="h1_index_1">當為家人而奔波 感到心力交錯</h1>
                     <p class="h2_index_1">有我罩你提供三大服務 照顧您全家</p>
                     <p><a class="btn btn-lg btn-primary btn_index_1" href="<%=request.getContextPath()%>/front/Login.jsp" role="button">加入會員</a></p>
-                </div>
+                </div>  
             </div>
         </div>
         <div class="item" id="foodCarousel">

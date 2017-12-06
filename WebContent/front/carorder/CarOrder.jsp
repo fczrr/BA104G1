@@ -265,9 +265,9 @@ tr:nth-child(even) {
 										<div class="radio daypart">
 										  <label><input type="radio" name="optradio" value="2" text="N">晚上(6~10)</label>
 										</div>
-										<div class="radio daypart">
+										<!-- <div class="radio daypart">
 										  <label><input type="radio" name="optradio" value="3" text="O">全天</label>
-										</div> 
+										</div> --> 
 										
 										<br><br>
 										選擇服務日期:

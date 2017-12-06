@@ -118,7 +118,7 @@ display:block;
 									<option value="${crdVO.caredNo}">${crdVO.caredName}
 								</c:forEach>   
 							</select>
-						</div>
+						</div> 
 						<div class="col-xs-12 col-sm-2">
 							<input type="submit" >						
 						</div>

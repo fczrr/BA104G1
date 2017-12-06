@@ -25,6 +25,7 @@ request.setCharacterEncoding("UTF-8");
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 		<title>長照服務</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		
 <!-- 		<!--[if lt IE 9]--> 
 <!-- 			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 <!-- 			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script> -->
@@ -220,13 +221,17 @@ request.setCharacterEncoding("UTF-8");
                 </div>
             </div>
         </div>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
 
-								<c:if test="${not empty errorMsgs}">
-										<ul>
+								<c:if test="${not empty errorMsgs}">	
 										<c:forEach var="message" items="${errorMsgs}">
-											<li style="color:red">${message}</li>
-										</c:forEach>
-										</ul>
+											<script>										
+											$(function(){
+												swal("錯誤訊息", '${message}');												
+											});								
+											</script>
+										</c:forEach>	
 								</c:if>
 								<% request.removeAttribute("errorMsgs"); %>
 
@@ -391,6 +396,7 @@ request.setCharacterEncoding("UTF-8");
 	                            </c:choose>
 	                              <input type="hidden" class="form-control" id="empNo-final" name="empNo" value="${param.empNo}" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="memNo" value="${memberVO.memNo}" aria-describedby="helpBlock2">
+	                              <input type="hidden" class="form-control" name="price" value="" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="action" value="add_hc_order" aria-describedby="helpBlock2">
 	                              <input type="hidden" class="form-control" name="expNo" value="${param.expNo}" aria-describedby="helpBlock2">	                              
 	                              <input type="hidden" class="form-control" name="forwardURL" value="<%=request.getServletPath()%>" aria-describedby="helpBlock2">
@@ -419,6 +425,8 @@ request.setCharacterEncoding("UTF-8");
 <%@ include file="/front/footerbar.jsp" %>        
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <script src="<%=request.getContextPath()%>/front/css/homeCare/laydate/laydate.js"></script>
 <script>
     laydate.render({
@@ -488,10 +496,12 @@ request.setCharacterEncoding("UTF-8");
     	});
     	$('#caredNo-final').change(function(){
     		console.log($(this).find(':selected').attr('value'));
-    		$('#caredNo').val($(this).find(':selected').attr('value'));    		
+    		$('#caredNo').val($(this).find(':selected').attr('value'));  
     		
     	});
     	
+    	console.log('**'+ $('#price').text());
+    	$("[name=price]").attr('value', $('#price').text());
     	
     	
 <%-- 			<% List<String> list = (List<String>)request.getAttribute("errorMsgs");%> --%>

@@ -127,17 +127,17 @@ h4 {
 	   <form class="form-inline"  id='listHcWorks_ByCompositeQuery' action = "<%=request.getContextPath()%>/HcWorkshifts/HcWorkshiftsServlet.do" method="post">
         
         <div class="myform-row">
-
+	     <a class="btn btn-default" id="addCondition">加入其他查詢條件</a>
 	         <div class="form-group ">
 	          <label class="control-label" for="monthOfYear">請點選月份</label>
 	           <input type="text" value="${param.monthOfYear}" class="form-control" id="monthOfYear" name="monthOfYear" aria-describedby="helpBlock2" style="border-radius:5px;" readonly>
-	         </div>        
-	     <a class="btn btn-info" id="addCondition">加入查詢條件</a>
-
-        	 <div class="form-group form-group1" style="display:none;">
+	         </div>
+	         <div class="form-group form-group1" >
 	          <label class="control-label" for="empNo">以編號搜尋</label>
 	           <input type="text" value="${param.empNo}" class="form-control" id="empNo" name="empNo" aria-describedby="helpBlock2" placeholder="輸入編號" style="border-radius:5px;">
 	         </div>
+	                 
+
 	         
 	         <div class="form-group form-group2" style="display:none;">
 	          <label class="control-label" for="empName">以姓名搜尋</label>
@@ -190,7 +190,7 @@ h4 {
 	          </select>
 	        </div>
 	         <div class="form-group pull-right">       
-	        <input type="submit" class="btn btn-success" value="查詢" style="border-radius:5px;">
+	        <input type="submit" class="btn btn-success" value="查詢GO!" style="border-radius:5px;">
 	         </div>
 	        
 	        <input type="hidden" name="action" value="listHcWorks_ByCompositeQuery">
@@ -203,7 +203,9 @@ h4 {
        <hr>
 
               
-      </form>    
+      </form>   
+      
+       
 <!--       錯誤訊息 -->
 			<c:if test="${not empty errorMsgs}">
 				<ul>
@@ -212,10 +214,11 @@ h4 {
 					</c:forEach>
 				</ul>
 			</c:if>
+			
+			
 	   </div>
 	</div>
 
-								<a href='#modal-id' data-toggle="modal" class="btn btn-primary">跳出視窗</a>
 								
 								<div class="col-xs-1 pull-right">
 									<a
@@ -249,7 +252,7 @@ h4 {
 													<div class="btn-group">
 														<a href='<%=request.getContextPath()%>/back/homeCare/Hc_show_workShift_one.jsp?monthOfyear=${hcWorkShiftsVO.monthOfYear}&empNo=${hcWorkShiftsVO.empNo}' data-toggle="modal"
 															class="btn btn-primary" role="button"> <span
-															class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;修改
+															class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;修改
 														</a>
 													</div>
 												</td>
@@ -332,7 +335,7 @@ h4 {
 		
 		$(function(){
 			$('#addCondition').click(function(){
-				$('.form-group1').toggle();
+// 				$('.form-group1').toggle();
 				$('.form-group2').toggle();
 				$('.form-group3').toggle();
 				$('.form-group4').toggle();

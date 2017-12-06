@@ -331,6 +331,18 @@ h4 {
 
 	    });
 	    
+	    laydate.render({
+	        elem: '#servDate' 
+	        ,min: 1
+	        ,max: '2018-12-31'
+	        ,showBottom: false
+	        ,done: function(value, date, endDate){
+	            $('#servDate-final').attr('value',value);
+	            console.log(value); 
+	            console.log(date); 
+	        }
+	    });
+	    
 
 		
 		$(function(){

@@ -274,7 +274,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>${hcWorkShiftsVO.monthOfYear}</td>
+                            <td>${hcWorkShiftsVO.getMonthOfYear().substring(0,3)}年${hcWorkShiftsVO.getMonthOfYear().substring(3,5)}月</td>
                             <td>${hcWorkShiftsVO.empNo}</td>
                             <td>${employeeService.findByPrimaryKey(hcWorkShiftsVO.empNo).getEmpName()}</td>
                             <td>${hcWorkShiftsVO.totalWorkShifts}</td>
@@ -308,7 +308,9 @@
 			<h4>員工排班</h4>
 
 			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(myMonth.toString(),"EMP0000")}'>     <!--       寫死的要改質         -->
-			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
+			<div class='fc-event ordNo' id="${detail.orderDetailNo}" >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
+
+
 			</c:forEach>
 			<p>
 				<input type='checkbox' id='drop-remove2' style="display:none"/>
@@ -372,10 +374,32 @@
 	
 	
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
+
 	
 	
 <script>
-
+	$(".ordNo").click(function(event){
+// 		alert(event.target.id);
+		
+	    $.ajax({
+			 type: "post",
+			 
+			 url: "<%=request.getContextPath()%>/HcOrder/HcOrderController.do?action=ajax_findPK",
+			 data: {
+				 orderDetailNo:	event.target.id				 
+			 }, 
+			
+			 
+			 dataType: "json",
+			 success: function (data){
+				 console.log(data);
+//				 alert("訂單編號"+data.orderDetailNo+"\n\r"+"服務日期"+data.serviceDate);
+				 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務狀況 :"+data.orderDetailStataus);
+		     },
+           error: function(e){alert(e+'訂單查尋失敗')}
+       });
+		
+	});
 
 
 	var myDate= new Date();
@@ -481,7 +505,7 @@
 											 success: function (data){
 												 console.log(data);
 // 												 alert("訂單編號"+data.orderDetailNo+"\n\r"+"服務日期"+data.serviceDate);
-												 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務時段 :"+data.orderDetailStataus);
+												 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務狀況 :"+data.orderDetailStataus);
 										     },
 								            error: function(e){alert(e+'訂單查尋失敗')}
 								        });

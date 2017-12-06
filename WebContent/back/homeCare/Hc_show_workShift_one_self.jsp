@@ -262,7 +262,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>${hcWorkShiftsVO.monthOfYear}</td>
+                            <td>${hcWorkShiftsVO.getMonthOfYear().substring(0,3)}年${hcWorkShiftsVO.getMonthOfYear().substring(3,5)}月</td>
                             <td>${hcWorkShiftsVO.empNo}</td>
                             <td>${employeeService.findByPrimaryKey(hcWorkShiftsVO.empNo).getEmpName()}</td>
                             <td>${hcWorkShiftsVO.totalWorkShifts}</td>
@@ -443,12 +443,24 @@
 							],
 							eventClick: function(calEvent, jsEvent, view) {
 								 
-						        alert('Event: ' + calEvent.title);
-// 						        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-// 						        alert('View: ' + view.name);
-						 
-						        // change the border color just for fun
-// 						        $(this).css('border-color', 'red');
+						        if(calEvent.title.substring(0,2)=="訂單"){
+								      $.ajax({
+											 type: "post",
+											 
+											 url: "<%=request.getContextPath()%>/HcOrder/HcOrderController.do?action=ajax_findPK",
+											 data: {
+												 orderDetailNo:	calEvent.title.substring(3,18)					 
+											 }, 
+											
+											 
+											 dataType: "json",
+											 success: function (data){
+												 console.log(data);
+//												 alert("訂單編號"+data.orderDetailNo+"\n\r"+"服務日期"+data.serviceDate);
+												 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務狀況 :"+data.orderDetailStataus);
+										     },
+								            error: function(e){alert(e+'訂單查尋失敗')}
+								        });
 						    },
 
 							eventDurationEditable : false,

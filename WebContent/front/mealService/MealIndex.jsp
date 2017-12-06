@@ -21,12 +21,13 @@
 
 <body>
    <div class="container" style="margin-bottom:4em">
-	<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
+	<%@ include file="/front/message/msgFor_Mem999.jsp" %>
+<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
     <div class="container-fliud">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             </button>
-            <a class="navbar-brand" href="#"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
         </div>
         
         <!-- 手機隱藏選單區 -->
@@ -35,7 +36,7 @@
         
         
   <!--  開始放鏈結區 ======================================================================== -->
-             <ul class="nav navbar-nav navnavnav">
+            <ul class="nav navbar-nav navnavnav">
                 <li><a href="#">關於我們</a></li>
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">最新消息 <b class="caret"></b></a>
@@ -48,9 +49,9 @@
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">照護服務 <b class="caret"></b></a>
                     <ul class="dropdown-menu dropdownNew">
-                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">短期照護服務</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp">短期照護服務</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp">長期照護服務</a></li>
-                        <li><a href="#">Q&A</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">照護服務說明</a></li>
                     </ul>
                 </li>
                 <li><a href="<%= request.getContextPath()%>/front/carorder/CarOrder.jsp">派車服務</a></li>

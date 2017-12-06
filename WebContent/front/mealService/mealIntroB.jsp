@@ -111,12 +111,13 @@
 <body>
 
 <div class="container" style="margin-bottom:4em">
-	<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
+	<%@ include file="/front/message/msgFor_Mem999.jsp" %>
+<nav class="navbar navbar-default navbar-fixed-top newnavbartoppp" role="navigation">
     <div class="container-fliud">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             </button>
-            <a class="navbar-brand" href="#"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><img class="logoImgNav" src="<%=request.getContextPath()%>/img/index/logo/logo_white.png" style="width:50px"" style="width: 40px;"></a>
         </div>
         
         <!-- 手機隱藏選單區 -->
@@ -138,12 +139,12 @@
                 <li class="dropdown newdropdown">
                     <a href="#" class="dropdown-toggle newtoggle" data-toggle="dropdown">照護服務 <b class="caret"></b></a>
                     <ul class="dropdown-menu dropdownNew">
-                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">短期照護服務</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_show_emps.jsp">短期照護服務</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order_long.jsp">長期照護服務</a></li>
-                        <li><a href="#">Q&A</a></li>
+                        <li><a href="<%=request.getContextPath()%>/front/homeCare/Hc_order.jsp">照護服務說明</a></li>
                     </ul>
                 </li>
-                <li><a href="#">派車服務</a></li>
+                <li><a href="<%= request.getContextPath()%>/front/carorder/CarOrder.jsp">派車服務</a></li>
                 <li><a href="<%= request.getContextPath()%>/front/mealService/MealIndex.jsp">送餐服務</a></li>
                 <li><a href="<%=request.getContextPath()%>/front/shopindex.jsp">商城</a></li>
                 <li><a href="#">聯絡我們</a></li>
@@ -176,7 +177,7 @@
                         <li><a href="<%=request.getContextPath()%>/front/member/MemberInfo.jsp">會員資料管理</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/member/MyWallet.jsp">我的錢包</a></li>
                         <li><a href="<%=request.getContextPath()%>/front/member/MemberHcOrder.jsp">訂單管理</a></li>
-                        <li><a href="#">我的最愛</a></li>
+                        
                     </ul>
                 </li>
             </ul>

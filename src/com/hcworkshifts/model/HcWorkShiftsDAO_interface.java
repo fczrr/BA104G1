@@ -11,5 +11,6 @@ public interface HcWorkShiftsDAO_interface {
 	public List<HcWorkShiftsVO> getAll();
 	public List<HcWorkShiftsVO> getAll(Map map);
 	public HcWorkShiftsVO getOneByDateTime (String yearOfMonth, String shiftNumber);
+	List<HcWorkShiftsVO> getAllByEmpNo(String empNo);
 
 }

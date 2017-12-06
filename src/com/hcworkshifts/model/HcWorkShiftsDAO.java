@@ -33,6 +33,9 @@ public class HcWorkShiftsDAO implements HcWorkShiftsDAO_interface {
 	private static final String GET_ALl_BY_MONTH = "select * from HC_WORKSHIFTS "
 			+ "where MONTH_OF_YEAR =? order by TOTAL_WORK_SHIFTS";
 	
+	private static final String GET_ALl_BY_EMPNO = "select * from HC_WORKSHIFTS "
+			+ "where EMP_NO =? order by MONTH_OF_YEAR";
+	
 	private static final String GET_ALl_BY_COMPOSITESQL = "SELECT W.EMP_NO, MONTH_OF_YEAR, WORK_SHIFT_STATUS, "
 			+ "TOTAL_WORK_SHIFTS, EMP_NAME,EMP_DEP,EMP_BRANCHES,EMP_STATUS "
 			+ "FROM HC_WORKSHIFTS W JOIN EMPLOYEE E ON W.EMP_NO = E.EMP_NO "
@@ -568,6 +571,12 @@ public class HcWorkShiftsDAO implements HcWorkShiftsDAO_interface {
 		}
 		listS[1] = String.valueOf(shiftNumber);
 		return listS;
+	}
+
+	@Override
+	public List<HcWorkShiftsVO> getAllByEmpNo(String empNo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

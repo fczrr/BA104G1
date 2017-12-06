@@ -235,7 +235,7 @@ public class HcOrderMasterDAO implements HcOrderMasterDAO_interface {
 				pstmt.setDate(2, HcOrderDetailVO.getServiceDate());
 				pstmt.setString(3, HcOrderDetailVO.getServiceTime());
 				pstmt.setString(4, HcOrderDetailVO.getEmpNo());
-				pstmt.setString(5, "未服務");
+				pstmt.setString(5, "未完成");
 				int ii = pstmt.executeUpdate();
 				System.out.println("成功" + ii + "筆長照明細");
 			}

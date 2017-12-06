@@ -43,6 +43,9 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 	private static final String GET_ALl_BY_MONTH = "select * from HC_WORKSHIFTS "
 			+ "where MONTH_OF_YEAR =? order by TOTAL_WORK_SHIFTS";
 	
+	private static final String GET_ALl_BY_EMPNO = "select * from HC_WORKSHIFTS "
+			+ "where EMP_NO =? order by MONTH_OF_YEAR";
+	
 	private static final String GET_ALl_BY_COMPOSITESQL = "SELECT W.EMP_NO, MONTH_OF_YEAR, WORK_SHIFT_STATUS, "
 			+ "TOTAL_WORK_SHIFTS, EMP_NAME,EMP_DEP,EMP_BRANCHES,EMP_STATUS "
 			+ "FROM HC_WORKSHIFTS W JOIN EMPLOYEE E ON W.EMP_NO = E.EMP_NO "
@@ -363,6 +366,60 @@ public class HcWorkShiftsJDBCDAO implements HcWorkShiftsDAO_interface {
 				list.add(hcWorkShiftsVO); 
 			}
 
+			// Handle any driver errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	}
+	
+	@Override	
+	public List<HcWorkShiftsVO> getAllByEmpNo (String empNo) {
+		List<HcWorkShiftsVO> list = new ArrayList<HcWorkShiftsVO>();		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALl_BY_EMPNO);
+			pstmt.setString(1, empNo);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				// Store the row in the list
+				HcWorkShiftsVO hcWorkShiftsVO = new HcWorkShiftsVO();
+				hcWorkShiftsVO.setEmpNo(rs.getString("EMP_NO")); 
+				hcWorkShiftsVO.setMonthOfYear(rs.getString("MONTH_OF_YEAR"));
+				hcWorkShiftsVO.setWorkShiftStatus(rs.getString("WORK_SHIFT_STATUS"));
+				hcWorkShiftsVO.setTotalWorkShifts(rs.getInt("TOTAL_WORK_SHIFTS"));
+				list.add(hcWorkShiftsVO); 
+			}
+			
 			// Handle any driver errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "

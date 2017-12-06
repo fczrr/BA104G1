@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import com.expert.model.ExpertService;
 import com.expertlist.model.ExpertlistService;
 import com.expertlist.model.ExpertlistVO;
+import com.google.gson.Gson;
 import com.hcorder.modal.HcOrderDetailService;
 import com.hcorder.modal.HcOrderDetailVO;
 import com.hcorder.modal.HcOrderMasterService;
@@ -528,6 +529,33 @@ public class HcOrderController extends HttpServlet {
 				/***************************其他可能的錯誤處理**********************************/
 			} catch (Exception e) {
 				res.getWriter().println("明細狀態改動失敗");
+				
+			}
+		}
+		
+		
+		if ("ajax_findPK".equals(action)) { // 來自.jsp的請求
+			String orderDetailNo = req.getParameter("orderDetailNo");
+			System.out.println("YA I am  IN ajax_findPK"+orderDetailNo);
+			
+			
+			try {
+				
+
+				
+				HcOrderDetailService hcOrderDetailService = new HcOrderDetailService();
+				HcOrderDetailVO hcOrderDetailVO = hcOrderDetailService.findByPrimaryKey(orderDetailNo);
+				/***************************2.開始***************************************/
+				
+				Gson gson = new Gson();
+				
+				
+				/***************************3.查詢完成,準備轉交()************/
+				res.getWriter().println(gson.toJson(hcOrderDetailVO));
+				
+				/***************************其他可能的錯誤處理**********************************/
+			} catch (Exception e) {
+				res.getWriter().println("查詢名細失敗");
 				
 			}
 		}

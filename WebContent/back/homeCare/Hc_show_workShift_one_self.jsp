@@ -74,10 +74,9 @@
 	
 	Integer myYear =  Integer.valueOf(year)+1911;
 	Integer myMonth = Integer.valueOf(month);
-	pageContext.setAttribute("myYear", myYear);
-	pageContext.setAttribute("myMonth", myMonth);	
 	
-	//印事件LOG
+	
+	//印LOG
 	for(String aaa :WorkShiftslist){
 		System.out.println("wjsp++"+aaa);
 	}
@@ -241,18 +240,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                   			<div id="mytitle"
-								style="padding: 10px; color: #FFFFFF; text-align: center;">
-
-
-								<a class="btn btn-block btn-lg btn-primary" data-toggle="modal"
-									data-target="#mymodal">
-									<h1><b>長照班表管理</b>
-									</h1>
-
-								</a>
-
-							</div>
+                    <h2>檢視班表</h2>
 
                     
                     <div class="clearfix"></div>
@@ -286,7 +274,7 @@
 <!--                         <tr> -->
 <%--                             <td>${hcWorkShiftsVO11.monthOfYear}</td> --%>
 <%--                             <td>${hcWorkShiftsVO11.empNo}</td> --%>
-<%--                             <td>${hcWorkShiftsVO11.empNo}</td> --%>
+<%--                             <td>${employeeService.findByPrimaryKey(hcWorkShiftsVO.empNo).getEmpName()}</td> --%>
 <%--                             <td>${hcWorkShiftsVO11.totalWorkShifts}</td> --%>
 <%--                             <td>${hcWorkShiftsVO11.workShiftStatus}</td>                                      --%>
 <!--                         </tr> -->
@@ -298,38 +286,35 @@
 
 
 
-<%-- 		<% //Calenddar myDate = new Date(); %> --%>
-<%--         <c:if test="${hcWorkShiftsVO.monthOfYear}" var="isDrogable" scope="page"> --%>
-   
-<%-- 		</c:if> --%>
-	<div id='wrap col-md-12 col-sm-12 col-xs-12'>
-		<div id='external-events2'>
-		<div id='external-events-listing2'>
-			<h4>員工排班</h4>
 
-			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(myMonth.toString(),"EMP0000")}'>     <!--       寫死的要改質         -->
-			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p>
-			</c:forEach>
-			<p>
-				<input type='checkbox' id='drop-remove2' style="display:none"/>
+	<div id='wrap col-md-12 col-sm-12 col-xs-12'>
+<!-- 		<div id='external-events2'> -->
+<!-- 		<div id='external-events-listing2'> -->
+<!-- 			<h4>員工排班</h4> -->
+
+<%-- 			<c:forEach var="detail" items='${hcOrderDetailSvc.getAllOneMonthInPerson(12,"EMP0000")}'>     <!--       寫死的要改質         --> --%>
+<%-- 			<div class='fc-event' >訂單:${detail.orderDetailNo}</div><p style='display:none'>${detail.serviceTime}</p> --%>
+<%-- 			</c:forEach> --%>
+<!-- 			<p> -->
+<!-- 				<input type='checkbox' id='drop-remove2' /> -->
 <!-- 				<label for='drop-remove2'>remove after drop</label> -->
-			</p>
-		</div>
-		</div>
-		<div id='external-events'>
-		<div id='external-events-listing'>
+<!-- 			</p> -->
+<!-- 		</div> -->
+<!-- 		</div> -->
+<!-- 		<div id='external-events'> -->
+<!-- 		<div id='external-events-listing'> -->
 		
-			<h4>員工排假</h4>
-			<div class='fc-event'>休假(早)</div>
-			<div class='fc-event'>休假(中)</div>
-			<div class='fc-event'>休假(晚)</div>
-			<p>
-				<input type='checkbox' id='drop-remove' style="display:none" checked />
+<!-- 			<h4>員工排假</h4> -->
+<!-- 			<div class='fc-event'>休假(早)</div> -->
+<!-- 			<div class='fc-event'>休假(中)</div> -->
+<!-- 			<div class='fc-event'>休假(晚)</div> -->
+<!-- 			<p> -->
+<!-- 				<input type='checkbox' id='drop-remove'/> -->
 <!-- 				<label for='drop-remove'>remove after drop</label> -->
-			</p>
-		</div >
-		<div><button class="btn mybtn btn-info">確認修改</button></div>
-		</div>
+<!-- 			</p> -->
+<!-- 		</div > -->
+<!-- 		<div><button class="btn mybtn">確認修改</button></div> -->
+<!-- 		</div> -->
 
 		
 		<div id='calendar'></div>
@@ -369,17 +354,8 @@
 	src="<%=request.getContextPath()%>/back/fullcalendar-scheduler/js/scheduler.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/back/fullcalendar-scheduler/js/zh-tw.js"></script>
-	
-	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
-	
-	
 <script>
-
-
-
 	var myDate= new Date();
-	var dDate = '<%= myYear.toString()%>-<%= myMonth.toString()%>-01';
 	
 
 
@@ -441,24 +417,24 @@
 							schedulerLicenseKey : 'CC-Attribution-NonCommercial-NoDerivatives',
 // 							locale : 'zh-tw',
 // 							themeSystem:'bootstrap3',
-							defaultDate: dDate,
-							editable : true,
+							defaultDate: '<%= myYear.toString()%>-<%= myMonth.toString()%>-01',
+							editable : false,
 							aspectRatio : 1.8,
 							scrollTime: '00:00',
-							droppable : true,
+// 							droppable : true,
 							dragRevertDuration:0,
 // 							validRange:function(currentDate) { 
 // 							    return { 
-// 							        start: dDate,
+<%-- 							        start: <%= myYear.toString()%>+"-"+<%= myMonth.toString()%>+"-01", --%>
 <%-- 							        end: (((<%= myMonth.toString()%>+ 1)>=13) ? <%= myYear.toString()%>+1:<%= myYear.toString()%>)+"-"+<%= myMonth.toString()%>+"-01" --%>
 // 							    };
 // 							 },
 							slotEventOverlap : false,
 // 							eventLimit : true,
 							header: {
-								left: 'today prev,next',
+								left: '',
 								center: 'title',
-								right: 'timelineThreeDays,agendaWeek,month'
+								right: ''
 							},
 							defaultView: 'month',
 							defaultEventMinutes:'240',
@@ -467,27 +443,7 @@
 							],
 							eventClick: function(calEvent, jsEvent, view) {
 								 
-						        if(calEvent.title.substring(0,2)=="訂單"){
-								      $.ajax({
-											 type: "post",
-											 
-											 url: "<%=request.getContextPath()%>/HcOrder/HcOrderController.do?action=ajax_findPK",
-											 data: {
-												 orderDetailNo:	calEvent.title.substring(3,18)					 
-											 }, 
-											
-											 
-											 dataType: "json",
-											 success: function (data){
-												 console.log(data);
-// 												 alert("訂單編號"+data.orderDetailNo+"\n\r"+"服務日期"+data.serviceDate);
-												 swal("訂單訊息","訂單編號 :"+data.orderDetailNo+"<br>"+"服務日期 :"+data.serviceDate+"<br>"+"服務時段 :"+data.serviceTime+"<br>"+"服務時段 :"+data.orderDetailStataus);
-										     },
-								            error: function(e){alert(e+'訂單查尋失敗')}
-								        });
-						        	
-						        }
-						        
+						        alert('Event: ' + calEvent.title);
 // 						        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 // 						        alert('View: ' + view.name);
 						 
@@ -520,8 +476,8 @@
 								resourceId:'<%= date %>',
 								start:'<%=date+WorkShiftslist.get(i).substring(11, 21)%>',
 								title:'<%= "訂單:"+hcOrderDetailVO.getOrderDetailNo() %>', 
-							 	editable:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未完成")) ? "true" : "false"%>,
-							 	color:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未完成")) ? "'#428fdc'" : "'#ccc'"%>,
+							 	editable:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未服務")) ? "true" : "false"%>,
+							 	color:<%=(hcOrderDetailVO.getOrderDetailStataus().equals("未服務")) ? "'#428fdc'" : "'#ccc'"%>,
 							 	allDay:false,
 							 	},
 								<%	};%>
@@ -542,9 +498,9 @@
 						    	
 							drop : function(date, jsEvent, ui, resourceId,resourceId) {
 						
-								console.log( $(this).data('event').title.substring(0,2) );
+								console.log( $(this).closest("div").attr('class') );
 								// is the "remove after drop" checkbox checked?
-								if ($('#drop-remove').is(':checked') && $(this).data('event').title.substring(0,2)!='休假' ) {
+								if ($('#drop-remove').is(':checked')) {
 									// if so, remove the element from the "Draggable Events" list
 									$(this).remove();
 								}
@@ -626,7 +582,7 @@
 // 									console.log( event.title);
 // 									console.log( moment(event.start).format('YYYY-MM-DD'));
 							}
-						});  
+						}); 
 
 		var isEventOverDiv = function(x, y) {
 
@@ -700,7 +656,7 @@
 						 alert(data.xxx)
 						
 				     },
-		            error: function(e){alert(e+'777')}
+		            error: function(e){alert(e+'出現異常')}
 		        });
 		  
 		      

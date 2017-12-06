@@ -53,6 +53,10 @@ public class HcWorkShiftsService {
 		return dao.getAllByDateTime(servdates[0], servdates[1]);
 	}
 	
+	public List<HcWorkShiftsVO> getAllByEmpNo(String empNo){
+		return dao.getAllByEmpNo(empNo);
+	}
+	
 	
 	public HcWorkShiftsVO getOneByDateTime(String servdate, String servTime){
 		String[] servdates = convertDateToNumber(servdate,servTime);

@@ -273,12 +273,10 @@ $(document).ready(function (){
 // 	$('.list-memNo').click(function(){
 <%-- 		window.location = '<%=request.getContextPath()%>'/;//會員資料 --%>
 // 	});
-	$('.list-memNo').click(function(){
-		window.location = 'http://blog.webgolds.com/';//會員資料
-	});
-	$('.list-orderDate').click(function(){
-		window.location = 'http://blog.webgolds.com/';//訂購時間
-	});
+// 	$('.list-memNo').click(function(){
+// 		window.location = 'http://blog.webgolds.com/';//會員資料
+// 	});
+
 
 	
 	$('#addCondition').click(function(){
@@ -297,7 +295,7 @@ $(document).ready(function (){
 	});
 	
 	$( document ).on('click','.btn-tochange2',function(){
-		$(event.target).closest('td').html('<select class="mb-2 goto2"  id="'+this.id+'" name="orderDetailStataus" style="border-radius:5px;"><option value="">請選擇訂單狀態</option><option value="未服務">未服務</option><option value="已服務">已服務</option><option value="已取消">已取消</option></select>');
+		$(event.target).closest('td').html('<select class="mb-2 goto2"  id="'+this.id+'" name="orderDetailStataus" style="border-radius:5px;"><option value="">請選擇訂單狀態</option><option value="未完成">未完成</option><option value="已完成">已完成</option><option value="已取消">已取消</option></select>');
 	});
 	
 });

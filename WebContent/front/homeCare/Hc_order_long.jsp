@@ -20,6 +20,10 @@
 	
 	.dateTitle{
 	float:left;
+	font-family: Microsoft JhengHei;
+	font-weight:bold;
+	color:#009688b5;
+	
 	}
 	
 	.divCheck input[type="checkbox"] {
@@ -47,6 +51,11 @@
 		-webkit-border-radius: 5px;   
 	}
 	.layui-laydate .layui-this{    border-radius: 10px;}
+	
+/* 	.layui-laydate-content td { */
+/* 	background-color:#009688b5; */
+/*     	border-radius: 10px; */
+/* 	} */
 	
 /* 	.layui-laydate-content th { */
 /* 		height:70px; */
@@ -77,13 +86,22 @@ display:block;
   </div>
 </div>
 </div>
-<c:if test="${not empty errorMsgs}">
-		<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li style="color:red">${message}</li>
-		</c:forEach>
-		</ul>
-</c:if>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.js"></script><!-- 甜甜的sweetalert2 -->
+
+								<c:if test="${not empty errorMsgs}">	
+										<c:forEach var="message" items="${errorMsgs}">
+											<script>										
+											$(function(){
+												swal("錯誤訊息", '${message}');												
+											});								
+											</script>
+										</c:forEach>	
+								</c:if>
+								<% request.removeAttribute("errorMsgs"); %>
+
+
 <div class="container innnerContent">
 	<div class="panel-body calender-container text-center">
 		 <form action="<%=request.getContextPath()%>/HcOrder/HcOrderController.do" class="hc_order" method="post" id="hc_order">		 

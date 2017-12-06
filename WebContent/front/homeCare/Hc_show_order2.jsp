@@ -92,19 +92,7 @@
                             <td>${hcOrderDetailVO.serviceDate}</td>
                             <td>${hcOrderDetailVO.serviceTime}</td>
                             <td>${employeeService.findByPrimaryKey(hcOrderDetailVO.getEmpNo()).getEmpName()}</td>
-                                                        
-                            	 <c:choose>
-	                               <c:when test='${not empty param.price}'>
-	                                   <td>${param.price}</td>	                               
-	                               </c:when>
-	                               
-	                               <c:when test='${empty param.expNo}'>
-                           				 <td>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcOrderDetailVO.empNo).get(0).getExpNo()).getExpPrice()}</td>
-	                               </c:when>
-	                               <c:otherwise>
-	                               </c:otherwise>
-	                            </c:choose>
-                            
+                            <td>${expertlistService.getOneEXPLIST(expertService.getAllByEmpNo(hcOrderDetailVO.empNo).get(0).getExpNo()).getExpPrice()}</td>
                             <td>${hcOrderDetailVO.orderDetailStataus}</td>
                         </tr>
                      </c:forEach>
